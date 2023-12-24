@@ -6,6 +6,4 @@
 **AXIOS** - for requests
 **React Context** - for context
 
-# Amazon-Clone
-# amazon-clone
 # amazon-e-commerce
