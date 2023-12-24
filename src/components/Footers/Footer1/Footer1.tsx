@@ -12,7 +12,10 @@ export const Footer1 = () => {
               <h3 className="text-[white]">{footerLink.category}</h3>
               {footerLink.links.map((link) => {
                 return (
-                  <p key={link.name} className="leading-7 mt-3">
+                  <p
+                    key={link.name}
+                    className="leading-7 text-[white] text-xs mt-3"
+                  >
                     {link.name}
                   </p>
                 );

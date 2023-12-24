@@ -6,9 +6,7 @@ import { FiUser } from "react-icons/fi";
 import { categoryList } from "@src/Data/Data";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
-import { useTranslation } from "react-i18next";
 export const Nav1 = () => {
-  // const { categoryList } = useContext(GlobalContext);
   return (
     <nav className="wrapper w-full bg-[#131921]">
       <div className="nav-container flex justify-between items-center p-4">
@@ -40,7 +38,7 @@ export const Nav1 = () => {
         </div>
         <div className="right">
           <div className="mobile-res flex items-center">
-            <Link to={""}>
+            <Link to={"/login"}>
               <FiUser className="block text-[white] text-2xl sm:hidden ml-3" />
             </Link>
 
@@ -55,19 +53,19 @@ export const Nav1 = () => {
 
           <div className="all-links hidden sm:block">
             <div className="links flex items-center">
-              <Link to={"/login"}>
+              <Link className="no-underline text-[white]" to={"/login"}>
                 <div className="link flex flex-col items-start ml-3">
-                  <p className="text-sm">Hello Sign in</p>
+                  <p className="text-sm ">Hello Sign in</p>
                   <p>Accounts and Lists</p>
                 </div>
               </Link>
-              <Link to={""}>
+              <Link className="no-underline text-[white]" to={""}>
                 <div className="link flex flex-col items-start ml-3">
                   <p className="text-sm">Returns</p>
                   <p>& Orders</p>
                 </div>
               </Link>
-              <Link to={""}>
+              <Link className="no-underline text-[white]" to={""}>
                 <div className="link flex  items-baseline ml-3">
                   <img src={CardImg} alt="" />
                   <p>Cart</p>

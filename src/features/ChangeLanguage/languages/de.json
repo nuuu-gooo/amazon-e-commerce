@@ -10,5 +10,7 @@
   "amazon-affiliates": "© 1996-2023, Amazon.com, Inc. oder seine Tochtergesellschaften",
   "continue-btn": "Forfahren",
   "privacy-notice": "Wenn Sie fortfahren, erklären Sie sich mit den Nutzungsbedingungen und der Datenschutzerklärung von Amazon einverstanden.",
-  "need-help": "Benötigst du Hil"
+  "need-help": "Benötigst du Hilfe",
+  "min-length": "Minimum Länge: 7",
+  "include@": "Beinhalte '@'"
 }

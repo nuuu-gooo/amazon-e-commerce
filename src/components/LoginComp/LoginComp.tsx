@@ -63,7 +63,6 @@ export const LoginComp = () => {
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
-                // onChange={(e) => setEmailValue(e.target.value)}
                 onChange={(e) => {
                   setEmailValue(e.target.value);
                 }}
@@ -75,7 +74,9 @@ export const LoginComp = () => {
                 type="email"
               />
               {emailError ? (
-                <p className="mt-3 text-xs text-[red]">Include "@"</p>
+                <p className="mt-3 text-xs text-[red]">
+                  <FormattedMessage id="include@" />
+                </p>
               ) : (
                 ""
               )}
@@ -87,7 +88,9 @@ export const LoginComp = () => {
               </h5>
               <div className="second-input flex">
                 <input
-                  onChange={(e) => setPasswordValue(e.target.value)}
+                  onChange={(e) => {
+                    setPasswordValue(e.target.value);
+                  }}
                   className="w-full p-2 outline-none"
                   type={isPasswordVisible ? "text" : "password"}
                   placeholder={formatMessage({ id: "password" })}
@@ -100,7 +103,9 @@ export const LoginComp = () => {
                 </button>
               </div>
               {passwordError ? (
-                <p className="text-[red] text-xs mt-3">min length: 7</p>
+                <p className="text-[red] text-xs mt-3">
+                  <FormattedMessage id="min-length" />
+                </p>
               ) : (
                 ""
               )}

@@ -4,5 +4,9 @@ import { useGlobalProvider } from "@src/providers/GlobalProvider";
 import React from "react";
 
 export const Home = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
 };

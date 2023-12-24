@@ -10,5 +10,7 @@
   "amazon-affiliates": "© 1996-2023, Amazon.com, Inc. or its affiliates",
   "continue-btn": "Continue",
   "privacy-notice": "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.",
-  "need-help": "Need Help"
+  "need-help": "Need Help",
+  "min-length": "Min length: 7",
+  "include@": "Include '@'"
 }
