@@ -1,0 +1,214 @@
+{
+  "messages": {
+    "categories": {
+      "electronics": "Elektronik",
+      "clothingShoesAndJewelry": "Kleidung, Schuhe und Schmuck",
+      "books": "Bücher",
+      "homeAndKitchen": "Zuhause und Küche",
+      "toysAndGames": "Spielzeug und Spiele",
+      "healthAndHousehold": "Gesundheit und Haushalt",
+      "sportsAndOutdoors": "Sport und Freizeit",
+      "automotive": "Auto und Motorrad",
+      "beautyAndPersonalCare": "Beauty und Pflege",
+      "groceryAndGourmetFood": "Lebensmittel und Feinkost",
+      "furniture": "Möbel",
+      "toolsAndHomeImprovement": "Werkzeuge und Heimwerken",
+      "officeProducts": "Bürobedarf",
+      "petSupplies": "Haustierbedarf",
+      "moviesAndTVShows": "Filme und Serien",
+      "videoGames": "Videospiele",
+      "industrialAndScientific": "Industrie und Wissenschaft",
+      "babyProducts": "Baby",
+      "artsCraftsAndSewing": "Kunst, Handwerk und Nähen",
+      "computersAndAccessories": "Computer und Zubehör",
+      "kindleStore": "Kindle-Shop",
+      "digitalMusic": "Digitale Musik",
+      "software": "Software",
+      "luggageAndTravelGear": "Reisegepäck",
+      "musicalInstruments": "Musikinstrumente",
+      "handmade": "Handgemacht",
+      "collectiblesAndFineArt": "Sammlerstücke und Kunst",
+      "giftCards": "Geschenkgutscheine"
+    },
+    "nav2Links": {
+      "all": "Alle",
+      "dealsOfTheDay": "Angebote des Tages",
+      "customerService": "Kundenservice",
+      "registration": "Registrierung",
+      "giftCards": "Geschenkgutscheine",
+      "sell": "Verkaufen"
+    },
+    "footerLinks": {
+      "getToKnowUs": {
+        "careers": "Karriere",
+        "blog": "Blog",
+        "aboutAmazon": "Über Amazon",
+        "investorRelations": "Investor-Beziehungen",
+        "amazonDevices": "Amazon Geräte",
+        "amazonScience": "Amazon Wissenschaft"
+      },
+      "makeMoneyWithUs": {
+        "sellOnAmazon": "Verkaufen bei Amazon",
+        "sellOnAmazonBusiness": "Verkaufen bei Amazon Business",
+        "sellYourAppsOnAmazon": "Verkaufen Sie Ihre Apps auf Amazon",
+        "becomeAnAffiliate": "Werde ein Partner",
+        "advertiseYourProducts": "Werbung für Ihre Produkte",
+        "selfPublishWithUs": "Selbstveröffentlichen mit uns",
+        "setUpAnAmazonHub": "Richten Sie einen Amazon Hub ein"
+      },
+      "amazonPaymentProducts": {
+        "amazonBusinessCard": "Amazon Business Karte",
+        "shopWithPoints": "Einkaufen mit Punkten",
+        "reloadYourBalance": "Ihr Guthaben aufladen",
+        "amazonCurrencyConverter": "Amazon Währungsumrechner"
+      },
+      "letUsHelpYou": {
+        "amazonAndCovid19": "Amazon und COVID-19",
+        "yourAccount": "Ihr Konto",
+        "yourOrders": "Ihre Bestellungen",
+        "shippingRatesAndPolicies": "Versandkosten und Richtlinien",
+        "returnsAndReplacements": "Rücksendungen und Ersatz",
+        "manageYourContentAndDevices": "Verwalten Sie Ihre Inhalte und Geräte",
+        "amazonAssistant": "Amazon Assistant",
+        "help": "Hilfe"
+      }
+    },
+    "amazonServices": {
+      "amazonMusic": "Amazon Music - Millionen von Songs streamen",
+      "amazonAdvertising": "Amazon Advertising - Kunden finden, ansprechen und binden",
+      "6PM": "6PM - Entdecken Sie Angebote von Modemarken",
+      "abeBooks": "AbeBooks - Bücher, Kunst & Sammlerstücke",
+      "acx": "ACX - Hörbuchveröffentlichung leicht gemacht",
+      "sellOnAmazon": "Verkaufen bei Amazon - Erstellen Sie ein Verkäuferkonto",
+      "amazonBusiness": "Amazon Business - Alles für Ihr Unternehmen",
+      "amp": "Amp - Moderieren Sie Ihre eigene Live-Radiosendung mit Ihrer Lieblingsmusik",
+      "amazonGlobal": "AmazonGlobal - Weltweiter Versand von Bestellungen",
+      "homeServices": "Home Services - Erfahrene Profis mit Zufriedenheitsgarantie",
+      "amazonWebServices": "Amazon Web Services - Skalierbare Cloud-Computing-Services",
+      "audible": "Audible - Hören Sie Bücher und originale Hörspiele",
+      "boxOfficeMojo": "Box Office Mojo - Filmkasse Daten",
+      "goodreads": "Goodreads - Buchrezensionen und Empfehlungen",
+      "imdb": "IMDb - Filme, TV & Prominente",
+      "imdbPro": "IMDbPro - Informationen, die Unterhaltungsprofis benötigen",
+      "kindleDirectPublishing": "Kindle Direct Publishing - Einfache digitale und Printveröffentlichung",
+      "primeVideoDirect": "Prime Video Direct - Videodistribution leicht gemacht",
+      "shopbop": "Shopbop - Designer-Modemarken",
+      "woot": "Woot! - Angebote und Schabernack",
+      "zappos": "Zappos - Schuhe & Kleidung",
+      "ring": "Ring - Smarte Heimsicherheitssysteme",
+      "eeroWiFi": "eero WiFi - Streamen Sie 4K-Video in jedem Raum",
+      "blink": "Blink - Intelligente Sicherheit für jedes Zuhause",
+      "neighborsApp": "Neighbors App - Echtzeit-Kriminalitäts- und Sicherheitswarnungen",
+      "amazonSubscriptionBoxes": "Amazon Subscription Boxes - Top-Abonnementboxen direkt vor Ihre Haustür",
+      "pillPack": "PillPack - Vereinfachte Apotheke"
+    }
+  }
+}
+
+
+{
+  "messages": {
+    "categories": {
+      "electronics": "Electronics",
+      "clothingShoesAndJewelry": "Clothing, Shoes, and Jewelry",
+      "books": "Books",
+      "homeAndKitchen": "Home and Kitchen",
+      "toysAndGames": "Toys and Games",
+      "healthAndHousehold": "Health and Household",
+      "sportsAndOutdoors": "Sports and Outdoors",
+      "automotive": "Automotive",
+      "beautyAndPersonalCare": "Beauty and Personal Care",
+      "groceryAndGourmetFood": "Grocery and Gourmet Food",
+      "furniture": "Furniture",
+      "toolsAndHomeImprovement": "Tools and Home Improvement",
+      "officeProducts": "Office Products",
+      "petSupplies": "Pet Supplies",
+      "moviesAndTVShows": "Movies and TV Shows",
+      "videoGames": "Video Games",
+      "industrialAndScientific": "Industrial and Scientific",
+      "babyProducts": "Baby Products",
+      "artsCraftsAndSewing": "Arts, Crafts, and Sewing",
+      "computersAndAccessories": "Computers and Accessories",
+      "kindleStore": "Kindle Store",
+      "digitalMusic": "Digital Music",
+      "software": "Software",
+      "luggageAndTravelGear": "Luggage and Travel Gear",
+      "musicalInstruments": "Musical Instruments",
+      "handmade": "Handmade",
+      "collectiblesAndFineArt": "Collectibles and Fine Art",
+      "giftCards": "Gift Cards"
+    },
+    "nav2Links": {
+      "all": "All",
+      "dealsOfTheDay": "Deals of the Day",
+      "customerService": "Customer Service",
+      "registration": "Registration",
+      "giftCards": "Gift Cards",
+      "sell": "Sell"
+    },
+    "footerLinks": {
+      "getToKnowUs": {
+        "careers": "Careers",
+        "blog": "Blog",
+        "aboutAmazon": "About Amazon",
+        "investorRelations": "Investor Relations",
+        "amazonDevices": "Amazon Devices",
+        "amazonScience": "Amazon Science"
+      },
+      "makeMoneyWithUs": {
+        "sellOnAmazon": "Sell on Amazon",
+        "sellOnAmazonBusiness": "Sell on Amazon Business",
+        "sellYourAppsOnAmazon": "Sell Your Apps on Amazon",
+        "becomeAnAffiliate": "Become an Affiliate",
+        "advertiseYourProducts": "Advertise Your Products",
+        "selfPublishWithUs": "Self-Publish with Us",
+        "setUpAnAmazonHub": "Set Up an Amazon Hub"
+      },
+      "amazonPaymentProducts": {
+        "amazonBusinessCard": "Amazon Business Card",
+        "shopWithPoints": "Shop with Points",
+        "reloadYourBalance": "Reload Your Balance",
+        "amazonCurrencyConverter": "Amazon Currency Converter"
+      },
+      "letUsHelpYou": {
+        "amazonAndCovid19": "Amazon and COVID-19",
+        "yourAccount": "Your Account",
+        "yourOrders": "Your Orders",
+        "shippingRatesAndPolicies": "Shipping Rates & Policies",
+        "returnsAndReplacements": "Returns & Replacements",
+        "manageYourContentAndDevices": "Manage Your Content and Devices",
+        "amazonAssistant": "Amazon Assistant",
+        "help": "Help"
+      }
+    },
+    "amazonServices": {
+      "amazonMusic": "Amazon Music - Stream millions of songs",
+      "amazonAdvertising": "Amazon Advertising - Find, attract, and engage customers",
+      "6PM": "6PM - Discover deals on fashion brands",
+      "abeBooks": "AbeBooks - Books, art & collectibles",
+      "acx": "ACX - Audiobook Publishing Made Easy",
+      "sellOnAmazon": "Sell on Amazon - Start a Selling Account",
+      "amazonBusiness": "Amazon Business - Everything for Your Business",
+      "amp": "Amp - Host your own live radio show with your favorite music",
+      "amazonGlobal": "AmazonGlobal - Ship Orders Internationally",
+      "homeServices": "Home Services - Experienced pros with a satisfaction guarantee",
+      "amazonWebServices": "Amazon Web Services - Scalable Cloud Computing Services",
+      "audible": "Audible - Listen to Books & Original Audio Performances",
+      "boxOfficeMojo": "Box Office Mojo - Movie Box Office Data",
+      "goodreads": "Goodreads - Book reviews & recommendations",
+      "imdb": "IMDb - Movies, TV & Celebrities",
+      "imdbPro": "IMDbPro - Get Info Entertainment Professionals Need",
+      "kindleDirectPublishing": "Kindle Direct Publishing - Easy Digital & Print Publishing",
+      "primeVideoDirect": "Prime Video Direct - Video Distribution Made Easy",
+      "shopbop": "Shopbop - Designer Fashion Brands",
+      "woot": "Woot! - Deals and Shenanigans",
+      "zappos": "Zappos - Shoes & Clothing",
+      "ring": "Ring - Smart Home Security Systems",
+      "eeroWiFi": "eero WiFi - Stream 4K Video in Every Room",
+      "blink": "Blink - Smart Security for Every Home",
+      "neighborsApp": "Neighbors App - Real-Time Crime & Safety Alerts",
+      "amazonSubscriptionBoxes": "Amazon Subscription Boxes - Top subscription boxes – right to your door",
+      "pillPack": "PillPack - Pharmacy Simplified"
+    }
+  }
+}
