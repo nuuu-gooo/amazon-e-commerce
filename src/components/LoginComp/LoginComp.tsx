@@ -18,7 +18,11 @@ export const LoginComp = () => {
   return (
     <div>
       <Link className="amazon-logo flex justify-center items-center" to={"/"}>
-        <img className="w-[2%] min-w-[200px] " src={BlackAmazonLogo} alt="" />
+        <img
+          className="w-[1%] min-w-[150px] mb-3 "
+          src={BlackAmazonLogo}
+          alt=""
+        />
       </Link>
 
       <div>
