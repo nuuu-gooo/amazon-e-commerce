@@ -11,10 +11,31 @@ import { FormattedMessage, useIntl } from "react-intl";
 export const LoginComp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const { formatMessage } = useIntl();
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [passwordValue, setPasswordValue] = useState<string>("");
 
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+
+  const emailValidation = () => {
+    if (!emailValue.includes("@")) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
+
+  const passwordValidation = () => {
+    if (passwordValue.length < 7) {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
+  };
+
   return (
     <div>
       <Link className="amazon-logo flex justify-center items-center" to={"/"}>
@@ -42,27 +63,53 @@ export const LoginComp = () => {
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
+                // onChange={(e) => setEmailValue(e.target.value)}
+                onChange={(e) => {
+                  setEmailValue(e.target.value);
+                }}
                 className="w-full p-2 outline-none 
+
+
               "
                 placeholder={formatMessage({ id: "e-mail" })}
                 type="email"
               />
+              {emailError ? (
+                <p className="mt-3 text-xs text-[red]">Include "@"</p>
+              ) : (
+                ""
+              )}
             </div>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
                 {" "}
                 <FormattedMessage id="password" />
               </h5>
-              <input
-                className="w-full p-2 outline-none"
-                type={isPasswordVisible ? "text" : "password"}
-                placeholder={formatMessage({ id: "password" })}
-              />
-              <button onClick={() => setIsPasswordVisible(!isPasswordVisible)}>
-                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-              </button>
+              <div className="second-input flex">
+                <input
+                  onChange={(e) => setPasswordValue(e.target.value)}
+                  className="w-full p-2 outline-none"
+                  type={isPasswordVisible ? "text" : "password"}
+                  placeholder={formatMessage({ id: "password" })}
+                />
+                <button
+                  className="p-2 "
+                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                >
+                  {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+                </button>
+              </div>
+              {passwordError ? (
+                <p className="text-[red] text-xs mt-3">min length: 7</p>
+              ) : (
+                ""
+              )}
             </div>
             <button
+              onClick={() => {
+                emailValidation();
+                passwordValidation();
+              }}
               type="submit"
               className="w-full py-1.5 text-sm rounded-sm bg-gradient-to-t
  from-[#f7dfa5] to-[#f0c14b] hover:bg-gradient-to-t border
