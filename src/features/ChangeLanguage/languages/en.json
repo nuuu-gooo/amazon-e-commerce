@@ -11,6 +11,6 @@
   "continue-btn": "Continue",
   "privacy-notice": "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.",
   "need-help": "Need Help",
-  "min-length": "Min length: 7",
-  "include@": "Include '@'"
+  "min-length": "! Min length: 7",
+  "include@": "! Include '@'"
 }
