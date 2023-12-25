@@ -1,6 +1,4 @@
 {
-  "hello": "Hallo",
-  "goodbye": "Tschuss",
   "change.language": "🇺🇸",
   "sign-in": "Anmelden",
   "e-mail": "E-Mail",
@@ -11,6 +9,12 @@
   "continue-btn": "Forfahren",
   "privacy-notice": "Wenn Sie fortfahren, erklären Sie sich mit den Nutzungsbedingungen und der Datenschutzerklärung von Amazon einverstanden.",
   "need-help": "Benötigst du Hilfe",
-  "min-length": "! Minimum Länge: 7",
-  "include@": "! Beinhalte '@'"
+  "register": "Registrieren",
+  "your-name": "Ihr Name",
+  "re-enter-password": "Wiederholen Sie ihr Passwort ",
+  "already-have-an-account": "Schon ein Account? ",
+  "include@-error": "! Beinhalte '@'",
+  "min-length-error": "! Minimum Länge: 7",
+  "name-error": "! Bitte schreiben Sie ihren Namen",
+  "re-enter-error": "! Falsches Passwort"
 }

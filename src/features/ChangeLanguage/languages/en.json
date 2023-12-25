@@ -1,6 +1,4 @@
 {
-  "hello": "hello",
-  "goodbye": "goodbye",
   "change.language": "🇩🇪",
   "sign-in": "Sign in",
   "e-mail": "E-Mail",
@@ -11,6 +9,12 @@
   "continue-btn": "Continue",
   "privacy-notice": "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.",
   "need-help": "Need Help",
-  "min-length": "! Min length: 7",
-  "include@": "! Include '@'"
+  "register": "Create Account",
+  "your-name": "Your Name",
+  "re-enter-password": "re-enter your password ",
+  "already-have-an-account": "Already have an account? ",
+  "include@-error": "! Include '@'",
+  "min-length-error": "! Min length: 7",
+  "name-error": "! Please enter your name",
+  "re-enter-error": "! Wrong Password"
 }
