@@ -1,5 +1,10 @@
 import React from "react";
+import { LoginFooter } from "@src/components/Footers/LoginFooter/LoginFooter";
 
 export const Bottom = () => {
-  return <div>Bottom</div>;
+  return (
+    <div>
+      <LoginFooter />
+    </div>
+  );
 };
