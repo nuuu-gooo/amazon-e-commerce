@@ -1,3 +1,7 @@
+import DogImage1 from "src/assets/images/Dog-Images/dog-image-not-found.jpg";
+import DogImage2 from "src/assets/images/Dog-Images/Dog-Image-2.jpg";
+import DogImage3 from "src/assets/images/Dog-Images/Dog-Image-3.jpg";
+import DogImageLast from "src/assets/images/Dog-Images/Dog-Image-last.jpg";
 export const categoryList = [
   { id: 1, name: "Electronics" },
   { id: 2, name: "Clothing, Shoes, and Jewelry" },
@@ -164,3 +168,5 @@ export const amazonServices = [
   },
   { name: "PillPack", description: "Pharmacy Simplified" },
 ];
+
+export const dogImagesArr = [DogImage1, DogImage2, DogImage3, DogImageLast];
