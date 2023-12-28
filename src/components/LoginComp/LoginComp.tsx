@@ -49,6 +49,7 @@ export const LoginComp = () => {
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
+                value={emailValue}
                 onChange={(e) => {
                   setEmailValue(e.target.value);
                 }}
@@ -74,6 +75,7 @@ export const LoginComp = () => {
               </h5>
               <div className="second-input flex">
                 <input
+                  value={passwordValue}
                   onChange={(e) => {
                     setPasswordValue(e.target.value);
                   }}

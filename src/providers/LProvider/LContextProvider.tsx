@@ -20,8 +20,6 @@ export const LContextProvider = ({ children }: PropsWithChildren) => {
     }
   }, [locale]);
 
-  //-- For Local Storage-- //
-
   useEffect(() => {
     const storedLanguage = localStorage.getItem("language");
     if (storedLanguage) {

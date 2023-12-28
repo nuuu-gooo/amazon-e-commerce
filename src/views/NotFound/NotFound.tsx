@@ -11,7 +11,7 @@ export const NotFound = () => {
         Sorry <br /> we couldn't find that page!
       </p>
       <Link
-        className=" overflow-hidden"
+        className="overflow-hidden"
         to={
           "https://www.aboutamazon.com/news/workplace/meet-the-dogs-of-amazon?utm_source=gateway&utm_medium=404"
         }
