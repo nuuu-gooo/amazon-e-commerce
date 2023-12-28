@@ -28,7 +28,7 @@ export const SideBar = () => {
                 <MenuItem> Line charts </MenuItem>
               </SubMenu>
               <MenuItem> Documentation </MenuItem>
-              <MenuItem> Calendar </MenuItem>
+              <MenuItem> Kalendar </MenuItem>
             </Menu>
           </Sidebar>
         </div>
