@@ -8,15 +8,9 @@ export const Nav2 = () => {
 
   return (
     <nav className="w-full bg-[#232f3e] p-3">
-      <div className="nav-container  sm:flex justify-start items-start">
-        {/* <p
-          className="ml-3 text-xs sm:ml-3 text-white sm:text-base cursor-pointer"
-          onClick={toggleSidebarFunction}
-        >
-          All
-        </p> */}
+      <div className="nav-container  sm:flex justify-start items-center">
         <p
-          className="ml-3 text-xs sm:ml-3 text-white sm:text-base cursor-pointer"
+          className=" ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
           onClick={toggleSidebarFunction}
         >
           All
@@ -26,7 +20,8 @@ export const Nav2 = () => {
             <Link
               to={link.link}
               key={link.id}
-              className=" ml-3  text-xs sm:ml-3 text-white no-underline sm:text-base"
+              // className=" text-xs hidden sm:ml-3 block text-white no-underline sm:text-base"
+              className="text-xs hidden sm:ml-3 sm:block text-white no-underline sm:text-base"
             >
               {link.name}
             </Link>

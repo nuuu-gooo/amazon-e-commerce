@@ -2,6 +2,7 @@ import React from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { FormattedMessage } from "react-intl";
 
 export const SideBar = () => {
   const { isToggled, setIsToggled } = useContext(GlobalContext);
@@ -16,6 +17,11 @@ export const SideBar = () => {
             >
               X
             </button>
+            <div className="sign-up w-full bg-[blue]">
+              <p>
+                <FormattedMessage id="sign-up" />
+              </p>
+            </div>
             <Menu>
               <SubMenu label="Charts">
                 <MenuItem> Pie charts </MenuItem>
