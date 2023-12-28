@@ -60,7 +60,7 @@ export const CreateAccComp = () => {
           <form
             onSubmit={handleInput}
             action=""
-            className="border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
+            className="sm:border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
           >
             <h1>
               {" "}

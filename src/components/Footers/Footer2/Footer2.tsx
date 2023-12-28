@@ -5,10 +5,9 @@ import { FormattedMessage } from "react-intl";
 import { LContext } from "@src/providers/LProvider/LContext";
 
 export const Footer2 = () => {
-  const { toggleLanguage } = useContext(LContext);
   return (
-    <div className="bg-[#131921] hidden min-[900px]:block py-10">
-      <div className="grid grid-cols-4 max-w-5xl w-full m-auto border-spacing-8 border-separate gap-9">
+    <div className="bg-[#131921]  py-10">
+      <div className="sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
         {amazonServices.map((service) => {
           return (
             <div key={service.name} className="flex flex-col">
@@ -19,16 +18,10 @@ export const Footer2 = () => {
         })}
       </div>
       <div className="mt-8">
-        <p className="rights text-xs text-white flex justify-center text-center leading-4 items-center">
+        <p className="rights text-xs  text-white flex justify-center text-center leading-6 items-center">
           Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
           for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
         </p>
-        <p className="text-[white]">
-          <FormattedMessage id="hello" />
-        </p>
-        <button onClick={() => toggleLanguage()}>
-          <FormattedMessage id="change.language" />
-        </button>
       </div>
     </div>
   );
