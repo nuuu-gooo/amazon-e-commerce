@@ -24,7 +24,7 @@ export const SideBar = () => {
             </div>
             <Menu>
               <SubMenu label="Charts">
-                <MenuItem> Pie charts </MenuItem>
+                <MenuItem> Pie chart </MenuItem>
                 <MenuItem> Line charts </MenuItem>
               </SubMenu>
               <MenuItem> Documentation </MenuItem>
