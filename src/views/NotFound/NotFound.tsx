@@ -6,17 +6,17 @@ export const NotFound = () => {
   const randomDogImage = dogImagesArr[randomDogImagNumber];
 
   return (
-    <div className="flex justify-center items-center h-[50vh] p-3 flex-col">
-      <p className="text-4xl text-center">
+    <div className="flex justify-center items-center h-[70vh] p-3 flex-col">
+      <p className="text-4xl text-center mb-9">
         Sorry <br /> we couldn't find that page!
       </p>
       <Link
-        className=" overflow-hidden"
+        className=" overflow-hidden sm:overflow-hidden max-w-full"
         to={
           "https://www.aboutamazon.com/news/workplace/meet-the-dogs-of-amazon?utm_source=gateway&utm_medium=404"
         }
       >
-        <img src={randomDogImage} alt="" />
+        <img className="" src={randomDogImage} alt="" />
       </Link>
     </div>
   );

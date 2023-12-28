@@ -1,7 +1,10 @@
 import DogImage1 from "src/assets/images/Dog-Images/dog-image-not-found.jpg";
+// import { useContext } from "react";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 import DogImage2 from "src/assets/images/Dog-Images/Dog-Image-2.jpg";
 import DogImage3 from "src/assets/images/Dog-Images/Dog-Image-3.jpg";
 import DogImageLast from "src/assets/images/Dog-Images/Dog-Image-last.jpg";
+// const { toggleSidebarFunction } = useContext(GlobalContext);
 export const categoryList = [
   { id: 1, name: "Electronics" },
   { id: 2, name: "Clothing, Shoes, and Jewelry" },

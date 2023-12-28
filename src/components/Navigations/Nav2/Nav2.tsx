@@ -8,16 +8,25 @@ export const Nav2 = () => {
 
   return (
     <nav className="w-full bg-[#232f3e] p-3">
-      <div className="nav-container  sm:flex justify-start items-center">
-        <p className="text-[white]" onClick={toggleSidebarFunction}>
+      <div className="nav-container  sm:flex justify-start items-start">
+        {/* <p
+          className="ml-3 text-xs sm:ml-3 text-white sm:text-base cursor-pointer"
+          onClick={toggleSidebarFunction}
+        >
+          All
+        </p> */}
+        <p
+          className="ml-3 text-xs sm:ml-3 text-white sm:text-base cursor-pointer"
+          onClick={toggleSidebarFunction}
+        >
           All
         </p>
         {nav2Links.map((link) => {
           return (
             <Link
+              to={link.link}
               key={link.id}
               className=" ml-3  text-xs sm:ml-3 text-white no-underline sm:text-base"
-              to={link.link}
             >
               {link.name}
             </Link>
