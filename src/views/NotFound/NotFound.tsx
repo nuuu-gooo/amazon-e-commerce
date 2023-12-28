@@ -12,7 +12,9 @@ export const NotFound = () => {
         <img className="w-full" src={SorryText} alt="" />
       </Link>
       <Link
+
         className=" overflow-hidden sm:overflow-hidden max-w-full h-auto"
+
         to={
           "https://www.aboutamazon.com/news/workplace/meet-the-dogs-of-amazon?utm_source=gateway&utm_medium=404"
         }

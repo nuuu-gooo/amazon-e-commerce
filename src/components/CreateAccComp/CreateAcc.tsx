@@ -72,6 +72,7 @@ export const CreateAccComp = () => {
                 <FormattedMessage id="your-name" />
               </h5>
               <input
+                value={nameValue}
                 onChange={(e) => {
                   setNameValue(e.target.value);
                 }}
@@ -96,6 +97,7 @@ export const CreateAccComp = () => {
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
+                value={emailValue}
                 onChange={(e) => {
                   setEmailValue(e.target.value);
                 }}
@@ -121,6 +123,7 @@ export const CreateAccComp = () => {
               </h5>
               <div className="second-input flex">
                 <input
+                  value={passwordValue}
                   onChange={(e) => {
                     setPasswordValue(e.target.value);
                   }}
@@ -150,6 +153,7 @@ export const CreateAccComp = () => {
               </h5>
               <div className="second-input flex">
                 <input
+                  value={passwordReEnterValue}
                   onChange={(e) => {
                     setPasswordReEnterValue(e.target.value);
                   }}
