@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import { nav2Links } from "@src/Data/Data";
 
 export const Nav2 = () => {
+  const { toggleSidebarFunction } = useContext(GlobalContext);
+
   return (
     <nav className="w-full bg-[#232f3e] p-3">
-      <div className="nav-container   sm:flex justify-start items-start">
+      <div className="nav-container  sm:flex justify-start items-center">
+        <p className="text-[white]" onClick={toggleSidebarFunction}>
+          All
+        </p>
         {nav2Links.map((link) => {
           return (
             <Link

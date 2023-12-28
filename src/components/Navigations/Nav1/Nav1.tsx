@@ -6,9 +6,12 @@ import { FiUser } from "react-icons/fi";
 import { categoryList } from "@src/Data/Data";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
+import { SideBar } from "@src/components/SideBar/SideBar";
+
 export const Nav1 = () => {
   return (
     <nav className="wrapper w-full bg-[#131921]">
+      <SideBar />
       <div className="nav-container flex justify-between items-center p-4">
         <div className="left ">
           <Link to={"/"}>

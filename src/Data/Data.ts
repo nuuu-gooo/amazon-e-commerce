@@ -34,7 +34,6 @@ export const categoryList = [
 ];
 
 export const nav2Links = [
-  { name: "All", id: 1, link: "/" },
   { name: "Todays Deals", id: 2, link: "" },
   {
     name: "Customer Service",
