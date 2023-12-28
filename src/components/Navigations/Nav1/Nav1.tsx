@@ -11,7 +11,9 @@ export const Nav1 = () => {
     <nav className="wrapper w-full bg-[#131921]">
       <div className="nav-container flex justify-between items-center p-4">
         <div className="left ">
-          <img src={AmazonLogo} alt="" />
+          <Link to={"/"}>
+            <img src={AmazonLogo} alt="" />
+          </Link>
         </div>
         <div className="middle-input-container ml-3 flex flex-grow">
           <select
