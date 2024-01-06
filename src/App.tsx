@@ -2,11 +2,10 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "./layouts/AuthenLayout/AuthentficiationLayout";
-
+import { CreateAccComp } from "./components/CreateAccComp/CreateAcc";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
-const CreateAccComp = lazy(() => import(`src/views/CreateAcc`));
 const NotFonud = lazy(() => import("@src/views/NotFound"));
 
 function App() {
