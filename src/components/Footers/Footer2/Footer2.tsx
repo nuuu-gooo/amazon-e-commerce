@@ -6,7 +6,7 @@ import { LContext } from "@src/providers/LProvider/LContext";
 
 export const Footer2 = () => {
   return (
-    <div className="bg-[#131921]  py-10">
+    <div className="bg-[#131921]  py-10 w-full h-full">
       <div className="sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
         {amazonServices.map((service) => {
           return (
