@@ -16,5 +16,6 @@
   "include@-error": "! Beinhalte '@'",
   "min-length-error": "! Min length: 7",
   "name-error": "! Please enter your name",
-  "re-enter-error": "! Wrong Password"
+  "re-enter-error": "! Wrong Password",
+  "sign-up-sidebar": "Hello, Sign Up"
 }
