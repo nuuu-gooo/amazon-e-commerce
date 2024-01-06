@@ -16,5 +16,6 @@
   "include@-error": "! Beinhalte '@'",
   "min-length-error": "! Minimum Länge: 7",
   "name-error": "! Bitte schreiben Sie ihren Namen",
-  "re-enter-error": "! Falsches Passwort"
+  "re-enter-error": "! Falsches Passwort",
+  "sign-up-sidebar": "Hallo,  Anmelden"
 }
