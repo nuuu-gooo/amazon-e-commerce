@@ -1,7 +1,13 @@
-import { useCallback, useEffect } from "react";
+import React, {
+  useCallback,
+  PropsWithChildren,
+  useState,
+  useEffect,
+} from "react";
+
 import { IntlProvider } from "react-intl";
-import { PropsWithChildren, useState } from "react";
 import { LContext, Locale_ENUM } from "./LContext";
+
 import en from "@src/features/ChangeLanguage/languages/en.json";
 import de from "@src/features/ChangeLanguage/languages/de.json";
 
@@ -26,8 +32,6 @@ export const LContextProvider = ({ children }: PropsWithChildren) => {
       setLocale(storedLanguage as Locale_ENUM);
     }
   }, []);
-
-  console.log(locale);
 
   return (
     <LContext.Provider value={{ locale, setLocale, toggleLanguage }}>

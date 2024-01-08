@@ -3,8 +3,12 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { amazonServices } from "@src/Data/Data";
 import { FormattedMessage } from "react-intl";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { randomData } from "../../../Data/Data";
 
 export const Footer2 = () => {
+  const { locale } = useContext(LContext);
+
+  console.log(randomData);
   return (
     <div className="bg-[#131921]  py-10 w-full h-full">
       <div className=" hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
@@ -22,6 +26,7 @@ export const Footer2 = () => {
           Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
           for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
         </p>
+        <p>{randomData.name[locale]}</p>
       </div>
     </div>
   );
