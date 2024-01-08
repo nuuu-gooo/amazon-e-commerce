@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "./layouts/AuthenLayout/AuthentficiationLayout";
 import { CreateAccComp } from "./components/CreateAccComp/CreateAcc";
+import { Loader } from "./components/Loader/Loader";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -12,7 +13,9 @@ function App() {
   return (
     <Suspense
       fallback={
-        <div className="flex justify-center items-center h-screen">loading</div>
+        <div className="flex justify-center items-center h-screen">
+          <Loader />
+        </div>
       }
     >
       <Routes>
