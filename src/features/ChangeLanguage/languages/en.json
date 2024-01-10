@@ -17,5 +17,11 @@
   "min-length-error": "! Min length: 7",
   "name-error": "! Please enter your name",
   "re-enter-error": "! Wrong Password",
-  "sign-up-sidebar": "Hello, Sign Up"
+  "sign-up-sidebar": "Hello, Sign Up",
+  "hello-sign-in-nav-1": "Hello Sign Up ",
+  "card-nav-1": "Card",
+  "returns": "Returns",
+  "orders": "& Orders",
+  "back-to-top": "Back to top",
+  "accounts-and-lists": "Accounts and Lists"
 }

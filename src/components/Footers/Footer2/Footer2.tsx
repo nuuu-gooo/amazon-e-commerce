@@ -1,22 +1,20 @@
 import React, { useState, useContext } from "react";
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import { amazonServices } from "@src/Data/Data";
-import { FormattedMessage } from "react-intl";
 import { LContext } from "@src/providers/LProvider/LContext";
-import { randomData } from "../../../Data/Data";
 
 export const Footer2 = () => {
   const { locale } = useContext(LContext);
 
-  console.log(randomData);
   return (
     <div className="bg-[#131921]  py-10 w-full h-full">
       <div className=" hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
         {amazonServices.map((service) => {
           return (
-            <div key={service.name} className="flex flex-col">
-              <p className="text-[white] text-xs">{service.name}</p>
-              <p className="text-[#999] text-xs">{service.description}</p>
+            <div key={service.name[locale]} className="flex flex-col">
+              <p className="text-[white] text-xs">{service.name[locale]}</p>
+              <p className="text-[#999] text-xs">
+                {service.description[locale]}
+              </p>
             </div>
           );
         })}

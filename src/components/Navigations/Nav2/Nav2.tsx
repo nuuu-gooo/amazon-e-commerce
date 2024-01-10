@@ -1,10 +1,12 @@
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LContext } from "@src/providers/LProvider/LContext";
 import { nav2Links } from "@src/Data/Data";
 
 export const Nav2 = () => {
   const { toggleSidebarFunction } = useContext(GlobalContext);
+  const { locale } = useContext(LContext);
 
   return (
     <nav className="w-full bg-[#232f3e] p-3">
@@ -15,7 +17,7 @@ export const Nav2 = () => {
         >
           All
         </p>
-        {nav2Links.map((link) => {
+        {nav2Links.map((link: any) => {
           return (
             <Link
               to={link.link}
@@ -23,7 +25,7 @@ export const Nav2 = () => {
               // className=" text-xs hidden sm:ml-3 block text-white no-underline sm:text-base"
               className="text-xs hidden sm:ml-3 sm:block text-white no-underline sm:text-base"
             >
-              {link.name}
+              {link.name[locale]}
             </Link>
           );
         })}

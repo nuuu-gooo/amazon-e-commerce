@@ -1,5 +1,5 @@
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import React, { useContext } from "react";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
@@ -7,8 +7,11 @@ import { categoryList } from "@src/Data/Data";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
 import { SideBar } from "@src/components/SideBar/SideBar";
+import { LContext } from "@src/providers/LProvider/LContext";
+import { FormattedMessage } from "react-intl";
 
 export const Nav1 = () => {
+  const { locale } = useContext(LContext);
   return (
     <nav className="wrapper w-full bg-[#131921]">
       <SideBar />
@@ -26,8 +29,8 @@ export const Nav1 = () => {
           >
             {categoryList.map((category) => {
               return (
-                <option key={category.id} value={category.name}>
-                  {category.name}
+                <option key={category.id} value={category.name[locale]}>
+                  {category.name[locale]}
                 </option>
               );
             })}
@@ -60,20 +63,30 @@ export const Nav1 = () => {
             <div className="links flex items-center">
               <Link className="no-underline text-[white]" to={"/login"}>
                 <div className="link flex flex-col items-start ml-3">
-                  <p className="text-sm ">Hello Sign in</p>
-                  <p>Accounts and Lists</p>
+                  <p className="text-sm ">
+                    <FormattedMessage id="hello-sign-in-nav-1" />
+                  </p>
+                  <p>
+                    <FormattedMessage id="accounts-and-lists" />{" "}
+                  </p>
                 </div>
               </Link>
               <Link className="no-underline text-[white]" to={""}>
                 <div className="link flex flex-col items-start ml-3">
-                  <p className="text-sm">Returns</p>
-                  <p>& Orders</p>
+                  <p className="text-sm">
+                    <FormattedMessage id="returns" />
+                  </p>
+                  <p>
+                    <FormattedMessage id="orders" />
+                  </p>
                 </div>
               </Link>
               <Link className="no-underline text-[white]" to={""}>
                 <div className="link flex  items-baseline ml-3">
                   <img src={CardImg} alt="" />
-                  <p>Cart</p>
+                  <p>
+                    <FormattedMessage id="card-nav-1" />
+                  </p>
                 </div>{" "}
               </Link>
             </div>

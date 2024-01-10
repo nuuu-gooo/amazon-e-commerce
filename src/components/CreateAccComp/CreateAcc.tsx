@@ -56,7 +56,7 @@ export const CreateAccComp = () => {
   return (
     <div>
       <div>
-        <div className="wrapper flex justify-center items-center  h-[50vh]  ">
+        <div className="wrapper flex justify-center items-center  h-[60vh]  ">
           <form
             onSubmit={handleInput}
             action=""
