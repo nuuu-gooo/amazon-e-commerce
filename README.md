@@ -18,3 +18,5 @@ Welcome to the Amazon Clone repository! This project is a simplified version of 
 - React Router DOM
 - Axios
 - Redux
+
+#### More technologies will be added soon...
