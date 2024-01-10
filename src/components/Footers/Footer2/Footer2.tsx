@@ -26,7 +26,6 @@ export const Footer2 = () => {
           Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
           for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
         </p>
-        <p>{randomData.name[locale]}</p>
       </div>
     </div>
   );

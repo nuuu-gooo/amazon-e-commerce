@@ -8,6 +8,7 @@ const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
 const NotFonud = lazy(() => import("@src/views/NotFound"));
+const CreateAcc = lazy(() => import("@src/views/CreateAcc"));
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         </Route>
         <Route element={<AuthentficiationLayout />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/createaccount" element={<CreateAccComp />} />
+          <Route path="/createaccount" element={<CreateAcc />} />
         </Route>
       </Routes>
     </Suspense>
