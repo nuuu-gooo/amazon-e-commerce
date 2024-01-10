@@ -5,7 +5,7 @@ import DogImage2 from "src/assets/images/Dog-Images/Dog-Image-2.jpg";
 import DogImage3 from "src/assets/images/Dog-Images/Dog-Image-3.jpg";
 import DogImageLast from "src/assets/images/Dog-Images/Dog-Image-last.jpg";
 import { Locale_ENUM } from "@src/providers/LProvider/LContext";
-
+export const dogImagesArr = [DogImage1, DogImage2, DogImage3, DogImageLast];
 export const randomData = {
   name: { [Locale_ENUM.DE]: "Flasche", [Locale_ENUM.EN]: "Bottle" },
 };
