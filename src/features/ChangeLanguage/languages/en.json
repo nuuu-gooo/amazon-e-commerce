@@ -13,7 +13,7 @@
   "your-name": "Your Name",
   "re-enter-password": "re-enter your password ",
   "already-have-an-account": "Already have an account? ",
-  "include@-error": "! Beinhalte '@'",
+  "include@-error": "! contain '@'",
   "min-length-error": "! Min length: 7",
   "name-error": "! Please enter your name",
   "re-enter-error": "! Wrong Password",

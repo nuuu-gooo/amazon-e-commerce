@@ -62,7 +62,7 @@ export const LoginComp = () => {
               />
               {emailError ? (
                 <p className="mt-3 text-xs text-[red]">
-                  <FormattedMessage id="include@-error " />
+                  <FormattedMessage id="include@-error" />
                 </p>
               ) : (
                 ""
