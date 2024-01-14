@@ -93,3 +93,19 @@
     animation-timing-function: ease-in;
   }
 }
+
+.create-acc-btn {
+  width: 25%;
+  min-width: 300px;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  font-weight: normal;
+  border-radius: 0.375rem;
+  background-image: linear-gradient(to bottom, #cbd5e0, #a0aec0);
+  transition: background-image 0.3s ease-in-out;
+  border: 1px solid #a1a1aa;
+  margin-bottom: 1%;
+  text-align: center;
+}

@@ -127,9 +127,7 @@ export const LoginComp = () => {
         <hr className="w-[20%] min-w-[200px] " />
         <button
           onClick={() => navigate("/createaccount")}
-          className="w-[25%] min-w-[300px] p-2  cursor-pointer py-1 text-sm mt-4 font-normal rounded-lg
-   bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b
-   border border-zinc-400 active:border-yellow-800 active:shadow-amazonInput mb-[1%]"
+          className="create-acc-btn"
         >
           <FormattedMessage id="create-your-amazon-account" />
         </button>

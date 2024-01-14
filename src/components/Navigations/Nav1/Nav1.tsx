@@ -11,7 +11,7 @@ import { LContext } from "@src/providers/LProvider/LContext";
 import { FormattedMessage } from "react-intl";
 
 export const Nav1 = () => {
-  const { locale } = useContext(LContext);
+  const { locale, toggleLanguage } = useContext(LContext);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -68,6 +68,12 @@ export const Nav1 = () => {
           />
           <button className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1">
             <FaSearch className="text-2xl sm:text-lg " />
+          </button>
+          <button
+            className="ml-3 text-2xl border-none bg-[transparent] cursor-pointer"
+            onClick={toggleLanguage}
+          >
+            <FormattedMessage id="change.language" />
           </button>
         </div>
         <div className="right">

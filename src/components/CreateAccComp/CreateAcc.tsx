@@ -196,9 +196,10 @@ export const CreateAccComp = () => {
       <div className="new-to-amazon flex justify-center items-center mt-[4%]  flex-col">
         <button
           onClick={() => navigate("/login")}
-          className="w-[25%] min-w-[300px] p-2  cursor-pointer py-1 text-sm  font-normal rounded-lg
-   bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b
-   border border-zinc-400 active:border-yellow-800 active:shadow-amazonInput mt-[5%] mb-[1%]"
+          //         className="w-[25%] min-w-[300px] p-2  cursor-pointer py-1 text-sm  font-normal rounded-lg
+          //  bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b
+          //  border border-zinc-400 active:border-yellow-800 active:shadow-amazonInput mt-[5%] mb-[1%]"
+          className="create-acc-btn"
         >
           <FormattedMessage id="already-have-an-account" />
         </button>
