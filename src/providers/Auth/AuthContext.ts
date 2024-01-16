@@ -14,6 +14,7 @@ export type AuthContextType = {
   authData: string | undefined;
   authStage: authStage_EUNM;
   setAuthStage: React.Dispatch<React.SetStateAction<authStage_EUNM>>;
+  createAccFetch: any;
 };
 
 export const AuthContext = createContext<AuthContextType>({
@@ -23,4 +24,5 @@ export const AuthContext = createContext<AuthContextType>({
   setUserData: () => {},
   setAuthData: () => {},
   setAuthStage: () => {},
+  createAccFetch: () => {},
 });

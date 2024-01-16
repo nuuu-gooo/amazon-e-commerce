@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
@@ -12,8 +12,10 @@ import {
   numberValidation,
   surnameValidation,
 } from "../../utils/DifferentFunctions";
+import { AuthContext } from "@src/providers/Auth/AuthContext";
 
 export const CreateAccComp = () => {
+  const { createAccFetch, authData } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const [enterNumVal, setEnterNumVal] = useState<string>("");
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -37,13 +39,21 @@ export const CreateAccComp = () => {
     passwordValidation(passwordValue, setPasswordError);
     nameValidation(nameValue, setNameError);
     surnameValidation(surnameValue, setSurnameError);
+    createAccFetch(
+      nameValue,
+      surnameValue,
+      emailValue,
+      passwordValue,
+      enterNumVal
+    );
     passwordReEnterValidation(
       passwordReEnterValue,
       passwordValue,
       setPasswordReEnterError
     );
   };
-  console.log(enterNumError, surnameError, enterNumVal.length, surnameValue);
+
+  console.log(authData);
   return (
     <div>
       <div>
@@ -61,6 +71,7 @@ export const CreateAccComp = () => {
                 <FormattedMessage id="your-name" />
               </h5>
               <input
+                name="first_name"
                 value={nameValue}
                 onChange={(e) => {
                   setNameValue(e.target.value);
@@ -85,6 +96,7 @@ export const CreateAccComp = () => {
                 <FormattedMessage id="your-surname" />
               </h5>
               <input
+                name="last_name"
                 value={surnameValue}
                 onChange={(e) => {
                   setSurnameValue(e.target.value);
@@ -109,6 +121,7 @@ export const CreateAccComp = () => {
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
+                name="last_name"
                 value={emailValue}
                 onChange={(e) => {
                   setEmailValue(e.target.value);
@@ -135,6 +148,7 @@ export const CreateAccComp = () => {
               </h5>
               <div className="second-input flex">
                 <input
+                  name="password"
                   value={passwordValue}
                   onChange={(e) => {
                     setPasswordValue(e.target.value);
