@@ -11,11 +11,13 @@
   "need-help": "Need Help",
   "register": "Create Account",
   "your-name": "Your Name",
+  "your-surname": "Your Surname",
   "re-enter-password": "re-enter your password ",
   "already-have-an-account": "Already have an account? ",
   "include@-error": "! contain '@'",
   "min-length-error": "! Min length: 7",
   "name-error": "! Please enter your name",
+  "surname-error": "! Please enter your surname",
   "re-enter-error": "! Wrong Password",
   "sign-up-sidebar": "Hello, Sign Up",
   "hello-sign-in-nav-1": "Hello Sign Up ",
@@ -23,5 +25,7 @@
   "returns": "Returns",
   "orders": "& Orders",
   "back-to-top": "Back to top",
-  "accounts-and-lists": "Accounts and Lists"
+  "accounts-and-lists": "Accounts and Lists",
+  "number-error": "Please enter at maximum 9 Digits!",
+  "enter-number": "Your Phone number"
 }

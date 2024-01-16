@@ -1,10 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { IoMdArrowDropright } from "react-icons/io";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
+import {
+  nameValidation,
+  emailValidation,
+  passwordValidation,
+  passwordReEnterValidation,
+} from "../../utils/DifferentFunctions";
 
 export const CreateAccComp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -12,45 +17,26 @@ export const CreateAccComp = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [nameValue, setNameValue] = useState<string>("");
+  const [surnameValue, setSurnameValue] = useState<string>("");
   const [passwordReEnterValue, setPasswordReEnterValue] = useState<string>("");
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<boolean>(false);
+  const [surnameError, setSurnameError] = useState<boolean>(false);
+  const [enterNumVal, setEnterNamVal] = useState<string>();
   const [passwordReEnterError, setPasswordReEnterError] =
     useState<boolean>(false);
   const navigate = useNavigate();
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-  };
-
-  const emailValidation = () => {
-    if (!emailValue.includes("@")) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const passwordValidation = () => {
-    if (passwordValue.length < 7) {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
-  };
-
-  const nameValidation = () => {
-    if (nameValue === "") {
-      setNameError(true);
-    } else {
-      setNameError(false);
-    }
-  };
-
-  const paswordReEnterValidation = () => {
-    if (passwordReEnterValue !== passwordValue) {
-      setPasswordReEnterError(true);
-    } else [setPasswordReEnterError(false)];
+    emailValidation(emailValue, setEmailError);
+    passwordValidation(passwordValue, setPasswordError);
+    nameValidation(nameValue, setNameError);
+    passwordReEnterValidation(
+      passwordReEnterValue,
+      passwordValue,
+      setPasswordReEnterError
+    );
   };
 
   return (
@@ -60,7 +46,7 @@ export const CreateAccComp = () => {
           <form
             onSubmit={handleInput}
             action=""
-            className="sm:border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
+            className="sm:border border-zinc-300 border-solid p-9  min-w-[400px] flex justify-start items-start flex-col rounded"
           >
             <h1>
               <FormattedMessage id="register" />
@@ -82,6 +68,30 @@ export const CreateAccComp = () => {
                 type="text"
               />
               {nameError ? (
+                <p className="mt-3 text-xs text-[red]">
+                  <FormattedMessage id="name-error" />
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="input-container mt-4 w-full">
+              <h5 className="mb-3">
+                <FormattedMessage id="your-surname" />
+              </h5>
+              <input
+                value={surnameValue}
+                onChange={(e) => {
+                  setSurnameValue(e.target.value);
+                }}
+                className="w-full p-2 outline-none 
+  
+  
+                "
+                placeholder={formatMessage({ id: "your-surname" })}
+                type="text"
+              />
+              {surnameError ? (
                 <p className="mt-3 text-xs text-[red]">
                   <FormattedMessage id="name-error" />
                 </p>
@@ -172,16 +182,30 @@ export const CreateAccComp = () => {
                 ""
               )}
             </div>
-            <button
-              onClick={() => {
-                emailValidation();
-                passwordValidation();
-                nameValidation();
-                paswordReEnterValidation();
-              }}
-              type="submit"
-              className="continue-btn"
-            >
+            <div className="input-container mt-4 w-full">
+              <h5 className="mb-3">
+                <FormattedMessage id="enter-number" />
+              </h5>
+              <div className="second-input flex">
+                <input
+                  value={enterNumVal}
+                  onChange={(e) => {
+                    setEnterNamVal(e.target.value);
+                  }}
+                  className="w-full p-2 outline-none"
+                  type="number"
+                  placeholder={formatMessage({ id: "enter-number" })}
+                />
+              </div>
+              {passwordReEnterError ? (
+                <p className="text-[red] text-xs mt-3">
+                  <FormattedMessage id="re-enter-error" />
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
+            <button type="submit" className="continue-btn">
               <FormattedMessage id="continue-btn" />
             </button>
           </form>
