@@ -61,7 +61,7 @@ export const CreateAccComp = () => {
           <form
             onSubmit={handleInput}
             action=""
-            className="sm:border border-zinc-300 border-solid p-8  min-w-[400px] flex justify-start items-start flex-col rounded mb-[1%]"
+            className="sm:border border-zinc-300 border-solid p-8  min-w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
           >
             <h1>
               <FormattedMessage id="register" />

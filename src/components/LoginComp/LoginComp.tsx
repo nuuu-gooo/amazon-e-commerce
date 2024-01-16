@@ -24,11 +24,11 @@ export const LoginComp = () => {
   return (
     <div>
       <div>
-        <div className="wrapper flex justify-center items-center  h-[50vh] ">
+        <div className="wrapper flex justify-center items-center  ">
           <form
             onSubmit={handleInput}
             action=""
-            className="border border-zinc-300 border-solid p-1 h-[full]     sm:p-9  min-w-[400px] flex justify-center items-start flex-col rounded mb-[1%]"
+            className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]"
           >
             <h1>
               <FormattedMessage id="sign-in" />
