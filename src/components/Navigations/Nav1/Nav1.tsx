@@ -19,8 +19,6 @@ export const Nav1 = () => {
     setSearchInputValue(newCategory);
   };
 
-  // ...
-
   <select
     onChange={handleCategoryChange}
     className="bg-gray-300 min-w-[20%] p-2 border-none sm:p-2.5 rounded-sm w-[50%]"
@@ -49,8 +47,6 @@ export const Nav1 = () => {
           <select
             onChange={handleCategoryChange}
             className=" bg-gray-300 min-w-[20%] p-2 border-none sm:p-2.5 rounded-sm w-[50%]  "
-            name=""
-            id=""
           >
             {categoryList.map((category) => {
               return (
@@ -64,7 +60,7 @@ export const Nav1 = () => {
             className="w-[100%] border-none p-1 outline-none"
             autoFocus={true}
             type="text"
-            value={searchInputValue}
+            defaultValue={searchInputValue}
           />
           <button className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1">
             <FaSearch className="text-2xl sm:text-lg " />

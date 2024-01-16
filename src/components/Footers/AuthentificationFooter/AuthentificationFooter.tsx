@@ -8,7 +8,7 @@ import { LContext } from "@src/providers/LProvider/LContext";
 export const AuthentificationFooter = () => {
   const { toggleLanguage } = useContext(LContext);
   return (
-    <div className="w-full sm:w-full  bg-gradient-to-t from-white via-white to-zinc-200 flex flex-col   justify-center items-center">
+    <div className="w-full sm:w-full mt-[2%]  bg-gradient-to-t from-white via-white to-zinc-200 flex flex-col   justify-center items-center">
       <div className="container p-3  flex justify-center items-center">
         <Link className="mr-3 text-xs no-underline" to={""}>
           Conditions of Use
