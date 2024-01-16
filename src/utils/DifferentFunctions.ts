@@ -42,3 +42,25 @@ export const passwordReEnterValidation = (
     setPasswordReEnterError(false);
   }
 };
+
+export const numberValidation = (
+  numberValue: string,
+  setEnterNumError: (error: boolean) => void
+): void => {
+  if (numberValue.length > 9 || numberValue === "") {
+    setEnterNumError(true);
+  } else {
+    setEnterNumError(false);
+  }
+};
+
+export const surnameValidation = (
+  surnameVal: string,
+  setSurnameError: (error: boolean) => void
+): void => {
+  if (surnameVal === "") {
+    setSurnameError(true);
+  } else {
+    setSurnameError(false);
+  }
+};

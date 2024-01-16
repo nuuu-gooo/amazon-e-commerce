@@ -1,4 +1,3 @@
-// import { Top } from "./Top/Top";
 import React from "react";
 import BlackAmazonLogo from "src/assets/black-amazon-logo.svg";
 import { Link } from "react-router-dom";
@@ -7,6 +6,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { emailValidation } from "@src/utils/DifferentFunctions";
 
 import { FormattedMessage, useIntl } from "react-intl";
 export const LoginComp = () => {
@@ -18,13 +18,7 @@ export const LoginComp = () => {
 
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-  };
-  const emailValidation = () => {
-    if (!emailValue.includes("@")) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
+    emailValidation(emailValue, setEmailError);
   };
   const navigate = useNavigate();
   return (
@@ -34,7 +28,7 @@ export const LoginComp = () => {
           <form
             onSubmit={handleInput}
             action=""
-            className="border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
+            className="border border-zinc-300 border-solid p-1 h-[full]     sm:p-9  min-w-[400px] flex justify-center items-start flex-col rounded mb-[1%]"
           >
             <h1>
               <FormattedMessage id="sign-in" />
@@ -84,13 +78,7 @@ export const LoginComp = () => {
                 </button>
               </div>
             </div>
-            <button
-              onClick={() => {
-                emailValidation();
-              }}
-              type="submit"
-              className="continue-btn"
-            >
+            <button type="submit" className="continue-btn">
               <FormattedMessage id="continue-btn" />
             </button>
             <div className="links">
@@ -108,20 +96,14 @@ export const LoginComp = () => {
                 <FormattedMessage id="need-help" />
               </p>
             </Link>
+            <button
+              onClick={() => navigate("/createaccount")}
+              className="create-acc-btn"
+            >
+              <FormattedMessage id="create-your-amazon-account" />
+            </button>
           </form>
         </div>
-      </div>
-      <div className="new-to-amazon flex justify-center items-center mt-[4%] flex-col">
-        <p className="leading-9 text-xs">
-          <FormattedMessage id="new-to-amazon" />
-        </p>
-        <hr className="w-[20%] min-w-[200px] " />
-        <button
-          onClick={() => navigate("/createaccount")}
-          className="create-acc-btn"
-        >
-          <FormattedMessage id="create-your-amazon-account" />
-        </button>
       </div>
     </div>
   );

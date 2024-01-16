@@ -2,18 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaSlack } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
 import {
   nameValidation,
   emailValidation,
   passwordValidation,
   passwordReEnterValidation,
+  numberValidation,
+  surnameValidation,
 } from "../../utils/DifferentFunctions";
 
 export const CreateAccComp = () => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const { formatMessage } = useIntl();
+  const [enterNumVal, setEnterNumVal] = useState<string>("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [nameValue, setNameValue] = useState<string>("");
@@ -23,30 +26,32 @@ export const CreateAccComp = () => {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [nameError, setNameError] = useState<boolean>(false);
   const [surnameError, setSurnameError] = useState<boolean>(false);
-  const [enterNumVal, setEnterNamVal] = useState<string>();
   const [passwordReEnterError, setPasswordReEnterError] =
     useState<boolean>(false);
+  const [enterNumError, setEnterNumError] = useState<boolean>(false);
   const navigate = useNavigate();
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
+    numberValidation(enterNumVal, setEnterNumError);
     passwordValidation(passwordValue, setPasswordError);
     nameValidation(nameValue, setNameError);
+    surnameValidation(surnameValue, setSurnameError);
     passwordReEnterValidation(
       passwordReEnterValue,
       passwordValue,
       setPasswordReEnterError
     );
   };
-
+  console.log(enterNumError, surnameError, enterNumVal.length, surnameValue);
   return (
     <div>
       <div>
-        <div className="wrapper flex justify-center items-center  h-[60vh]  ">
+        <div className="wrapper flex justify-center items-center m-auto h-[full]   ">
           <form
             onSubmit={handleInput}
             action=""
-            className="sm:border border-zinc-300 border-solid p-9  min-w-[400px] flex justify-start items-start flex-col rounded"
+            className="sm:border border-zinc-300 border-solid p-8  min-w-[400px] flex justify-start items-start flex-col rounded mb-[1%]"
           >
             <h1>
               <FormattedMessage id="register" />
@@ -190,16 +195,16 @@ export const CreateAccComp = () => {
                 <input
                   value={enterNumVal}
                   onChange={(e) => {
-                    setEnterNamVal(e.target.value);
+                    setEnterNumVal(e.target.value);
                   }}
                   className="w-full p-2 outline-none"
                   type="number"
                   placeholder={formatMessage({ id: "enter-number" })}
                 />
               </div>
-              {passwordReEnterError ? (
+              {enterNumError ? (
                 <p className="text-[red] text-xs mt-3">
-                  <FormattedMessage id="re-enter-error" />
+                  <FormattedMessage id="number-error" />
                 </p>
               ) : (
                 ""
@@ -208,14 +213,16 @@ export const CreateAccComp = () => {
             <button type="submit" className="continue-btn">
               <FormattedMessage id="continue-btn" />
             </button>
+            <button
+              onClick={() => navigate("/login")}
+              className="create-acc-btn "
+            >
+              <FormattedMessage id="already-have-an-account" />
+            </button>
           </form>
         </div>
       </div>
-      <div className="new-to-amazon flex justify-center items-center mt-[4%]  flex-col">
-        <button onClick={() => navigate("/login")} className="create-acc-btn">
-          <FormattedMessage id="already-have-an-account" />
-        </button>
-      </div>
+      <div className="new-to-amazon flex justify-center items-center mt-[4%]  flex-col"></div>
     </div>
   );
 };

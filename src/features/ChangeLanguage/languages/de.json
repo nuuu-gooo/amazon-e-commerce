@@ -1,4 +1,10 @@
 {
+  "include@-error": "! Beinhalte '@'",
+  "min-length-error": "! Minimum Länge: 7",
+  "name-error": "! Bitte geben Sie Ihren Namen ein",
+  "surname-error": "! Bitten geben Sie Ihren Nachnamen ein",
+  "re-enter-error": "! Falsches Passwort",
+  "number-error": "Bitte geben Sie maximal 9 Zahlen hinein!",
   "change.language": "🇺🇸",
   "sign-in": "Anmelden",
   "e-mail": "E-Mail",
@@ -14,11 +20,6 @@
   "your-surname": "Ihr Nachname",
   "re-enter-password": "Wiederholen Sie ihr Passwort ",
   "already-have-an-account": "Schon ein Account? ",
-  "include@-error": "! Beinhalte '@'",
-  "min-length-error": "! Minimum Länge: 7",
-  "name-error": "! Bitte geben Sie Ihren Namen ein",
-  "surname-error": "! Bitten geben Sie Ihren Nachnamen ein",
-  "re-enter-error": "! Falsches Passwort",
   "sign-up-sidebar": "Hallo,  Anmelden",
   "hello-sign-in-nav-1": "Hallo Anmelden",
   "card-nav-1": "Einkaufswagen",
@@ -26,6 +27,5 @@
   "orders": "und Bestellungen",
   "back-to-top": "Züruck zum Anfang",
   "accounts-and-lists": "Konto und Listen",
-  "number-error": "Bitte geben Sie maximal 9 Zahlen hinein!",
   "enter-number": "Ihre Telefonnummer"
 }
