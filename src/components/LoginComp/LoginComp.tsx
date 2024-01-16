@@ -19,7 +19,6 @@ export const LoginComp = () => {
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
-
   const emailValidation = () => {
     if (!emailValue.includes("@")) {
       setEmailError(true);
@@ -27,9 +26,7 @@ export const LoginComp = () => {
       setEmailError(false);
     }
   };
-
   const navigate = useNavigate();
-
   return (
     <div>
       <div>
@@ -40,12 +37,10 @@ export const LoginComp = () => {
             className="border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
           >
             <h1>
-              {" "}
               <FormattedMessage id="sign-in" />
             </h1>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
-                {" "}
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
@@ -54,7 +49,6 @@ export const LoginComp = () => {
                   setEmailValue(e.target.value);
                 }}
                 className="w-full p-2 outline-none 
-  
   
                 "
                 placeholder={formatMessage({ id: "e-mail" })}
@@ -70,7 +64,6 @@ export const LoginComp = () => {
             </div>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
-                {" "}
                 <FormattedMessage id="password" />
               </h5>
               <div className="second-input flex">
@@ -96,9 +89,7 @@ export const LoginComp = () => {
                 emailValidation();
               }}
               type="submit"
-              className="w-full py-1.5 text-sm rounded-sm bg-gradient-to-t
-   from-[#f7dfa5] to-[#f0c14b] hover:bg-gradient-to-t border
-   border-zinc-400 active:border-yellow-800 mt-4 cursor-pointer"
+              className="continue-btn"
             >
               <FormattedMessage id="continue-btn" />
             </button>

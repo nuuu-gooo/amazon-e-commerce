@@ -94,6 +94,8 @@
   }
 }
 
+/* Classes for space saving */
+
 .create-acc-btn {
   width: 25%;
   min-width: 300px;
@@ -108,4 +110,23 @@
   border: 1px solid #a1a1aa;
   margin-bottom: 1%;
   text-align: center;
+}
+
+.continue-btn {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: small;
+  border-radius: 0.25rem;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid #a1a1a1;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.continue-btn:hover {
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+}
+
+.continue-btn:active {
+  border-color: #e5a500;
 }

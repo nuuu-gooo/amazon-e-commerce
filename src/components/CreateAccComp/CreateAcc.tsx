@@ -63,12 +63,10 @@ export const CreateAccComp = () => {
             className="sm:border border-zinc-300 border-solid p-9 w-[20%] min-w-[400px] flex justify-start items-start flex-col rounded"
           >
             <h1>
-              {" "}
               <FormattedMessage id="register" />
             </h1>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
-                {" "}
                 <FormattedMessage id="your-name" />
               </h5>
               <input
@@ -93,7 +91,6 @@ export const CreateAccComp = () => {
             </div>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
-                {" "}
                 <FormattedMessage id="e-mail" />
               </h5>
               <input
@@ -148,7 +145,6 @@ export const CreateAccComp = () => {
             </div>
             <div className="input-container mt-4 w-full">
               <h5 className="mb-3">
-                {" "}
                 <FormattedMessage id="re-enter-password" />
               </h5>
               <div className="second-input flex">
@@ -184,9 +180,7 @@ export const CreateAccComp = () => {
                 paswordReEnterValidation();
               }}
               type="submit"
-              className="w-full py-1.5 text-sm rounded-sm bg-gradient-to-t
-   from-[#f7dfa5] to-[#f0c14b] hover:bg-gradient-to-t border
-   border-zinc-400 active:border-yellow-800 mt-4 cursor-pointer"
+              className="continue-btn"
             >
               <FormattedMessage id="continue-btn" />
             </button>
@@ -194,13 +188,7 @@ export const CreateAccComp = () => {
         </div>
       </div>
       <div className="new-to-amazon flex justify-center items-center mt-[4%]  flex-col">
-        <button
-          onClick={() => navigate("/login")}
-          //         className="w-[25%] min-w-[300px] p-2  cursor-pointer py-1 text-sm  font-normal rounded-lg
-          //  bg-gradient-to-t from-slate-200 to-slate-100 hover:bg-gradient-to-b
-          //  border border-zinc-400 active:border-yellow-800 active:shadow-amazonInput mt-[5%] mb-[1%]"
-          className="create-acc-btn"
-        >
+        <button onClick={() => navigate("/login")} className="create-acc-btn">
           <FormattedMessage id="already-have-an-account" />
         </button>
       </div>
