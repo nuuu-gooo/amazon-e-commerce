@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
-import { FaEye, FaSlack } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
 import Alert from "antd/es/alert/Alert";
 import {
@@ -53,6 +53,8 @@ export const CreateAccComp = () => {
       setPasswordReEnterError
     );
   };
+
+  setTimeout(() => {}, 10000);
 
   console.log(authData, success);
   return (

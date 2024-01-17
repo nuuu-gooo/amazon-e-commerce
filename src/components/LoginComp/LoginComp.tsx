@@ -7,6 +7,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { emailValidation } from "@src/utils/DifferentFunctions";
+import Alert from "antd/es/alert/Alert";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
@@ -17,6 +18,7 @@ export const LoginComp = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const { signInFetch, userData } = useContext(AuthContext);
+  const { success } = useContext(AuthContext);
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
@@ -26,7 +28,19 @@ export const LoginComp = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="wrapper flex justify-center items-center  ">
+    <div className="wrapper flex justify-center items-center flex-col  ">
+      <div className="flex justify-center mb-3">
+        {success ? (
+          <Alert showIcon message="succesfully signed in ☺️" type="success" />
+        ) : (
+          <Alert
+            className="inline-flex justify-center items-center"
+            showIcon
+            message="Create Account failed"
+            type="error"
+          />
+        )}
+      </div>
       <form
         onSubmit={handleInput}
         action=""
