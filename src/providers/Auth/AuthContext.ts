@@ -7,6 +7,11 @@ export type UserDataType = {
   email: string;
 };
 
+export type TokenTypes = {
+  access_token: string;
+  refresh_token: string;
+};
+
 export type AuthContextType = {
   userData?: UserDataType;
   setUserData: React.Dispatch<React.SetStateAction<UserDataType | undefined>>;
@@ -15,14 +20,24 @@ export type AuthContextType = {
   authStage: authStage_EUNM;
   setAuthStage: React.Dispatch<React.SetStateAction<authStage_EUNM>>;
   createAccFetch: any;
+  signInFetch: any;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  success: boolean;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   userData: undefined,
   authData: undefined,
   authStage: authStage_EUNM.UNAUTHORIZED,
+  loading: false,
+  success: false,
+  signInFetch: () => {},
   setUserData: () => {},
   setAuthData: () => {},
   setAuthStage: () => {},
   createAccFetch: () => {},
+  setLoading: () => {},
+  setSuccess: () => {},
 });

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye, FaSlack } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
+import Alert from "antd/es/alert/Alert";
 import {
   nameValidation,
   emailValidation,
@@ -15,7 +15,8 @@ import {
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 
 export const CreateAccComp = () => {
-  const { createAccFetch, authData } = useContext(AuthContext);
+  const { createAccFetch, authData, loading, success } =
+    useContext(AuthContext);
   const { formatMessage } = useIntl();
   const [enterNumVal, setEnterNumVal] = useState<string>("");
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -53,190 +54,203 @@ export const CreateAccComp = () => {
     );
   };
 
-  console.log(authData);
+  console.log(authData, success);
   return (
     <div>
-      <div>
-        <div className="wrapper flex justify-center items-center m-auto h-[full]   ">
-          <form
-            onSubmit={handleInput}
-            action=""
-            className="sm:border border-zinc-300 border-solid p-8  min-w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
-          >
-            <h1>
-              <FormattedMessage id="register" />
-            </h1>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                <FormattedMessage id="your-name" />
-              </h5>
-              <input
-                name="first_name"
-                value={nameValue}
-                onChange={(e) => {
-                  setNameValue(e.target.value);
-                }}
-                className="w-full p-2 outline-none 
-  
-  
-                "
-                placeholder={formatMessage({ id: "your-name" })}
-                type="text"
-              />
-              {nameError ? (
-                <p className="mt-3 text-xs text-[red]">
-                  <FormattedMessage id="name-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                <FormattedMessage id="your-surname" />
-              </h5>
-              <input
-                name="last_name"
-                value={surnameValue}
-                onChange={(e) => {
-                  setSurnameValue(e.target.value);
-                }}
-                className="w-full p-2 outline-none 
-  
-  
-                "
-                placeholder={formatMessage({ id: "your-surname" })}
-                type="text"
-              />
-              {surnameError ? (
-                <p className="mt-3 text-xs text-[red]">
-                  <FormattedMessage id="name-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                <FormattedMessage id="e-mail" />
-              </h5>
-              <input
-                name="last_name"
-                value={emailValue}
-                onChange={(e) => {
-                  setEmailValue(e.target.value);
-                }}
-                className="w-full p-2 outline-none 
-  
-  
-                "
-                placeholder={formatMessage({ id: "e-mail" })}
-                type="email"
-              />
-              {emailError ? (
-                <p className="mt-3 text-xs text-[red]">
-                  <FormattedMessage id="include@-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                {" "}
-                <FormattedMessage id="password" />
-              </h5>
-              <div className="second-input flex">
-                <input
-                  name="password"
-                  value={passwordValue}
-                  onChange={(e) => {
-                    setPasswordValue(e.target.value);
-                  }}
-                  className="w-full p-2 outline-none"
-                  type={isPasswordVisible ? "text" : "password"}
-                  placeholder={formatMessage({ id: "password" })}
-                />
-                <button
-                  className="p-2 "
-                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-                >
-                  {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-                </button>
-              </div>
-              {passwordError ? (
-                <p className="text-[red] text-xs mt-3">
-                  <FormattedMessage id="min-length-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                <FormattedMessage id="re-enter-password" />
-              </h5>
-              <div className="second-input flex">
-                <input
-                  value={passwordReEnterValue}
-                  onChange={(e) => {
-                    setPasswordReEnterValue(e.target.value);
-                  }}
-                  className="w-full p-2 outline-none"
-                  type={isPasswordVisible ? "text" : "password"}
-                  placeholder={formatMessage({ id: "password" })}
-                />
-                <button
-                  className="p-2 "
-                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-                >
-                  {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
-                </button>
-              </div>
-              {passwordReEnterError ? (
-                <p className="text-[red] text-xs mt-3">
-                  <FormattedMessage id="re-enter-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="input-container mt-4 w-full">
-              <h5 className="mb-3">
-                <FormattedMessage id="enter-number" />
-              </h5>
-              <div className="second-input flex">
-                <input
-                  value={enterNumVal}
-                  onChange={(e) => {
-                    setEnterNumVal(e.target.value);
-                  }}
-                  className="w-full p-2 outline-none"
-                  type="number"
-                  placeholder={formatMessage({ id: "enter-number" })}
-                />
-              </div>
-              {enterNumError ? (
-                <p className="text-[red] text-xs mt-3">
-                  <FormattedMessage id="number-error" />
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
-            <button type="submit" className="continue-btn">
-              <FormattedMessage id="continue-btn" />
-            </button>
-            <button
-              onClick={() => navigate("/login")}
-              className="create-acc-btn "
-            >
-              <FormattedMessage id="already-have-an-account" />
-            </button>
-          </form>
-        </div>
+      <div className="flex justify-center mb-3">
+        {success ? (
+          <Alert
+            showIcon
+            message="succesfully created an Account, now please sign in ☺️"
+            type="success"
+          />
+        ) : (
+          <Alert
+            className="inline-flex justify-center items-center"
+            showIcon
+            message="Create Account failed"
+            type="error"
+          />
+        )}
       </div>
-      <div className="new-to-amazon flex justify-center items-center mt-[4%]  flex-col"></div>
+      <div className="wrapper flex justify-center items-center m-auto h-[full]   ">
+        <form
+          onSubmit={handleInput}
+          action=""
+          className="sm:border border-zinc-300 border-solid p-8  min-w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
+        >
+          <h1>
+            <FormattedMessage id="register" />
+          </h1>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              <FormattedMessage id="your-name" />
+            </h5>
+            <input
+              name="first_name"
+              value={nameValue}
+              onChange={(e) => {
+                setNameValue(e.target.value);
+              }}
+              className="w-full p-2 outline-none 
+  
+  
+                "
+              placeholder={formatMessage({ id: "your-name" })}
+              type="text"
+            />
+            {nameError ? (
+              <p className="mt-3 text-xs text-[red]">
+                <FormattedMessage id="name-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              <FormattedMessage id="your-surname" />
+            </h5>
+            <input
+              name="last_name"
+              value={surnameValue}
+              onChange={(e) => {
+                setSurnameValue(e.target.value);
+              }}
+              className="w-full p-2 outline-none 
+  
+  
+                "
+              placeholder={formatMessage({ id: "your-surname" })}
+              type="text"
+            />
+            {surnameError ? (
+              <p className="mt-3 text-xs text-[red]">
+                <FormattedMessage id="name-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              <FormattedMessage id="e-mail" />
+            </h5>
+            <input
+              name="last_name"
+              value={emailValue}
+              onChange={(e) => {
+                setEmailValue(e.target.value);
+              }}
+              className="w-full p-2 outline-none 
+  
+  
+                "
+              placeholder={formatMessage({ id: "e-mail" })}
+              type="email"
+            />
+            {emailError ? (
+              <p className="mt-3 text-xs text-[red]">
+                <FormattedMessage id="include@-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              {" "}
+              <FormattedMessage id="password" />
+            </h5>
+            <div className="second-input flex">
+              <input
+                name="password"
+                value={passwordValue}
+                onChange={(e) => {
+                  setPasswordValue(e.target.value);
+                }}
+                className="w-full p-2 outline-none"
+                type={isPasswordVisible ? "text" : "password"}
+                placeholder={formatMessage({ id: "password" })}
+              />
+              <button
+                className="p-2 "
+                onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+              >
+                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
+            {passwordError ? (
+              <p className="text-[red] text-xs mt-3">
+                <FormattedMessage id="min-length-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              <FormattedMessage id="re-enter-password" />
+            </h5>
+            <div className="second-input flex">
+              <input
+                value={passwordReEnterValue}
+                onChange={(e) => {
+                  setPasswordReEnterValue(e.target.value);
+                }}
+                className="w-full p-2 outline-none"
+                type={isPasswordVisible ? "text" : "password"}
+                placeholder={formatMessage({ id: "password" })}
+              />
+              <button
+                className="p-2 "
+                onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+              >
+                {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
+            {passwordReEnterError ? (
+              <p className="text-[red] text-xs mt-3">
+                <FormattedMessage id="re-enter-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="input-container mt-4 w-full">
+            <h5 className="mb-3">
+              <FormattedMessage id="enter-number" />
+            </h5>
+            <div className="second-input flex">
+              <input
+                value={enterNumVal}
+                onChange={(e) => {
+                  setEnterNumVal(e.target.value);
+                }}
+                className="w-full p-2 outline-none"
+                type="number"
+                placeholder={formatMessage({ id: "enter-number" })}
+              />
+            </div>
+            {enterNumError ? (
+              <p className="text-[red] text-xs mt-3">
+                <FormattedMessage id="number-error" />
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+          <button type="submit" className="continue-btn">
+            <FormattedMessage id="continue-btn" />
+          </button>
+          <button
+            onClick={() => navigate("/login")}
+            className="create-acc-btn "
+          >
+            <FormattedMessage id="already-have-an-account" />
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
