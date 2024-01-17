@@ -9,7 +9,6 @@ Welcome to the Amazon Clone repository! This project is a simplified version of 
 - React
 - React Router DOM
 - Axios
-- Redux
 - JWT (JSON Web Token)
 
 #### More technologies will be added soon...
