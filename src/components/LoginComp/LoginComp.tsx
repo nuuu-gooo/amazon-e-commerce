@@ -1,5 +1,4 @@
 import React from "react";
-import BlackAmazonLogo from "src/assets/black-amazon-logo.svg";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -8,39 +7,32 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { emailValidation } from "@src/utils/DifferentFunctions";
 import Alert from "antd/es/alert/Alert";
-
 import { FormattedMessage, useIntl } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+
 export const LoginComp = () => {
   const { formatMessage } = useIntl();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
-  const { signInFetch, userData } = useContext(AuthContext);
+  const { signInFetch, userData, authStage, loading } = useContext(AuthContext);
+
   const { success } = useContext(AuthContext);
   const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
     signInFetch(emailValue, passwordValue);
+    if (authStage === authStage_EUNM.AUTHORIZED) {
+      navigate("/profile");
+    }
   };
   console.log(userData, emailValue, passwordValue);
 
   const navigate = useNavigate();
   return (
     <div className="wrapper flex justify-center items-center flex-col  ">
-      <div className="flex justify-center mb-3">
-        {success ? (
-          <Alert showIcon message="succesfully signed in ☺️" type="success" />
-        ) : (
-          <Alert
-            className="inline-flex justify-center items-center"
-            showIcon
-            message="Create Account failed"
-            type="error"
-          />
-        )}
-      </div>
       <form
         onSubmit={handleInput}
         action=""
@@ -94,6 +86,7 @@ export const LoginComp = () => {
             </button>
           </div>
         </div>
+        {loading ? <p>Loading...</p> : ""}
         <button type="submit" className="continue-btn">
           <FormattedMessage id="continue-btn" />
         </button>

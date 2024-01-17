@@ -21,6 +21,7 @@ export type AuthContextType = {
   setAuthStage: React.Dispatch<React.SetStateAction<authStage_EUNM>>;
   createAccFetch: any;
   signInFetch: any;
+  loggout: any;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,4 +41,5 @@ export const AuthContext = createContext<AuthContextType>({
   createAccFetch: () => {},
   setLoading: () => {},
   setSuccess: () => {},
+  loggout: () => {},
 });

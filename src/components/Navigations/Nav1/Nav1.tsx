@@ -9,11 +9,15 @@ import CardImg from "@src/assets/images/cart.png";
 import { SideBar } from "@src/components/SideBar/SideBar";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { FormattedMessage } from "react-intl";
+import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { builtinModules } from "module";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const { authStage, loggout } = useContext(AuthContext);
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCategory = e.target.value;
     setSearchInputValue(newCategory);
@@ -91,12 +95,30 @@ export const Nav1 = () => {
             <div className="links flex items-center">
               <Link className="no-underline text-[white]" to={"/login"}>
                 <div className="link flex flex-col items-start ml-3">
-                  <p className="text-sm ">
+                  {authStage === authStage_EUNM.AUTHORIZED ? (
+                    <button
+                      className="bg-[#f1cb62]  hover:bg-amazon-yellow-dark text-black font-semibold py-2 px-4 rounded-full transition duration-300 focus:outline-none"
+                      onClick={loggout}
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <div>
+                      <p className="text-sm ">
+                        <FormattedMessage id="hello-sign-in-nav-1" />
+                      </p>
+                      <p>
+                        <FormattedMessage id="accounts-and-lists" />{" "}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* <p className="text-sm ">
                     <FormattedMessage id="hello-sign-in-nav-1" />
                   </p>
                   <p>
                     <FormattedMessage id="accounts-and-lists" />{" "}
-                  </p>
+                  </p> */}
                 </div>
               </Link>
               <Link className="no-underline text-[white]" to={""}>

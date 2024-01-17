@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
@@ -13,10 +13,10 @@ import {
   surnameValidation,
 } from "../../utils/DifferentFunctions";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
 
 export const CreateAccComp = () => {
-  const { createAccFetch, authData, loading, success } =
-    useContext(AuthContext);
+  const { createAccFetch, success, authStage } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const [enterNumVal, setEnterNumVal] = useState<string>("");
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -40,6 +40,7 @@ export const CreateAccComp = () => {
     passwordValidation(passwordValue, setPasswordError);
     nameValidation(nameValue, setNameError);
     surnameValidation(surnameValue, setSurnameError);
+
     createAccFetch(
       nameValue,
       surnameValue,
@@ -54,16 +55,15 @@ export const CreateAccComp = () => {
     );
   };
 
-  setTimeout(() => {}, 10000);
+  console.log(authStage);
 
-  console.log(authData, success);
   return (
     <div>
       <div className="flex justify-center mb-3">
         {success ? (
           <Alert
             showIcon
-            message="succesfully created an Account, now please sign in ☺️"
+            message="successfully created an account.  Please sign in now ☺️"
             type="success"
           />
         ) : (
