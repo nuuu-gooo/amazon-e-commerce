@@ -1,42 +1,34 @@
 import React, { useContext, useState, ChangeEvent } from "react";
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
+import { FaSignOutAlt } from "react-icons/fa";
+import { FormattedMessage } from "react-intl";
 import { categoryList } from "@src/Data/Data";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
 import { SideBar } from "@src/components/SideBar/SideBar";
 import { LContext } from "@src/providers/LProvider/LContext";
-import { FormattedMessage } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { builtinModules } from "module";
+import { Avatar, Button, FloatButton, Popover } from "antd";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");
-  const { authStage, loggout } = useContext(AuthContext);
+  const { authStage, loggout, userData } = useContext(AuthContext);
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCategory = e.target.value;
     setSearchInputValue(newCategory);
   };
 
-  <select
-    onChange={handleCategoryChange}
-    className="bg-gray-300 min-w-[20%] p-2 border-none sm:p-2.5 rounded-sm w-[50%]"
-    name=""
-    id=""
-  >
-    {categoryList.map((category) => {
-      return (
-        <option key={category.id} value={category.name[locale]}>
-          {category.name[locale]}
-        </option>
-      );
-    })}
-  </select>;
+  const content = (
+    <div>
+      <Button type="primary" onClick={loggout}>
+        <FaSignOutAlt />
+      </Button>
+    </div>
+  );
 
   return (
     <nav className="wrapper w-full bg-[#131921]">
@@ -81,6 +73,16 @@ export const Nav1 = () => {
             <Link to={"/login"}>
               <FiUser className="block text-[white] text-2xl sm:hidden ml-3" />
             </Link>
+            {authStage === authStage_EUNM.AUTHORIZED ? (
+              <Popover content={content}>
+                <Avatar
+                  className=" ml-3 bg-[#f89e38] sm:hidden text-[black]"
+                  icon={userData?.first_name[0]}
+                />
+              </Popover>
+            ) : (
+              ""
+            )}
 
             <Link to={""}>
               <img
@@ -96,12 +98,20 @@ export const Nav1 = () => {
               <Link className="no-underline text-[white]" to={"/login"}>
                 <div className="link flex flex-col items-start ml-3">
                   {authStage === authStage_EUNM.AUTHORIZED ? (
-                    <button
-                      className="bg-[#f1cb62]  hover:bg-amazon-yellow-dark text-black font-semibold py-2 px-4 rounded-full transition duration-300 focus:outline-none"
-                      onClick={loggout}
+                    <Popover
+                      title={`Welcome ${userData?.first_name}`}
+                      content={content}
                     >
-                      Sign Out
-                    </button>
+                      <Avatar
+                        className="bg-[#f89e38] text-[black]"
+                        // icon={userData?.first_name[0] }
+                        icon={`${(
+                          userData?.first_name[0] || ""
+                        ).toUpperCase()} ${
+                          userData?.last_name[0] || "".toUpperCase()
+                        }`}
+                      />
+                    </Popover>
                   ) : (
                     <div>
                       <p className="text-sm ">
@@ -112,13 +122,6 @@ export const Nav1 = () => {
                       </p>
                     </div>
                   )}
-
-                  {/* <p className="text-sm ">
-                    <FormattedMessage id="hello-sign-in-nav-1" />
-                  </p>
-                  <p>
-                    <FormattedMessage id="accounts-and-lists" />{" "}
-                  </p> */}
                 </div>
               </Link>
               <Link className="no-underline text-[white]" to={""}>

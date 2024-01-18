@@ -40,7 +40,6 @@ export const CreateAccComp = () => {
     passwordValidation(passwordValue, setPasswordError);
     nameValidation(nameValue, setNameError);
     surnameValidation(surnameValue, setSurnameError);
-
     createAccFetch(
       nameValue,
       surnameValue,
@@ -53,6 +52,10 @@ export const CreateAccComp = () => {
       passwordValue,
       setPasswordReEnterError
     );
+
+    if (authStage === authStage_EUNM.AUTHORIZED) {
+      navigate("/login");
+    }
   };
 
   console.log(authStage);

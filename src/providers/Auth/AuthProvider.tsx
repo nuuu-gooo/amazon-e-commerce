@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const storeUserData = (tokens: TokenTypes) => {
     console.log(tokens, "ილოგება დასაწყისში");
     const tokenData: UserDataType = jwtDecode(tokens.access_token);
-
     setUserData(tokenData);
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
@@ -86,11 +85,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     } finally {
       setLoading(false);
     }
-    // const fetchSignIn = await axiosInstance.post("/auth/login", {
-    //   email,
-    //   password,
-    // });
-    // storeUserData(fetchSignIn?.data);
   };
 
   console.log(success);
@@ -103,7 +97,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  console.log(authStage);
+  console.log(authStage, userData);
   return (
     <AuthContext.Provider
       value={{
