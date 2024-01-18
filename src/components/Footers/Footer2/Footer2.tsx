@@ -7,10 +7,13 @@ export const Footer2 = () => {
 
   return (
     <div className="bg-[#131921]  py-10 w-full h-full">
-      <div className=" hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
+      <div className=" flex justify-center items-center flex-col sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">
         {amazonServices.map((service) => {
           return (
-            <div key={service.name[locale]} className="flex flex-col">
+            <div
+              key={service.name[locale]}
+              className="flex items-center flex-col"
+            >
               <p className="text-[white] text-xs">{service.name[locale]}</p>
               <p className="text-[#999] text-xs">
                 {service.description[locale]}
