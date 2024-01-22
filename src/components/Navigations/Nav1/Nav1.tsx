@@ -1,5 +1,5 @@
 import React, { useContext, useState, ChangeEvent } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
@@ -74,6 +74,12 @@ export const Nav1 = () => {
           >
             <FormattedMessage id="change.language" />
           </button>
+          <button
+            onClick={() => navigate("/login")}
+            className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
+          >
+            <FaUser />
+          </button>
         </div>
         <div className="right">
           <div className="mobile-res flex items-center">
@@ -118,7 +124,7 @@ export const Nav1 = () => {
                     />
                   </Popover>
                 ) : (
-                  <Link className="no-underline text-[white]" to={"/login"}>
+                  <Link className="no-underline  text-[white]" to={"/login"}>
                     <p className="text-sm ">
                       <FormattedMessage id="hello-sign-in-nav-1" />
                     </p>
