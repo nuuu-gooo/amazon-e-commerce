@@ -4,5 +4,10 @@ import { useContext } from "react";
 
 export const Profile = () => {
   const { userData } = useContext(AuthContext);
-  return <div>{userData?.first_name}</div>;
+  return (
+    <div>
+      <h1>Profile Page</h1>
+      {userData?.first_name}
+    </div>
+  );
 };

@@ -1,6 +1,6 @@
 import React, { useContext, useState, ChangeEvent } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
@@ -17,15 +17,23 @@ export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCategory = e.target.value;
     setSearchInputValue(newCategory);
   };
 
   const content = (
-    <div>
+    <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
         <FaSignOutAlt />
+      </Button>
+
+      <Button className="mt-3" onClick={() => navigate("/profile")}>
+        Profile
+      </Button>
+      <Button className="mt-3" onClick={() => navigate("/")}>
+        Home
       </Button>
     </div>
   );
@@ -70,16 +78,18 @@ export const Nav1 = () => {
         </div>
         <div className="right">
           <div className="mobile-res flex items-center">
-            <Link to={"/login"}>
-              <FiUser className="block text-[white] text-2xl sm:hidden ml-3" />
-            </Link>
             {authStage === authStage_EUNM.AUTHORIZED ? (
-              <Popover content={content}>
-                <Avatar
-                  className=" ml-3 bg-[#f89e38] sm:hidden text-[black]"
-                  icon={userData?.first_name[0]}
-                />
-              </Popover>
+              <div>
+                <Popover
+                  title={`Welcome ${userData?.first_name}`}
+                  content={content}
+                >
+                  <Avatar
+                    className=" ml-3 bg-[#f89e38] sm:hidden text-[black]"
+                    icon={userData?.first_name[0]}
+                  />
+                </Popover>
+              </div>
             ) : (
               ""
             )}
@@ -95,35 +105,31 @@ export const Nav1 = () => {
 
           <div className="all-links hidden sm:block">
             <div className="links flex items-center">
-              <Link className="no-underline text-[white]" to={"/login"}>
-                <div className="link flex flex-col items-start ml-3">
-                  {authStage === authStage_EUNM.AUTHORIZED ? (
-                    <Popover
-                      title={`Welcome ${userData?.first_name}`}
-                      content={content}
-                    >
-                      <Avatar
-                        className="bg-[#f89e38] text-[black]"
-                        // icon={userData?.first_name[0] }
-                        icon={`${(
-                          userData?.first_name[0] || ""
-                        ).toUpperCase()} ${
-                          userData?.last_name[0] || "".toUpperCase()
-                        }`}
-                      />
-                    </Popover>
-                  ) : (
-                    <div>
-                      <p className="text-sm ">
-                        <FormattedMessage id="hello-sign-in-nav-1" />
-                      </p>
-                      <p>
-                        <FormattedMessage id="accounts-and-lists" />{" "}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </Link>
+              <div className="link flex flex-col items-start ml-3">
+                {authStage === authStage_EUNM.AUTHORIZED ? (
+                  <Popover
+                    title={`Welcome ${userData?.first_name}`}
+                    content={content}
+                  >
+                    <Avatar
+                      className="bg-[#f89e38] text-[black]"
+                      icon={`${(userData?.first_name[0] || "").toUpperCase()} ${
+                        userData?.last_name[0] || "".toUpperCase()
+                      }`}
+                    />
+                  </Popover>
+                ) : (
+                  <Link className="no-underline text-[white]" to={"/login"}>
+                    <p className="text-sm ">
+                      <FormattedMessage id="hello-sign-in-nav-1" />
+                    </p>
+                    <p>
+                      <FormattedMessage id="accounts-and-lists" />{" "}
+                    </p>
+                  </Link>
+                )}
+              </div>
+              {/* </Link> */}
               <Link className="no-underline text-[white]" to={""}>
                 <div className="link flex flex-col items-start ml-3">
                   <p className="text-sm">

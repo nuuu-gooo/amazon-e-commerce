@@ -3,7 +3,6 @@ import { AuthContext, TokenTypes, UserDataType } from "./AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [userData, setUserData] = useState<UserDataType>();
@@ -13,6 +12,22 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   );
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
+
+  // Sign In Acc fetch //
+
+  const signInFetch = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      const fetchSignIn = await axiosInstance.post("/auth/login", {
+        email,
+        password,
+      });
+      storeUserData(fetchSignIn?.data);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Create Acc fetch //
   const createAccFetch = async (
@@ -51,7 +66,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     console.log("ილოგება დასასრულში");
   };
 
-  // Log Out Function //
+  // Log Out Function ✅ //
 
   const loggout = () => {
     localStorage.removeItem("access_token"),
@@ -60,34 +75,21 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     setAuthStage(authStage_EUNM.UNAUTHORIZED);
   };
 
-  // Getting new Access Token //
+  // Getting new Access Token ✅ //
   const getNewAccessToken = async (fetchedRefToken: string) => {
-    const response = await axiosInstance.post<TokenTypes>(
-      "/auth/update-tokens",
-      {
-        refresh_token: fetchedRefToken,
-      }
-    );
-    storeUserData(response?.data);
-  };
-
-  // Sign In Acc fetch //
-
-  const signInFetch = async (email: string, password: string) => {
     try {
-      setLoading(true);
-      const fetchSignIn = await axiosInstance.post("/auth/login", {
-        email,
-        password,
-      });
-      storeUserData(fetchSignIn?.data);
+      const response = await axiosInstance.post<TokenTypes>(
+        "/auth/update-tokens",
+        {
+          refresh_token: fetchedRefToken,
+        }
+      );
+      storeUserData(response?.data);
     } catch (error) {
-    } finally {
-      setLoading(false);
+      console.log(error);
+      loggout();
     }
   };
-
-  console.log(success);
 
   useEffect(() => {
     const refreshToken = localStorage.getItem("refresh_token");

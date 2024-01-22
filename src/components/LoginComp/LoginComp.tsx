@@ -25,7 +25,7 @@ export const LoginComp = () => {
     emailValidation(emailValue, setEmailError);
     signInFetch(emailValue, passwordValue);
     if (authStage === authStage_EUNM.AUTHORIZED) {
-      navigate("/profile");
+      navigate("/");
     }
   };
   console.log(userData, emailValue, passwordValue);
