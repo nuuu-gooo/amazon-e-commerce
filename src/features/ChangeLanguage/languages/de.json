@@ -27,5 +27,7 @@
   "orders": "und Bestellungen",
   "back-to-top": "Zurück zum Anfang",
   "accounts-and-lists": "Konto und Listen",
-  "enter-number": "Ihre Telefonnummer"
+  "enter-number": "Ihre Telefonnummer",
+  "account-creation-success": "Konto erfolgreich erstellt!, bitte melden Sie sich an.",
+  "account-creation-fail:": "Konto erstellung fehlgeschlagen!"
 }

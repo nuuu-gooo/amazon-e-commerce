@@ -66,14 +66,14 @@ export const CreateAccComp = () => {
         {success ? (
           <Alert
             showIcon
-            message="successfully created an account.  Please sign in now ☺️"
+            message={<FormattedMessage id="account-creation-success" />}
             type="success"
           />
         ) : (
           <Alert
             className="inline-flex justify-center items-center"
             showIcon
-            message="Create Account failed"
+            message={<FormattedMessage id="account-creation-fail:" />}
             type="error"
           />
         )}
