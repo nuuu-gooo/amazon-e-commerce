@@ -5,10 +5,14 @@ Welcome to the Amazon Clone repository! This project is a simplified version of 
 ## Technologies Used
 
 - TypeScript
-- Tailwind CSS
 - React
 - React Router DOM
 - Axios
 - JWT (JSON Web Token)
+
+## Technologies Used for styling
+
+- Tailwind CSS
+- ANTD (Antd Design)
 
 #### More technologies will be added soon...
