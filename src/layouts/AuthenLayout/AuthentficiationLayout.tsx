@@ -1,6 +1,6 @@
 import { AuthentificationFooter } from "@src/components/Footers/AuthentificationFooter/AuthentificationFooter";
 import { Link, Outlet } from "react-router-dom";
-import BlackAmazonLogo from "src/assets/black-amazon-logo.svg";
+import BlackAmazonLogo from "src/assets/SVG/black-amazon-logo.svg";
 
 export const AuthentficiationLayout = () => {
   return (

@@ -6,6 +6,7 @@ import { CreateAccComp } from "./components/CreateAccComp/CreateAcc";
 import { Loader } from "./assets/Loader/Loader";
 import { PrivateRoute } from "./utils/Private/PrivateRoute";
 import { Profile } from "./views/PrivateViews/Profile/Profile";
+import { Orders } from "./views/PrivateViews/Orders/Orders";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -29,6 +30,11 @@ function App() {
           <Route
             path="/profile"
             element={<PrivateRoute children={<Profile />} />}
+          />
+
+          <Route
+            path="/orders"
+            element={<PrivateRoute children={<Orders />} />}
           />
         </Route>
         <Route element={<AuthentficiationLayout />}>
