@@ -14,5 +14,6 @@ Welcome to the Amazon Clone repository! This project is a simplified version of 
 
 - Tailwind CSS
 - ANTD (Antd Design)
+- ANTD Slider
 
 #### More technologies will be added soon...
