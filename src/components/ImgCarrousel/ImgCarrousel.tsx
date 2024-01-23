@@ -12,7 +12,7 @@ const contentStyle: React.CSSProperties = {
 };
 
 const ImgCarrousel: React.FC = () => (
-  <div className="relative w-full h-full top-0 bg-gradient-to-b from-transparent via-transparent to-[#E3E6E6]">
+  <div className=" w-full h-full top-0 bg-gradient-to-b from-transparent via-transparent to-[#E3E6E6]">
     <Carousel autoplay>
       {amazonSliderImgs.map((sliderImg, index) => {
         return (
