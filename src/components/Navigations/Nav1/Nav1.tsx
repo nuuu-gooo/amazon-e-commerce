@@ -11,11 +11,13 @@ import { LContext } from "@src/providers/LProvider/LContext";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
+  const { existingCategories } = useContext(GlobalContext);
   const navigate = useNavigate();
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCategory = e.target.value;
@@ -51,10 +53,11 @@ export const Nav1 = () => {
             onChange={handleCategoryChange}
             className=" bg-gray-300 min-w-[20%] p-2 border-none sm:p-2.5 rounded-sm w-[50%]  "
           >
-            {categoryList.map((category) => {
+            {existingCategories.map((category) => {
               return (
-                <option key={category.id} value={category.name[locale]}>
-                  {category.name[locale]}
+                <option key={category.id} value={category.name}>
+                  {" "}
+                  {category.name}
                 </option>
               );
             })}
