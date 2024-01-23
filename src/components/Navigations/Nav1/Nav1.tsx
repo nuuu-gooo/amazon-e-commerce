@@ -43,27 +43,27 @@ export const Nav1 = () => {
     <nav className="wrapper w-full bg-[#131921]">
       <SideBar />
       <div className="nav-container flex justify-between items-center p-4">
+        {/* <div className="flex items-center"> */}
         <div className="left ">
           <Link to={"/"}>
             <img src={AmazonLogo} alt="" />
           </Link>
         </div>
-        <div className="middle-input-container ml-3 flex flex-grow">
+        <div className="middle-input-container ml-3 flex flex-grow min-w-[50%]">
           <select
             onChange={handleCategoryChange}
-            className=" bg-gray-300 min-w-[20%] p-2 border-none sm:p-2.5 rounded-sm w-[50%]  "
+            className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "
           >
             {existingCategories.map((category) => {
               return (
                 <option key={category.id} value={category.name}>
-                  {" "}
                   {category.name}
                 </option>
               );
             })}
           </select>
           <input
-            className="w-[100%] border-none p-1 outline-none"
+            className="w-[100%] border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}

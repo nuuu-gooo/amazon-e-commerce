@@ -9,10 +9,11 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 
 export const SideBar = () => {
-  const { isToggled, setIsToggled } = useContext(GlobalContext);
+  const { isToggled, setIsToggled, existingCategories } =
+    useContext(GlobalContext);
   const { authStage, userData } = useContext(AuthContext);
   return (
-    <div className=" fixed">
+    <div className=" fixed z-50">
       {isToggled ? (
         <div className="overlay">
           <Sidebar className=" h-full">
@@ -37,12 +38,11 @@ export const SideBar = () => {
               </Link>
             )}
             <Menu>
-              <SubMenu label="Charts">
-                <MenuItem> Pie chart </MenuItem>
-                <MenuItem> Line charts </MenuItem>
+              <SubMenu label="Categories">
+                {existingCategories.map((categorie) => {
+                  return <MenuItem>{categorie.name}</MenuItem>;
+                })}
               </SubMenu>
-              <MenuItem> Document </MenuItem>
-              <MenuItem> Calendar </MenuItem>
             </Menu>
           </Sidebar>
         </div>

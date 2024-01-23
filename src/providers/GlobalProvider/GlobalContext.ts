@@ -16,12 +16,15 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
 
+  existingCatLoading: boolean;
+
   toggleSidebarFunction: () => void;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
   count: 0,
   isToggled: false,
+  existingCatLoading: false,
   existingCategories: [],
   setCount: () => {},
   setIsToggled: () => {},

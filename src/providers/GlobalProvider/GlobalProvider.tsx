@@ -8,19 +8,24 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   >([]);
   const [count, setCount] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
-  // const [existingCategories, setExistingCateogries] = useState<
-  //   TExistingCategories | undefined[]
-  // >([]);
+  const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
   };
 
   const fetchExistingCategories = async () => {
-    const fetchExistingCategories = await axiosInstance.get(
-      "/product-category"
-    );
-    setExistingCategories(fetchExistingCategories.data);
+    try {
+      setExistingCatLoading(true);
+      const fetchExistingCategories = await axiosInstance.get(
+        "/product-category"
+      );
+      setExistingCategories(fetchExistingCategories.data);
+    } catch (error) {
+      console.log();
+    } finally {
+      setExistingCatLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -38,6 +43,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         toggleSidebarFunction,
         existingCategories,
         setExistingCategories,
+        existingCatLoading,
       }}
     >
       {children}
