@@ -12,10 +12,10 @@ export const Footer2 = () => {
           return (
             <div
               key={service.name[locale]}
-              className="flex items-center flex-col"
+              className="flex items-center flex-col sm:items-start"
             >
               <p className="text-[white] text-xs">{service.name[locale]}</p>
-              <p className="text-[#999] text-xs">
+              <p className="text-[#999] text-xs text-center sm:text-start items-start">
                 {service.description[locale]}
               </p>
             </div>

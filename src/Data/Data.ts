@@ -1,11 +1,19 @@
 import DogImage1 from "src/assets/images/Dog-Images/dog-image-not-found.jpg";
-
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import DogImage2 from "src/assets/images/Dog-Images/Dog-Image-2.jpg";
 import DogImage3 from "src/assets/images/Dog-Images/Dog-Image-3.jpg";
 import DogImageLast from "src/assets/images/Dog-Images/Dog-Image-last.jpg";
+import AmazonSliderImg1 from "src/assets/images/AmazonSliderImgs/slider-img-amazon-1.jpg";
+import AmazonSliderImg2 from "src/assets/images/AmazonSliderImgs/slider-img-amazon-2.jpg";
+import AmazonSliderImg3 from "src/assets/images/AmazonSliderImgs/slider-img-amazon-3.jpg";
+import AmazonSliderImg4 from "src/assets/images/AmazonSliderImgs/slider-img-amazon-4.jpg";
 import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 export const dogImagesArr = [DogImage1, DogImage2, DogImage3, DogImageLast];
+export const amazonSliderImgs = [
+  AmazonSliderImg1,
+  AmazonSliderImg2,
+  AmazonSliderImg3,
+  AmazonSliderImg4,
+];
 export const randomData = {
   name: { [Locale_ENUM.DE]: "Flasche", [Locale_ENUM.EN]: "Bottle" },
 };
