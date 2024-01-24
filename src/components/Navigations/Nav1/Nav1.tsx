@@ -1,9 +1,8 @@
 import React, { useContext, useState, ChangeEvent } from "react";
-import { FaSearch, FaUser } from "react-icons/fa";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
-import { categoryList } from "@src/Data/Data";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
 import { SideBar } from "@src/components/SideBar/SideBar";
@@ -80,9 +79,7 @@ export const Nav1 = () => {
           <button
             onClick={() => navigate("/login")}
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
-          >
-            <FaUser />
-          </button>
+          ></button>
         </div>
         <div className="right">
           <div className="mobile-res flex items-center">
@@ -99,7 +96,9 @@ export const Nav1 = () => {
                 </Popover>
               </div>
             ) : (
-              ""
+              <Link to={"/login"}>
+                <FaUserCircle className="text-2xl text-[white] md:hidden" />
+              </Link>
             )}
 
             <Link to={""}>

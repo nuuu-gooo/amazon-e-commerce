@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "./layouts/AuthenLayout/AuthentficiationLayout";
-import { CreateAccComp } from "./components/CreateAccComp/CreateAcc";
 import { Loader } from "./assets/Loader/Loader";
 import { PrivateRoute } from "./utils/Private/PrivateRoute";
 import { Profile } from "./views/PrivateViews/Profile/Profile";
@@ -31,7 +30,7 @@ function App() {
             path="/profile"
             element={<PrivateRoute children={<Profile />} />}
           />
-
+          //asdasdassdasd
           <Route
             path="/orders"
             element={<PrivateRoute children={<Orders />} />}

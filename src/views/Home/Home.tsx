@@ -11,8 +11,8 @@ export const Home = () => {
   return (
     <div className="">
       <ImgCarrousel />
-      <div className="m-auto w-[1500px] flex  flex-col    ">
-        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[30%] mt-[10%] left-0 right-0 grid-cols-5">
+      <div className="m-auto w-full p-9 flex  flex-col    ">
+        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[30%] mt-[10%]  left-0 right-9 grid-cols-3">
           {existingCatLoading ? (
             <Loader />
           ) : (
@@ -25,7 +25,7 @@ export const Home = () => {
             })
           )}
         </div>
-        <p>{userData?.first_name}</p>
+        <h1>{userData?.first_name}</h1>
       </div>
     </div>
   );
