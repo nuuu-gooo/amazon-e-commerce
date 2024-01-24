@@ -9,22 +9,22 @@ export const Home = () => {
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
 
   return (
-    <div className="overflow-hidden">
+    <div>
       <ImgCarrousel />
-      <div className="m-auto w-[1500px] flex justify-center  flex-col    ">
-        <div className="grid grid-cols-1 w-full  items-center gap-9 py-9  md:grid-cols-3">
-          {existingCatLoading ? (
-            <Loader />
-          ) : (
-            existingCategories.map((category) => {
-              return (
-                <div className=" shadow-2xl bg-[white] rounded p-6 w-[100%] overflow-hidden">
-                  <h2>{category.name}</h2>
-                </div>
-              );
-            })
-          )}
-        </div>
+      <div className=" hidden sm:hidden  md:grid  w-full place-items-center p-[2rem]  absolute items-center gap-9  grid-cols-3 overflow-hidden mt-[-25%]">
+        {existingCatLoading ? (
+          <Loader />
+        ) : (
+          existingCategories.map((category) => {
+            return (
+              <div className=" shadow-2xl bg-[white] rounded p-6 w-[100%] ">
+                <h2>{category.name}</h2>
+              </div>
+            );
+          })
+        )}
+      </div>
+      <div className="m-auto w-[1500px] flex  flex-col    ">
         <p>{userData?.first_name}</p>
       </div>
     </div>
