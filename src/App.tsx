@@ -6,6 +6,7 @@ import { Loader } from "./assets/Loader/Loader";
 import { PrivateRoute } from "./utils/Private/PrivateRoute";
 import { Profile } from "./views/PrivateViews/Profile/Profile";
 import { Orders } from "./views/PrivateViews/Orders/Orders";
+import { CategoryProducts } from "./views/CategoryProducts/CategoryProducts";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -30,12 +31,16 @@ function App() {
             path="/profile"
             element={<PrivateRoute children={<Profile />} />}
           />
-          //asdasdassdasd
           <Route
             path="/orders"
             element={<PrivateRoute children={<Orders />} />}
           />
+          <Route
+            path="/productCategory/:productCategoryId"
+            element={<CategoryProducts />}
+          />
         </Route>
+
         <Route element={<AuthentficiationLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/createaccount" element={<CreateAcc />} />

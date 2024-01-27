@@ -9,6 +9,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [count, setCount] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
+  const [categoryProducts, setCategoryProducts] = useState([]);
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
