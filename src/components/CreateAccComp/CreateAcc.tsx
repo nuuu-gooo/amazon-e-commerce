@@ -14,9 +14,10 @@ import {
 } from "../../utils/DifferentFunctions";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { error } from "console";
 
 export const CreateAccComp = () => {
-  const { createAccFetch, success, authStage } = useContext(AuthContext);
+  const { createAccFetch, success, authStage, error } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const [enterNumVal, setEnterNumVal] = useState<string>("");
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -63,13 +64,14 @@ export const CreateAccComp = () => {
   return (
     <div>
       <div className="flex justify-center mb-3">
-        {success ? (
+        {success && (
           <Alert
             showIcon
             message={<FormattedMessage id="account-creation-success" />}
             type="success"
           />
-        ) : (
+        )}
+        {error && (
           <Alert
             className="inline-flex justify-center items-center"
             showIcon

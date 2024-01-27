@@ -20,11 +20,24 @@ export const LoginComp = () => {
   const { signInFetch, userData, authStage, loading } = useContext(AuthContext);
 
   const { success } = useContext(AuthContext);
-  const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
+  // const handleInput = async (e: React.MouseEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   emailValidation(emailValue, setEmailError);
+  //   await signInFetch(emailValue, passwordValue);
+  //   setTimeout(() => {
+  //     if (authStage === authStage_EUNM.AUTHORIZED) {
+  //       console.log("Hello login");
+  //       navigate("/");
+  //     }
+  //   }, 0);
+  // };
+
+  const handleInput = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
-    signInFetch(emailValue, passwordValue);
+    await signInFetch(emailValue, passwordValue);
     if (authStage === authStage_EUNM.AUTHORIZED) {
+      console.log("Hello login");
       navigate("/");
     }
   };

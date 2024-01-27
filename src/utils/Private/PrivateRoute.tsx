@@ -6,6 +6,10 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 export const PrivateRoute = ({ children }: PropsWithChildren) => {
   const { authStage } = useContext(AuthContext);
 
+  if (authStage === authStage_EUNM.PENDING) {
+    return <div>Wait..</div>;
+  }
+
   return authStage === authStage_EUNM.AUTHORIZED ? (
     children
   ) : (

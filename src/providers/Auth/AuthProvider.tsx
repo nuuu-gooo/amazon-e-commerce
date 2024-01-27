@@ -7,21 +7,24 @@ import { jwtDecode } from "jwt-decode";
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [userData, setUserData] = useState<UserDataType>();
   const [authData, setAuthData] = useState<string>();
-  const [authStage, setAuthStage] = useState<authStage_EUNM>(
-    authStage_EUNM.UNAUTHORIZED
-  );
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
+  const [error, setError] = useState(false);
+  const [authStage, setAuthStage] = useState<authStage_EUNM>(
+    authStage_EUNM.PENDING
+  );
 
   // Sign In Acc fetch //
 
   const signInFetch = async (email: string, password: string) => {
     try {
       setLoading(true);
+
       const fetchSignIn = await axiosInstance.post("/auth/login", {
         email,
         password,
       });
+
       storeUserData(fetchSignIn?.data);
     } catch (error) {
     } finally {
@@ -48,9 +51,11 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
       setAuthData(postAcc.data);
       if (authData !== null || undefined || "") {
+        setError(false);
         setSuccess(true);
       }
     } catch (error) {
+      setError(true);
     } finally {
     }
   };
@@ -96,6 +101,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
     if (refreshToken) {
       getNewAccessToken(refreshToken);
+    } else {
+      setAuthStage(authStage_EUNM.UNAUTHORIZED);
     }
   }, []);
 
@@ -103,6 +110,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   return (
     <AuthContext.Provider
       value={{
+        error,
         userData,
         setUserData,
         authData,

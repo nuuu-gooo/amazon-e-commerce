@@ -26,10 +26,12 @@ export type AuthContextType = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   success: boolean;
+  error: boolean;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   userData: undefined,
+  error: false,
   authData: undefined,
   authStage: authStage_EUNM.UNAUTHORIZED,
   loading: false,
