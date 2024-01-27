@@ -18,9 +18,11 @@ export const CategoryProducts = () => {
     <div>
       <h1>{productCategoryId}</h1>
 
-      {products.map((product) => {
-        return <h1>{product.title}</h1>;
-      })}
+      {products.length === 0 ? (
+        <p>Products not Found</p>
+      ) : (
+        products.map((product) => <h1>{product.title}</h1>)
+      )}
     </div>
   );
 };
