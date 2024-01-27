@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
-import { AuthentficiationLayout } from "./layouts/AuthenLayout/AuthentficiationLayout";
-import { Loader } from "./assets/Loader/Loader";
-import { PrivateRoute } from "./views/Private/PrivateRoute";
-import { Profile } from "./views/PrivateViews/Profile/Profile";
-import { Orders } from "./views/PrivateViews/Orders/Orders";
-import { CategoryProducts } from "./views/CategoryProducts/CategoryProducts";
+import { AuthentficiationLayout } from "@src/layouts/AuthenLayout/AuthentficiationLayout";
+import { Loader } from "@src/assets/Loader/Loader";
+import { PrivateRoute } from "@src/views/Private/PrivateRoute";
+import { Profile } from "@src/views/PrivateViews/Profile/Profile";
+import { Orders } from "@src/views/PrivateViews/Orders/Orders";
+import { CategoryProducts } from "@src/views/DynamicPages/CategoryProducts/CategoryProducts";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
