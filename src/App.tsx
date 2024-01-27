@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "./layouts/AuthenLayout/AuthentficiationLayout";
 import { Loader } from "./assets/Loader/Loader";
-import { PrivateRoute } from "./utils/Private/PrivateRoute";
+import { PrivateRoute } from "./views/Private/PrivateRoute";
 import { Profile } from "./views/PrivateViews/Profile/Profile";
 import { Orders } from "./views/PrivateViews/Orders/Orders";
 import { CategoryProducts } from "./views/CategoryProducts/CategoryProducts";

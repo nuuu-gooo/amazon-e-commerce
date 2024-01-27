@@ -11,12 +11,17 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { useGetProductsByCategory } from "@src/hooks/useGetProductsByCategory/useGetProductsByCategory";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
+  const { categoryProducts, fetchProducts } =
+    useGetProductsByCategory(searchInputValue);
+  console.log(categoryProducts);
+
   const navigate = useNavigate();
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCategory = e.target.value;
@@ -67,7 +72,13 @@ export const Nav1 = () => {
             type="text"
             defaultValue={searchInputValue}
           />
-          <button className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1">
+          <button
+            // onClick={fetchProducts}
+            onClick={() => {
+              fetchProducts();
+            }}
+            className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1"
+          >
             <FaSearch className="text-2xl sm:text-lg " />
           </button>
           <button

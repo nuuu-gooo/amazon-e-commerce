@@ -3,6 +3,7 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
@@ -18,9 +19,14 @@ export const Home = () => {
           ) : (
             existingCategories.map((category) => {
               return (
-                <div className=" shadow-2xl bg-[white] rounded p-6 w-[100%]  ">
-                  <h2>{category.name}</h2>
-                </div>
+                <Link to={`productCategory/${category.name}`}>
+                  <div
+                    key={category.id}
+                    className=" shadow-2xl bg-[white] rounded p-6 w-[100%]  "
+                  >
+                    <h2>{category.name}</h2>
+                  </div>
+                </Link>
               );
             })
           )}

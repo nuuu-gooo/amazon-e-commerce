@@ -15,9 +15,7 @@ interface TGlobalContext {
   setExistingCategories: React.Dispatch<
     React.SetStateAction<TExistingCategories[]>
   >;
-
   existingCatLoading: boolean;
-
   toggleSidebarFunction: () => void;
 }
 
