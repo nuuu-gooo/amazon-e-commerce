@@ -2,7 +2,7 @@ import { axiosInstance } from "@src/utils/publicAxios";
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import Notification from "@src/components/NotificationANTD/Notification";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
@@ -41,16 +41,25 @@ export const CategoryProducts = () => {
         ) : (
           products.map((product) => {
             return (
-              <Card
-                hoverable
-                style={{ width: 300 }}
-                cover={
-                  <img className="w-[30%]" alt="example" src={product.image} />
-                }
-              >
-                <Meta title={product.title} description={product.description} />
-                <p className="mt-[12%]">{product.price}$</p>
-              </Card>
+              <Link to={`/search/${product.title}`}>
+                <Card
+                  hoverable
+                  style={{ width: 300 }}
+                  cover={
+                    <img
+                      className="w-[30%]"
+                      alt="example"
+                      src={product.image}
+                    />
+                  }
+                >
+                  <Meta
+                    title={product.title}
+                    description={product.description}
+                  />
+                  <p className="mt-[12%]">{product.price}$</p>
+                </Card>
+              </Link>
             );
           })
         )}

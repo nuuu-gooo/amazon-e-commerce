@@ -8,6 +8,7 @@ import { Profile } from "@src/views/PrivateViews/Profile/Profile";
 import { Orders } from "@src/views/PrivateViews/Orders/Orders";
 import { CategoryProducts } from "@src/views/DynamicPages/CategoryProducts/CategoryProducts";
 import { SearchedProducts } from "./views/DynamicPages/SearchedProducts/SearchedProducts";
+import { SingleProduct } from "./views/DynamicPages/SIngleProduct/SingleProduct";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFonud />} />
+
           <Route
             path="/profile"
             element={<PrivateRoute children={<Profile />} />}
@@ -43,6 +45,10 @@ function App() {
           <Route
             path="/search/:productCategoryId/:productId"
             element={<SearchedProducts />}
+          />
+          <Route
+            path="/search/:searchedProductId"
+            element={<SingleProduct />}
           />
         </Route>
 

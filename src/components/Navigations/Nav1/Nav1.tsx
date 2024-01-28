@@ -82,7 +82,9 @@ export const Nav1 = () => {
               return (
                 <div className="flex justify-start items-start flex-col">
                   <div className="product-container w-full flex items-center ">
-                    <h3>{product.title}</h3>
+                    <Link to={`/search/${product.title}`}>
+                      <h3>{product.title}</h3>
+                    </Link>
                     <img className="w-[10%] ml-5" src={product.image} alt="" />
                   </div>
                   <hr className="w-full mt-2  border-solid" />
@@ -98,7 +100,7 @@ export const Nav1 = () => {
             // onClick={() => {
             //   // fetchProducts();
             // }}
-            className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1"
+            className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />
           </button>
