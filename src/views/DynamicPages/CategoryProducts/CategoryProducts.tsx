@@ -24,6 +24,11 @@ export const CategoryProducts = () => {
   return (
     <div className="flex justify-between items-center p-9">
       <div className="left flex justify-center items-start flex-col">
+        <div className="mb-3">
+          <h3>Filters</h3>
+          <hr className="border-solid border-black " />
+        </div>
+        <hr />
         <p>Min:</p>
         <PricrSliderANTD onChange={(e: any) => setMinPrice(e.target.value)} />
         <p className="mt-3">Max:</p>

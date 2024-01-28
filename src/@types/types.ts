@@ -6,3 +6,12 @@ interface TCategoryProducts {
   price: number;
   category_name: string;
 }
+
+interface TSearchedProducts {
+  title: string;
+  id: string;
+  description: string;
+  image: string;
+  price: number;
+  category_name: string;
+}

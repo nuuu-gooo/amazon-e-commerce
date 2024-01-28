@@ -11,23 +11,25 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { useGetProductsByCategory } from "@src/hooks/useGetProductsByCategory/useGetProductsByCategory";
+// import { useGetProductsByCategory } from "@src/hooks/useGetProductsByCategory/useGetProductsByCategory";
+import { useGetProductsBySeatch } from "@src/hooks/useGetProductsBySearch/useGetProductsBySearch";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
+  console.log(searchInputValue);
+
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
-  const { categoryProducts, fetchProducts } =
-    useGetProductsByCategory(searchInputValue);
-  console.log(categoryProducts);
+  const [currentCategory, setCurrentCategory] = useState<string>("");
+  const { fetchProducts, searchedProducts } = useGetProductsBySeatch(
+    searchInputValue,
+    currentCategory
+  );
+
+  console.log(currentCategory);
 
   const navigate = useNavigate();
-  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const newCategory = e.target.value;
-    setSearchInputValue(newCategory);
-  };
-
   const content = (
     <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
@@ -55,7 +57,7 @@ export const Nav1 = () => {
         </div>
         <div className="middle-input-container ml-3 flex flex-grow min-w-[50%]">
           <select
-            onChange={handleCategoryChange}
+            onChange={(e) => setCurrentCategory(e.target.value)}
             className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "
           >
             {existingCategories.map((category) => {
@@ -67,16 +69,24 @@ export const Nav1 = () => {
             })}
           </select>
           <input
+            onChange={(e) => setSearchInputValue(e.target.value)}
             className="w-[100%] border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}
           />
           <button
-            // onClick={fetchProducts}
             onClick={() => {
               fetchProducts();
+              navigate(
+                `productCategory/${searchedProducts.map(
+                  (product) => product.category_name
+                )}`
+              );
             }}
+            // onClick={() => {
+            //   // fetchProducts();
+            // }}
             className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1"
           >
             <FaSearch className="text-2xl sm:text-lg " />
