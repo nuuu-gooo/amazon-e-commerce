@@ -10,7 +10,7 @@ export const useGetProductsBySeatch = (
   const [searchedProducts, setSearchedProducts] = useState<TSearchedProducts[]>(
     []
   );
-  const navigate = useNavigate();
+
   const fetchProducts = async () => {
     try {
       const fetch = await axiosInstance.get(
@@ -22,10 +22,7 @@ export const useGetProductsBySeatch = (
     }
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, [searchedProduct]);
   console.log(searchedProducts);
 
-  return { fetchProducts, searchedProducts };
+  return { fetchProducts, searchedProducts, setSearchedProducts };
 };

@@ -11,8 +11,8 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-// import { useGetProductsByCategory } from "@src/hooks/useGetProductsByCategory/useGetProductsByCategory";
 import { useGetProductsBySeatch } from "@src/hooks/useGetProductsBySearch/useGetProductsBySearch";
+import { Modal } from "antd";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
@@ -22,10 +22,8 @@ export const Nav1 = () => {
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
-  const { fetchProducts, searchedProducts } = useGetProductsBySeatch(
-    searchInputValue,
-    currentCategory
-  );
+  const { fetchProducts, searchedProducts, setSearchedProducts } =
+    useGetProductsBySeatch(searchInputValue, currentCategory);
 
   console.log(currentCategory);
 
@@ -70,19 +68,32 @@ export const Nav1 = () => {
           </select>
           <input
             onChange={(e) => setSearchInputValue(e.target.value)}
-            className="w-[100%] border-none p-1 outline-none flex-grow overflow-hidden "
+            className="w-[100%] relative border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}
           />
+          <Modal
+            onCancel={() => setSearchedProducts([])}
+            centered={true}
+            open={searchedProducts.length > 0}
+          >
+            {searchedProducts.map((product) => {
+              return (
+                <div className="flex justify-start items-start flex-col">
+                  <div className="product-container w-full flex items-center ">
+                    <h3>{product.title}</h3>
+                    <img className="w-[10%] ml-5" src={product.image} alt="" />
+                  </div>
+                  <hr className="w-full mt-2  border-solid" />
+                </div>
+              );
+            })}
+          </Modal>
+
           <button
             onClick={() => {
               fetchProducts();
-              navigate(
-                `productCategory/${searchedProducts.map(
-                  (product) => product.category_name
-                )}`
-              );
             }}
             // onClick={() => {
             //   // fetchProducts();
