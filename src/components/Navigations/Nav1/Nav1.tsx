@@ -1,6 +1,7 @@
-import React, { useContext, useState, ChangeEvent } from "react";
+import React, { useContext, useState, useEffect } from "react";
+
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
@@ -17,7 +18,8 @@ import { Modal } from "antd";
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
-  console.log(searchInputValue);
+
+  const location = useLocation();
 
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
@@ -25,9 +27,13 @@ export const Nav1 = () => {
   const { fetchProducts, searchedProducts, setSearchedProducts } =
     useGetProductsBySeatch(searchInputValue, currentCategory);
 
-  console.log(currentCategory);
-
   const navigate = useNavigate();
+  useEffect(() => {
+    // Check if the current pathname includes "search", and if yes, close the modal
+    if (location.pathname.includes("search")) {
+      setSearchedProducts([]); // Close the modal by clearing the searchedProducts state
+    }
+  }, [location.pathname, setSearchedProducts]);
   const content = (
     <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
@@ -74,6 +80,7 @@ export const Nav1 = () => {
             defaultValue={searchInputValue}
           />
           <Modal
+            className="bg-[#febd69]"
             onCancel={() => setSearchedProducts([])}
             centered={true}
             open={searchedProducts.length > 0}
@@ -82,7 +89,10 @@ export const Nav1 = () => {
               return (
                 <div className="flex justify-start items-start flex-col">
                   <div className="product-container w-full flex items-center ">
-                    <Link to={`/search/${product.title}`}>
+                    <Link
+                      className="no-underline text-[black] hover:text-[#febd69]"
+                      to={`/search/${product.title}`}
+                    >
                       <h3>{product.title}</h3>
                     </Link>
                     <img className="w-[10%] ml-5" src={product.image} alt="" />

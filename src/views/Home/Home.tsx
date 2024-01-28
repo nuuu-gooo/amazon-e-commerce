@@ -10,7 +10,7 @@ export const Home = () => {
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
 
   return (
-    <div className="">
+    <div>
       <ImgCarrousel />
       <div className="m-auto w-full p-9 flex  flex-col    ">
         <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[30%] mt-[10%]  left-0 right-9 grid-cols-3">
@@ -35,7 +35,7 @@ export const Home = () => {
           )}
         </div>
         {userData ? (
-          <h1>
+          <h1 key={userData.first_name}>
             Welcome to Amazon <i>{userData.first_name}</i>{" "}
           </h1>
         ) : (

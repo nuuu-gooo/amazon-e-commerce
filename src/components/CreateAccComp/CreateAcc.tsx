@@ -14,7 +14,6 @@ import {
 } from "../../utils/DifferentFunctions";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { error } from "console";
 
 export const CreateAccComp = () => {
   const { createAccFetch, success, authStage, error } = useContext(AuthContext);
@@ -58,8 +57,6 @@ export const CreateAccComp = () => {
       navigate("/login");
     }
   };
-
-  console.log(authStage);
 
   return (
     <div>

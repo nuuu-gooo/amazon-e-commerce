@@ -4,6 +4,7 @@ import { Card } from "antd";
 import Notification from "@src/components/NotificationANTD/Notification";
 import { Link, useParams } from "react-router-dom";
 import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
+import { TCategoryProducts } from "@src/@types/types";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
@@ -41,7 +42,7 @@ export const CategoryProducts = () => {
         ) : (
           products.map((product) => {
             return (
-              <Link to={`/search/${product.title}`}>
+              <Link className="no-underline" to={`/search/${product.title}`}>
                 <Card
                   hoverable
                   style={{ width: 300 }}

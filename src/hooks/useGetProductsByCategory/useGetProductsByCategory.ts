@@ -1,3 +1,4 @@
+import { TCategoryProducts } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -21,6 +22,5 @@ export const useGetProductsByCategory = (category: string) => {
     }
   };
 
-  console.log(categoryProducts);
   return { categoryProducts, fetchProducts, loading };
 };

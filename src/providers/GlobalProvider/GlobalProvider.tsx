@@ -23,7 +23,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       );
       setExistingCategories(fetchExistingCategories.data);
     } catch (error) {
-      console.log();
     } finally {
       setExistingCatLoading(false);
     }
@@ -33,7 +32,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     fetchExistingCategories();
   }, []);
 
-  console.log(existingCategories);
   return (
     <GlobalContext.Provider
       value={{

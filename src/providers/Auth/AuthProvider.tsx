@@ -62,13 +62,11 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   // Store deecode data //
   const storeUserData = (tokens: TokenTypes) => {
-    console.log(tokens, "ილოგება დასაწყისში");
     const tokenData: UserDataType = jwtDecode(tokens.access_token);
     setUserData(tokenData);
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
     setAuthStage(authStage_EUNM.AUTHORIZED);
-    console.log("ილოგება დასასრულში");
   };
 
   // Log Out Function ✅ //
@@ -91,7 +89,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       );
       storeUserData(response?.data);
     } catch (error) {
-      console.log(error);
       loggout();
     }
   };
@@ -106,7 +103,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  console.log(authStage, userData);
   return (
     <AuthContext.Provider
       value={{
