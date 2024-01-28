@@ -3,25 +3,31 @@ import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import Notification from "@src/components/NotificationANTD/Notification";
 import { useParams } from "react-router-dom";
+import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
+  const [minPrice, setMinPrice] = useState<number>();
+  const [maxPrice, setMaxPrice] = useState<number>();
   const fetchCategoryProducts = async () => {
     const resp = await axiosInstance.get(
-      `product?categoryName=${productCategoryId}`
+      `product?minPrice=${minPrice}&maxPrice=${maxPrice}&categoryName=${productCategoryId}`
     );
     setProducts(resp.data.products);
   };
 
   useEffect(() => {
     fetchCategoryProducts();
-  }, [productCategoryId]);
+  }, [productCategoryId, minPrice, maxPrice]);
 
   const { Meta } = Card;
   return (
     <div className="flex justify-between items-center p-9">
-      <div className="left flex justify-center items-center">
-        <p>Filters</p>
+      <div className="left flex justify-center items-start flex-col">
+        <p>Min:</p>
+        <PricrSliderANTD onChange={(e: any) => setMinPrice(e.target.value)} />
+        <p className="mt-3">Max:</p>
+        <PricrSliderANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
       </div>
 
       <div className="right grid grid-cols-1 gap-2 md:grid-cols-2">
