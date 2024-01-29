@@ -25,7 +25,7 @@
 .newtons-cradle {
   --uib-size: 50px;
   --uib-speed: 1.2s;
-  --uib-color: yellow;
+  --uib-color: #febd69;
   position: relative;
   display: flex;
   align-items: center;

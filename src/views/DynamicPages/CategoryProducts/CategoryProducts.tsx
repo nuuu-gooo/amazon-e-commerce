@@ -5,16 +5,25 @@ import Notification from "@src/components/NotificationANTD/Notification";
 import { Link, useParams } from "react-router-dom";
 import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
 import { TCategoryProducts } from "@src/@types/types";
+import { Loader } from "@src/assets/Loader/Loader";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
   const [minPrice, setMinPrice] = useState<number>();
   const [maxPrice, setMaxPrice] = useState<number>();
+  const [loading, setLoading] = useState(false);
+
   const fetchCategoryProducts = async () => {
-    const resp = await axiosInstance.get(
-      `product?minPrice=${minPrice}&maxPrice=${maxPrice}&categoryName=${productCategoryId}`
-    );
-    setProducts(resp.data.products);
+    try {
+      setLoading(true);
+      const resp = await axiosInstance.get(
+        `product?minPrice=${minPrice}&maxPrice=${maxPrice}&categoryName=${productCategoryId}`
+      );
+      setProducts(resp.data.products);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -22,9 +31,10 @@ export const CategoryProducts = () => {
   }, [productCategoryId, minPrice, maxPrice]);
 
   const { Meta } = Card;
+
   return (
     <div className="flex justify-between items-center p-9">
-      <div className="left flex justify-center items-start flex-col">
+      <div className="mr-[3rem] md:left flex justify-center items-start flex-col">
         <div className="mb-3">
           <h3>Filters</h3>
           <hr className="border-solid border-black " />
@@ -35,8 +45,14 @@ export const CategoryProducts = () => {
         <p className="mt-3">Max:</p>
         <PricrSliderANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
       </div>
-
-      <div className="right grid grid-cols-1 gap-2 md:grid-cols-2">
+      {loading ? (
+        <h1>
+          <Loader />
+        </h1>
+      ) : (
+        ""
+      )}
+      <div className="right overflow-hidden grid grid-cols-1 gap-2 md:grid-cols-2">
         {products.length === 0 ? (
           <Notification />
         ) : (

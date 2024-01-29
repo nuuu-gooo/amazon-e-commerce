@@ -10,7 +10,7 @@ import { SideBar } from "@src/components/SideBar/SideBar";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { Avatar, Button, Popover } from "antd";
+import { Alert, Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetProductsBySeatch } from "@src/hooks/useGetProductsBySearch/useGetProductsBySearch";
 import { Modal } from "antd";
@@ -28,6 +28,7 @@ export const Nav1 = () => {
     useGetProductsBySeatch(searchInputValue, currentCategory);
 
   const navigate = useNavigate();
+  console.log(searchedProducts);
   useEffect(() => {
     // Check if the current pathname includes "search", and if yes, close the modal
     if (location.pathname.includes("search")) {
@@ -85,6 +86,8 @@ export const Nav1 = () => {
             centered={true}
             open={searchedProducts.length > 0}
           >
+            <h1>Searched Products: </h1>
+            <hr className="mb-7" />
             {searchedProducts.map((product) => {
               return (
                 <div className="flex justify-start items-start flex-col">
@@ -107,9 +110,6 @@ export const Nav1 = () => {
             onClick={() => {
               fetchProducts();
             }}
-            // onClick={() => {
-            //   // fetchProducts();
-            // }}
             className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />
