@@ -12,29 +12,17 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Alert, Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { useGetProductsBySeatch } from "@src/hooks/useGetProductsBySearch/useGetProductsBySearch";
 import { Modal } from "antd";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
-  const location = useLocation();
-
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
-  const { fetchProducts, searchedProducts, setSearchedProducts } =
-    useGetProductsBySeatch(searchInputValue, currentCategory);
-
   const navigate = useNavigate();
-  console.log(searchedProducts);
-  useEffect(() => {
-    // Check if the current pathname includes "search", and if yes, close the modal
-    if (location.pathname.includes("search")) {
-      setSearchedProducts([]); // Close the modal by clearing the searchedProducts state
-    }
-  }, [location.pathname, setSearchedProducts]);
+
   const content = (
     <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
@@ -54,7 +42,6 @@ export const Nav1 = () => {
     <nav className="wrapper w-full bg-[#131921]">
       <SideBar />
       <div className="nav-container flex justify-between items-center p-4">
-        {/* <div className="flex items-center"> */}
         <div className="left ">
           <Link to={"/"}>
             <img src={AmazonLogo} alt="" />
@@ -67,7 +54,11 @@ export const Nav1 = () => {
           >
             {existingCategories.map((category) => {
               return (
-                <option key={category.id} value={category.name}>
+                <option
+                  key={category.id}
+                  defaultValue={category.name[0]}
+                  value={category.name}
+                >
                   {category.name}
                 </option>
               );
@@ -80,35 +71,16 @@ export const Nav1 = () => {
             type="text"
             defaultValue={searchInputValue}
           />
-          <Modal
-            className="bg-[#febd69]"
-            onCancel={() => setSearchedProducts([])}
-            centered={true}
-            open={searchedProducts.length > 0}
-          >
-            <h1>Searched Products: </h1>
-            <hr className="mb-7" />
-            {searchedProducts.map((product) => {
-              return (
-                <div className="flex justify-start items-start flex-col">
-                  <div className="product-container w-full flex items-center ">
-                    <Link
-                      className="no-underline text-[black] hover:text-[#febd69]"
-                      to={`/search/${product.title}`}
-                    >
-                      <h3>{product.title}</h3>
-                    </Link>
-                    <img className="w-[10%] ml-5" src={product.image} alt="" />
-                  </div>
-                  <hr className="w-full mt-2  border-solid" />
-                </div>
-              );
-            })}
-          </Modal>
 
           <button
             onClick={() => {
-              fetchProducts();
+              if (searchInputValue === "") {
+                navigate(`/productCategory/${currentCategory}`);
+              } else if (currentCategory === "") {
+                navigate(`/search/${searchInputValue}`);
+              } else {
+                navigate(`search/${currentCategory}/${searchInputValue}`);
+              }
             }}
             className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
