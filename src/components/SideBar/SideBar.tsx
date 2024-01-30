@@ -40,7 +40,14 @@ export const SideBar = () => {
             <Menu>
               <SubMenu label="Categories">
                 {existingCategories.map((categorie) => {
-                  return <MenuItem>{categorie.name}</MenuItem>;
+                  return (
+                    <Link
+                      className="no-underline text-[black] hover:opacity-50"
+                      to={`productCategory/${categorie.name}`}
+                    >
+                      <MenuItem>{categorie.name}</MenuItem>
+                    </Link>
+                  );
                 })}
               </SubMenu>
             </Menu>
