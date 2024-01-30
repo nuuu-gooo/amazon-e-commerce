@@ -12,6 +12,7 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
+import { Loader } from "@src/assets/Loader/Loader";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
@@ -20,7 +21,7 @@ export const Nav1 = () => {
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
-  const { popUpProducts } = useGetPopUpProducts(searchInputValue);
+  const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
 
   const content = (
@@ -48,11 +49,17 @@ export const Nav1 = () => {
           </Link>
         </div>
         <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
+          {loading ? <Loader /> : ""}
           {popUpProducts.map((product) => {
             return (
-              <div className="absolute left-[4] top-9 bg-white w-full p-1 flex items-center justify-start rounded-sm">
-                <h1>{product.title}</h1>
-              </div>
+              <Link
+                className="no-underline text-[#000]"
+                to={`search/${product.title}`}
+              >
+                <div className="absolute left-[4] top-9 bg-white w-full p-3 flex items-center justify-start rounded-xl ">
+                  <h1>{product.title}</h1>
+                </div>
+              </Link>
             );
           })}
           <select

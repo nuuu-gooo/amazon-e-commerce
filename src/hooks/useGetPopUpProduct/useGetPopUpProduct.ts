@@ -4,8 +4,10 @@ import { TPopUpProducts } from "@src/@types/types";
 
 export const useGetPopUpProducts = (inputVal: string) => {
   const [popUpProducts, setPopUpProducts] = useState<TPopUpProducts[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const fetchApPopUpProducts = async () => {
     try {
+      setLoading(true);
       if (inputVal !== "") {
         const fetch = await axiosInstance.get(
           `product?productName=${inputVal}`
@@ -14,12 +16,15 @@ export const useGetPopUpProducts = (inputVal: string) => {
       } else {
         setPopUpProducts([]);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchApPopUpProducts();
   }, [inputVal]);
   console.log(popUpProducts);
-  return { popUpProducts };
+  return { popUpProducts, loading };
 };
