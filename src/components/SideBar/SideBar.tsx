@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
@@ -7,11 +7,18 @@ import { Link } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { FaSearch } from "react-icons/fa";
+import { categoryList } from "@src/Data/Data";
 
 export const SideBar = () => {
   const { isToggled, setIsToggled, existingCategories } =
     useContext(GlobalContext);
   const { authStage, userData } = useContext(AuthContext);
+  const [sidebarInput, setSideBarInput] = useState<string>("");
+  const [currentCategory, setCurrentCategory] = useState([]);
+
+  console.log(sidebarInput);
+
   return (
     <div className=" fixed z-50">
       {isToggled ? (
@@ -37,6 +44,19 @@ export const SideBar = () => {
                 </div>
               </Link>
             )}
+
+            <div className="search flex items-center w-full md:hidden">
+              <input
+                onChange={(e) => setSideBarInput(e.target.value)}
+                placeholder="Enter Keyword"
+                className="w-full p-3 border-none"
+                type="text"
+              />
+              <button className="w-[30%] p-3 border-none bg-[#febd69]">
+                <FaSearch />
+              </button>
+            </div>
+
             <Menu>
               <SubMenu label="Categories">
                 {existingCategories.map((categorie) => {

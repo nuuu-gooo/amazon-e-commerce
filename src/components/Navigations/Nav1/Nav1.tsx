@@ -39,15 +39,15 @@ export const Nav1 = () => {
   );
 
   return (
-    <nav className="wrapper w-full bg-[#131921]">
+    <nav className=" wrapper w-full bg-[#131921]">
       <SideBar />
-      <div className="nav-container flex justify-between items-center p-4">
+      <div className=" sm:nav-container flex justify-between items-center p-4">
         <div className="left ">
           <Link to={"/"}>
             <img src={AmazonLogo} alt="" />
           </Link>
         </div>
-        <div className="middle-input-container ml-3 flex flex-grow min-w-[50%]">
+        <div className="md:flex hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
           <select
             onChange={(e) => setCurrentCategory(e.target.value)}
             className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "

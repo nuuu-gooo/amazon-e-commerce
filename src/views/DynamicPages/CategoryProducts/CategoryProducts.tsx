@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
+import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
@@ -52,34 +53,28 @@ export const CategoryProducts = () => {
       ) : (
         ""
       )}
-      <div className="right overflow-hidden grid grid-cols-1 gap-2 md:grid-cols-2">
-        {products.length === 0 ? (
-          <Notification />
-        ) : (
-          products.map((product) => {
-            return (
-              <Link className="no-underline" to={`/search/${product.title}`}>
-                <Card
-                  hoverable
-                  style={{ width: 300 }}
-                  cover={
-                    <img
-                      className="w-[30%]"
-                      alt="example"
-                      src={product.image}
-                    />
-                  }
-                >
-                  <Meta
-                    title={product.title}
-                    description={product.description}
-                  />
-                  <p className="mt-[12%]">{product.price}$</p>
-                </Card>
-              </Link>
-            );
-          })
-        )}
+      {products.length === 0 ? (
+        <img className="w-[50%]" src={ProductsNotFoundImg} />
+      ) : (
+        ""
+      )}
+      <div className="right overflow-hidden place-items-center grid grid-cols-1 gap-2 md:grid-cols-2">
+        {products.map((product) => {
+          return (
+            <Link className="no-underline" to={`/search/${product.title}`}>
+              <Card
+                hoverable
+                style={{ width: 300 }}
+                cover={
+                  <img className="w-[30%]" alt="example" src={product.image} />
+                }
+              >
+                <Meta title={product.title} description={product.description} />
+                <p className="mt-[12%]">{product.price}$</p>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
       <div className="right">
         <p className="text-[transparent]">Hello</p>

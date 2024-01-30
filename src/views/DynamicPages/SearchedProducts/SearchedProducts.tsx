@@ -5,7 +5,8 @@ import { axiosInstance } from "@src/utils/publicAxios";
 import { TSearchedProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Alert, Card } from "antd";
-import Notification from "@src/components/NotificationANTD/Notification";
+import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
+
 export const SearchedProducts = () => {
   const [minPrice, setMinPrice] = useState<number>();
   const [maxPrice, setMaxPrice] = useState<number>();
@@ -43,7 +44,7 @@ export const SearchedProducts = () => {
       <div className="middle flex items-center">
         {loading ? <Loader /> : ""}
         {searchedProducts.length === 0 ? (
-          <Alert message="No Products found" type="error" showIcon={true} />
+          <img className="w-full" src={ProductsNotFoundImg} />
         ) : (
           ""
         )}
