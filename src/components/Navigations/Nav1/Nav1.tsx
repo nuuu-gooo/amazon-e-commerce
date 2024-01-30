@@ -11,6 +11,7 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);
@@ -19,6 +20,7 @@ export const Nav1 = () => {
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
+  const { popUpProducts } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
 
   const content = (
@@ -45,7 +47,14 @@ export const Nav1 = () => {
             <img src={AmazonLogo} alt="" />
           </Link>
         </div>
-        <div className="md:flex hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
+        <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
+          {popUpProducts.map((product) => {
+            return (
+              <div className="absolute left-[4] top-9 bg-white w-full p-1 flex items-center justify-start rounded-sm">
+                <h1>{product.title}</h1>
+              </div>
+            );
+          })}
           <select
             onChange={(e) => setCurrentCategory(e.target.value)}
             className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "
@@ -74,8 +83,6 @@ export const Nav1 = () => {
             onClick={() => {
               if (searchInputValue === "") {
                 navigate(`/productCategory/${currentCategory}`);
-              } else if (currentCategory === "") {
-                navigate(`/search/${searchInputValue}`);
               } else {
                 navigate(`search/${currentCategory}/${searchInputValue}`);
               }
