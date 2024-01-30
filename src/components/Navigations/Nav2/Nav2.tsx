@@ -17,7 +17,7 @@ export const Nav2 = () => {
           onClick={toggleSidebarFunction}
         >
           <div className="flex items-center">
-            <RxHamburgerMenu className=" text-2xl mr-2 cursor-pointer" />
+            <RxHamburgerMenu className="text-2xl mr-2 cursor-pointer md:hidden" />
             <p className="mr-[2%]">All</p>
           </div>
         </p>
