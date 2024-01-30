@@ -24,7 +24,7 @@ export const Footer1 = () => {
           <FormattedMessage id="back-to-top" />
         </p>
       </button>
-      <div className="max-w-5xl w-full m-auto  flex justify-between gap-10 px-5 py-10">
+      <div className="md:max-w-5xl w-full m-auto flex flex-col md:flex-row justify-between gap-10 px-5 py-10">
         {footerLinks.map((footerLink) => {
           return (
             <div key={footerLink.category[locale]}>
