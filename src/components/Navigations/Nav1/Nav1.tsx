@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
@@ -10,9 +9,8 @@ import { SideBar } from "@src/components/SideBar/SideBar";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { Alert, Avatar, Button, Popover } from "antd";
+import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { Modal } from "antd";
 
 export const Nav1 = () => {
   const { locale, toggleLanguage } = useContext(LContext);

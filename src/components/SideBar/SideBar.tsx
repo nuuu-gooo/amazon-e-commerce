@@ -8,7 +8,7 @@ import { PiUserCircleFill } from "react-icons/pi";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { FaSearch } from "react-icons/fa";
-import { categoryList } from "@src/Data/Data";
+import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 
 export const SideBar = () => {
   const { isToggled, setIsToggled, existingCategories } =
@@ -16,8 +16,9 @@ export const SideBar = () => {
   const { authStage, userData } = useContext(AuthContext);
   const [sidebarInput, setSideBarInput] = useState<string>("");
   const [currentCategory, setCurrentCategory] = useState([]);
+  const { popUpProducts } = useGetPopUpProducts(sidebarInput);
 
-  console.log(sidebarInput);
+  console.log(sidebarInput, popUpProducts);
 
   return (
     <div className=" fixed z-50">
@@ -45,7 +46,7 @@ export const SideBar = () => {
               </Link>
             )}
 
-            <div className="search flex items-center w-full md:hidden">
+            <div className="search flex items-center relative w-full md:hidden">
               <input
                 onChange={(e) => setSideBarInput(e.target.value)}
                 placeholder="Enter Keyword"
@@ -56,6 +57,25 @@ export const SideBar = () => {
                 <FaSearch />
               </button>
             </div>
+
+            {popUpProducts.map((product) => {
+              return (
+                <Link
+                  className="no-underline text-[black]"
+                  to={`/search/${product.title}`}
+                >
+                  <div className="bg-[white] p-9 w-full flex items-center md:hidden">
+                    <ul>
+                      <li>
+                        {product.title}{" "}
+                        <img className="w-[10%]" src={product.image} alt="" />
+                      </li>
+                    </ul>
+                    <hr />
+                  </div>
+                </Link>
+              );
+            })}
 
             <Menu>
               <SubMenu label="Categories">

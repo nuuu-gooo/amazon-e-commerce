@@ -24,3 +24,12 @@ export interface TSearchedProduct {
   price: number;
   category_name: string;
 }
+
+export interface TPopUpProducts {
+  title: string;
+  id: string;
+  description: string;
+  image: string;
+  price: number;
+  category_name: string;
+}
