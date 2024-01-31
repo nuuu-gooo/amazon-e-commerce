@@ -76,7 +76,7 @@ export const CategoryProducts = () => {
           );
         })}
       </div>
-      <div className="right">
+      <div className="invisible right">
         <p className="text-[transparent]">Hello</p>
       </div>
     </div>

@@ -35,13 +35,13 @@ export const SearchedProducts = () => {
 
   return (
     <div className="flex justify-between items-center p-9">
-      <div className="left flex flex-col md:flex items-center ">
+      <div className="left flex flex-col md:flex items-center mr-[5%] ">
         <p>Min:</p>
         <PricrSliderANTD onChange={(e: any) => setMinPrice(e.target.value)} />
         <p className="mt-3">Max:</p>
         <PricrSliderANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
       </div>
-      <div className="middle flex items-center">
+      <div className=" flex items-center flex-col sm:flex-row ">
         {loading ? <Loader /> : ""}
         {searchedProducts.length === 0 ? (
           <img className="w-full" src={ProductsNotFoundImg} />
@@ -50,9 +50,12 @@ export const SearchedProducts = () => {
         )}
         {searchedProducts.map((product) => {
           return (
-            <Link className="no-underline" to={`/search/${product.title}`}>
+            <Link
+              className="no-underline flex  "
+              to={`/search/${product.title}`}
+            >
               <Card
-                className="gap-9"
+                className="gap-9 flex flex-col"
                 hoverable
                 style={{ width: 300 }}
                 cover={
@@ -66,7 +69,7 @@ export const SearchedProducts = () => {
           );
         })}
       </div>
-      <div className="right">4</div>
+      <div className="right invisible ">4</div>
     </div>
   );
 };
