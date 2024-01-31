@@ -110,7 +110,6 @@ export const Nav1 = () => {
           ></button>
         </div>
         <div className="right">
-          {/* <div className="mobile-res flex items-center"> */}
           <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <div>
