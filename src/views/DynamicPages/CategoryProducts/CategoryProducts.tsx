@@ -7,6 +7,7 @@ import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
+import { SingleProduct } from "../SIngleProduct/SingleProduct";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
@@ -58,7 +59,7 @@ export const CategoryProducts = () => {
       ) : (
         ""
       )}
-      <div className="right  place-items-center grid grid-cols-1 gap-2 md:grid-cols-3">
+      <div className="right  place-items-center grid grid-cols-1 gap-3 md:grid-cols-3">
         {products.map((product) => {
           return (
             <Link className="no-underline" to={`/search/${product.title}`}>

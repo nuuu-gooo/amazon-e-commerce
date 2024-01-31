@@ -33,3 +33,12 @@ export interface TPopUpProducts {
   price: number;
   category_name: string;
 }
+
+export interface TProduct {
+  title: string;
+  id: string;
+  description: string;
+  image: string;
+  price: number;
+  category_name: string;
+}
