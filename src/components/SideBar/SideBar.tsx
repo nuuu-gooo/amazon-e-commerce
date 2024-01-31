@@ -9,8 +9,11 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { FaSearch } from "react-icons/fa";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
+import { nav2Links } from "@src/Data/Data";
+import { LContext } from "@src/providers/LProvider/LContext";
 
 export const SideBar = () => {
+  const { locale } = useContext(LContext);
   const { isToggled, setIsToggled, existingCategories } =
     useContext(GlobalContext);
   const { authStage, userData } = useContext(AuthContext);
@@ -26,7 +29,7 @@ export const SideBar = () => {
         <div className="overlay">
           <Sidebar className=" h-full">
             <button
-              className="  cursor-pointer absolute left-[60%] bg-[transparent] text-white border-none  mt-6   w-[100px]"
+              className="  cursor-pointer absolute left-[77%]  text-black border-none  mt-6 text-xl bg-[#febd69] flex items-center justify-center rounded-3xl w-[20%] hover:opacity-50"
               onClick={() => setIsToggled(false)}
             >
               X
@@ -86,6 +89,21 @@ export const SideBar = () => {
                       to={`productCategory/${categorie.name}`}
                     >
                       <MenuItem>{categorie.name}</MenuItem>
+                    </Link>
+                  );
+                })}
+              </SubMenu>
+            </Menu>
+
+            <Menu>
+              <SubMenu label="Amazon Services">
+                {nav2Links.map((nav2Link) => {
+                  return (
+                    <Link
+                      className="no-underline text-[black] hover:opacity-50"
+                      to={``}
+                    >
+                      <MenuItem>{nav2Link.name[locale]}</MenuItem>
                     </Link>
                   );
                 })}
