@@ -15,7 +15,7 @@ import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpPr
 import { Loader } from "@src/assets/Loader/Loader";
 
 export const Nav1 = () => {
-  const { locale, toggleLanguage } = useContext(LContext);
+  const { toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   const { authStage, loggout, userData } = useContext(AuthContext);
@@ -110,7 +110,8 @@ export const Nav1 = () => {
           ></button>
         </div>
         <div className="right">
-          <div className="mobile-res flex items-center">
+          {/* <div className="mobile-res flex items-center"> */}
+          <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <div>
                 <Popover
