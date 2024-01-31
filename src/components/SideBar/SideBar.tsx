@@ -96,7 +96,7 @@ export const SideBar = () => {
             </Menu>
 
             <Menu>
-              <SubMenu label="Amazon Services">
+              <SubMenu className="block md:hidden" label="Amazon Services">
                 {nav2Links.map((nav2Link) => {
                   return (
                     <Link
