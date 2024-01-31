@@ -29,5 +29,12 @@
   "accounts-and-lists": "Konto & Listen",
   "enter-number": "Ihre Telefonnummer",
   "account-creation-success": "Konto erfolgreich erstellt!, bitte melden Sie sich an.",
-  "account-creation-fail:": "Konto erstellung fehlgeschlagen!"
+  "account-creation-fail:": "Konto erstellung fehlgeschlagen!",
+  "category-container-smartphones": "Telefone",
+  "category-container-laptops": "Laptops",
+  "category-container-audio": "Audio",
+  "category-container-photo-video": "Photo | Video",
+  "category-container-gaming": "Videospiele",
+  "category-container-tv-monitors": "TV | Monitore",
+  "category-container-tabs": "Tabs"
 }

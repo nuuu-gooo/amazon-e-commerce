@@ -58,7 +58,7 @@ export const CategoryProducts = () => {
       ) : (
         ""
       )}
-      <div className="right  place-items-center grid grid-cols-1 gap-2 md:grid-cols-2">
+      <div className="right  place-items-center grid grid-cols-1 gap-2 md:grid-cols-3">
         {products.map((product) => {
           return (
             <Link className="no-underline" to={`/search/${product.title}`}>

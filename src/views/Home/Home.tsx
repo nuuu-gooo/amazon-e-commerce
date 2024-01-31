@@ -4,10 +4,12 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
+import { LContext } from "@src/providers/LProvider/LContext";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
+  const { locale } = useContext(LContext);
 
   return (
     <div>
