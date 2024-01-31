@@ -1,6 +1,6 @@
 import { TSearchedProduct } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const SingleProduct = () => {
@@ -10,14 +10,21 @@ export const SingleProduct = () => {
     const fetch = await axiosInstance.get(
       `product?productName=${searchedProductId}`
     );
-    setSingleProduct(fetch.data.product);
+    setSingleProduct(fetch.data.products);
   };
+
+  useEffect(() => {
+    fetchSingleProduct();
+  }, [searchedProductId]);
   return (
     <div>
-      <h1>{searchedProductId}</h1>
-
-      {singleProduct.map((product) => {
-        return <h1>{product.title}</h1>;
+      {singleProduct?.map((product) => {
+        return (
+          <div>
+            <h1>{product.title}</h1>
+            <p>{product.price}$</p>
+          </div>
+        );
       })}
     </div>
   );
