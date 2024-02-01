@@ -57,7 +57,7 @@ export const Nav1 = () => {
                   className="no-underline text-[#000]"
                   to={`search/${product.title}`}
                 >
-                  <div className=" left-[] right-0  top-9  bg-white w-full p-3 flex items-center justify-start rounded-xl ">
+                  <div className=" left-[] right-0  top-9  bg-white w-[98%] p-3 flex items-center justify-start  ">
                     <h3>{product.title}</h3>
                   </div>
                 </Link>
