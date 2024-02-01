@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
+import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { TSearchedProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
@@ -37,9 +37,9 @@ export const SearchedProducts = () => {
     <div className="flex justify-between items-center p-9">
       <div className="left flex flex-col md:flex items-center mr-[5%] ">
         <p>Min:</p>
-        <PricrSliderANTD onChange={(e: any) => setMinPrice(e.target.value)} />
+        <PriceFilterANTD onChange={(e: any) => setMinPrice(e.target.value)} />
         <p className="mt-3">Max:</p>
-        <PricrSliderANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
+        <PriceFilterANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
       </div>
       <div className=" flex items-center flex-col sm:flex-row ">
         {loading ? <Loader /> : ""}

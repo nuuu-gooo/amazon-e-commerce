@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import Notification from "@src/components/NotificationANTD/Notification";
 import { Link, useParams } from "react-router-dom";
-import { PricrSliderANTD } from "@src/components/PriceSliderANTD/PricrSliderANTD";
+import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
@@ -43,9 +43,9 @@ export const CategoryProducts = () => {
         </div>
         <hr />
         <p>Min:</p>
-        <PricrSliderANTD onChange={(e: any) => setMinPrice(e.target.value)} />
+        <PriceFilterANTD onChange={(e: any) => setMinPrice(e.target.value)} />
         <p className="mt-3">Max:</p>
-        <PricrSliderANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
+        <PriceFilterANTD onChange={(e: any) => setMaxPrice(e.target.value)} />
       </div>
       {loading ? (
         <h1>
