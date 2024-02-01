@@ -14,6 +14,5 @@ Welcome to the Amazon Clone repository! This project is a simplified version of 
 
 - Tailwind CSS
 - ANTD (Antd Design)
-- MUI (Material UI)
 
 #### More technologies will be added soon...
