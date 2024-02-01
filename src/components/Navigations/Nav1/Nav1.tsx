@@ -40,7 +40,7 @@ export const Nav1 = () => {
   );
 
   return (
-    <nav className=" relative  wrapper w-full bg-[#131921]">
+    <nav className="   wrapper w-full bg-[#131921]">
       <SideBar />
       <div className=" sm:nav-container flex justify-between items-center p-4">
         <div className="left ">
@@ -112,7 +112,7 @@ export const Nav1 = () => {
           ></button>
         </div>
         <div className="right">
-          <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
+          <div className="md:flex relative flex md:middle-input-container ml-3 flex-grow min-w-[50%]">
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <div>
                 <Popover
