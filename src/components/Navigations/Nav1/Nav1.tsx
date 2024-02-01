@@ -82,7 +82,7 @@ export const Nav1 = () => {
           </select>
           <input
             onChange={(e) => setSearchInputValue(e.target.value)}
-            className="w-[100%] relative border-none p-1 outline-none flex-grow overflow-hidden "
+            className="w-[100%]  border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}
