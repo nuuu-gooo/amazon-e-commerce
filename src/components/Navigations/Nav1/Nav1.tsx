@@ -40,7 +40,7 @@ export const Nav1 = () => {
   );
 
   return (
-    <nav className=" wrapper w-full bg-[#131921]">
+    <nav className=" relative  wrapper w-full bg-[#131921]">
       <SideBar />
       <div className=" sm:nav-container flex justify-between items-center p-4">
         <div className="left ">
@@ -48,20 +48,22 @@ export const Nav1 = () => {
             <img src={AmazonLogo} alt="" />
           </Link>
         </div>
-        <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%]">
+        <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%] ">
           {loading ? <Loader /> : ""}
-          {popUpProducts.map((product) => {
-            return (
-              <Link
-                className="no-underline text-[#000]"
-                to={`search/${product.title}`}
-              >
-                <div className="absolute left-[4] top-9 bg-white w-full p-3 flex items-center justify-start rounded-xl ">
-                  <h1>{product.title}</h1>
-                </div>
-              </Link>
-            );
-          })}
+          <div className="flex flex-col absolute z-[9999]  w-[100%] left-[0] right-[30%] top-9     ">
+            {popUpProducts.map((product) => {
+              return (
+                <Link
+                  className="no-underline text-[#000]"
+                  to={`search/${product.title}`}
+                >
+                  <div className=" left-[] right-0  top-9  bg-white w-full p-3 flex items-center justify-start rounded-xl ">
+                    <h3>{product.title}</h3>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
           <select
             onChange={(e) => setCurrentCategory(e.target.value)}
             className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "
