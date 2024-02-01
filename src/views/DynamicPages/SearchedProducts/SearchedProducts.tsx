@@ -35,7 +35,7 @@ export const SearchedProducts = () => {
 
   return (
     <div className="flex justify-between items-center p-9">
-      <div className="left flex flex-col md:flex items-center mr-[5%] ">
+      <div className="left flex flex-col md:flex items-start mr-[5%] ">
         <p>Min:</p>
         <PriceFilterANTD onChange={(e: any) => setMinPrice(e.target.value)} />
         <p className="mt-3">Max:</p>
