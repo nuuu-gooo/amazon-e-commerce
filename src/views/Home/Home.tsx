@@ -5,11 +5,13 @@ import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
   const { locale } = useContext(LContext);
+  const { saleProducts } = useGetSaleProducts();
 
   return (
     <div>
@@ -42,6 +44,13 @@ export const Home = () => {
           </h1>
         ) : (
           ""
+        )}
+        {saleProducts.length === 0 ? (
+          <h1>No Sale Products avaliable</h1>
+        ) : (
+          saleProducts.map((saleProduct) => {
+            return <h1>{saleProduct.title}</h1>;
+          })
         )}
       </div>
     </div>
