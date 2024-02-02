@@ -6,6 +6,8 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
+import { Carousel } from "antd";
+import { SalesProductsComp } from "@src/components/UI /SalesProducts/SalesProductsComp";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
@@ -38,19 +40,17 @@ export const Home = () => {
             })
           )}
         </div>
+        {saleProducts.length === 0 ? (
+          <h1>No Sale Products avaliable</h1>
+        ) : (
+          <SalesProductsComp saleProducts={saleProducts} />
+        )}
         {userData ? (
           <h1 key={userData.first_name}>
             Welcome to Amazon <i>{userData.first_name}</i>{" "}
           </h1>
         ) : (
           ""
-        )}
-        {saleProducts.length === 0 ? (
-          <h1>No Sale Products avaliable</h1>
-        ) : (
-          saleProducts.map((saleProduct) => {
-            return <h1>{saleProduct.title}</h1>;
-          })
         )}
       </div>
     </div>
