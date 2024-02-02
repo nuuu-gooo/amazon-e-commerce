@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
+import { TProduct } from "@src/@types/types";
 
-export const SingleProductComp = ({ data }: any) => {
+export const SingleProductComp = ({ data }: { data: TProduct }) => {
   const { Meta } = Card;
   return (
     <div>
@@ -15,7 +16,7 @@ export const SingleProductComp = ({ data }: any) => {
         >
           <Meta title={data.title} description={data.description} />
           <p className="mt-[12%]">{data.price}$</p>
-          <button className="mt-3 p-2 w-full">Buy</button>
+          <button className="mt-3 p-2 w-full">Buy</button>s{" "}
         </Card>
       </Link>
     </div>
