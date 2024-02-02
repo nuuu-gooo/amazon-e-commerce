@@ -9,6 +9,8 @@ import { Orders } from "@src/views/PrivateViews/Orders/Orders";
 import { CategoryProducts } from "@src/views/DynamicPages/CategoryProducts/CategoryProducts";
 import { SearchedProducts } from "./views/DynamicPages/SearchedProducts/SearchedProducts";
 import { SingleProduct } from "./views/DynamicPages/SIngleProduct/SingleProduct";
+import WishListProducts from "./views/DynamicPages/WishListProducts";
+import { Cart } from "./views/DynamicPages/Cart/Cart";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -50,6 +52,9 @@ function App() {
             path="/search/:searchedProductId"
             element={<SingleProduct />}
           />
+
+          <Route path="/wishList" element={<WishListProducts />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
 
         <Route element={<AuthentficiationLayout />}>

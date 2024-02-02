@@ -176,7 +176,7 @@ export const Nav1 = () => {
                   </p>
                 </div>
               </Link>
-              <Link className="no-underline text-[white]" to={""}>
+              <Link className="no-underline text-[white]" to={"/cart"}>
                 <div className="link flex  items-baseline ml-3">
                   <img src={CardImg} alt="" />
                   <p>
