@@ -1,8 +1,6 @@
 import { axiosInstance } from "@src/utils/publicAxios";
 import React, { useEffect, useState } from "react";
-import { Card } from "antd";
-import Notification from "@src/components/NotificationANTD/Notification";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
