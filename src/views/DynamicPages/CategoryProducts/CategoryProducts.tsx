@@ -7,7 +7,8 @@ import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
-import { SingleProduct } from "../SIngleProduct/SingleProduct";
+import { SingleProductComp } from "@src/components/UI /SingleProductComp/SingleProductComp";
+
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();
@@ -32,8 +33,6 @@ export const CategoryProducts = () => {
     fetchCategoryProducts();
   }, [productCategoryId, minPrice, maxPrice]);
 
-  const { Meta } = Card;
-
   return (
     <div className="flex justify-between items-center p-9">
       <div className="mr-[3rem] md:left flex justify-center items-start flex-col">
@@ -54,27 +53,12 @@ export const CategoryProducts = () => {
       ) : (
         ""
       )}
-      {products.length === 0 ? (
-        <img className="w-[50%]" src={ProductsNotFoundImg} />
-      ) : (
-        ""
+      {products.length === 0 && (
+        <img src={ProductsNotFoundImg} className="w-[50%]" />
       )}
-      <div className="right  place-items-center grid grid-cols-1 gap-3 md:grid-cols-3">
+      <div className="right  place-items-center  grid grid-cols-1 gap-9 md:grid-cols-3">
         {products.map((product) => {
-          return (
-            <Link className="no-underline" to={`/search/${product.title}`}>
-              <Card
-                hoverable
-                style={{ width: 300 }}
-                cover={
-                  <img className="w-[30%]" alt="example" src={product.image} />
-                }
-              >
-                <Meta title={product.title} description={product.description} />
-                <p className="mt-[12%]">{product.price}$</p>
-              </Card>
-            </Link>
-          );
+          return <SingleProductComp data={product} />;
         })}
       </div>
       <div className="invisible right">
