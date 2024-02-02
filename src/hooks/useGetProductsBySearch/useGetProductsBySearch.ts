@@ -22,6 +22,5 @@ export const useGetProductsBySeatch = (
       console.log(error);
     }
   };
-
   return { fetchProducts, searchedProducts, setSearchedProducts };
 };

@@ -25,6 +25,7 @@ export const useGetPopUpProducts = (inputVal: string) => {
   useEffect(() => {
     fetchApPopUpProducts();
   }, [inputVal]);
+
   console.log(popUpProducts);
   return { popUpProducts, loading };
 };

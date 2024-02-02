@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -13,6 +13,7 @@ import { Avatar, Button, Popover } from "antd";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { Loader } from "@src/assets/Loader/Loader";
+import { useLocation } from "react-router-dom";
 
 export const Nav1 = () => {
   const { toggleLanguage } = useContext(LContext);
@@ -23,6 +24,7 @@ export const Nav1 = () => {
   const [currentCategory, setCurrentCategory] = useState<string>("");
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const content = (
     <div className="flex flex-col">
@@ -38,6 +40,11 @@ export const Nav1 = () => {
       </Button>
     </div>
   );
+  useEffect(() => {
+    if (location.pathname.includes("search")) {
+      setSearchInputValue("");
+    }
+  }, [location.pathname]);
 
   return (
     <nav className="   wrapper w-full bg-[#131921]">
