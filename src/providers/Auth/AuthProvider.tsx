@@ -3,6 +3,7 @@ import { AuthContext, TokenTypes, UserDataType } from "./AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { jwtDecode } from "jwt-decode";
+import { setPrivateAccessToken } from "@src/utils/privateAxios";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [userData, setUserData] = useState<UserDataType>();
@@ -66,16 +67,17 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     setUserData(tokenData);
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
+    setPrivateAccessToken(tokens.access_token);
     setAuthStage(authStage_EUNM.AUTHORIZED);
   };
 
   // Log Out Function ✅ //
-
   const loggout = () => {
     localStorage.removeItem("access_token"),
       localStorage.removeItem("refresh_token");
     setUserData(undefined);
     setAuthStage(authStage_EUNM.UNAUTHORIZED);
+    setPrivateAccessToken("");
   };
 
   // Getting new Access Token ✅ //
@@ -102,6 +104,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuthStage(authStage_EUNM.UNAUTHORIZED);
     }
   }, []);
+
+  console.log(authStage);
 
   return (
     <AuthContext.Provider

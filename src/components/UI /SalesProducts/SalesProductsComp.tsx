@@ -8,29 +8,19 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { FaHeart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
+// import {  } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
+import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 
 export const SalesProductsComp = ({ saleProducts }: any) => {
+  const { AddToWishList } = useAddWIshListProducts();
   const { authStage } = useContext(AuthContext);
   var settings = {
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 4,
-    // slidesToScroll: 4,
-    // initialSlide: 0,
-    // autoplay: true,
     dots: true,
-    // infinite: true,
     slidesToShow: 3,
-    // slidesToScroll: 1,
-    // autoplay: true,
-    // speed: 2000,
-    // autoplaySpeed: 2000,
     cssEase: "linear",
     appendDots: (dots: string) => (
       <div
         style={{
-          // backgroundColor: "#000",
           background: "#febd69",
           borderRadius: "10px",
           padding: "10px",
@@ -107,7 +97,10 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
               Add to Cart
             </button>
             {authStage === authStage_EUNM.AUTHORIZED && (
-              <button className="mt-3 border-none bg-transparent">
+              <button
+                onClick={() => AddToWishList(product.id)}
+                className="mt-3 border-none bg-transparent"
+              >
                 <CiHeart className="text-xl text-[red]" />
                 {/* Create a condition here */}
               </button>

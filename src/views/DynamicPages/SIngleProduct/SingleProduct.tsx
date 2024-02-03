@@ -1,13 +1,18 @@
 import { TSearchedProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import { axiosInstance } from "@src/utils/publicAxios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
+  const { authStage } = useContext(AuthContext);
+  const { AddToWishList } = useAddWIshListProducts();
+
   const fetchSingleProduct = async () => {
     try {
       setLoading(true);
@@ -33,7 +38,7 @@ export const SingleProduct = () => {
           <div className="md:flex p-9 justify-between items-center">
             <div className="left flex items-center flex-col">
               <img
-                className="mx-auto h-[250px] w-[250px] cursor-pointer object-fit"
+                className="mx-auto  w-[100%] cursor-pointer object-fit"
                 src={product.image}
                 alt="product-img"
               />
@@ -50,7 +55,7 @@ export const SingleProduct = () => {
                 <p>{product.description}</p>
               </div>
             </div>
-            <div className="right  inline-flex flex-col items-start border-solid border-black p-6 rounded-sm">
+            <div className="right inline-flex   flex-col items-start border-solid border-black p-6 rounded-sm">
               <div className="price flex items-start">
                 <p className="text-sm font-medium">$</p>
                 <p className="text-3xl  font-medium">{product.price}</p>
@@ -65,6 +70,9 @@ export const SingleProduct = () => {
                 </span>{" "}
                 Order within <span className="text-[green]">7 hrs 29 mins</span>
               </p>
+              <button onClick={() => AddToWishList(product.id)}>
+                Add to Wishlit
+              </button>
             </div>
           </div>
         );

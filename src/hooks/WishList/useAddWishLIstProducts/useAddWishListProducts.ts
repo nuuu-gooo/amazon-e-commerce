@@ -1,14 +1,28 @@
 import { axiosInstance } from "@src/utils/publicAxios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { privateAxios } from "@src/utils/privateAxios";
 
-export const useAddWishListProducts = (id: string) => {
-  const fetchAddDataWishList = async () => {
-    await axiosInstance.post("/liked-products", { product_id: id });
-  };
+export function useAddWIshListProducts() {
+  const [loading, setLoading] = useState(false);
+  const { authData } = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log(fetchAddDataWishList());
-  }, []);
+  // const { getCartProducts } = useGlobalProvider();
 
-  return { fetchAddDataWishList };
-};
+  async function AddToWishList(productId: string) {
+    try {
+      setLoading(true);
+      await privateAxios.post("/liked-products", {
+        product_id: productId,
+        authData,
+      });
+      // getCartProducts();
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return { AddToWishList };
+}
