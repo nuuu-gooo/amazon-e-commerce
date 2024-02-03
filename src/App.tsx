@@ -9,7 +9,7 @@ import { Orders } from "@src/views/PrivateViews/Orders/Orders";
 import { CategoryProducts } from "@src/views/DynamicPages/CategoryProducts/CategoryProducts";
 import { SearchedProducts } from "./views/DynamicPages/SearchedProducts/SearchedProducts";
 import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
-import WishListProducts from "./views/DynamicPages/WishListProducts";
+import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import { Cart } from "./views/DynamicPages/Cart/Cart";
 import { isMapIterator } from "util/types";
 const Home = lazy(() => import("@src/views/Home"));
@@ -54,7 +54,10 @@ function App() {
             element={<SingleProduct />}
           />
 
-          <Route path="/wishList" element={<WishListProducts />} />
+          <Route
+            path="/wishList"
+            element={<PrivateRoute children={<WishListProducts />} />}
+          />
           <Route path="/cart" element={<Cart />} />
         </Route>
 

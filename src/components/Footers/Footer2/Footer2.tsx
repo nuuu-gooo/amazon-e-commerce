@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import { amazonServices } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { FormattedMessage } from "react-intl";
 
 export const Footer2 = () => {
   const { locale } = useContext(LContext);
+  const { toggleLanguage } = useContext(LContext);
 
   return (
     <div className="bg-[#131921]  py-10 w-full h-full">
@@ -22,11 +24,17 @@ export const Footer2 = () => {
           );
         })}
       </div>
-      <div className="mt-8">
-        <p className="rights text-xs  text-white flex justify-center text-center leading-6 items-center">
+      <div className="mt-8 flex justify-center flex-col">
+        <p className="rights text-xs  text-white  text-center leading-6 items-center">
           Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
           for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
         </p>
+        <button
+          className="mt-3 text-xl border-none bg-[transparent] cursor-pointer"
+          onClick={toggleLanguage}
+        >
+          <FormattedMessage id="change.language" />
+        </button>
       </div>
     </div>
   );

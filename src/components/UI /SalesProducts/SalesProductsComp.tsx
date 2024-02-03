@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { TProduct, TProductSale } from "@src/@types/types";
-import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
-import { RxHalf1 } from "react-icons/rx";
-import { SingleProductComp } from "../SingleProductComp/SingleProductComp";
+import { TProductSale } from "@src/@types/types";
 import { Link } from "react-router-dom";
+import { AuthContext } from "@src/providers/Auth/AuthContext";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { FaHeart } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 
 export const SalesProductsComp = ({ saleProducts }: any) => {
+  const { authStage } = useContext(AuthContext);
   var settings = {
     // dots: true,
     // infinite: true,
@@ -84,7 +86,10 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
     <Slider className="mt-[1%]" {...settings}>
       {saleProducts.map((product: TProductSale) => {
         return (
-          <div className=" flex justify-center w-full border-solid border-black p-9 flex-col items-center min-h-[600px]">
+          <div
+            key={product.id}
+            className=" flex justify-center w-full border-solid border-black p-9 flex-col items-center min-h-[600px]"
+          >
             <Link
               className="no-underline text-[black]"
               to={`/search/${product.title}`}
@@ -95,12 +100,18 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
                 {product.salePrice}$ {""}
                 <span className="text-[gray] line-through">
                   {product.price}$
-                </span>{" "}
-              </p>{" "}
+                </span>
+              </p>
             </Link>
             <button className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60">
               Add to Cart
             </button>
+            {authStage === authStage_EUNM.AUTHORIZED && (
+              <button className="mt-3 border-none bg-transparent">
+                <CiHeart className="text-xl text-[red]" />
+                {/* Create a condition here */}
+              </button>
+            )}
           </div>
         );
       })}

@@ -23,6 +23,7 @@ export const Home = () => {
             existingCategories.map((category) => {
               return (
                 <Link
+                  key={category.id}
                   className="no-underline text-[inherit] hover:opacity-70"
                   to={`productCategory/${category.name}`}
                 >
@@ -43,7 +44,7 @@ export const Home = () => {
           <SalesProductsComp saleProducts={saleProducts} />
         )}
         {userData ? (
-          <h1 key={userData.first_name}>
+          <h1 className="mt-9" key={userData.first_name}>
             Welcome to Amazon <i>{userData.first_name}</i>{" "}
           </h1>
         ) : (

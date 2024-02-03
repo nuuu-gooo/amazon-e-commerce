@@ -6,7 +6,6 @@ import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
 import { SideBar } from "@src/components/SideBar/SideBar";
-import { LContext } from "@src/providers/LProvider/LContext";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
@@ -14,9 +13,8 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
-
+import { FaStar } from "react-icons/fa6";
 export const Nav1 = () => {
-  const { toggleLanguage } = useContext(LContext);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   const { authStage, loggout, userData } = useContext(AuthContext);
@@ -107,12 +105,16 @@ export const Nav1 = () => {
           >
             <FaSearch className="text-2xl sm:text-lg " />
           </button>
-          <button
-            className="ml-3 text-2xl border-none bg-[transparent] cursor-pointer"
-            onClick={toggleLanguage}
-          >
-            <FormattedMessage id="change.language" />
-          </button>
+          {authStage === authStage_EUNM.AUTHORIZED && (
+            <Link
+              className="ml-3 text-white w-[5%] no-underline border bg-[white] rounded-full flex items-center justify-center border-none"
+              to={"/wishList"}
+            >
+              <button className="border-none bg-[transparent]">
+                <FaStar className="  text-2xl text-[#febd69]" />
+              </button>
+            </Link>
+          )}
           <button
             onClick={() => navigate("/login")}
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
