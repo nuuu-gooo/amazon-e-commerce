@@ -105,8 +105,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  console.log(authStage);
-
   return (
     <AuthContext.Provider
       value={{

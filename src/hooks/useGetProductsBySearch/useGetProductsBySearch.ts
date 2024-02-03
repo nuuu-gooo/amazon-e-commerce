@@ -18,9 +18,7 @@ export const useGetProductsBySeatch = (
         `/product?productName=${searchedProduct}&categoryName=${category}`
       );
       setSearchedProducts(fetch.data.products);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   return { fetchProducts, searchedProducts, setSearchedProducts };
 };

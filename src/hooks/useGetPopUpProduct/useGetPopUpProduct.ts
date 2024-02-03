@@ -26,6 +26,5 @@ export const useGetPopUpProducts = (inputVal: string) => {
     fetchApPopUpProducts();
   }, [inputVal]);
 
-  console.log(popUpProducts);
   return { popUpProducts, loading };
 };
