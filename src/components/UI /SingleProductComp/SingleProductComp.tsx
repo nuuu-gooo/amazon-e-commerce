@@ -11,7 +11,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
         <Card
           className=""
           hoverable
-          style={{ width: 500 }}
+          style={{ width: 300 }}
           cover={<img className="" alt="example" src={data.image} />}
         >
           <Meta title={data.title} description={data.description} />

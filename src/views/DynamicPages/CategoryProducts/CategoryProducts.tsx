@@ -54,7 +54,7 @@ export const CategoryProducts = () => {
       {products.length === 0 && (
         <img src={ProductsNotFoundImg} className="w-[50%]" />
       )}
-      <div className="right  place-items-center  grid grid-cols-1 gap-9 md:grid-cols-3">
+      <div className="right  place-items-center  grid grid-cols-1 gap-10 md:grid-cols-3">
         {products.map((product) => {
           return <SingleProductComp data={product} />;
         })}

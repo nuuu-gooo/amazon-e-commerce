@@ -4,15 +4,12 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
-import { LContext } from "@src/providers/LProvider/LContext";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
-import { Carousel } from "antd";
 import { SalesProductsComp } from "@src/components/UI /SalesProducts/SalesProductsComp";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
-  const { locale } = useContext(LContext);
   const { saleProducts } = useGetSaleProducts();
 
   return (
