@@ -6,7 +6,6 @@ import { privateAxios } from "@src/utils/privateAxios";
 
 export const useGetWishListProducts = () => {
   const [wishListProducts, setWishListProducts] = useState([]);
-  const { setAuthStage, authStage } = useContext(AuthContext);
   const fetchWishListProducts = async () => {
     try {
       const response = await privateAxios.get("/liked-products");
@@ -14,11 +13,11 @@ export const useGetWishListProducts = () => {
     } catch (error) {}
   };
 
+  console.log(wishListProducts);
+
   useEffect(() => {
     fetchWishListProducts();
   }, []);
 
-  console.log(wishListProducts);
-
-  return { wishListProducts };
+  return { fetchWishListProducts, wishListProducts };
 };
