@@ -25,7 +25,7 @@ export const WishListProducts = () => {
         <div className="w-full border-solid border-[#febd69] bg-[#febd69] p-4">
           {wishListProducts.map((product: TProduct) => {
             return (
-              <div className="w-full  flex bg-[white] justify-between items-center  p-4">
+              <div className="w-full border-solid border-black  flex bg-[white] justify-between items-center  p-4">
                 <div className="left flex items-center ">
                   <h3>{product.likedProduct.title}</h3>
                   <p className="ml-3 text-red-700">
@@ -39,7 +39,6 @@ export const WishListProducts = () => {
                 </div>
 
                 <Button
-                  // onClick={() => deleteWishListProduct(product.id)}]
                   onClick={() => {
                     deleteWishListProduct(product.id);
                     window.location.reload();
