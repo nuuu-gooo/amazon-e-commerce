@@ -5,12 +5,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
+import { Button } from "antd";
+import { FaGift } from "react-icons/fa";
 
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
-  const { authStage } = useContext(AuthContext);
   const { AddToWishList } = useAddWIshListProducts();
 
   const fetchSingleProduct = async () => {
@@ -70,9 +71,12 @@ export const SingleProduct = () => {
                 </span>{" "}
                 Order within <span className="text-[green]">7 hrs 29 mins</span>
               </p>
-              <button onClick={() => AddToWishList(product.id)}>
-                Add to Wishlit
-              </button>
+              <Button
+                className="mt-3 flex justify-center items-center"
+                onClick={() => AddToWishList(product.id)}
+              >
+                <FaGift className="text-[red] text-2xl" />
+              </Button>
             </div>
           </div>
         );

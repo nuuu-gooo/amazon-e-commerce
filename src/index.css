@@ -153,6 +153,9 @@
   border: 1px solid #a1a1a1;
   margin-top: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .continue-btn:hover {

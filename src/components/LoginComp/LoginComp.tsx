@@ -10,6 +10,7 @@ import Alert from "antd/es/alert/Alert";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { Button } from "antd";
 
 export const LoginComp = () => {
   const { formatMessage } = useIntl();
@@ -78,10 +79,16 @@ export const LoginComp = () => {
             </button>
           </div>
         </div>
-        {loading ? <p>Loading...</p> : ""}
-        <button onClick={handleInput} type="button" className="continue-btn">
-          <FormattedMessage id="continue-btn" />
-        </button>
+
+        <Button
+          loading={loading}
+          onClick={handleInput}
+          className="continue-btn"
+        >
+          <p>
+            <FormattedMessage id="continue-btn" />
+          </p>
+        </Button>
         <div className="links">
           <p className="text-black text-xs mt-5 leading-5">
             <FormattedMessage id="privacy-notice" />
