@@ -75,7 +75,7 @@ export const SingleProduct = () => {
                 className="mt-3 flex justify-center items-center"
                 onClick={() => AddToWishList(product.id)}
               >
-                <FaGift className="text-[red] text-2xl" />
+                <FaGift className="text-[black] text-2xl" />
               </Button>
             </div>
           </div>

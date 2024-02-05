@@ -36,6 +36,9 @@ export const Nav1 = () => {
       <Button className="mt-3" onClick={() => navigate("/")}>
         Home
       </Button>
+      <Button className="mt-3" onClick={() => navigate("/wishList")}>
+        Wish List 🎁
+      </Button>
     </div>
   );
   useEffect(() => {
@@ -62,8 +65,13 @@ export const Nav1 = () => {
                   className="no-underline text-[#000]"
                   to={`search/${product.title}`}
                 >
-                  <div className=" left-[] right-0  top-9  bg-white w-[98%] p-3 flex items-center justify-start  ">
-                    <h3>{product.title}</h3>
+                  <div className=" left right-0  top-9  bg-white w-[98%] p-3 flex items-center justify-between  ">
+                    <div className="left">
+                      <h3>{product.title}</h3>
+                    </div>
+                    <div className="right">
+                      <p className="text-[green]">{product.price}$</p>
+                    </div>
                   </div>
                 </Link>
               );
@@ -105,16 +113,7 @@ export const Nav1 = () => {
           >
             <FaSearch className="text-2xl sm:text-lg " />
           </button>
-          {authStage === authStage_EUNM.AUTHORIZED && (
-            <Link
-              className="ml-3 text-white w-[5%] no-underline border bg-[white] rounded-full flex items-center justify-center border-none"
-              to={"/wishList"}
-            >
-              <button className="border-none bg-[transparent]">
-                <FaStar className="  text-2xl text-[#febd69]" />
-              </button>
-            </Link>
-          )}
+
           <button
             onClick={() => navigate("/login")}
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
