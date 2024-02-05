@@ -4,6 +4,7 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { jwtDecode } from "jwt-decode";
 import { setPrivateAccessToken } from "@src/utils/privateAxios";
+import { useNavigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [userData, setUserData] = useState<UserDataType>();
@@ -14,6 +15,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [authStage, setAuthStage] = useState<authStage_EUNM>(
     authStage_EUNM.PENDING
   );
+  const navigate = useNavigate();
 
   // Sign In Acc fetch //
 
@@ -27,6 +29,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       });
 
       storeUserData(fetchSignIn?.data);
+      navigate("/");
     } catch (error) {
     } finally {
       setLoading(false);
@@ -55,6 +58,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         setError(false);
         setSuccess(true);
       }
+      navigate("/login");
     } catch (error) {
       setError(true);
     } finally {

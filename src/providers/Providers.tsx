@@ -8,12 +8,12 @@ type ProvidersProps = {};
 
 export function Providers({ children }: PropsWithChildren<ProvidersProps>) {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <GlobalProvider>
           <LContextProvider>{children}</LContextProvider>
         </GlobalProvider>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }

@@ -25,9 +25,6 @@ export const LoginComp = () => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
     await signInFetch(emailValue, passwordValue);
-    if (authStage === authStage_EUNM.AUTHORIZED) {
-      navigate("/");
-    }
   };
 
   const navigate = useNavigate();
