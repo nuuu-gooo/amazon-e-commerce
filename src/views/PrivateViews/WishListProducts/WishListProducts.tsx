@@ -3,7 +3,6 @@ import { useGetWishListProducts } from "@src/hooks/WishList/useGetWishListProduc
 import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
 import { TProduct } from "@src/@types/types";
 import { Button } from "antd";
-import NoItemsFoundImg from "@src/assets/images/no-items-found-img.png";
 
 export const WishListProducts = () => {
   const { wishListProducts } = useGetWishListProducts();
