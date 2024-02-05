@@ -6,11 +6,17 @@ import { privateAxios } from "@src/utils/privateAxios";
 
 export const useGetWishListProducts = () => {
   const [wishListProducts, setWishListProducts] = useState([]);
+  const [wishListProductsLoading, setWishListProductsLoading] =
+    useState<boolean>(false);
   const fetchWishListProducts = async () => {
     try {
+      setWishListProductsLoading(true);
       const response = await privateAxios.get("/liked-products");
       setWishListProducts(response.data);
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setWishListProductsLoading(false);
+    }
   };
 
   console.log(wishListProducts);
@@ -19,5 +25,5 @@ export const useGetWishListProducts = () => {
     fetchWishListProducts();
   }, []);
 
-  return { fetchWishListProducts, wishListProducts };
+  return { fetchWishListProducts, wishListProducts, wishListProductsLoading };
 };
