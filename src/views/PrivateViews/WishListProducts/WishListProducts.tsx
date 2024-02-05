@@ -19,9 +19,9 @@ export const WishListProducts = () => {
   }, [wishListProducts.length]);
 
   return (
-    <div>
-      <div className="container p-9 flex flex-col items-start">
-        <h1 className="mb-3">Your WishList:</h1>
+    <div className="flex justify-center items-center flex-col h-full p-3">
+      <div className="container  flex flex-col ">
+        <h1 className="mb-3">Your WishList: 🎁</h1>
         <div className="w-full border-solid border-[#febd69] bg-[#febd69] p-4">
           {wishListProducts.map((product: TProduct) => {
             return (
@@ -52,7 +52,7 @@ export const WishListProducts = () => {
           })}
         </div>
       </div>
-      <div className="flex justify-center items-center flex-col mb-3">
+      <div className="flex justify-center items-center flex-col mt-3">
         <p>
           Total :{" "}
           <span className="text-[red] text-2xl">${totalWishListPrice}</span>{" "}
