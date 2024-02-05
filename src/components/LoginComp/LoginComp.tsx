@@ -19,9 +19,7 @@ export const LoginComp = () => {
   const [passwordValue, setPasswordValue] = useState<string>("");
   const { signInFetch, userData, authStage, loading } = useContext(AuthContext);
 
-  const { success } = useContext(AuthContext);
-
-  const handleInput = async (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleInput = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
     await signInFetch(emailValue, passwordValue);
@@ -30,11 +28,7 @@ export const LoginComp = () => {
   const navigate = useNavigate();
   return (
     <div className="wrapper flex justify-center items-center flex-col  ">
-      <form
-        onSubmit={handleInput}
-        action=""
-        className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]"
-      >
+      <form className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]">
         <h1>
           <FormattedMessage id="sign-in" />
         </h1>
@@ -76,6 +70,7 @@ export const LoginComp = () => {
               placeholder={formatMessage({ id: "password" })}
             />
             <button
+              type="button"
               className="p-2 "
               onClick={() => setIsPasswordVisible(!isPasswordVisible)}
             >
@@ -84,7 +79,7 @@ export const LoginComp = () => {
           </div>
         </div>
         {loading ? <p>Loading...</p> : ""}
-        <button type="submit" className="continue-btn">
+        <button onClick={handleInput} type="button" className="continue-btn">
           <FormattedMessage id="continue-btn" />
         </button>
         <div className="links">
