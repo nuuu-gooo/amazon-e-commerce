@@ -33,7 +33,7 @@ export const CreateAccComp = () => {
     useState<boolean>(false);
   const [enterNumError, setEnterNumError] = useState<boolean>(false);
   const navigate = useNavigate();
-  const handleInput = (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleInput = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
     numberValidation(enterNumVal, setEnterNumError);
@@ -79,7 +79,6 @@ export const CreateAccComp = () => {
       </div>
       <div className="wrapper flex justify-center items-center m-auto h-[full]   ">
         <form
-          onSubmit={handleInput}
           action=""
           className="sm:border border-zinc-300 border-solid p-8  min-w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
         >
@@ -178,6 +177,7 @@ export const CreateAccComp = () => {
                 placeholder={formatMessage({ id: "password" })}
               />
               <button
+                type="button"
                 className="p-2 "
                 onClick={() => setIsPasswordVisible(!isPasswordVisible)}
               >
@@ -207,6 +207,7 @@ export const CreateAccComp = () => {
                 placeholder={formatMessage({ id: "password" })}
               />
               <button
+                type="button"
                 className="p-2 "
                 onClick={() => setIsPasswordVisible(!isPasswordVisible)}
               >
@@ -244,7 +245,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <button type="submit" className="continue-btn">
+          <button onClick={handleInput} type="button" className="continue-btn">
             <FormattedMessage id="continue-btn" />
           </button>
           <button
