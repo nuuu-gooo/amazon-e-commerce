@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { GlobalContext, TExistingCategories } from "./GlobalContext";
 import { axiosInstance } from "@src/utils/publicAxios";
+import { useGetWishListProducts } from "@src/hooks/WishList/useGetWishListProducts/useGetWishListProducts";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [existingCategories, setExistingCategories] = useState<
@@ -10,6 +11,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
   const [categoryProducts, setCategoryProducts] = useState([]);
+  const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
@@ -35,6 +37,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        fetchWishListProducts,
+        wishListProducts,
         count,
         setCount,
         isToggled,

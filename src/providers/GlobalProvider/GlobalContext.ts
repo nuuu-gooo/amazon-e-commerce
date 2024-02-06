@@ -1,3 +1,4 @@
+import { TProduct } from "@src/@types/types";
 import { createContext } from "react";
 
 export interface TExistingCategories {
@@ -17,9 +18,13 @@ interface TGlobalContext {
   >;
   existingCatLoading: boolean;
   toggleSidebarFunction: () => void;
+  wishListProducts: TProduct[];
+  fetchWishListProducts: any;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
+  fetchWishListProducts: () => {},
+  wishListProducts: [],
   count: 0,
   isToggled: false,
   existingCatLoading: false,

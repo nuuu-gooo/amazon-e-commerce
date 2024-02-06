@@ -21,9 +21,5 @@ export const useGetWishListProducts = () => {
 
   console.log(wishListProducts);
 
-  useEffect(() => {
-    fetchWishListProducts();
-  }, []);
-
   return { fetchWishListProducts, wishListProducts, wishListProductsLoading };
 };
