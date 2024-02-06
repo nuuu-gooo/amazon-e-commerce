@@ -8,7 +8,11 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 
 export const WishListProducts = () => {
-  const { wishListProducts } = useContext(GlobalContext);
+  const {
+    wishListProducts,
+    deleteWishListProductLoading,
+    wishListProductsLoading,
+  } = useContext(GlobalContext);
   const { deleteWishListProduct } = useDeleteWishListProduct();
   let [totalWishListPrice, setTotalWishListPrice] = useState<number>(0);
 
@@ -29,10 +33,6 @@ export const WishListProducts = () => {
         <div className="w-full border-solid border-[#febd69] bg-[#febd69] p-4">
           {wishListProducts.map((product: TProduct) => {
             return (
-              // <Link
-              //   className="no-underline text-black"
-              //   to={`/search/${product.likedProduct.title}`}
-              // >
               <div className="w-full border-solid border-black  flex bg-[white] justify-between items-center  p-4">
                 <div className="left flex items-center ">
                   <h3>{product.likedProduct.title}</h3>
@@ -47,6 +47,7 @@ export const WishListProducts = () => {
                 </div>
 
                 <Button
+                  loading={wishListProductsLoading}
                   onClick={() => {
                     deleteWishListProduct(product.id);
                   }}
@@ -55,7 +56,6 @@ export const WishListProducts = () => {
                   Delete
                 </Button>
               </div>
-              // </Link>
             );
           })}
         </div>

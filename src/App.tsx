@@ -11,7 +11,6 @@ import { SearchedProducts } from "./views/DynamicPages/SearchedProducts/Searched
 import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import { Cart } from "./views/DynamicPages/Cart/Cart";
-import { isMapIterator } from "util/types";
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));

@@ -17,18 +17,22 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
   existingCatLoading: boolean;
-  toggleSidebarFunction: () => void;
   wishListProducts: TProduct[];
-  fetchWishListProducts: any;
+  deleteWishListProductLoading: boolean;
+  wishListProductsLoading: boolean;
+  toggleSidebarFunction: () => void;
+  fetchWishListProducts: () => Promise<void>;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
-  fetchWishListProducts: () => {},
+  deleteWishListProductLoading: false,
+  wishListProductsLoading: false,
   wishListProducts: [],
   count: 0,
   isToggled: false,
   existingCatLoading: false,
   existingCategories: [],
+  fetchWishListProducts: async () => {},
   setCount: () => {},
   setIsToggled: () => {},
   setExistingCategories: () => {},
