@@ -14,11 +14,24 @@ import {
 } from "../../utils/DifferentFunctions";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { LContext } from "@src/providers/LProvider/LContext";
+import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const CreateAccComp = () => {
   const { createAccFetch, success, authStage, error } = useContext(AuthContext);
   const { formatMessage } = useIntl();
+  const { locale } = useContext(LContext);
+  console.log(locale);
   const [enterNumVal, setEnterNumVal] = useState<string>("");
+
+  useEffect(() => {
+    if (locale === "de") {
+      setEnterNumVal("+49");
+    } else if (locale === "en") {
+      setEnterNumVal("+995");
+    }
+  }, [locale]);
+  console.log(enterNumVal);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
@@ -233,7 +246,7 @@ export const CreateAccComp = () => {
                   setEnterNumVal(e.target.value);
                 }}
                 className="w-full p-2 outline-none"
-                type="number"
+                type="tel"
                 placeholder={formatMessage({ id: "enter-number" })}
               />
             </div>
