@@ -6,14 +6,17 @@ import { TProductSale } from "@src/@types/types";
 import { Link } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { FaHeart } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
-// import {  } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 
 export const SalesProductsComp = ({ saleProducts }: any) => {
   const { AddToWishList } = useAddWIshListProducts();
   const { authStage } = useContext(AuthContext);
+  const { AddProductsToCart, cartProductsAdd, cartProductsAddLoading } =
+    useContext(GlobalContext);
+  console.log(cartProductsAdd, cartProductsAddLoading);
+
   var settings = {
     dots: true,
     slidesToShow: 3,
@@ -93,12 +96,17 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
                 </span>
               </p>
             </Link>
-            <button className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60">
-              Add to Cart
+            <button
+              onClick={() => AddProductsToCart(product.id)}
+              className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
+            >
+              {cartProductsAddLoading ? "Addding to Cart..." : "Add to Cart"}
             </button>
             {authStage === authStage_EUNM.AUTHORIZED && (
               <button
-                onClick={() => AddToWishList(product.id)}
+                onClick={() => {
+                  AddToWishList(product.id);
+                }}
                 className="mt-3 border-none bg-transparent"
               >
                 <CiHeart className="text-xl text-[red]" />

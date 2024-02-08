@@ -18,7 +18,7 @@ export const Cart = () => {
               className="rounded    bg-[#febd69]   p-3 border-none hover:opacity-50 cursor-pointer"
               onClick={() => navigate("/login")}
             >
-              Sign in
+              Sign in to your account
             </button>
             <button
               className=" rounded  bg-[#febd69] ml-3  p-3 border-none hover:opacity-50 cursor-pointer "

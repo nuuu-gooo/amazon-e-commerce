@@ -20,11 +20,16 @@ interface TGlobalContext {
   wishListProducts: TProduct[];
   deleteWishListProductLoading: boolean;
   wishListProductsLoading: boolean;
+  cartProductsAdd: TProduct[];
+  cartProductsAddLoading: boolean;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
+  AddProductsToCart: (id: string) => Promise<void>;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
+  cartProductsAdd: [],
+  cartProductsAddLoading: false,
   deleteWishListProductLoading: false,
   wishListProductsLoading: false,
   wishListProducts: [],
@@ -32,6 +37,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   isToggled: false,
   existingCatLoading: false,
   existingCategories: [],
+  AddProductsToCart: async () => {},
   fetchWishListProducts: async () => {},
   setCount: () => {},
   setIsToggled: () => {},
