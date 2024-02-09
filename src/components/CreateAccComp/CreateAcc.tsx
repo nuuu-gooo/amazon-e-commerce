@@ -26,9 +26,9 @@ export const CreateAccComp = () => {
 
   useEffect(() => {
     if (locale === "de") {
-      setEnterNumVal("+49");
+      setEnterNumVal("49");
     } else if (locale === "en") {
-      setEnterNumVal("+995");
+      setEnterNumVal("995");
     }
   }, [locale]);
   console.log(enterNumVal);
