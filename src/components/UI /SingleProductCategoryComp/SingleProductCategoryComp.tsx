@@ -16,9 +16,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
         >
           <Meta title={data.title} description={data.description} />
           <p className="mt-[12%]">{data.price}$</p>
-          <button className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60">
-            Buy
-          </button>
+          <button className="mt-3 p-2 w-full">Buy</button>
         </Card>
       </Link>
     </div>

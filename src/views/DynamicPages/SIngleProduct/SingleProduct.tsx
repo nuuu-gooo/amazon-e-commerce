@@ -72,12 +72,10 @@ export const SingleProduct = () => {
                 </span>{" "}
                 Order within <span className="text-[green]">7 hrs 29 mins</span>
               </p>
-              <Button
-                className="mt-3 flex justify-center items-center"
-                onClick={() => AddToWishList(product.id)}
-              >
-                <FaGift className="text-[black] text-2xl" />
-              </Button>
+
+              <button className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60">
+                Buy
+              </button>
             </div>
           </div>
         );

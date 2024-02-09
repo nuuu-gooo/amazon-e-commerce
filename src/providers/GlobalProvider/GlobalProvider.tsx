@@ -1,9 +1,16 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { GlobalContext, TExistingCategories } from "./GlobalContext";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { useGetWishListProducts } from "@src/hooks/WishList/useGetWishListProducts/useGetWishListProducts";
 import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
 import { privateAxios } from "@src/utils/privateAxios";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { AuthContext } from "../Auth/AuthContext";
 // import { useAddToCart } from "@src/hooks/Cart/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
@@ -17,6 +24,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
   const { deleteWishListProductLoading } = useDeleteWishListProduct();
   const { wishListProductsLoading } = useGetWishListProducts();
+  const { authStage } = useContext(AuthContext);
   // const {
   //   setCartProducts,
   //   cartProductsAdd,
@@ -46,6 +54,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const AddToCart = async (id: string) => {
     const resp = await privateAxios.post("/cart", { product_id: id });
     console.log(resp.data);
+    getCartProducts();
   };
 
   const getCartProducts = async () => {
@@ -56,11 +65,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
-    getCartProducts();
-  }, []);
-  useEffect(() => {
     fetchExistingCategories();
-  }, []);
+    if (authStage === authStage_EUNM.AUTHORIZED) {
+      getCartProducts();
+    }
+  }, [authStage]);
 
   return (
     <GlobalContext.Provider
