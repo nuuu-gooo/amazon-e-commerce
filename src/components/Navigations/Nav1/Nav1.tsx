@@ -41,6 +41,26 @@ export const Nav1 = () => {
       </Button>
     </div>
   );
+
+  const authContent = (
+    <div className="flex flex-col">
+      <button
+        className="cursor-pointer px-2.5 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
+ to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
+ active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
+        onClick={() => navigate("/login")}
+      >
+        Sign In
+      </button>
+      <p className="mt-3">
+        New Customer?{" "}
+        <Link to={"/createaccount"}>
+          <span>Start here</span>
+        </Link>
+      </p>
+    </div>
+  );
+
   useEffect(() => {
     if (location.pathname.includes("search")) {
       setSearchInputValue("");
@@ -164,14 +184,16 @@ export const Nav1 = () => {
                     />
                   </Popover>
                 ) : (
-                  <Link className="no-underline  text-[white]" to={"/login"}>
-                    <p className="text-sm ">
+                  // <Link className="no-underline  text-[white]" to={"/login"}>
+                  <Popover content={authContent}>
+                    <p className="text-sm text-white ">
                       <FormattedMessage id="hello-sign-in-nav-1" />
                     </p>
-                    <p>
+                    <p className="text-white">
                       <FormattedMessage id="accounts-and-lists" />{" "}
                     </p>
-                  </Link>
+                  </Popover>
+                  // </Link>
                 )}
               </div>
               <Link className="no-underline text-[white]" to={"/orders"}>
