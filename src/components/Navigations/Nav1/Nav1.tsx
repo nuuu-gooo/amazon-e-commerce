@@ -50,7 +50,7 @@ export const Nav1 = () => {
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
         onClick={() => navigate("/login")}
       >
-        Sign In
+        Register
       </button>
       <p className="mt-3">
         New Customer?{" "}
