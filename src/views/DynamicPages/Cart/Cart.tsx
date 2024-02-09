@@ -8,36 +8,12 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Button } from "antd";
 export const Cart = () => {
   const navigate = useNavigate();
-  const { allCartProducts } = useContext(GlobalContext);
-
+  const { allCartProducts, deleteCartProducts } = useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
 
   console.log(allCartProducts);
   return (
     <div className="flex justify-center items-center p-7">
-      {/* <div className="cart-contianer flex  items-center bg-[#eeee] w-full p-3">
-        <img className="w-[20%]" src={cartEmptyImg} alt="" />
-        <div className="right ml-[10%] flex items-start flex-col">
-          <h1>Your Amazon Cart is Empty</h1>
-          <Link to={"/"} className="no-underline text-[black] hover:underline">
-            Go to Home Page
-          </Link>
-          <div className="btns flex items-center justify-center mt-3">
-            <button
-              className="rounded    bg-[#febd69]   p-3 border-none hover:opacity-50 cursor-pointer"
-              onClick={() => navigate("/login")}
-            >
-              Sign in to your account
-            </button>
-            <button
-              className=" rounded  bg-[#febd69] ml-3  p-3 border-none hover:opacity-50 cursor-pointer "
-              onClick={() => navigate("/createaccount")}
-            >
-              Sing Up now!
-            </button>
-          </div>
-        </div>
-      </div> */}
       {allCartProducts.length === 0 ? (
         <div className="cart-contianer flex  items-center bg-[#eeee] w-full p-3">
           <img className="w-[20%]" src={cartEmptyImg} alt="" />
@@ -80,7 +56,12 @@ export const Cart = () => {
                       alt=""
                     />
                   </div>
-                  <Button danger={true}>Delete </Button>
+                  <Button
+                    onClick={() => deleteCartProducts(product.id)}
+                    danger={true}
+                  >
+                    Delete
+                  </Button>
                 </div>
               );
             })}

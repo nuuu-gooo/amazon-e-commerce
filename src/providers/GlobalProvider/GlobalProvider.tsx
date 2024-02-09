@@ -64,6 +64,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     // getCartProducts();
   };
 
+  const deleteCartProducts = async (id: string) => {
+    await privateAxios.delete(`/cart/${id}`);
+    getCartProducts();
+  };
+
   useEffect(() => {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
@@ -74,6 +79,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        deleteCartProducts,
         AddToCart,
         allCartProducts,
         wishListProductsLoading,
