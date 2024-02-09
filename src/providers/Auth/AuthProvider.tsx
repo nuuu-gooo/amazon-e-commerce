@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         setError(false);
         setSuccess(true);
       }
-      navigate("/login");
+      signInFetch(email, password);
     } catch (error) {
       setError(true);
     } finally {
