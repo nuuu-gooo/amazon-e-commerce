@@ -13,9 +13,7 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 export const SalesProductsComp = ({ saleProducts }: any) => {
   const { AddToWishList } = useAddWIshListProducts();
   const { authStage } = useContext(AuthContext);
-  const { AddProductsToCart, cartProductsAdd, cartProductsAddLoading } =
-    useContext(GlobalContext);
-  console.log(cartProductsAdd, cartProductsAddLoading);
+  const { AddToCart } = useContext(GlobalContext);
 
   var settings = {
     dots: true,
@@ -96,12 +94,18 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
                 </span>
               </p>
             </Link>
-            <button
-              onClick={() => AddProductsToCart(product.id)}
-              className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
-            >
-              {cartProductsAddLoading ? "Addding to Cart..." : "Add to Cart"}
-            </button>
+            {authStage === authStage_EUNM.AUTHORIZED ? (
+              <button
+                onClick={() => AddToCart(product.id)}
+                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
+              >
+                Add To Cart
+                {/* {cartProductsAddLoading ? "Addding to Cart..." : "Add to Cart"} */}
+              </button>
+            ) : (
+              ""
+            )}
+
             {authStage === authStage_EUNM.AUTHORIZED && (
               <button
                 onClick={() => {

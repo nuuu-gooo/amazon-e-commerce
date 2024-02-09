@@ -7,6 +7,7 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { Button } from "antd";
 import { FaGift } from "react-icons/fa";
+import Pagination from "antd";
 
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);

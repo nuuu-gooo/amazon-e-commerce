@@ -3,7 +3,8 @@ import { GlobalContext, TExistingCategories } from "./GlobalContext";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { useGetWishListProducts } from "@src/hooks/WishList/useGetWishListProducts/useGetWishListProducts";
 import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
-import { useAddToCart } from "@src/hooks/Cart/useAddToCart";
+import { privateAxios } from "@src/utils/privateAxios";
+// import { useAddToCart } from "@src/hooks/Cart/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [existingCategories, setExistingCategories] = useState<
@@ -12,15 +13,16 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [count, setCount] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
+  const [allCartProducts, setAllCartProducts] = useState([]);
   const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
   const { deleteWishListProductLoading } = useDeleteWishListProduct();
   const { wishListProductsLoading } = useGetWishListProducts();
-  const {
-    setCartProducts,
-    cartProductsAdd,
-    AddProductsToCart,
-    cartProductsAddLoading,
-  } = useAddToCart();
+  // const {
+  //   setCartProducts,
+  //   cartProductsAdd,
+  //   AddProductsToCart,
+  //   cartProductsAddLoading,
+  // } = useAddToCart();
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
@@ -39,6 +41,23 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
   };
 
+  //------------------------------CART REQUESTS------------------------------------------//
+
+  const AddToCart = async (id: string) => {
+    const resp = await privateAxios.post("/cart", { product_id: id });
+    console.log(resp.data);
+  };
+
+  const getCartProducts = async () => {
+    const resp = await privateAxios.get("/cart");
+    setAllCartProducts(resp.data);
+    console.log(resp.data);
+    // getCartProducts();
+  };
+
+  useEffect(() => {
+    getCartProducts();
+  }, []);
   useEffect(() => {
     fetchExistingCategories();
   }, []);
@@ -46,9 +65,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
-        cartProductsAddLoading,
-        cartProductsAdd,
-        AddProductsToCart,
+        AddToCart,
+        allCartProducts,
         wishListProductsLoading,
         deleteWishListProductLoading,
         fetchWishListProducts,

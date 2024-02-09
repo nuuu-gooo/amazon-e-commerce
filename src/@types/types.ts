@@ -52,3 +52,10 @@ export interface TProductSale {
   category_name: string;
   salePrice: number;
 }
+
+export interface TPagination {
+  currentPage: number;
+  productOnPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  total: number;
+}
