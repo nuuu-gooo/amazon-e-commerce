@@ -13,10 +13,11 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
-import { FaStar } from "react-icons/fa6";
+import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
+
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
-
+  const { toggleLanguage, locale } = useContext(LContext);
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
@@ -139,7 +140,66 @@ export const Nav1 = () => {
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
           ></button>
         </div>
+        <div className="langauge flex items-center mr-3 ml-3">
+          {locale === Locale_ENUM.EN ? (
+            <div>
+              <button
+                onClick={() => toggleLanguage()}
+                className="flex items-center text-white bg-transparent border-none"
+              >
+                <img
+                  src="https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"
+                  alt=""
+                />
+                GER
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={() => toggleLanguage()}
+                className="flex items-center text-white bg-transparent border-none"
+              >
+                <img
+                  className=""
+                  src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
+                  alt=""
+                />
+                EN
+              </button>
+            </div>
+          )}
+        </div>
         <div className="right">
+          {/* <div className="langauge flex items-center">
+              {locale === Locale_ENUM.DE ? (
+                <div>
+                  <button
+                    onClick={() => toggleLanguage()}
+                    className="flex items-center text-white bg-transparent border-none"
+                  >
+                    <img
+                      src="https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"
+                      alt=""
+                    />
+                    GER
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    onClick={() => toggleLanguage()}
+                    className="flex items-center text-white bg-transparent border-none"
+                  >
+                    <img
+                      src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
+                      alt=""
+                    />
+                    EN
+                  </button>
+                </div>
+              )}
+            </div> */}
           <div className="md:flex relative flex md:middle-input-container ml-3 flex-grow min-w-[50%]">
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <div>
