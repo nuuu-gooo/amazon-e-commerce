@@ -4,16 +4,17 @@ import { axiosInstance } from "@src/utils/publicAxios";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
-import { Button } from "antd";
-import { FaGift } from "react-icons/fa";
-import Pagination from "antd";
+import { useNavigate } from "react-router-dom";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
-  const { AddToWishList } = useAddWIshListProducts();
+  const { authStage } = useContext(AuthContext);
+  const { AddToCart } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const fetchSingleProduct = async () => {
     try {
@@ -73,7 +74,16 @@ export const SingleProduct = () => {
                 Order within <span className="text-[green]">7 hrs 29 mins</span>
               </p>
 
-              <button className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60">
+              <button
+                onClick={() => {
+                  if (authStage === authStage_EUNM.AUTHORIZED) {
+                    AddToCart(product.id);
+                  } else {
+                    navigate("/login");
+                  }
+                }}
+                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
+              >
                 Buy
               </button>
             </div>
