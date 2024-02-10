@@ -38,26 +38,26 @@ export const SingleProduct = () => {
       {singleProduct?.map((product) => {
         return (
           <div className="md:flex p-9 justify-between items-center">
-            <div className="left flex items-center flex-col">
+            <div className="left flex items-center flex-col mr-[1%]">
               <img
-                className="mx-auto  w-[100%] cursor-pointer object-fit"
+                className="mx-auto     w-full cursor-pointer "
                 src={product.image}
                 alt="product-img"
               />
             </div>
             <div className="middle flex flex-col items-start">
               <h1>{product.title}</h1>
-              <hr className="border-solid border-black w-full mt-1" />
-              <div className="price flex items-center gap-3 pt-[20px]">
+              <hr className="border-solid border-black w-full mt-1 " />
+              <div className="price flex items-center gap-3 pt-[20px] ">
                 <p>Price:</p>
                 <p className="text-2xl text-red-700">{product.price} $</p>
               </div>
               <div className="product-description flex flex-col items-start mt-3">
                 <h4 className="mb-2">About this Item:</h4>
-                <p>{product.description}</p>
+                <p style={{ whiteSpace: "pre-line" }}>{product.description}</p>
               </div>
             </div>
-            <div className="right inline-flex   flex-col items-start border-solid border-black p-6 rounded-sm">
+            <div className="right inline-flex  ml-[3%]  flex-col items-start border-solid border-black  p-6 rounded-xl">
               <div className="price flex items-start">
                 <p className="text-sm font-medium">$</p>
                 <p className="text-3xl  font-medium">{product.price}</p>

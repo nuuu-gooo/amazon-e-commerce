@@ -6,11 +6,14 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { SalesProductsComp } from "@src/components/UI /SalesProducts/SalesProductsComp";
+import { SectionSlider } from "@src/components/UI /SectionSlider/SectionSlider";
+import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
+  const { productsUnder30 } = useGetProductsUnder30();
 
   return (
     <div>
@@ -38,18 +41,22 @@ export const Home = () => {
             })
           )}
         </div>
-        {saleProducts.length === 0 ? (
-          <h1>No Sale Products avaliable</h1>
-        ) : (
-          <SalesProductsComp saleProducts={saleProducts} />
-        )}
-        {userData ? (
+        <SalesProductsComp saleProducts={saleProducts} />
+        <div className="mt-[5%]">
+          <h1>Products under 30$</h1>
+          <SectionSlider data={productsUnder30} />
+        </div>
+        <div className="mt-4">
+          <SectionSlider data={productsUnder30} />
+        </div>
+
+        {/* {userData ? (
           <h1 className="mt-9" key={userData.first_name}>
             Welcome to Amazon <i>{userData.first_name}</i>{" "}
           </h1>
         ) : (
           ""
-        )}
+        )} */}
       </div>
     </div>
   );

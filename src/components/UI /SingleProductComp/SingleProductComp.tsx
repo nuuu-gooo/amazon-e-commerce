@@ -12,7 +12,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
           className=""
           hoverable
           style={{ width: 300 }}
-          cover={<img className="" alt="example" src={data.image} />}
+          cover={<img className=" " alt="example" src={data.image} />}
         >
           <Meta title={data.title} description={data.description} />
           <p className="mt-[12%]">{data.price}$</p>

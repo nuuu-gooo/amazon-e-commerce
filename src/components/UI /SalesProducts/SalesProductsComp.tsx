@@ -15,61 +15,69 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart } = useContext(GlobalContext);
 
-  var settings = {
-    dots: true,
-    slidesToShow: 3,
-    cssEase: "linear",
-    appendDots: (dots: string) => (
-      <div
-        style={{
-          background: "#febd69",
-          borderRadius: "10px",
-          padding: "10px",
-        }}
-      >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
-      </div>
-    ),
-    customPaging: (i: string) => (
-      <div
-        style={{
-          width: "100%",
-          color: "#febd69",
-          background: "black",
-          border: "2px black solid",
-          borderRadius: "3px",
-        }}
-      >
-        {i + 1}
-      </div>
-    ),
+  // // var settings = {
+  // //   dots: true,
+  // //   slidesToShow: 3,
+  // //   cssEase: "linear",
+  // //   appendDots: (dots: string) => (
+  // //     <div
+  // //       style={{
+  // //         background: "#febd69",
+  // //         borderRadius: "10px",
+  // //         padding: "10px",
+  // //       }}
+  // //     >
+  // //       <ul style={{ margin: "0px" }}> {dots} </ul>
+  // //     </div>
+  // //   ),
+  //   customPaging: (i: string) => (
+  //     <div
+  //       style={{
+  //         width: "100%",
+  //         color: "#febd69",
+  //         background: "black",
+  //         border: "2px black solid",
+  //         borderRadius: "3px",
+  //       }}
+  //     >
+  //       {i + 1}
+  //     </div>
+  //   ),
 
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 3,
+  //         infinite: true,
+  //         dots: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //         initialSlide: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
   };
 
   return (
@@ -85,7 +93,11 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
               className="no-underline text-[black]"
               to={`/search/${product.title}`}
             >
-              <img className="w-[100%] " src={product.image} alt="" />
+              <img
+                className="w-[50%] aspect-square  "
+                src={product.image}
+                alt=""
+              />
               <h2 className="mt-3">{product.title}</h2>
               <p className="text-[red]">
                 {product.salePrice}$ {""}
@@ -97,7 +109,7 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <button
                 onClick={() => AddToCart(product.id)}
-                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
+                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center  border-none p-2 cursor-pointer hover:opacity-60"
               >
                 Add To Cart
                 {/* {cartProductsAddLoading ? "Addding to Cart..." : "Add to Cart"} */}
