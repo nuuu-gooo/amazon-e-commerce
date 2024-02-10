@@ -30,7 +30,12 @@ export const SectionSlider = ({ data }: any) => {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block", background: "black" }}
+        style={{
+          ...style,
+          display: "block",
+          fontSize: "4rem",
+          background: "black",
+        }}
         onClick={onClick}
       />
     );
@@ -46,28 +51,31 @@ export const SectionSlider = ({ data }: any) => {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <Slider className="" {...settings}>
+    <Slider
+      className=" shadow shadow-black border border-solid border-black"
+      {...settings}
+    >
       {data.map((product: any) => {
         return (
           <div
             key={product.id}
-            className="   bg-[white] flex border border-solid shadow  shadow-black rounded-md justify-center   p-9   flex-col items-center   "
+            className="   bg-[white] flex  rounded-md justify-center   p-9   flex-col items-center   "
           >
             <Link
               className="no-underline text-[black]"
               to={`/search/${product.title}`}
             >
               <img
-                className="w-[40%] aspect-square object-contain "
+                className="w-[50%] aspect-square object-contain "
                 src={product.image}
                 alt=""
               />
-              <h2 className="mt-3">{product.title}</h2>
+              {/* <h2 className="mt-3">{product.title}</h2>
               <p className="text-[red] text-xl">
                 {product?.price}$ {""}
-              </p>
+              </p> */}
             </Link>
-            {authStage === authStage_EUNM.AUTHORIZED ? (
+            {/* {authStage === authStage_EUNM.AUTHORIZED ? (
               <button
                 onClick={() => AddToCart(product.id)}
                 className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
@@ -76,7 +84,7 @@ export const SectionSlider = ({ data }: any) => {
               </button>
             ) : (
               ""
-            )}
+            )} */}
 
             {authStage === authStage_EUNM.AUTHORIZED && (
               <button className="mt-3 border-none bg-transparent"></button>

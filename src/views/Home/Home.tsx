@@ -8,12 +8,14 @@ import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesPro
 import { SalesProductsComp } from "@src/components/UI /SalesProducts/SalesProductsComp";
 import { SectionSlider } from "@src/components/UI /SectionSlider/SectionSlider";
 import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
+import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
 
 export const Home = () => {
   const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
+  const { cookingProducts } = useGetCookingProducts();
 
   return (
     <div>
@@ -42,12 +44,14 @@ export const Home = () => {
           )}
         </div>
         <SalesProductsComp saleProducts={saleProducts} />
-        <div className="mt-[5%]">
-          <h1>Products under 30$</h1>
+        <div className="mt-[3%]">
+          <h2 className="mb-2">Products under 30$</h2>
           <SectionSlider data={productsUnder30} />
         </div>
-        <div className="mt-4">
-          <SectionSlider data={productsUnder30} />
+
+        <div className="mt-[3%]">
+          <h2 className="mb-2">Cooking</h2>
+          <SectionSlider data={cookingProducts} />
         </div>
 
         {/* {userData ? (
