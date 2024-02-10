@@ -19,6 +19,7 @@ export const SectionSlider = ({ data }: any) => {
           display: "block",
           background: "black",
           color: "black",
+          borderRadius: "100%",
         }}
         onClick={onClick}
       />
@@ -34,7 +35,8 @@ export const SectionSlider = ({ data }: any) => {
           ...style,
           display: "block",
           fontSize: "100%",
-          background: "transparent",
+          background: "black",
+          borderRadius: "100%",
         }}
         onClick={onClick}
       />

@@ -82,7 +82,7 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
 
   return (
     // @ts-ignore
-    <Slider className="mt-[1%]" {...settings}>
+    <Slider className="mt-[1%] " {...settings}>
       {saleProducts.map((product: TProductSale) => {
         return (
           <div
