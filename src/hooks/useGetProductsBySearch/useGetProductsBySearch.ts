@@ -1,16 +1,13 @@
-import { TSearchedProducts } from "@src/@types/types";
+import { TProduct } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useGetProductsBySeatch = (
-  // searchedCategory: string,
   searchedProduct: string,
   category: string
 ) => {
-  const [searchedProducts, setSearchedProducts] = useState<TSearchedProducts[]>(
-    []
-  );
+  const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
 
   const fetchProducts = async () => {
     try {

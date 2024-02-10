@@ -7,13 +7,16 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { Alert, Modal } from "antd";
 
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
   const { authStage } = useContext(AuthContext);
-  const { AddToCart } = useContext(GlobalContext);
+  const { AddToCart, addToCartLoading, setAddToCartModal, addToCartModal } =
+    useContext(GlobalContext);
+
   const navigate = useNavigate();
 
   const fetchSingleProduct = async () => {
@@ -84,8 +87,15 @@ export const SingleProduct = () => {
                 }}
                 className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
               >
-                Buy
+                {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
               </button>
+              <Modal
+                centered
+                onCancel={() => setAddToCartModal(false)}
+                open={addToCartModal}
+              >
+                <Alert type="success" message="Successfully added to Cart!" />
+              </Modal>
             </div>
           </div>
         );

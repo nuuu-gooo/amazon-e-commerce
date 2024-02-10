@@ -33,8 +33,8 @@ export const SectionSlider = ({ data }: any) => {
         style={{
           ...style,
           display: "block",
-          fontSize: "4rem",
-          background: "black",
+          fontSize: "100%",
+          background: "transparent",
         }}
         onClick={onClick}
       />

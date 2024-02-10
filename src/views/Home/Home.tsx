@@ -21,7 +21,7 @@ export const Home = () => {
     <div>
       <ImgCarrousel />
       <div className="m-auto w-full p-9 flex  flex-col    ">
-        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[30%] mt-[10%]  left-0 right-9 grid-cols-3">
+        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[13%] mt-[10%]  left-0 right-9 grid-cols-3">
           {existingCatLoading ? (
             <Loader />
           ) : (

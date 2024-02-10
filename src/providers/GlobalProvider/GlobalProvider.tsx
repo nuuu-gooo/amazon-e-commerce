@@ -25,6 +25,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { deleteWishListProductLoading } = useDeleteWishListProduct();
   const { wishListProductsLoading } = useGetWishListProducts();
   const { authStage } = useContext(AuthContext);
+  const [addToCartLoading, setAddToCartLoading] = useState<boolean>(false);
+  const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
   // const {
   //   setCartProducts,
   //   cartProductsAdd,
@@ -52,9 +54,18 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   //------------------------------CART REQUESTS------------------------------------------//
 
   const AddToCart = async (id: string) => {
-    const resp = await privateAxios.post("/cart", { product_id: id });
-    console.log(resp.data);
-    getCartProducts();
+    try {
+      setAddToCartLoading(true);
+      setAddToCartModal(true);
+      const resp = await privateAxios.post("/cart", { product_id: id });
+      console.log(resp.data);
+
+      getCartProducts();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setAddToCartLoading(false);
+    }
   };
 
   const getCartProducts = async () => {
@@ -79,6 +90,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        addToCartModal,
+        setAddToCartModal,
+        addToCartLoading,
         deleteCartProducts,
         AddToCart,
         allCartProducts,
