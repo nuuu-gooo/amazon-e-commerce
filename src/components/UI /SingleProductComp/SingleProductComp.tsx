@@ -5,8 +5,8 @@ import { TProduct } from "@src/@types/types";
 export const SingleProductComp = ({ data }: { data: TProduct }) => {
   return (
     <div className="flex flex-wrap">
-      <Link className="no-underline text-black" to={`/search/${data.title}`}>
-        <div className="flex justify-center items-start flex-col border border-solid  w-[100%] h-full rounded-md p-9">
+      <Link className="no-underline text-black " to={`/search/${data.title}`}>
+        <div className=" flex justify-center items-start flex-col border border-solid  w-[100%] h-full rounded-md p-9 ">
           <div className="flex justify-center items-center">
             <img
               className=" w-[50%] aspect-square flex items-center"

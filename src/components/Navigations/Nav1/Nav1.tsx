@@ -14,6 +14,7 @@ import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpPr
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
 import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
+import { PopOverCart } from "@src/components/UI /PopOverCart/PopOverCart";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
@@ -237,14 +238,16 @@ export const Nav1 = () => {
                   </p>
                 </div>
               </Link>
-              <Link className="no-underline text-[white]" to={"/cart"}>
-                <div className="link flex  items-baseline ml-3">
-                  <img src={CardImg} alt="" />
-                  <p>
-                    <FormattedMessage id="card-nav-1" />
-                  </p>
-                </div>{" "}
-              </Link>
+              <Popover content={<PopOverCart />}>
+                <Link className="no-underline text-[white]" to={"/cart"}>
+                  <div className="link flex  items-baseline ml-3">
+                    <img src={CardImg} alt="" />
+                    <p>
+                      <FormattedMessage id="card-nav-1" />
+                    </p>
+                  </div>
+                </Link>
+              </Popover>
             </div>
           </div>
         </div>
