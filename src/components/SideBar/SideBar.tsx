@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
@@ -14,12 +13,11 @@ import { LContext } from "@src/providers/LProvider/LContext";
 
 export const SideBar = () => {
   const { locale } = useContext(LContext);
-  const { isToggled, setIsToggled, existingCategories } =
-    useContext(GlobalContext);
   const { authStage, userData } = useContext(AuthContext);
   const [sidebarInput, setSideBarInput] = useState<string>("");
-  const [currentCategory, setCurrentCategory] = useState([]);
   const { popUpProducts } = useGetPopUpProducts(sidebarInput);
+  const { isToggled, setIsToggled, existingCategories } =
+    useContext(GlobalContext);
 
   console.log(sidebarInput, popUpProducts);
 
@@ -70,7 +68,7 @@ export const SideBar = () => {
                   <div className="bg-[white] p-9 w-full flex items-center md:hidden">
                     <ul>
                       <li>
-                        {product.title}{" "}
+                        {product.title}
                         <img className="w-[10%]" src={product.image} alt="" />
                       </li>
                     </ul>
@@ -85,6 +83,7 @@ export const SideBar = () => {
                 {existingCategories.map((categorie) => {
                   return (
                     <Link
+                      key={categorie.id}
                       className="no-underline text-[black] hover:opacity-50"
                       to={`productCategory/${categorie.name}`}
                     >
@@ -100,6 +99,7 @@ export const SideBar = () => {
                 {nav2Links.map((nav2Link) => {
                   return (
                     <Link
+                      key={nav2Link.id}
                       className="no-underline text-[black] hover:opacity-50"
                       to={``}
                     >

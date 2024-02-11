@@ -1,7 +1,4 @@
 import React, { useContext } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { TProductSale } from "@src/@types/types";
 import { Link } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
@@ -9,6 +6,11 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { CiHeart } from "react-icons/ci";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { FaCartPlus } from "react-icons/fa6";
+import { Button } from "antd";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const SalesProductsComp = ({ saleProducts }: any) => {
   const { AddToWishList } = useAddWIshListProducts();
@@ -77,8 +79,14 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
                 src={product.image}
                 alt=""
               />
-              <h2 className="mt-3">{product.title}</h2>
-              <p className="text-[red]">
+              <h3 className=" text-xs mt-3 sm:text-2xl">{product.title}</h3>
+              <p className=" hidden sm:block text-l mt-3  text-red-500">
+                {product.salePrice}$ {""}
+                <span className="text-[gray] line-through">
+                  {product.price}$
+                </span>
+              </p>
+              <p className=" text-xs mt-3 sm:text-xl text-red-500 sm:hidden">
                 {product.salePrice}$ {""}
                 <span className="text-[gray] line-through">
                   {product.price}$
@@ -86,13 +94,21 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
               </p>
             </Link>
             {authStage === authStage_EUNM.AUTHORIZED ? (
-              <button
-                onClick={() => AddToCart(product.id)}
-                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center  border-none p-2 cursor-pointer hover:opacity-60"
-              >
-                Add To Cart
-                {/* {cartProductsAddLoading ? "Addding to Cart..." : "Add to Cart"} */}
-              </button>
+              <div>
+                <button
+                  onClick={() => AddToCart(product.id)}
+                  className="hidden sm:flex sm:w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
+                >
+                  Add To Cart
+                </button>
+
+                <Button
+                  onClick={() => AddToCart(product.id)}
+                  className=" flex sm:w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] items-center justify-center border-none p-2 sm:hidden "
+                >
+                  <FaCartPlus />
+                </Button>
+              </div>
             ) : (
               ""
             )}

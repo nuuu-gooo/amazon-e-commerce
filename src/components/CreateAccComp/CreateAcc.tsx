@@ -92,7 +92,7 @@ export const CreateAccComp = () => {
       <div className="wrapper flex justify-center items-center m-auto h-[full] p-9   ">
         <form
           action=""
-          className="sm:border border-zinc-300 border-solid p-8  w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
+          className="sm:border border-zinc-300 border-solid p-8  w-[full] flex justify-start items-start flex-col rounded mb-[1%]"
         >
           <h1>
             <FormattedMessage id="register" />

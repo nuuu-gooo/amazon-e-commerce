@@ -1,16 +1,17 @@
-import { TSearchedProduct } from "@src/@types/types";
+import React, { useEffect, useState, useContext } from "react";
+
 import { Loader } from "@src/assets/Loader/Loader";
 import { axiosInstance } from "@src/utils/publicAxios";
-import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Alert, Modal } from "antd";
+import { TProduct } from "@src/@types/types";
 
 export const SingleProduct = () => {
-  const [singleProduct, setSingleProduct] = useState<TSearchedProduct[]>([]);
+  const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
   const { authStage } = useContext(AuthContext);
@@ -42,7 +43,7 @@ export const SingleProduct = () => {
       {singleProduct?.map((product) => {
         return (
           <div className="md:flex p-9 justify-between items-center">
-            <div className="left flex items-center flex-col mr-[1%]">
+            <div className="  md:flex items-center flex-col mr-[1%]">
               <img
                 className="mx-auto     w-full cursor-pointer "
                 src={product.image}
@@ -61,7 +62,7 @@ export const SingleProduct = () => {
                 <p style={{ whiteSpace: "pre-line" }}>{product.description}</p>
               </div>
             </div>
-            <div className="right inline-flex  ml-[3%]  flex-col items-start border-solid border-black  p-6 rounded-xl">
+            <div className="righ md:inline-flex  ml-[]  flex-col items-start border-solid border-black  p-6 rounded-xl">
               <div className="price flex items-start">
                 <p className="text-sm font-medium">$</p>
                 <p className="text-3xl  font-medium">{product.price}</p>

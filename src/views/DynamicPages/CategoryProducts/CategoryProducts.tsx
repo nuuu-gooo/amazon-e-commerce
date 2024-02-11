@@ -15,7 +15,7 @@ export const CategoryProducts = () => {
   const [maxPrice, setMaxPrice] = useState<number>();
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [productOnPage, setProductOnPage] = useState(2);
+  const [productOnPage, setProductOnPage] = useState(3);
   const lastIndex = currentPage * productOnPage;
   const startIndex = lastIndex - productOnPage;
   const slicedOutData = products.slice(startIndex, lastIndex);
@@ -61,9 +61,9 @@ export const CategoryProducts = () => {
         {slicedOutData.length === 0 && (
           <img src={ProductsNotFoundImg} className="w-[50%]" />
         )}
-        <div className="right  place-items-center  grid grid-cols-1 gap-10 md:grid-cols-3 flex-col">
+        <div className="right flex justify-center flex-wrap">
           {slicedOutData.map((product) => {
-            return <SingleProductComp data={product} />;
+            return <SingleProductComp key={product.id} data={product} />;
           })}
         </div>
 

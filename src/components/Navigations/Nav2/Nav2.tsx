@@ -12,15 +12,14 @@ export const Nav2 = () => {
   return (
     <nav className="w-full bg-[#232f3e] p-3">
       <div className="nav-container  sm:flex justify-start items-center">
-        <p
-          className=" ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
-          onClick={toggleSidebarFunction}
-        >
-          <div className="flex items-center">
-            <RxHamburgerMenu className="text-2xl mr-2 cursor-pointer md:hidden" />
-            <p className="mr-[2%]">All</p>
-          </div>
-        </p>
+        <div>
+          <p
+            className=" ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
+            onClick={toggleSidebarFunction}
+          >
+            All
+          </p>
+        </div>
         {nav2Links.map((link: any) => {
           return (
             <Link
