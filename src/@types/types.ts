@@ -22,6 +22,12 @@ export interface TCartItem {
   cartProduct: TProduct;
 }
 
+export interface TLikedProduct {
+  id: string;
+  user_id: string;
+  likedProduct: TProduct;
+}
+
 export interface TProductSale {
   title: string;
   id: string;

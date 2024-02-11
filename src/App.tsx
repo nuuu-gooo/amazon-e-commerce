@@ -11,6 +11,8 @@ import SearchedProducts from "./views/DynamicPages/SearchedProducts";
 import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
+import { CheckoutPage } from "./views/CheckoutPage/CheckoutPage";
+
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -39,6 +41,10 @@ function App() {
           <Route
             path="/orders"
             element={<PrivateRoute children={<Orders />} />}
+          />
+          <Route
+            path="/checkout"
+            element={<PrivateRoute children={<CheckoutPage />} />}
           />
           <Route
             path="/productCategory/:productCategoryId"

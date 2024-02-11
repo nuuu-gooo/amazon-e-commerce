@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useGetWishListProducts } from "@src/hooks/WishList/useGetWishListProducts/useGetWishListProducts";
 import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
-import { TProduct } from "@src/@types/types";
+import { TLikedProduct, TProduct } from "@src/@types/types";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { Loader } from "@src/assets/Loader/Loader";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 
 export const WishListProducts = () => {
-  const {
-    wishListProducts,
-    deleteWishListProductLoading,
-    wishListProductsLoading,
-  } = useContext(GlobalContext);
+  const { wishListProducts, wishListProductsLoading } =
+    useContext(GlobalContext);
   const { deleteWishListProduct } = useDeleteWishListProduct();
   let [totalWishListPrice, setTotalWishListPrice] = useState<number>(0);
 
@@ -31,7 +28,7 @@ export const WishListProducts = () => {
       <div className="container  flex flex-col ">
         <h1 className="mb-3">Your WishList: 🎁</h1>
         <div className="w-full border-solid border-[#febd69] bg-[#febd69] p-4">
-          {wishListProducts.map((product: TProduct) => {
+          {wishListProducts.map((product: TLikedProduct) => {
             return (
               <div className="w-full border-solid border-black  flex bg-[white] justify-between items-center  p-4">
                 <div className="left flex items-center ">
@@ -62,8 +59,10 @@ export const WishListProducts = () => {
       </div>
       <div className="flex justify-center items-center flex-col mt-3">
         <p>
-          Total :{" "}
-          <span className="text-[red] text-2xl">${totalWishListPrice}</span>{" "}
+          Total:
+          <span className="text-[red] text-2xl">
+            ${totalWishListPrice}
+          </span>{" "}
         </p>
       </div>
     </div>

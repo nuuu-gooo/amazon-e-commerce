@@ -1,15 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cartEmptyImg from "@src/assets/SVG/cart-empty-img.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Button } from "antd";
 export const Cart = () => {
   const navigate = useNavigate();
   const { allCartProducts, deleteCartProducts } = useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
+  const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
+
+  useEffect(() => {
+    let total = 0;
+    for (let i = 0; i < allCartProducts.length; i++) {
+      total += allCartProducts[i].cartProduct.price;
+    }
+    setTotalCartPrice(total);
+  }, [allCartProducts.length]);
 
   console.log(allCartProducts);
   return (
@@ -44,12 +52,12 @@ export const Cart = () => {
       ) : (
         <div>
           <h1 className="mb-2">Your Cart </h1>
-          <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5">
+          <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5 rounded-l">
             {allCartProducts.map((product) => {
               return (
                 <div className="flex items-center justify-between border-solid bg-[white] border p-3">
                   <div className="left flex items-center">
-                    <h2>{product.cartProduct.title}</h2>
+                    <h3>{product.cartProduct.title}</h3>
                     <img
                       className="w-[10%] ml-3"
                       src={product.cartProduct.image}
@@ -65,6 +73,20 @@ export const Cart = () => {
                 </div>
               );
             })}
+          </div>
+          <div className="flex justify-center items-center flex-col mt-3">
+            <p>
+              Total:
+              <span className="text-[red] text-2xl">${totalCartPrice}</span>
+            </p>
+            <button
+              onClick={() => navigate("/checkout")}
+              className="mt-3 cursor-pointer px-2.5 rounded-md  font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
+ to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
+ active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
+            >
+              Checkout
+            </button>
           </div>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { TCartItem, TProduct } from "@src/@types/types";
+import { TCartItem, TLikedProduct, TProduct } from "@src/@types/types";
 import { createContext } from "react";
 
 export interface TExistingCategories {
@@ -17,7 +17,7 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
   existingCatLoading: boolean;
-  wishListProducts: TProduct[];
+  wishListProducts: TLikedProduct[];
   deleteWishListProductLoading: boolean;
   wishListProductsLoading: boolean;
   allCartProducts: TCartItem[];
