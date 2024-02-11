@@ -27,12 +27,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { authStage } = useContext(AuthContext);
   const [addToCartLoading, setAddToCartLoading] = useState<boolean>(false);
   const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
-  // const {
-  //   setCartProducts,
-  //   cartProductsAdd,
-  //   AddProductsToCart,
-  //   cartProductsAddLoading,
-  // } = useAddToCart();
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
