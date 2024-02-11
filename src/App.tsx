@@ -12,6 +12,7 @@ import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProdu
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
 import { CheckoutPage } from "./views/CheckoutPage/CheckoutPage";
+import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
 
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
@@ -33,6 +34,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFonud />} />
+
+          <Route path="/noRegisteredPage" element={<NotRegisteredPage />} />
 
           <Route
             path="/profile"
