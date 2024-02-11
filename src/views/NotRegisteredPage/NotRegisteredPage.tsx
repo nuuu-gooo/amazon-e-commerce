@@ -17,7 +17,7 @@ export const NotRegisteredPage = () => {
         active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
             onClick={() => navigate("/login")}
           >
-            Register
+            Login
           </button>
         }
       />
