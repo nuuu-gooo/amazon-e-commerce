@@ -6,10 +6,8 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { emailValidation } from "@src/utils/DifferentFunctions";
-import Alert from "antd/es/alert/Alert";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Button } from "antd";
 
 export const LoginComp = () => {
