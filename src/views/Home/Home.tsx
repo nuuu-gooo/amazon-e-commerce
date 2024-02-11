@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { AuthContext } from "@src/providers/Auth/AuthContext";
 import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
@@ -11,7 +10,6 @@ import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetPr
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
 
 export const Home = () => {
-  const { userData } = useContext(AuthContext);
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();

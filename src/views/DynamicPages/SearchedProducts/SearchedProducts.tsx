@@ -6,6 +6,7 @@ import { TProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Alert, Card } from "antd";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
+import SingleProductComp from "@src/components/UI /SingleProductComp";
 
 export const SearchedProducts = () => {
   const [minPrice, setMinPrice] = useState<number>();
@@ -47,24 +48,7 @@ export const SearchedProducts = () => {
           ""
         )}
         {searchedProducts.map((product) => {
-          return (
-            <Link
-              className="no-underline flex  "
-              to={`/search/${product.title}`}
-            >
-              <Card
-                className="gap-9 flex flex-col"
-                hoverable
-                style={{ width: 300 }}
-                cover={
-                  <img className="w-[30%]" alt="example" src={product.image} />
-                }
-              >
-                <Meta title={product.title} description={product.description} />
-                <p className="mt-[12%]">{product.price}$</p>
-              </Card>
-            </Link>
-          );
+          return <SingleProductComp data={product} />;
         })}
       </div>
       <div className="right invisible ">4</div>
