@@ -1,3 +1,12 @@
+export interface TProduct {
+  title: string;
+  id: string;
+  description: string;
+  image: string;
+  price: number;
+  category_name: string;
+}
+
 export interface TCategoryProducts {
   title: string;
   id: string;
@@ -7,13 +16,10 @@ export interface TCategoryProducts {
   category_name: string;
 }
 
-export interface TProduct {
-  title: string;
+export interface TCartItem {
   id: string;
-  description: string;
-  image: string;
-  price: number;
-  category_name: string;
+  user_id: string;
+  cartProduct: TProduct;
 }
 
 export interface TProductSale {

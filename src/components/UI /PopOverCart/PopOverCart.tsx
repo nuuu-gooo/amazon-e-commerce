@@ -6,6 +6,7 @@ export const PopOverCart = () => {
   const { allCartProducts } = useContext(GlobalContext);
   return (
     <div className="p-3 flex flex-col ">
+      <h2 className="text-center mb-3">Your Basket</h2>
       {allCartProducts.length === 0 ? (
         <p>No Products in Cart</p>
       ) : (

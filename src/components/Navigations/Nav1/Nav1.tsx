@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-import { FaSignOutAlt } from "react-icons/fa";
+
 import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
-import { SideBar } from "@src/components/SideBar/SideBar";
+import SideBar from "@src/components/SideBar";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Avatar, Button, Popover } from "antd";
@@ -13,8 +13,8 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
-import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
-import { PopOverCart } from "@src/components/UI /PopOverCart/PopOverCart";
+import { LContext } from "@src/providers/LProvider/LContext";
+import PopOverCart from "@src/components/UI /PopOverCart";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");

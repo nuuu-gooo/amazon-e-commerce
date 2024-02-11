@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
 import { axiosInstance } from "@src/utils/publicAxios";
-import { TSearchedProduct } from "@src/@types/types";
+import { TProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Alert, Card } from "antd";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
@@ -10,9 +10,7 @@ import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
 export const SearchedProducts = () => {
   const [minPrice, setMinPrice] = useState<number>();
   const [maxPrice, setMaxPrice] = useState<number>();
-  const [searchedProducts, setSearchedProducts] = useState<TSearchedProduct[]>(
-    []
-  );
+  const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
   const { productCategoryId, productId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
   const { Meta } = Card;

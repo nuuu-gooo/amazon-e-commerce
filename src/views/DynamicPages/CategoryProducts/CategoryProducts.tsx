@@ -1,13 +1,12 @@
 import { axiosInstance } from "@src/utils/publicAxios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
+import PriceFilterANTD from "@src/components/PriceSliderANTD";
 import { TCategoryProducts } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";
 import ProductsNotFoundImg from "@src/assets/images/no-items-found-img.png";
-import { SingleProductComp } from "@src/components/UI /SingleProductComp/SingleProductComp";
-import { PaginationComp } from "@src/components/Pagination/PaginationComp";
-
+import SingleProductComp from "@src/components/UI /SingleProductComp";
+import PaginationComp from "@src/components/Pagination";
 export const CategoryProducts = () => {
   const [products, setProducts] = useState<TCategoryProducts[]>([]);
   const { productCategoryId } = useParams();

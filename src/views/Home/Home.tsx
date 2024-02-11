@@ -5,8 +5,8 @@ import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
-import { SalesProductsComp } from "@src/components/UI /SalesProducts/SalesProductsComp";
-import { SectionSlider } from "@src/components/UI /SectionSlider/SectionSlider";
+import SalesProductsComp from "@src/components/UI /SalesProducts";
+import SectionSlider from "@src/components/UI /SectionSlider";
 import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
 

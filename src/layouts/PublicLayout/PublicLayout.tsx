@@ -1,4 +1,4 @@
-import { Footers } from "@src/components/Footers/Footers";
+import Footers from "@src/components/Footers";
 import { Navigations } from "@src/components/Navigations/Navigations";
 import { Outlet } from "react-router-dom";
 
