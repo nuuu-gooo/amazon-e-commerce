@@ -63,12 +63,12 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
 
   return (
     // @ts-ignore
-    <Slider className="mt-[1%] " {...settings}>
+    <Slider className=" " {...settings}>
       {saleProducts.map((product: TProductSale) => {
         return (
           <div
             key={product.id}
-            className=" flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full"
+            className=" rounded-md flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full"
           >
             <Link
               className="no-underline text-[black]"

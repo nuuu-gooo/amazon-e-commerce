@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 import { amazonSliderImgs } from "@src/Data/Data";
 
 const ImgCarrousel: React.FC = () => (
-  <Carousel autoplay={true} className=" relative mb-[10%]">
+  <Carousel autoplay={true} className=" relative mb-[8%]">
     {amazonSliderImgs.map((sliderImg, index) => {
       return (
         <div className="overflow-hidden " key={index}>
