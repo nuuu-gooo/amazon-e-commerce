@@ -29,7 +29,7 @@ export const Nav1 = () => {
   const content = (
     <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
-        <FaSignOutAlt />
+        Sign Out
       </Button>
 
       <Button className="mt-3" onClick={() => navigate("/profile")}>
