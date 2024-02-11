@@ -15,69 +15,48 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart } = useContext(GlobalContext);
 
-  // // var settings = {
-  // //   dots: true,
-  // //   slidesToShow: 3,
-  // //   cssEase: "linear",
-  // //   appendDots: (dots: string) => (
-  // //     <div
-  // //       style={{
-  // //         background: "#febd69",
-  // //         borderRadius: "10px",
-  // //         padding: "10px",
-  // //       }}
-  // //     >
-  // //       <ul style={{ margin: "0px" }}> {dots} </ul>
-  // //     </div>
-  // //   ),
-  //   customPaging: (i: string) => (
-  //     <div
-  //       style={{
-  //         width: "100%",
-  //         color: "#febd69",
-  //         background: "black",
-  //         border: "2px black solid",
-  //         borderRadius: "3px",
-  //       }}
-  //     >
-  //       {i + 1}
-  //     </div>
-  //   ),
+  function SampleNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "black",
+          color: "black",
+          borderRadius: "100%",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
-  //   responsive: [
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 3,
-  //         slidesToScroll: 3,
-  //         infinite: true,
-  //         dots: true,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 600,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //         initialSlide: 2,
-  //       },
-  //     },
-  //     {
-  //       breakpoint: 480,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ],
-  // };
+  function SamplePrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          fontSize: "100%",
+          background: "black",
+          borderRadius: "100%",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
@@ -87,7 +66,7 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
         return (
           <div
             key={product.id}
-            className=" flex justify-center w-full border-solid border-black p-9 flex-col items-center min-h-[600px]"
+            className=" flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full"
           >
             <Link
               className="no-underline text-[black]"
