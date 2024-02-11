@@ -4,10 +4,10 @@ import BlackAmazonLogo from "src/assets/SVG/black-amazon-logo.svg";
 
 export const AuthentficiationLayout = () => {
   return (
-    <div>
-      <Link className="amazon-logo flex justify-start items-center" to={"/"}>
+    <div className="">
+      <Link className="amazon-logo flex justify-center items-center" to={"/"}>
         <img
-          className="sm: w-[1%] min-w-[200px] mb-[4%] "
+          className="sm: w-[1%] min-w-[200px]  flex items-center "
           src={BlackAmazonLogo}
           alt=""
         />

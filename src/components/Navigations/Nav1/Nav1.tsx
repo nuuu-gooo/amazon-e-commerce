@@ -140,7 +140,7 @@ export const Nav1 = () => {
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
           ></button>
         </div>
-        <div className="langauge flex items-center px-[1%] ">
+        {/* <div className="langauge flex items-center px-[1%] ">
           {locale === Locale_ENUM.EN ? (
             <div className="">
               <button
@@ -169,7 +169,7 @@ export const Nav1 = () => {
               </button>
             </div>
           )}
-        </div>
+        </div> */}
         <div className="right">
           <div className="md:flex relative flex md:middle-input-container ml-3 flex-grow min-w-[50%]">
             {authStage === authStage_EUNM.AUTHORIZED ? (

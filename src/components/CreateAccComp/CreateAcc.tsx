@@ -15,7 +15,6 @@ import {
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { LContext } from "@src/providers/LProvider/LContext";
-import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const CreateAccComp = () => {
   const { createAccFetch, success, authStage, error } = useContext(AuthContext);
@@ -90,10 +89,10 @@ export const CreateAccComp = () => {
           />
         )}
       </div>
-      <div className="wrapper flex justify-center items-center m-auto h-[full]   ">
+      <div className="wrapper flex justify-center items-center m-auto h-[full] p-9   ">
         <form
           action=""
-          className="sm:border border-zinc-300 border-solid p-8  min-w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
+          className="sm:border border-zinc-300 border-solid p-8  w-[40%] flex justify-start items-start flex-col rounded mb-[1%]"
         >
           <h1>
             <FormattedMessage id="register" />

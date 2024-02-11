@@ -28,7 +28,7 @@ export const LoginComp = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="wrapper flex justify-center items-center flex-col  ">
+    <div className="wrapper flex justify-center items-center flex-col p-9  ">
       <form className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]">
         <h1>
           <FormattedMessage id="sign-in" />
