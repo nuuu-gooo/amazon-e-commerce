@@ -7,17 +7,9 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Button } from "antd";
 export const Cart = () => {
   const navigate = useNavigate();
-  const { allCartProducts, deleteCartProducts } = useContext(GlobalContext);
+  const { allCartProducts, deleteCartProducts, totalCartPrice } =
+    useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
-  const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
-
-  useEffect(() => {
-    let total = 0;
-    for (let i = 0; i < allCartProducts.length; i++) {
-      total += allCartProducts[i].cartProduct.price;
-    }
-    setTotalCartPrice(total);
-  }, [allCartProducts.length]);
 
   console.log(allCartProducts);
   return (

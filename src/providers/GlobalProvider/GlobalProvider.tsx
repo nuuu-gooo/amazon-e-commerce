@@ -11,6 +11,7 @@ import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListP
 import { privateAxios } from "@src/utils/privateAxios";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "../Auth/AuthContext";
+import { TCartItem } from "@src/@types/types";
 // import { useAddToCart } from "@src/hooks/Cart/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
@@ -20,13 +21,23 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [count, setCount] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
-  const [allCartProducts, setAllCartProducts] = useState([]);
+  const [allCartProducts, setAllCartProducts] = useState<TCartItem[]>([]);
   const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
   const { deleteWishListProductLoading } = useDeleteWishListProduct();
   const { wishListProductsLoading } = useGetWishListProducts();
   const { authStage } = useContext(AuthContext);
   const [addToCartLoading, setAddToCartLoading] = useState<boolean>(false);
   const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
+  const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
+
+  let sum = 0;
+  useEffect(() => {
+    for (let i = 0; i < allCartProducts.length; i++) {
+      sum += allCartProducts[i].cartProduct.price;
+    }
+
+    setTotalCartPrice(sum);
+  }, [allCartProducts.length]);
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
@@ -84,6 +95,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        totalCartPrice,
+        setTotalCartPrice,
         addToCartModal,
         setAddToCartModal,
         addToCartLoading,
