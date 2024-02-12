@@ -44,14 +44,18 @@ export const PopOverCart = () => {
             Total:
             <span className="text-[red] text-2xl">${totalCartPrice}</span>
           </p>
-          <button
-            onClick={() => navigate("/checkout")}
-            className="mt-3 cursor-pointer px-2.5 rounded-md  font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
+          {allCartProducts.length === 0 ? (
+            ""
+          ) : (
+            <button
+              onClick={() => navigate("/checkout")}
+              className="mt-3 cursor-pointer px-2.5 rounded-md  font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
-          >
-            Checkout
-          </button>
+            >
+              Checkout
+            </button>
+          )}
         </div>
       ) : (
         <button
