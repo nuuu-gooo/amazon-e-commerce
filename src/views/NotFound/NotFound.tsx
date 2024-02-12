@@ -5,6 +5,7 @@ import SorryText from "src/assets/images/sorry-text-not-found.png";
 export const NotFound = () => {
   const randomDogImagNumber = Math.floor(Math.random() * dogImagesArr.length);
   const randomDogImage = dogImagesArr[randomDogImagNumber];
+  document.title = "Amazon | 404 ";
 
   return (
     <div className="flex justify-center items-center h-[80vh] p-9 flex-col">

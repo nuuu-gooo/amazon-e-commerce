@@ -15,6 +15,8 @@ export const Home = () => {
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
 
+  document.title = "Amazon | Home ";
+
   return (
     <div>
       <ImgCarrousel />

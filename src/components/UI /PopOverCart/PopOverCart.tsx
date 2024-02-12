@@ -6,7 +6,8 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 
 export const PopOverCart = () => {
-  const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
+  const { allCartProducts, totalCartPrice, deleteCartProducts } =
+    useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
@@ -27,7 +28,12 @@ export const PopOverCart = () => {
                 />
               </div>
 
-              <Button danger={true}>Delete</Button>
+              <Button
+                onClick={() => deleteCartProducts(product.id)}
+                danger={true}
+              >
+                Delete
+              </Button>
             </div>
           );
         })
