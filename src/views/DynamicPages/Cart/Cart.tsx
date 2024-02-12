@@ -6,10 +6,10 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Button } from "antd";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { SingleCartItem } from "./SingleCartItem";
 export const Cart = () => {
   const navigate = useNavigate();
-  const { allCartProducts, deleteCartProducts, totalCartPrice } =
-    useContext(GlobalContext);
+  const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
 
   console.log(allCartProducts);
@@ -49,24 +49,7 @@ export const Cart = () => {
           <h1 className="mb-2">Your Cart </h1>
           <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5 rounded-l">
             {allCartProducts.map((product) => {
-              return (
-                <div className="flex items-center justify-between border-solid bg-[white] border p-3">
-                  <div className="left flex items-center">
-                    <h3>{product.cartProduct.title}</h3>
-                    <img
-                      className="w-[10%] ml-3"
-                      src={product.cartProduct.image}
-                      alt=""
-                    />
-                  </div>
-                  <Button
-                    onClick={() => deleteCartProducts(product.id)}
-                    danger={true}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              );
+              return <SingleCartItem data={product} />;
             })}
           </div>
           <div className="flex justify-center items-center flex-col mt-3">

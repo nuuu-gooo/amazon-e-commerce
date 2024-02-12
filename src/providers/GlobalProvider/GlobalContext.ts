@@ -26,6 +26,8 @@ interface TGlobalContext {
   addToCartModal: boolean;
   totalCartPrice: number;
   setTotalCartPrice: React.Dispatch<React.SetStateAction<number>>;
+  deleteCartLoading: boolean;
+  setDeleteCartLoading: React.Dispatch<React.SetStateAction<boolean>>;
   AddToCart: (id: string) => Promise<void>;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
@@ -33,6 +35,7 @@ interface TGlobalContext {
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
+  deleteCartLoading: false,
   totalCartPrice: 0,
   wishListProducts: [],
   allCartProducts: [],
@@ -44,6 +47,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   isToggled: false,
   existingCatLoading: false,
   addToCartModal: false,
+  setDeleteCartLoading: () => {},
   setTotalCartPrice: () => {},
   setAddToCartModal: () => {},
   deleteCartProducts: async () => {},

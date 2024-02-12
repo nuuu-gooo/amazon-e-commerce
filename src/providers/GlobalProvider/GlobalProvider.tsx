@@ -12,7 +12,6 @@ import { privateAxios } from "@src/utils/privateAxios";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "../Auth/AuthContext";
 import { TCartItem } from "@src/@types/types";
-// import { useAddToCart } from "@src/hooks/Cart/useAddToCart";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [existingCategories, setExistingCategories] = useState<
@@ -29,6 +28,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [addToCartLoading, setAddToCartLoading] = useState<boolean>(false);
   const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
   const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
+  const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
 
   let sum = 0;
   useEffect(() => {
@@ -81,8 +81,15 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   const deleteCartProducts = async (id: string) => {
-    await privateAxios.delete(`/cart/${id}`);
-    getCartProducts();
+    try {
+      setDeleteCartLoading(true);
+      await privateAxios.delete(`/cart/${id}`);
+      getCartProducts();
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setDeleteCartLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -95,6 +102,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        deleteCartLoading,
+        setDeleteCartLoading,
         totalCartPrice,
         setTotalCartPrice,
         addToCartModal,
