@@ -4,8 +4,12 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import Slider from "react-slick";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { TProduct } from "@src/@types/types";
 
-export const SectionSlider = ({ data }: any) => {
+interface TSectionSlider {
+  data: TProduct[];
+}
+export const SectionSlider = ({ data }: TSectionSlider) => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart } = useContext(GlobalContext);
 
@@ -57,7 +61,7 @@ export const SectionSlider = ({ data }: any) => {
       className=" shadow shadow-black border border-solid border-black"
       {...settings}
     >
-      {data.map((product: any) => {
+      {data?.map((product: TProduct) => {
         return (
           <div
             key={product.id}
