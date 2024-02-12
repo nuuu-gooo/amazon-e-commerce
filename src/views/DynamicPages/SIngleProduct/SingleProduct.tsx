@@ -7,6 +7,7 @@ import { TProduct } from "@src/@types/types";
 import { SingleProductItem } from "./SingleProductItem";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
 import SectionSlider from "@src/components/UI /SectionSlider";
+import CategoryProducts from "../CategoryProducts";
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -45,7 +46,6 @@ export const SingleProduct = () => {
       {singleProduct?.map((product: TProduct) => {
         return <SingleProductItem data={product} />;
       })}
-      <h3 className="text-center">Users have also viewed</h3>
       <div className="flex items-center justify-center gap-3 flex-wrap  mt-1  p-3 mb-3  ">
         {productsViewed.map((product: any) => {
           return (
