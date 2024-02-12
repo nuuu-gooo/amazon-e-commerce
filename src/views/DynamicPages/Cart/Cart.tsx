@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Button } from "antd";
+import { authStage_EUNM } from "@src/ENUMS/Enums";
 export const Cart = () => {
   const navigate = useNavigate();
   const { allCartProducts, deleteCartProducts, totalCartPrice } =
@@ -25,20 +26,22 @@ export const Cart = () => {
             >
               Go to Home Page
             </Link>
-            <div className="btns flex items-center justify-center mt-3">
-              <button
-                className="rounded    bg-[#febd69]   p-3 border-none hover:opacity-50 cursor-pointer"
-                onClick={() => navigate("/login")}
-              >
-                Sign in to your account
-              </button>
-              <button
-                className=" rounded  bg-[#febd69] ml-3  p-3 border-none hover:opacity-50 cursor-pointer "
-                onClick={() => navigate("/createaccount")}
-              >
-                Sing Up now!
-              </button>
-            </div>
+            {authStage === authStage_EUNM.UNAUTHORIZED && (
+              <div className="btns flex items-center justify-center mt-3">
+                <button
+                  className="rounded    bg-[#febd69]   p-3 border-none hover:opacity-50 cursor-pointer"
+                  onClick={() => navigate("/login")}
+                >
+                  Sign in to your account
+                </button>
+                <button
+                  className=" rounded  bg-[#febd69] ml-3  p-3 border-none hover:opacity-50 cursor-pointer "
+                  onClick={() => navigate("/createaccount")}
+                >
+                  Sing Up now!
+                </button>
+              </div>
+            )}
           </div>
         </div>
       ) : (
