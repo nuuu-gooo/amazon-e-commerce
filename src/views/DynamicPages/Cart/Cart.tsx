@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import cartEmptyImg from "@src/assets/SVG/cart-empty-img.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { Button } from "antd";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { SingleCartItem } from "./SingleCartItem";
+
 export const Cart = () => {
   const navigate = useNavigate();
   const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
 
-  console.log(allCartProducts);
+  document.title = "Amazon | Your Cart";
   return (
     <div className="flex justify-center items-center p-7">
       {allCartProducts.length === 0 ? (

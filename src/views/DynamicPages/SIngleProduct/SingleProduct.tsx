@@ -42,7 +42,10 @@ export const SingleProduct = () => {
       {loading ? <Loader /> : ""}
       {singleProduct?.map((product) => {
         return (
-          <div className="md:flex p-9 justify-between items-center">
+          <div
+            key={product.id}
+            className="md:flex p-9 justify-between items-center"
+          >
             <div className="  md:flex items-center flex-col mr-[1%]">
               <img
                 className="mx-auto     w-full cursor-pointer "

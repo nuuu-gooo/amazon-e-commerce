@@ -25,6 +25,7 @@ export const CategoryProducts = () => {
       const resp = await axiosInstance.get(
         `product?minPrice=${minPrice}&maxPrice=${maxPrice}&categoryName=${productCategoryId}`
       );
+      document.title = `Amazon |  ${productCategoryId}`;
       setProducts(resp.data.products);
     } catch (error) {
     } finally {

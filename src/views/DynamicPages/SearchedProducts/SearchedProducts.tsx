@@ -22,6 +22,7 @@ export const SearchedProducts = () => {
         `product?productName=${productId}&categoryName=${productCategoryId}&minPrice=${minPrice}&maxPrice=${maxPrice}`
       );
       setSearchedProducts(fetch.data.products);
+      document.title = ` Amazon | ${productId} | ${productCategoryId} `;
     } catch (error) {
     } finally {
       setLoading(false);

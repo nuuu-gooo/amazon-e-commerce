@@ -3,8 +3,6 @@ import { TCartItem } from "@src/@types/types";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Button } from "antd";
 
-Button;
-
 interface TSingleCartItem {
   data: TCartItem;
 }
