@@ -23,7 +23,7 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
       className=" rounded-md flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full"
     >
       <Link
-        className="no-underline text-[black]"
+        className="no-underline text-[black] flex items-center flex-col"
         to={`/search/${product.title}`}
       >
         <img className="w-[50%] aspect-square  " src={product.image} alt="" />

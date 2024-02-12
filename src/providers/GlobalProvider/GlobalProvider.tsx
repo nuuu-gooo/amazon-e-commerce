@@ -61,9 +61,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const AddToCart = async (id: string) => {
     try {
       setAddToCartLoading(true);
-      setAddToCartModal(true);
       const resp = await privateAxios.post("/cart", { product_id: id });
       console.log(resp.data);
+      setAddToCartModal(true);
 
       getCartProducts();
     } catch (error) {
