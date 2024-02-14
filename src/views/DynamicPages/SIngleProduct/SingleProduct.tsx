@@ -60,7 +60,7 @@ export const SingleProduct = () => {
                 className="no-underline text-black"
                 to={`/search/${product.title}`}
               >
-                <div className="max-w-[300px]  flex items-center flex-col  border-solid p-3  rounded-sm">
+                <div className="max-h-[300px] min-h-[300px] max-w-[300px]   flex items-center flex-col  border-solid p-3  rounded-sm">
                   <img
                     className=" max-w-[200px] aspect-square"
                     src={product.image}

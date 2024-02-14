@@ -10,6 +10,7 @@ import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetPr
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
 
 export const Home = () => {
+  document.title = "Amazon | Home ";
   const { existingCategories, existingCatLoading } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
@@ -18,8 +19,6 @@ export const Home = () => {
     7,
     existingCategories.length - 1
   );
-
-  document.title = "Amazon | Home ";
 
   return (
     <div>

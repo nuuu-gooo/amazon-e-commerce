@@ -21,7 +21,7 @@ export const Nav1 = () => {
   const { toggleLanguage, locale } = useContext(LContext);
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
-  const [currentCategory, setCurrentCategory] = useState<string>("");
+  const [currentCategory, setCurrentCategory] = useState<string>("სმარტფონები");
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
   const location = useLocation();
