@@ -15,10 +15,7 @@ export const Home = () => {
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
-  const slicedOutCategories = existingCategories.splice(
-    7,
-    existingCategories.length - 1
-  );
+  const slicedOutCategories = existingCategories.slice(0, 7);
 
   return (
     <div>
@@ -28,7 +25,7 @@ export const Home = () => {
           {existingCatLoading ? (
             <Loader />
           ) : (
-            existingCategories.map((category) => {
+            slicedOutCategories.map((category) => {
               return (
                 <Link
                   key={category.id}
