@@ -8,6 +8,7 @@ import { SingleProductItem } from "./SingleProductItem";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
 import SectionSlider from "@src/components/UI /SectionSlider";
 import CategoryProducts from "../CategoryProducts";
+import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -44,18 +45,7 @@ export const SingleProduct = () => {
   return (
     <div>
       <div className="bread-crumb flex justify-center items-center mt-4">
-        <h3>Home</h3>
-        {"<"}
-        <h3
-          className="cursor-pointer hover:underline"
-          onClick={() =>
-            navigate(`/productCategory/${singleProduct[0].category_name}`)
-          }
-        >
-          {singleProduct[0]?.category_name}
-        </h3>
-        {"<"}
-        <h3 className="cursor-pointer  mr-3">{singleProduct[0]?.title}</h3>
+        <BreadCrumb data={singleProduct} />
       </div>
       {loading && <Loader />}
       {singleProduct?.map((product: TProduct) => {
