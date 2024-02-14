@@ -38,8 +38,19 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
           <h1>{data.title}</h1>
           <hr className="border-solid border-black w-full mt-1 " />
           <div className="price flex items-center gap-3 pt-[20px] ">
-            <p>Price:</p>
-            <p className="text-2xl text-red-700">{data.price} $</p>
+            <p className="text-2xl">
+              {saleProducts.some((product) => product.id === data.id) ? (
+                <span className=" text-red-700">
+                  {
+                    saleProducts.find((product) => product?.id === data?.id)
+                      ?.salePrice
+                  }
+                  $
+                </span>
+              ) : (
+                <p className=" text-red-700">{data.price}$</p>
+              )}
+            </p>{" "}
           </div>
           <div className="data-description flex flex-col items-start mt-3">
             <h4 className="mb-2">About this Item:</h4>
@@ -49,7 +60,19 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
         <div className="righ md:inline-flex  ml-[]  flex-col items-start border-solid border-black  p-6 rounded-xl">
           <div className="price flex items-start">
             <p className="text-sm font-medium">$</p>
-            <p className="text-3xl  font-medium">{data.price}</p>
+
+            <p className="text-3xl mb-3">
+              {saleProducts.some((product) => product.id === data.id) ? (
+                <span className="">
+                  {
+                    saleProducts.find((product) => product?.id === data?.id)
+                      ?.salePrice
+                  }
+                </span>
+              ) : (
+                <p className=" text-red-700">{data.price}$</p>
+              )}
+            </p>
           </div>
           <p className=" text-[#565959] ">
             No Import Fees Deposit & <br /> $16.78 Shipping to Greece
@@ -62,7 +85,13 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             Order within <span className="text-[green]">7 hrs 29 mins</span>
           </p>
 
-          {salesBadge ? <p className="bg-[red] text-[white]">For Sale</p> : ""}
+          {salesBadge ? (
+            <p className="bg-[red] text-[white] p-2 mt-4 rounded-sm">
+              For Sale
+            </p>
+          ) : (
+            ""
+          )}
           <button
             onClick={() => {
               if (authStage === authStage_EUNM.AUTHORIZED) {
