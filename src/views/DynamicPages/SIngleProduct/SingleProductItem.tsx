@@ -1,11 +1,12 @@
 import { TProduct } from "@src/@types/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Alert, Modal } from "antd";
+import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 interface TSingleProductItem {
   data: TProduct;
@@ -15,7 +16,14 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
     useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [salesBadge, setSalesBadge] = useState<boolean>(false);
+  const { saleProducts } = useGetSaleProducts();
 
+  useEffect(() => {
+    if (saleProducts.find((product) => product.id === data.id)) {
+      setSalesBadge(true);
+    }
+  }, [saleProducts, data]);
   return (
     <div>
       <div key={data.id} className="md:flex p-9 justify-between items-center">
@@ -54,6 +62,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             Order within <span className="text-[green]">7 hrs 29 mins</span>
           </p>
 
+          {salesBadge ? <p className="bg-[red] text-[white]">For Sale</p> : ""}
           <button
             onClick={() => {
               if (authStage === authStage_EUNM.AUTHORIZED) {
@@ -66,13 +75,6 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
           >
             {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
           </button>
-          <Modal
-            centered
-            onCancel={() => setAddToCartModal(false)}
-            open={addToCartModal}
-          >
-            <Alert type="success" message="Successfully added to Cart!" />
-          </Modal>
         </div>
       </div>
     </div>
