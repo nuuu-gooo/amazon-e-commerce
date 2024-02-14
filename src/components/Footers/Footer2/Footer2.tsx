@@ -2,6 +2,17 @@ import React, { useState, useContext } from "react";
 import { amazonServices } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { FormattedMessage } from "react-intl";
+import { Locale_ENUM } from "@src/providers/LProvider/LContext";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaMailchimp,
+  FaTwitter,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaLocationPin } from "react-icons/fa6";
+import { FaPhoneAlt } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
 
 export const Footer2 = () => {
   const { locale } = useContext(LContext);
@@ -28,13 +39,7 @@ export const Footer2 = () => {
         <p className="rights text-xs  text-white  text-center leading-6 items-center">
           Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
           for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
-        </p>
-        <button
-          className="mt-3 text-xl border-none bg-[transparent] cursor-pointer"
-          onClick={toggleLanguage}
-        >
-          <FormattedMessage id="change.language" />
-        </button>
+        </p>{" "}
       </div>
     </div>
   );
