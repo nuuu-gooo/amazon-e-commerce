@@ -12,6 +12,7 @@ import { privateAxios } from "@src/utils/privateAxios";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "../Auth/AuthContext";
 import { TCartItem } from "@src/@types/types";
+import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [existingCategories, setExistingCategories] = useState<
@@ -29,15 +30,29 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
   const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
+  const { saleProducts } = useGetSaleProducts();
 
   let sum = 0;
+
   useEffect(() => {
     for (let i = 0; i < allCartProducts.length; i++) {
-      sum += allCartProducts[i].cartProduct.price;
+      const product = allCartProducts[i].cartProduct;
+      const isProductOnSale = saleProducts.some(
+        (saleProduct) => saleProduct.id === product.id
+      );
+
+      if (isProductOnSale) {
+        //@ts-ignore
+        sum += saleProducts.find(
+          (saleProduct) => saleProduct?.id === product?.id
+        ).salePrice;
+      } else {
+        sum += product.price;
+      }
     }
 
     setTotalCartPrice(sum);
-  }, [allCartProducts.length]);
+  }, [allCartProducts.length, saleProducts]);
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);

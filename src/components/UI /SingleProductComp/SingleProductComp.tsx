@@ -5,10 +5,12 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Button } from "antd";
+import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 export const SingleProductComp = ({ data }: { data: TProduct }) => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart, addToCartLoading } = useContext(GlobalContext);
+  const { saleProducts } = useGetSaleProducts();
   return (
     <div className="flex flex-wrap overflow-hidden">
       <div className=" flex justify-center items-start flex-col border border-solid  max-w-[360px]  rounded-md p-9  ">
@@ -23,7 +25,21 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
         </Link>
 
         <h2 className="mt-4 mb-1">{data.title}</h2>
-        <p className=" text-red-700">{data.price}$</p>
+
+        <p>
+          {saleProducts.some((product) => product.id === data.id) ? (
+            <span className=" text-red-700">
+              {
+                saleProducts.find((product) => product?.id === data?.id)
+                  ?.salePrice
+              }
+              $
+            </span>
+          ) : (
+            <p className=" text-red-700">{data.price}$</p>
+          )}
+        </p>
+        <p></p>
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button
             loading={addToCartLoading}
