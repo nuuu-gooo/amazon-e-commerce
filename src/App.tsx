@@ -11,7 +11,7 @@ import SearchedProducts from "./views/DynamicPages/SearchedProducts";
 import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
-import { CheckoutPage } from "./views/CheckoutPage/CheckoutPage";
+import CheckoutPage from "./views/DynamicPages/CheckoutPage";
 import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
 
 const Home = lazy(() => import("@src/views/Home"));

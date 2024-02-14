@@ -61,7 +61,7 @@ export const SectionSlider = ({ data }: TSectionSlider) => {
       className=" shadow shadow-black border border-solid border-black"
       {...settings}
     >
-      {data?.map((product: TProduct) => {
+      {data.map((product: any) => {
         return (
           <div
             key={product.id}
