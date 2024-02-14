@@ -5,7 +5,6 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Alert, Modal } from "antd";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 interface TSingleProductItem {
@@ -29,14 +28,15 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
       <div key={data.id} className="md:flex p-9 justify-between items-center">
         <div className="  md:flex items-center flex-col mr-[1%]">
           <img
-            className="mx-auto     w-full cursor-pointer "
+            // className="mx-auto     w-full cursor-pointer "
+            className="mx-auto  h-[400px] w-[400px] cursor-pointer"
             src={data.image}
             alt="data-img"
           />
         </div>
         <div className="middle flex flex-col items-start">
           <h1>{data.title}</h1>
-          <hr className="border-solid border-black w-full mt-1 " />
+          <hr className="border-solid border-black w-[100%] mt-1 " />
           <div className="price flex items-center gap-3 pt-[20px] ">
             <p className="text-2xl">
               {saleProducts.some((product) => product.id === data.id) ? (
@@ -86,7 +86,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
           </p>
 
           {salesBadge ? (
-            <p className="bg-[red] text-[white] p-2 mt-4 rounded-sm">
+            <p className="bg-[red] text-[white] p-2 mt-4 rounded-sm text-center w-full">
               For Sale
             </p>
           ) : (
@@ -100,7 +100,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
                 navigate("/login");
               }
             }}
-            className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
+            className="w-[100%] mt-2 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
             {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
           </button>

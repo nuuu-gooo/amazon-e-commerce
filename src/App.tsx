@@ -11,9 +11,8 @@ import SearchedProducts from "./views/DynamicPages/SearchedProducts";
 import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
-import CheckoutPage from "./views/DynamicPages/CheckoutPage";
+import CheckoutPage from "@src/views/DynamicPages/CheckoutPage";
 import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
-
 const Home = lazy(() => import("@src/views/Home"));
 const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -34,9 +33,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFonud />} />
-
           <Route path="/noRegisteredPage" element={<NotRegisteredPage />} />
-
           <Route
             path="/profile"
             element={<PrivateRoute children={<Profile />} />}
@@ -61,14 +58,12 @@ function App() {
             path="/search/:searchedProductId"
             element={<SingleProduct />}
           />
-
           <Route
             path="/wishList"
             element={<PrivateRoute children={<WishListProducts />} />}
           />
           <Route path="/cart" element={<Cart />} />
         </Route>
-
         <Route element={<AuthentficiationLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/createaccount" element={<CreateAcc />} />

@@ -1,15 +1,21 @@
 {
   "include@-error": "! Beinhalte '@'",
+  "profile": "Profil",
   "min-length-error": "! Minimum Länge: 7",
   "name-error": "! Bitte geben Sie Ihren Namen ein",
   "surname-error": "! Bitten geben Sie Ihren Nachnamen ein",
   "re-enter-error": "! Falsches Passwort",
   "number-error": "Bitte geben Sie genau 9 Zahlen hinein!",
   "change.language": "🇺🇸",
+  "home": "Zuhause",
+  "delete": "Löschen",
   "sign-in": "Anmelden",
+  "sign-out": "Abmelden",
   "e-mail": "E-Mail",
   "password": "Passwort",
   "new-to-amazon": "Neu bei Amazon",
+  "wish-list": "Ihre Wunschliste 🎁",
+  "checkout": "Kasse",
   "create-your-amazon-account": "Erstelle deinen Amazon Account",
   "amazon-affiliates": "© 1996-2023, Amazon.com, Inc. oder seine Tochtergesellschaften",
   "continue-btn": "Forfahren",
@@ -36,5 +42,9 @@
   "category-container-photo-video": "Photo | Video",
   "category-container-gaming": "Videospiele",
   "category-container-tv-monitors": "TV | Monitore",
-  "category-container-tabs": "Tabs"
+  "category-container-tabs": "Tabs",
+  "new-customer": "Neuer Kunde?",
+  "start-here": "Starte hier!",
+  "your-basket": "Ihr Einkaufswagen",
+  "empty-basket": "Ihr Einkaufswagen ist leer!"
 }

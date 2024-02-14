@@ -44,7 +44,7 @@ export const SingleProduct = () => {
 
   return (
     <div>
-      <div className="bread-crumb flex justify-center items-center mt-4">
+      <div className="   bread-crumb flex justify-center items-center mt-4 flex-wrap">
         <BreadCrumb data={singleProduct} />
       </div>
       {loading && <Loader />}

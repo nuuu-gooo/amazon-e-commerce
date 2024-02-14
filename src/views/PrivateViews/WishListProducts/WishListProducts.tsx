@@ -6,6 +6,7 @@ import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { Loader } from "@src/assets/Loader/Loader";
 import { GlobalContext } from "@src/providers/GlobalProvider";
+import { FormattedMessage } from "react-intl";
 
 export const WishListProducts = () => {
   const { wishListProducts, wishListProductsLoading } =
@@ -26,7 +27,9 @@ export const WishListProducts = () => {
     <div className="flex justify-center items-center flex-col h-full p-3">
       {/* {wishListProductsLoading ? <Loader /> : ""} */}
       <div className="container  flex flex-col ">
-        <h1 className="mb-3">Your WishList: 🎁</h1>
+        <h1 className="mb-3">
+          <FormattedMessage id="wish-list" />
+        </h1>
         <div className="w-full border-solid border-[#febd69] bg-[#febd69] p-4">
           {wishListProducts.map((product: TLikedProduct) => {
             return (

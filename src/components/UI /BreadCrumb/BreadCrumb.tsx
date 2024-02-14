@@ -7,6 +7,7 @@ export const BreadCrumb = ({ data }: any) => {
   return (
     <div>
       <Breadcrumb
+        className=" justify-center"
         items={[
           {
             title: <Link to="/">Home</Link>,

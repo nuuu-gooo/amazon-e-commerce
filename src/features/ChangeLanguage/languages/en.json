@@ -1,15 +1,21 @@
 {
   "change.language": "🇩🇪",
+  "profile": "Profile",
   "sign-in": "Sign in",
+  "sign-out": "Sign Out",
   "e-mail": "E-Mail",
   "password": "Password",
   "new-to-amazon": "New to Amazon ",
+  "home": "Zuhause",
+  "delete": "Delete",
   "create-your-amazon-account": "Create your account",
   "amazon-affiliates": "© 1996-2023, Amazon.com, Inc. or its affiliates",
   "continue-btn": "Continue",
   "privacy-notice": "By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.",
   "need-help": "Need Help",
+  "checkout": "Checkout",
   "register": "Create Account",
+  "wish-list": "Your Wishlist 🎁",
   "your-name": "Your Name",
   "your-surname": "Your Surname",
   "re-enter-password": "re-enter your password ",
@@ -36,5 +42,9 @@
   "category-container-photo-video": "Photo | Video",
   "category-container-gaming": "Gaming",
   "category-container-tv-monitors": "TV | Monitors",
-  "category-container-tabs": "Tabs"
+  "category-container-tabs": "Tabs",
+  "new-customer": "New Customer?",
+  "start-here": "Start here!",
+  "your-basket": "Your Basket",
+  "empty-basket": "No itmes in Cart"
 }

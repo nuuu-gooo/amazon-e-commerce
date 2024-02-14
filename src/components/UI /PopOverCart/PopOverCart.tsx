@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
+import { FormattedMessage } from "react-intl";
 
 export const PopOverCart = () => {
   const { allCartProducts, totalCartPrice, deleteCartProducts } =
@@ -12,9 +13,11 @@ export const PopOverCart = () => {
   const navigate = useNavigate();
   return (
     <div className="p-3 flex flex-col ">
-      <h2 className="text-center mb-3">Your Basket</h2>
+      <h3 className="mb-3 ">
+        <FormattedMessage id="your-basket" />
+      </h3>
       {allCartProducts.length === 0 ? (
-        <p>No Products in Cart</p>
+        <FormattedMessage id="empty-basket" />
       ) : (
         allCartProducts.map((product) => {
           return (
@@ -32,7 +35,7 @@ export const PopOverCart = () => {
                 onClick={() => deleteCartProducts(product.id)}
                 danger={true}
               >
-                Delete
+                <FormattedMessage id="delete" />
               </Button>
             </div>
           );
@@ -53,7 +56,7 @@ export const PopOverCart = () => {
 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
             >
-              Checkout
+              <FormattedMessage id="checkout" />
             </button>
           )}
         </div>
@@ -64,7 +67,7 @@ active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-20
 to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
 active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
         >
-          Register
+          <FormattedMessage id="register" />
         </button>
       )}
     </div>

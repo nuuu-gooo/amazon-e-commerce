@@ -29,17 +29,17 @@ export const Nav1 = () => {
   const content = (
     <div className="flex flex-col">
       <Button type="primary" onClick={loggout}>
-        Sign out
+        <FormattedMessage id="sign-out" />
       </Button>
 
       <Button className="mt-3" onClick={() => navigate("/profile")}>
-        Profile
+        <FormattedMessage id="profile" />
       </Button>
       <Button className="mt-3" onClick={() => navigate("/")}>
-        Home
+        <FormattedMessage id="home" />
       </Button>
       <Button className="mt-3" onClick={() => navigate("/wishList")}>
-        Wish List 🎁
+        <FormattedMessage id="wish-list" />
       </Button>
     </div>
   );
@@ -52,12 +52,14 @@ export const Nav1 = () => {
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
         onClick={() => navigate("/login")}
       >
-        Register
+        <FormattedMessage id="register" />
       </button>
       <p className="mt-3">
-        New Customer?{" "}
+        <FormattedMessage id="new-customer" />{" "}
         <Link to={"/createaccount"}>
-          <span>Start here</span>
+          <span>
+            <FormattedMessage id="start-here" />
+          </span>
         </Link>
       </p>
     </div>
@@ -189,7 +191,6 @@ export const Nav1 = () => {
                     />
                   </Popover>
                 ) : (
-                  // <Link className="no-underline  text-[white]" to={"/login"}>
                   <Popover content={authContent}>
                     <p className="text-sm text-white ">
                       <FormattedMessage id="hello-sign-in-nav-1" />
@@ -198,7 +199,6 @@ export const Nav1 = () => {
                       <FormattedMessage id="accounts-and-lists" />{" "}
                     </p>
                   </Popover>
-                  // </Link>
                 )}
               </div>
               <Link className="no-underline text-[white]" to={"/orders"}>
