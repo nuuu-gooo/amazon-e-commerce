@@ -14,6 +14,10 @@ export const Home = () => {
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
+  const slicedOutCategories = existingCategories.splice(
+    7,
+    existingCategories.length - 1
+  );
 
   document.title = "Amazon | Home ";
 
@@ -53,14 +57,6 @@ export const Home = () => {
           <h2 className="mb-2">Cooking</h2>
           <SectionSlider data={cookingProducts} />
         </div>
-
-        {/* {userData ? (
-          <h1 className="mt-9" key={userData.first_name}>
-            Welcome to Amazon <i>{userData.first_name}</i>{" "}
-          </h1>
-        ) : (
-          ""
-        )} */}
       </div>
     </div>
   );
