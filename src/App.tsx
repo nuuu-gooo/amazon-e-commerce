@@ -4,7 +4,7 @@ import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "@src/layouts/AuthenLayout/AuthentficiationLayout";
 import { Loader } from "@src/assets/Loader/Loader";
 import { PrivateRoute } from "@src/views/Private/PrivateRoute";
-import { Profile } from "@src/views/PrivateViews/Profile/Profile";
+import Profile from "./views/PrivateViews/Profile";
 import { Orders } from "@src/views/PrivateViews/Orders/Orders";
 import CategoryProducts from "@src/views/DynamicPages/CategoryProducts";
 import SearchedProducts from "./views/DynamicPages/SearchedProducts";
@@ -13,8 +13,10 @@ import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
 import CheckoutPage from "@src/views/DynamicPages/CheckoutPage";
 import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
+import { LoginSecurity } from "./views/PrivateViews/Profile/LoginSecurity/LoginSecurity";
+import { ChangeInfo } from "./views/PrivateViews/Profile/LoginSecurity/ChangeInfo/ChangeInfo";
+
 const Home = lazy(() => import("@src/views/Home"));
-const Products = lazy(() => import("@src/views/Products"));
 const Login = lazy(() => import("@src/views/Login"));
 const NotFonud = lazy(() => import("@src/views/NotFound"));
 const CreateAcc = lazy(() => import("@src/views/CreateAcc"));
@@ -31,7 +33,6 @@ function App() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFonud />} />
           <Route path="/noRegisteredPage" element={<NotRegisteredPage />} />
           <Route
@@ -42,6 +43,12 @@ function App() {
             path="/orders"
             element={<PrivateRoute children={<Orders />} />}
           />
+
+          <Route
+            path="/loginSecurity"
+            element={<PrivateRoute children={<LoginSecurity />} />}
+          />
+
           <Route
             path="/checkout"
             element={<PrivateRoute children={<CheckoutPage />} />}
@@ -67,6 +74,10 @@ function App() {
         <Route element={<AuthentficiationLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/createaccount" element={<CreateAcc />} />
+          <Route
+            path="/loginSecurity/changeInfo"
+            element={<PrivateRoute children={<ChangeInfo />} />}
+          />
         </Route>
       </Routes>
     </Suspense>

@@ -665,3 +665,19 @@ export const amazonServices = [
     },
   },
 ];
+
+export const profile_elements = [
+  {
+    name: "Your orders",
+    imgSrc:
+      "https://m.media-amazon.com/images/G/01/x-locale/cs/help/images/gateway/self-service/order._CB660668735_.png",
+    pageLink: "/orders",
+  },
+
+  {
+    name: "Login & Security",
+    imgSrc:
+      "https://m.media-amazon.com/images/G/01/x-locale/cs/help/images/gateway/self-service/security._CB659600413_.png",
+    pageLink: "/loginSecurity",
+  },
+];
