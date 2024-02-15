@@ -28,6 +28,7 @@ export type AuthContextType = {
   setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   success: boolean;
   error: boolean;
+  changeAccInfo: any;
 };
 
 export const AuthContext = createContext<AuthContextType>({
@@ -37,6 +38,7 @@ export const AuthContext = createContext<AuthContextType>({
   authStage: authStage_EUNM.UNAUTHORIZED,
   loading: false,
   success: false,
+  changeAccInfo: () => {},
   signInFetch: () => {},
   setUserData: () => {},
   setAuthData: () => {},

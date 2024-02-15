@@ -3,7 +3,7 @@ import { AuthContext, TokenTypes, UserDataType } from "./AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { jwtDecode } from "jwt-decode";
-import { setPrivateAccessToken } from "@src/utils/privateAxios";
+import { privateAxios, setPrivateAccessToken } from "@src/utils/privateAxios";
 import { useNavigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
 
   // Sign In Acc fetch //
-
   const signInFetch = async (email: string, password: string) => {
     try {
       setLoading(true);
@@ -109,10 +108,30 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
+  //--USER INFO CHANGE--//
+
+  const changeAccInfo = async (
+    userPassword: string,
+    userEmail: string,
+    userName: string,
+    userSurname: string,
+    userNumber: string
+  ) => {
+    const response = await privateAxios.put("/user", {
+      password: userPassword,
+      email: userEmail,
+      first_name: userName,
+      last_name: userSurname,
+      phone_number: userNumber,
+    });
+    console.log(response.data);
+  };
+
   return (
     <AuthContext.Provider
       value={{
         error,
+        changeAccInfo,
         userData,
         setUserData,
         authData,

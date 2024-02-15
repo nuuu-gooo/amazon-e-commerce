@@ -95,7 +95,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     const resp = await privateAxios.get("/cart");
     setAllCartProducts(resp.data);
     console.log(resp.data);
-    // getCartProducts();
   };
 
   const deleteCartProducts = async (id: string) => {
