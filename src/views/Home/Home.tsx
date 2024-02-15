@@ -8,6 +8,7 @@ import SalesProductsComp from "@src/components/UI /SalesProducts";
 import SectionSlider from "@src/components/UI /SectionSlider";
 import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
+import { useGetBookProducts } from "@src/hooks/useGetBookProducts/useGetBookProducts";
 
 export const Home = () => {
   document.title = "Amazon | Home ";
@@ -15,6 +16,7 @@ export const Home = () => {
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
+  const { bookProducts } = useGetBookProducts();
   const slicedOutCategories = existingCategories.slice(0, 7);
 
   return (
@@ -52,6 +54,10 @@ export const Home = () => {
         <div className="mt-[3%]">
           <h2 className="mb-2">Cooking</h2>
           <SectionSlider data={cookingProducts} />
+        </div>
+        <div className="mt-[3%]">
+          <h2 className="mb-2">Books</h2>
+          <SectionSlider data={bookProducts} />
         </div>
       </div>
     </div>
