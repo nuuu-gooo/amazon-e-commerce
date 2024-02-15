@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   );
   const navigate = useNavigate();
 
-  // Sign In Acc fetch //
+  // Sign In Acc fetch  ✅//
   const signInFetch = async (email: string, password: string) => {
     try {
       setLoading(true);
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Create Acc fetch //
+  // Create Acc fetch  ✅//
   const createAccFetch = async (
     first_name: string,
     last_name: string,
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Store deecode data //
+  // Store deecode data ✅ //
   const storeUserData = (tokens: TokenTypes) => {
     const tokenData: UserDataType = jwtDecode(tokens.access_token);
     setUserData(tokenData);
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  //--USER INFO CHANGE--//
+  //--USER INFO CHANGE--// ⛔️ 🚨
 
   const changeAccInfo = async (
     userPassword: string,
@@ -124,6 +124,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       last_name: userSurname,
       phone_number: userNumber,
     });
+
     console.log(response.data);
   };
 
