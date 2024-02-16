@@ -4,11 +4,11 @@ import { Form } from "react-router-dom";
 
 export const ChangeInfo = () => {
   const { changeAccInfo } = useContext(AuthContext);
-  const [newEmail, setNewEmail] = useState("");
-  const [newName, setNewName] = useState("");
-  const [newSurname, setNewSurname] = useState("");
-  const [newNumber, setNewNumber] = useState("");
-  const [newPassword, setNewPassword] = useState("");
+  const { userData } = useContext(AuthContext);
+  const [newName, setNewName] = useState(userData?.first_name);
+  const [newSurname, setNewSurname] = useState(userData?.last_name);
+  const [newNumber, setNewNumber] = useState(userData?.phone_number);
+
   const handleForm = (e: React.MouseEvent<HTMLFormElement>) => {
     return e.preventDefault();
   };
@@ -23,13 +23,6 @@ export const ChangeInfo = () => {
         >
           <h3 className="  text-start">Change Account Info</h3>
           <div className="inputs mt-3">
-            <input
-              className="w-full mb-3 p-2 outline-none"
-              placeholder="Enter New E-Mail"
-              type="email"
-              value={newEmail}
-              onChange={(e) => setNewEmail(e.target.value)}
-            />
             <input
               placeholder="Enter new Name"
               className="w-full mb-2  p-2 outline-none"
@@ -51,29 +44,12 @@ export const ChangeInfo = () => {
               value={newNumber}
               onChange={(e) => setNewNumber(e.target.value)}
             />
-            <input
-              placeholder="Enter new Password"
-              className="w-full  p-2 outline-none"
-              type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
           </div>
           <button
             onClick={() => {
-              changeAccInfo(
-                newPassword,
-                newEmail,
-                newName,
-                newSurname,
-                newNumber
-              );
+              changeAccInfo(newName, newSurname, newNumber);
 
-              setNewEmail("");
-              setNewNumber(""),
-                setNewName(""),
-                setNewPassword(""),
-                setNewSurname("");
+              setNewNumber(""), setNewName(""), setNewSurname("");
             }}
             className=" p-1 w-[full] cursor-pointer px-2.5 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
         to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 

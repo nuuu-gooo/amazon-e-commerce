@@ -53,6 +53,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       });
 
       setAuthData(postAcc.data);
+      console.log(postAcc.data);
       if (authData !== null || undefined || "") {
         setError(false);
         setSuccess(true);
@@ -68,9 +69,11 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const storeUserData = (tokens: TokenTypes) => {
     const tokenData: UserDataType = jwtDecode(tokens.access_token);
     setUserData(tokenData);
+    console.log(tokenData);
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
     setPrivateAccessToken(tokens.access_token);
+
     setAuthStage(authStage_EUNM.AUTHORIZED);
   };
 
