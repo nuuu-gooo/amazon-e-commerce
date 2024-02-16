@@ -15,7 +15,39 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [authStage, setAuthStage] = useState<authStage_EUNM>(
     authStage_EUNM.PENDING
   );
+  const [changeAccLoading, setChangeAccLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  //--USER INFO CHANGE--// ⛔️ 🚨
+  const getChangedAccInfo = async () => {
+    try {
+      const resp = await privateAxios.get("/user/current-user");
+      console.log(resp.data);
+      setUserData(resp.data);
+      navigate("/loginSecurity");
+    } catch (error) {}
+  };
+
+  const changeAccInfo = async (
+    userName: string,
+    userSurname: string,
+    userNumber: string
+  ) => {
+    try {
+      setChangeAccLoading(true);
+      const response = await privateAxios.put("/user", {
+        first_name: userName,
+        last_name: userSurname,
+        phone_number: userNumber,
+      });
+      getChangedAccInfo();
+      console.log(response.data);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setChangeAccLoading(false);
+    }
+  };
 
   // Sign In Acc fetch  ✅//
   const signInFetch = async (email: string, password: string) => {
@@ -53,7 +85,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       });
 
       setAuthData(postAcc.data);
-      console.log(postAcc.data);
       if (authData !== null || undefined || "") {
         setError(false);
         setSuccess(true);
@@ -69,7 +100,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const storeUserData = (tokens: TokenTypes) => {
     const tokenData: UserDataType = jwtDecode(tokens.access_token);
     setUserData(tokenData);
-    console.log(tokenData);
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
     setPrivateAccessToken(tokens.access_token);
@@ -110,26 +140,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuthStage(authStage_EUNM.UNAUTHORIZED);
     }
   }, []);
-
-  //--USER INFO CHANGE--// ⛔️ 🚨
-
-  const changeAccInfo = async (
-    userPassword: string,
-    userEmail: string,
-    userName: string,
-    userSurname: string,
-    userNumber: string
-  ) => {
-    const response = await privateAxios.put("/user", {
-      password: userPassword,
-      email: userEmail,
-      first_name: userName,
-      last_name: userSurname,
-      phone_number: userNumber,
-    });
-
-    console.log(response.data);
-  };
 
   return (
     <AuthContext.Provider
