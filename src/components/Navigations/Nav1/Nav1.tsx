@@ -52,7 +52,7 @@ export const Nav1 = () => {
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
         onClick={() => navigate("/login")}
       >
-        <FormattedMessage id="register" />
+        <FormattedMessage id="sign-in" />
       </button>
       <p className="mt-3">
         <FormattedMessage id="new-customer" />{" "}

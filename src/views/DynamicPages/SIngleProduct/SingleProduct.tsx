@@ -12,7 +12,7 @@ export const SingleProduct = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
   const { productsViewed, fetchProductsViewed } = useGetProductsViewed();
-
+  document.title = `Amazon | ${searchedProductId}`;
   const fetchSingleProduct = async () => {
     try {
       setLoading(true);
@@ -63,7 +63,7 @@ export const SingleProduct = () => {
                     src={product.image}
                     alt=""
                   />
-                  <h4 className="mt-3">{product.title}</h4>
+                  <h4 className="mt-1">{product.title}</h4>
                 </div>
               </Link>
             );

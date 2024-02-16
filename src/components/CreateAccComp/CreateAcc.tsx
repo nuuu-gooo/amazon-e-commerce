@@ -17,6 +17,7 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { LContext } from "@src/providers/LProvider/LContext";
 
 export const CreateAccComp = () => {
+  document.title = "Amazon | Create account";
   const { createAccFetch, success, authStage, error } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const { locale } = useContext(LContext);

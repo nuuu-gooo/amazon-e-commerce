@@ -1,6 +1,7 @@
 import { profile_elements } from "@src/Data/Data";
 import { Link } from "react-router-dom";
 export const Profile = () => {
+  document.title = "Amazon | Profile";
   return (
     <div className="flex  flex-col w-[70%] m-auto p-3">
       <h2>Your Profile</h2>

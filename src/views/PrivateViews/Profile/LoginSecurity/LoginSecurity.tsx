@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const LoginSecurity = () => {
   const { userData } = useContext(AuthContext);
   const naviagte = useNavigate();
+  document.title = "Amazon | Personal Info";
   return (
     <div className="flex justify-center items-center p-8 flex-col">
       <Avatar className="w-[full]">

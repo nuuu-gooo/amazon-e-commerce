@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TProductSale } from "@src/@types/types";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Button } from "antd";
-import { FaCartPlus } from "react-icons/fa";
+import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
+import { CiHeart } from "react-icons/ci";
 
 interface TSingleSaleProduct {
   product: TProductSale;
@@ -14,8 +15,29 @@ interface TSingleSaleProduct {
 
 export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
   const { authStage } = useContext(AuthContext);
-  const { AddToCart, addToCartLoading } = useContext(GlobalContext);
+  const {
+    AddToCart,
+    addToCartLoading,
+    fetchWishListProducts,
+    wishListProducts,
+  } = useContext(GlobalContext);
   const { AddToWishList } = useAddWIshListProducts();
+  const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
+
+  useEffect(() => {
+    const likedProduct = wishListProducts.find(
+      (wProduct) => wProduct.likedProduct.id === product.id
+    );
+    if (likedProduct) {
+      setIsInWishlist(true);
+    } else {
+      setIsInWishlist(false);
+    }
+  }, [wishListProducts.length]);
+  const handleWishListProducts = async (id: string) => {
+    await AddToWishList(id);
+    fetchWishListProducts();
+  };
 
   return (
     <div
@@ -46,6 +68,18 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
           >
             Add To Cart
           </Button>
+
+          <button
+            className="w-full bg-transparent border-none mt-3"
+            disabled={isInWishlist}
+            onClick={() => handleWishListProducts(product.id)}
+          >
+            {isInWishlist ? (
+              <FaHeart className="text-[red] text-xl" />
+            ) : (
+              <CiHeart className="text-xl" />
+            )}
+          </button>
 
           <Button
             loading={addToCartLoading}
