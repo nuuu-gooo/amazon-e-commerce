@@ -7,6 +7,8 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
+import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 
 interface TSingleProductItem {
   data: TProduct;
@@ -127,12 +129,20 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
           </button>
           <button
+            className="w-full mt-3 bg-[transparent] border-none flex justify-center items-center"
             onClick={() => {
               handleAddToWishList(data.id);
+              {
+                authStage === authStage_EUNM.UNAUTHORIZED && navigate("/login");
+              }
             }}
             disabled={isInWishList}
           >
-            Add to wishlist
+            {isInWishList ? (
+              <FaHeart className="text-[red] text-2xl" />
+            ) : (
+              <CiHeart className="text-2xl" />
+            )}
           </button>
         </div>
       </div>
