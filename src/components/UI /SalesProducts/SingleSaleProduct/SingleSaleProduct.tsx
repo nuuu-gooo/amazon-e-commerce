@@ -7,7 +7,6 @@ import { Button } from "antd";
 import { FaCartPlus } from "react-icons/fa";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
-import { CiHeart } from "react-icons/ci";
 
 interface TSingleSaleProduct {
   product: TProductSale;
@@ -17,6 +16,7 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart, addToCartLoading } = useContext(GlobalContext);
   const { AddToWishList } = useAddWIshListProducts();
+
   return (
     <div
       key={product.id}
@@ -65,10 +65,7 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
             AddToWishList(product.id);
           }}
           className="mt-3 border-none bg-transparent"
-        >
-          <CiHeart className="text-xl text-[red]" />
-          {/* Create a condition here */}
-        </button>
+        ></button>
       )}
     </div>
   );

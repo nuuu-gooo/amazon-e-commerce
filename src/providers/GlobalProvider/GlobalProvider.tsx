@@ -33,7 +33,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { saleProducts } = useGetSaleProducts();
 
   let sum = 0;
-
   useEffect(() => {
     for (let i = 0; i < allCartProducts.length; i++) {
       const product = allCartProducts[i].cartProduct;
@@ -113,6 +112,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
       getCartProducts();
+      fetchWishListProducts();
     }
   }, [authStage]);
 

@@ -6,15 +6,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { TProduct } from "@src/@types/types";
 import { SingleProductItem } from "./SingleProductItem";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
-import SectionSlider from "@src/components/UI /SectionSlider";
-import CategoryProducts from "../CategoryProducts";
 import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
 export const SingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { searchedProductId } = useParams();
   const { productsViewed, fetchProductsViewed } = useGetProductsViewed();
-  const navigate = useNavigate();
 
   const fetchSingleProduct = async () => {
     try {
@@ -44,7 +41,7 @@ export const SingleProduct = () => {
 
   return (
     <div>
-      <div className="   bread-crumb flex justify-center items-center mt-4 flex-wrap">
+      <div className="bread-crumb flex justify-center items-center mt-4 flex-wrap">
         <BreadCrumb data={singleProduct} />
       </div>
       {loading && <Loader />}

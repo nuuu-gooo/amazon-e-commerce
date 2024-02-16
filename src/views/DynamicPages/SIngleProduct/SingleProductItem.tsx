@@ -4,8 +4,9 @@ import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
+import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 
 interface TSingleProductItem {
   data: TProduct;
@@ -17,18 +18,39 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
   const navigate = useNavigate();
   const [salesBadge, setSalesBadge] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
+  const { wishListProducts, fetchWishListProducts } = useContext(GlobalContext);
+  const [isInWishList, setIsInWishList] = useState<boolean>(false);
+  const { AddToWishList } = useAddWIshListProducts();
+  const { searchedProductId } = useParams();
 
   useEffect(() => {
     if (saleProducts.find((product) => product.id === data.id)) {
       setSalesBadge(true);
     }
   }, [saleProducts, data]);
+  console.log(searchedProductId);
+  useEffect(() => {
+    const likedProduct = wishListProducts.find(
+      (wishListProduct) => wishListProduct.likedProduct.id === data.id
+    );
+    if (likedProduct) {
+      setIsInWishList(true);
+    } else {
+      setIsInWishList(false);
+    }
+    console.log(wishListProducts);
+  }, [wishListProducts.length]);
+
+  const handleAddToWishList = async (id: string) => {
+    await AddToWishList(id);
+    fetchWishListProducts();
+  };
+
   return (
     <div>
       <div key={data.id} className="md:flex p-9 justify-between items-center">
         <div className="  md:flex items-center flex-col mr-[1%]">
           <img
-            // className="mx-auto     w-full cursor-pointer "
             className="mx-auto  h-[400px] w-[400px] cursor-pointer"
             src={data.image}
             alt="data-img"
@@ -103,6 +125,14 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             className="w-[100%] mt-2 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
             {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
+          </button>
+          <button
+            onClick={() => {
+              handleAddToWishList(data.id);
+            }}
+            disabled={isInWishList}
+          >
+            Add to wishlist
           </button>
         </div>
       </div>
