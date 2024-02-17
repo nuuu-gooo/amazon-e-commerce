@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
@@ -9,7 +9,14 @@ import { FormattedMessage } from "react-intl";
 export const PopOverCart = () => {
   const { allCartProducts, totalCartPrice, deleteCartProducts } =
     useContext(GlobalContext);
+  console.log(allCartProducts);
   const { authStage } = useContext(AuthContext);
+  const { AddToCart, getCartProducts } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getCartProducts();
+  }, []);
+
   const navigate = useNavigate();
   return (
     <div className="p-3 flex flex-col ">
@@ -29,6 +36,17 @@ export const PopOverCart = () => {
                   src={product.cartProduct.image}
                   alt=""
                 />
+              </div>
+              <div className="quantity flex items-center">
+                <Button
+                  onClick={() => {
+                    AddToCart(product.cartProduct.id), getCartProducts();
+                  }}
+                >
+                  +
+                </Button>
+                {product.count}
+                <Button>-</Button>
               </div>
 
               <Button

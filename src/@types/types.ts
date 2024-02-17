@@ -20,6 +20,7 @@ export interface TCartItem {
   id: string;
   user_id: string;
   cartProduct: TProduct;
+  count: number;
 }
 
 export interface TLikedProduct {

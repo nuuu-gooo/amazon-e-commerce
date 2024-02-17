@@ -31,7 +31,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
-
+  //-----------PRICE-CALCULATION-------------//
   let sum = 0;
   useEffect(() => {
     for (let i = 0; i < allCartProducts.length; i++) {
@@ -52,6 +52,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
     setTotalCartPrice(sum);
   }, [allCartProducts.length, saleProducts]);
+
+  //-----------PRICE-CALCULATION-------------//
 
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
@@ -77,12 +79,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       setAddToCartLoading(true);
       const resp = await privateAxios.post("/cart", { product_id: id });
       console.log(resp.data, resp.status);
-
+      await getCartProducts();
       if (resp.status === 201) {
         setAddToCartModal(true);
       }
-
-      getCartProducts();
     } catch (error) {
       console.log(error);
     } finally {
@@ -99,7 +99,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const deleteCartProducts = async (id: string) => {
     try {
       setDeleteCartLoading(true);
-      await privateAxios.delete(`/cart/${id}`);
+      await privateAxios.delete(`/cart/${id}?removeAll=true`);
       getCartProducts();
     } catch (error: any) {
       console.log(error);
@@ -120,6 +120,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     <GlobalContext.Provider
       value={{
         deleteCartLoading,
+        getCartProducts,
         setDeleteCartLoading,
         totalCartPrice,
         setTotalCartPrice,
