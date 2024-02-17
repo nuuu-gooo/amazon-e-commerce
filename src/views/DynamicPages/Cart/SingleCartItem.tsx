@@ -19,6 +19,7 @@ export const SingleCartItem = ({ data }: TSingleCartItem) => {
             src={data.cartProduct.image}
             alt="cart-product-img"
           />
+          <p>{data.count}x</p>
         </div>
         <Button
           loading={deleteCartLoading}

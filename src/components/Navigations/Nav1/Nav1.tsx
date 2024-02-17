@@ -18,7 +18,6 @@ import PopOverCart from "@src/components/UI /PopOverCart";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
-  const { toggleLanguage, locale } = useContext(LContext);
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("სმარტფონები");

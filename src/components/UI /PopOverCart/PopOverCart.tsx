@@ -13,7 +13,6 @@ export const PopOverCart = () => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart, getCartProducts, deleteSingleCartProduct } =
     useContext(GlobalContext);
-  const cartPrice = totalCartPrice;
 
   const navigate = useNavigate();
   return (
@@ -43,7 +42,7 @@ export const PopOverCart = () => {
                 >
                   +
                 </Button>
-                {product.count}
+                <p className="mr-3 ml-3">{product.count}</p>
                 <Button onClick={() => deleteSingleCartProduct(product.id)}>
                   -
                 </Button>
