@@ -11,7 +11,8 @@ export const PopOverCart = () => {
     useContext(GlobalContext);
   console.log(allCartProducts);
   const { authStage } = useContext(AuthContext);
-  const { AddToCart, getCartProducts } = useContext(GlobalContext);
+  const { AddToCart, getCartProducts, deleteSingleCartProduct } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     getCartProducts();
@@ -46,7 +47,9 @@ export const PopOverCart = () => {
                   +
                 </Button>
                 {product.count}
-                <Button>-</Button>
+                <Button onClick={() => deleteSingleCartProduct(product.id)}>
+                  -
+                </Button>
               </div>
 
               <Button

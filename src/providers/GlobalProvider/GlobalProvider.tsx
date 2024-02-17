@@ -108,6 +108,16 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
   };
 
+  const deleteSingleCartProduct = async (id: string) => {
+    try {
+      await privateAxios.delete(`/cart/${id}`);
+      getCartProducts();
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+    }
+  };
+
   useEffect(() => {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
@@ -119,6 +129,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        deleteSingleCartProduct,
         deleteCartLoading,
         getCartProducts,
         setDeleteCartLoading,

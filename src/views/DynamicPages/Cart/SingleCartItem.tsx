@@ -14,7 +14,11 @@ export const SingleCartItem = ({ data }: TSingleCartItem) => {
       <div className="flex items-center justify-between border-solid bg-[white] border p-3">
         <div className="left flex items-center">
           <h3>{data.cartProduct.title}</h3>
-          <img className="w-[10%] ml-3" src={data.cartProduct.image} alt="" />
+          <img
+            className="w-[10%] ml-3"
+            src={data.cartProduct.image}
+            alt="cart-product-img"
+          />
         </div>
         <Button
           loading={deleteCartLoading}
