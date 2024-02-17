@@ -23,7 +23,7 @@ export const Home = () => {
     <div>
       <ImgCarrousel />
       <div className="m-auto w-full p-9 flex  flex-col    ">
-        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[13%] mt-[10%]  left-0 right-9 grid-cols-3">
+        <div className=" hidden sm:hidden  md:grid  w-full p-[2rem]  absolute  gap-9  top-[1%] bottom-[30%]  mt-[10%]  left-0 right-9 grid-cols-3">
           {existingCatLoading ? (
             <Loader />
           ) : (
@@ -31,7 +31,7 @@ export const Home = () => {
               return (
                 <Link
                   key={category.id}
-                  className="no-underline text-[inherit] hover:opacity-70"
+                  className="no-underline text-[inherit] hover:opacity-70 "
                   to={`productCategory/${category.name}`}
                 >
                   <div
@@ -39,6 +39,11 @@ export const Home = () => {
                     className=" shadow-2xl bg-[white] rounded p-6 w-[100%]  "
                   >
                     <h2>{category.name}</h2>
+                    <img
+                      className="rounded-l w-full mt-2"
+                      src={category.image}
+                      alt=""
+                    />
                   </div>
                 </Link>
               );
@@ -46,7 +51,7 @@ export const Home = () => {
           )}
         </div>
         <SalesProductsComp saleProducts={saleProducts} />
-        <div className="mt-[3%]">
+        <div className="mt-[20%]">
           <h2 className="mb-2">Products under 30$</h2>
           <SectionSlider data={productsUnder30} />
         </div>

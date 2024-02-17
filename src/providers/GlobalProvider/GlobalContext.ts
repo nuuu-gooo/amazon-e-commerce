@@ -6,6 +6,7 @@ export interface TExistingCategories {
   id: string;
   created_at: string;
   updated_at: string;
+  image: string;
 }
 interface TGlobalContext {
   count: number;
