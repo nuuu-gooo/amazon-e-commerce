@@ -42,7 +42,7 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
   return (
     <div
       key={product.id}
-      className=" rounded-md flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full"
+      className=" rounded-md flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full mt-[50%] "
     >
       <Link
         className="no-underline text-[black] flex items-center flex-col"

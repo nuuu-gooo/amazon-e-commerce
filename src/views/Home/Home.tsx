@@ -38,7 +38,7 @@ export const Home = () => {
                     key={category.id}
                     className=" shadow-2xl bg-[white] rounded p-6 w-[100%]  "
                   >
-                    <h2>{category.name}</h2>
+                    <h3>{category.name}</h3>
                     <img
                       className="rounded-l w-full mt-2"
                       src={category.image}
@@ -51,7 +51,7 @@ export const Home = () => {
           )}
         </div>
         <SalesProductsComp saleProducts={saleProducts} />
-        <div className="mt-[20%]">
+        <div className="">
           <h2 className="mb-2">Products under 30$</h2>
           <SectionSlider data={productsUnder30} />
         </div>
