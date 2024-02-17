@@ -18,6 +18,7 @@ export const Cart = () => {
       {allCartProducts.length === 0 ? (
         <div className="cart-contianer flex  items-center bg-[#eeee] w-full p-3">
           <img className="w-[20%]" src={cartEmptyImg} alt="" />
+
           <div className="right ml-[10%] flex items-start flex-col">
             <h1>Your Amazon Cart is Empty</h1>
             <Link

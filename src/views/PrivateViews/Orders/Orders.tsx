@@ -2,6 +2,7 @@ import React from "react";
 import EmptyCardImg from "../../../assets/SVG/amazon-empty-card-img.svg";
 
 export const Orders = () => {
+  document.title = "Amazon | Orders";
   return (
     <div>
       Orders
