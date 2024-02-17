@@ -42,16 +42,20 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
       if (isProductOnSale) {
         //@ts-ignore
-        sum += saleProducts.find(
-          (saleProduct) => saleProduct?.id === product?.id
-        ).salePrice;
+        sum += //@ts-ignore
+          saleProducts.find((saleProduct) => saleProduct?.id === product?.id)
+            .salePrice * allCartProducts[i]?.count;
       } else {
-        sum += product.price;
+        sum += product.price * allCartProducts[i]?.count;
       }
     }
 
     setTotalCartPrice(sum);
-  }, [allCartProducts.length, saleProducts]);
+  }, [
+    allCartProducts.length,
+    saleProducts,
+    allCartProducts.map((product) => product.count),
+  ]);
 
   //-----------PRICE-CALCULATION-------------//
 

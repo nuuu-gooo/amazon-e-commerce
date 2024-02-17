@@ -13,10 +13,7 @@ export const PopOverCart = () => {
   const { authStage } = useContext(AuthContext);
   const { AddToCart, getCartProducts, deleteSingleCartProduct } =
     useContext(GlobalContext);
-
-  useEffect(() => {
-    getCartProducts();
-  }, []);
+  const cartPrice = totalCartPrice;
 
   const navigate = useNavigate();
   return (
