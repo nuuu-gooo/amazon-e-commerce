@@ -33,19 +33,6 @@ export const WishListProducts = () => {
         total += wishListProducts[i].likedProduct.price;
       }
     }
-    //---EACH PRODUCT PRICE----//
-    // for (let i = 0; i < wishListProducts.length; i++) {
-    //   const salesProducts = saleProducts.find(
-    //     (saleProduct) => saleProduct.id === wishListProducts[i].product_id
-    //   );
-
-    //   const salesPrice = salesProducts?.salePrice;
-    //   if (salesPrice) {
-    //     setSaleProductsBoolean(true);
-    //   } else {
-    //     setSaleProductsBoolean(false);
-    //   }
-    // }
 
     setTotalWishListPrice(total);
   }, [wishListProducts.length, saleProducts]);
