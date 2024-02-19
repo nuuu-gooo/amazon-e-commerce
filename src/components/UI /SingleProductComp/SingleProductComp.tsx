@@ -39,7 +39,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
             <p className=" text-red-700">{data.price}$</p>
           )}
         </p>
-        <p></p>
+
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button
             loading={addToCartLoading}

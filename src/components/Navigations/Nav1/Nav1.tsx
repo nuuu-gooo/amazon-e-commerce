@@ -20,7 +20,7 @@ export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories } = useContext(GlobalContext);
-  const [currentCategory, setCurrentCategory] = useState<string>("სმარტფონები");
+  const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
   const location = useLocation();

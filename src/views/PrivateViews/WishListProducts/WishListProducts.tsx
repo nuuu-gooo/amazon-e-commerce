@@ -7,25 +7,51 @@ import { Link } from "react-router-dom";
 import { Loader } from "@src/assets/Loader/Loader";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage } from "react-intl";
+import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 
 export const WishListProducts = () => {
   const { wishListProducts, wishListProductsLoading } =
     useContext(GlobalContext);
   const { deleteWishListProduct } = useDeleteWishListProduct();
+  const { saleProducts } = useGetSaleProducts();
+  const [saleProductsBoolean, setSaleProductsBoolean] =
+    useState<boolean>(false);
   let [totalWishListPrice, setTotalWishListPrice] = useState<number>(0);
 
   useEffect(() => {
     let total = 0;
     for (let i = 0; i < wishListProducts.length; i++) {
-      total += wishListProducts[i].likedProduct.price;
+      const salesProducts = saleProducts.find(
+        (saleProduct) => saleProduct.id === wishListProducts[i].product_id
+      );
+      const salesPrice = salesProducts?.salePrice;
+      if (salesPrice) {
+        //@ts-ignore
+        total += salesPrice;
+      } else {
+        //@ts-ignore
+        total += wishListProducts[i].likedProduct.price;
+      }
     }
+    //---EACH PRODUCT PRICE----//
+    // for (let i = 0; i < wishListProducts.length; i++) {
+    //   const salesProducts = saleProducts.find(
+    //     (saleProduct) => saleProduct.id === wishListProducts[i].product_id
+    //   );
+
+    //   const salesPrice = salesProducts?.salePrice;
+    //   if (salesPrice) {
+    //     setSaleProductsBoolean(true);
+    //   } else {
+    //     setSaleProductsBoolean(false);
+    //   }
+    // }
 
     setTotalWishListPrice(total);
-  }, [wishListProducts.length]);
+  }, [wishListProducts.length, saleProducts]);
 
   return (
     <div className="flex justify-center items-center flex-col h-full p-3">
-      {/* {wishListProductsLoading ? <Loader /> : ""} */}
       <div className="container  flex flex-col ">
         <h1 className="mb-3">
           <FormattedMessage id="wish-list" />
@@ -37,7 +63,25 @@ export const WishListProducts = () => {
                 <div className="left flex items-center ">
                   <h3>{product.likedProduct.title}</h3>
                   <p className="ml-3 text-red-700">
-                    {Number(product.likedProduct.price)}$
+                    <p>
+                      {saleProducts.some(
+                        (sProduct) => sProduct.id === product.likedProduct.id
+                      ) ? (
+                        <span className=" text-red-700">
+                          {
+                            saleProducts.find(
+                              (sProduct) =>
+                                sProduct?.id === product.likedProduct.id
+                            )?.salePrice
+                          }
+                          $
+                        </span>
+                      ) : (
+                        <p className=" text-red-700">
+                          {product.likedProduct.price}$
+                        </p>
+                      )}
+                    </p>
                   </p>
                   <img
                     className="w-[10%] ml-5"
@@ -51,7 +95,7 @@ export const WishListProducts = () => {
                   onClick={() => {
                     deleteWishListProduct(product.id);
                   }}
-                  danger
+                  danger={true}
                 >
                   Delete
                 </Button>
