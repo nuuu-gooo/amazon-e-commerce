@@ -33,6 +33,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { saleProducts } = useGetSaleProducts();
   //-----------PRICE-CALCULATION-------------//
   let sum = 0;
+  let totalCartItems = 0;
   useEffect(() => {
     for (let i = 0; i < allCartProducts.length; i++) {
       const product = allCartProducts[i].cartProduct;
@@ -52,7 +53,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
     setTotalCartPrice(sum);
 
-    let totalCartItems = 0;
     for (let i = 0; i < allCartProducts.length; i++) {
       totalCartItems += allCartProducts[i].count;
     }
@@ -138,6 +138,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        totalCartItems,
         deleteSingleCartProduct,
         deleteCartLoading,
         getCartProducts,
