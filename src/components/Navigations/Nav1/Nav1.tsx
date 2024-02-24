@@ -13,7 +13,6 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
-import { LContext } from "@src/providers/LProvider/LContext";
 import PopOverCart from "@src/components/UI /PopOverCart";
 
 export const Nav1 = () => {

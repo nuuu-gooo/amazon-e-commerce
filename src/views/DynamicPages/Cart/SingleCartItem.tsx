@@ -9,6 +9,7 @@ interface TSingleCartItem {
 
 export const SingleCartItem = ({ data }: TSingleCartItem) => {
   const { deleteCartProducts, deleteCartLoading } = useContext(GlobalContext);
+
   return (
     <div>
       <div className="flex items-center justify-between border-solid bg-[white] border p-3">
@@ -21,6 +22,7 @@ export const SingleCartItem = ({ data }: TSingleCartItem) => {
           />
           <p>{data.count}x</p>
         </div>
+
         <Button
           loading={deleteCartLoading}
           onClick={() => deleteCartProducts(data.id)}

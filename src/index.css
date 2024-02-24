@@ -167,3 +167,17 @@
 .continue-btn:active {
   border-color: #e5a500;
 }
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container p {
+  margin-left: 1rem;
+}
+
+.right button {
+  padding: 0.5rem;
+  outline: none;
+}

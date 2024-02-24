@@ -9,57 +9,61 @@ export interface TExistingCategories {
   image: string;
 }
 interface TGlobalContext {
-  count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
-  isToggled: boolean;
   setIsToggled: React.Dispatch<React.SetStateAction<boolean>>;
   existingCategories: TExistingCategories[];
   setExistingCategories: React.Dispatch<
     React.SetStateAction<TExistingCategories[]>
   >;
+  isToggled: boolean;
   existingCatLoading: boolean;
-  wishListProducts: TLikedProduct[];
-  deleteWishListProductLoading: boolean;
+  purchaseLoading: boolean;
   wishListProductsLoading: boolean;
-  allCartProducts: TCartItem[];
-  addToCartLoading: boolean;
-  setAddToCartModal: React.Dispatch<React.SetStateAction<boolean>>;
+  deleteWishListProductLoading: boolean;
   addToCartModal: boolean;
-  totalCartPrice: number;
-  setTotalCartPrice: React.Dispatch<React.SetStateAction<number>>;
   deleteCartLoading: boolean;
+  addToCartLoading: boolean;
+  wishListProducts: TLikedProduct[];
+  allCartProducts: TCartItem[];
+  setAddToCartModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setTotalCartPrice: React.Dispatch<React.SetStateAction<number>>;
   setDeleteCartLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  count: number;
+  totalCartPrice: number;
   totalCartItems: number;
+  buyRequest: (totalItems: number, sum: number) => Promise<void>;
   deleteSingleCartProduct: (id: string) => Promise<void>;
   getCartProducts: () => Promise<void>;
   AddToCart: (id: string) => Promise<void>;
+  deleteCartProducts: (id: string) => Promise<void>;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
-  deleteCartProducts: (id: string) => Promise<void>;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
   totalCartItems: 0,
-  deleteCartLoading: false,
   totalCartPrice: 0,
   count: 0,
   wishListProducts: [],
   allCartProducts: [],
   existingCategories: [],
+  deleteCartLoading: false,
+  purchaseLoading: false,
   addToCartLoading: false,
   deleteWishListProductLoading: false,
   wishListProductsLoading: false,
   isToggled: false,
   existingCatLoading: false,
   addToCartModal: false,
+  AddToCart: async () => {},
+  buyRequest: async () => {},
   deleteSingleCartProduct: async () => {},
+  fetchWishListProducts: async () => {},
+  deleteCartProducts: async () => {},
   getCartProducts: async () => {},
   setDeleteCartLoading: () => {},
   setTotalCartPrice: () => {},
   setAddToCartModal: () => {},
-  deleteCartProducts: async () => {},
-  fetchWishListProducts: async () => {},
-  AddToCart: async () => {},
   setCount: () => {},
   setIsToggled: () => {},
   setExistingCategories: () => {},

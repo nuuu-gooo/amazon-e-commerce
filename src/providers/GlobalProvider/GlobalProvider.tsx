@@ -31,6 +31,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
+  const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
   //-----------PRICE-CALCULATION-------------//
   let sum = 0;
   let totalCartItems = 0;
@@ -127,6 +128,27 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
   };
 
+  //------------------------------CART REQUESTS------------------------------------------//
+
+  //------------------------------PURCHASE REQUESTS------------------------------------------//
+
+  const buyRequest = async (totalItems: number, sum: number) => {
+    try {
+      setPurchaseLoading(true);
+      const response = await privateAxios.post("/purchases", {
+        totalPrice: sum,
+        totalItems: totalItems,
+      });
+      console.log(response.data);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setPurchaseLoading(false);
+    }
+  };
+
+  //------------------------------PURCHASE REQUESTS------------------------------------------//
+
   useEffect(() => {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
@@ -138,6 +160,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        purchaseLoading,
+        buyRequest,
         totalCartItems,
         deleteSingleCartProduct,
         deleteCartLoading,
