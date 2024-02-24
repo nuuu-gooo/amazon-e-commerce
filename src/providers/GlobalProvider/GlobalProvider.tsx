@@ -51,6 +51,13 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
 
     setTotalCartPrice(sum);
+
+    let totalCartItems = 0;
+    for (let i = 0; i < allCartProducts.length; i++) {
+      totalCartItems += allCartProducts[i].count;
+    }
+
+    console.log(totalCartItems);
   }, [
     allCartProducts.length,
     saleProducts,
@@ -58,7 +65,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   ]);
 
   //-----------PRICE-CALCULATION-------------//
-
   const toggleSidebarFunction = () => {
     setIsToggled(!isToggled);
   };
@@ -77,7 +83,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   //------------------------------CART REQUESTS------------------------------------------//
-
   const AddToCart = async (id: string) => {
     try {
       setAddToCartLoading(true);
