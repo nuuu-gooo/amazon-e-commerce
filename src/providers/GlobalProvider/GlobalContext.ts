@@ -16,7 +16,9 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
   isToggled: boolean;
+  transaction: boolean | undefined;
   existingCatLoading: boolean;
+  setTransaction: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   purchaseLoading: boolean;
   wishListProductsLoading: boolean;
   deleteWishListProductLoading: boolean;
@@ -47,6 +49,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   wishListProducts: [],
   allCartProducts: [],
   existingCategories: [],
+  transaction: false,
   deleteCartLoading: false,
   purchaseLoading: false,
   addToCartLoading: false,
@@ -61,6 +64,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   fetchWishListProducts: async () => {},
   deleteCartProducts: async () => {},
   getCartProducts: async () => {},
+  setTransaction: () => {},
   setDeleteCartLoading: () => {},
   setTotalCartPrice: () => {},
   setAddToCartModal: () => {},

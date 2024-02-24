@@ -13,8 +13,11 @@ import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "../Auth/AuthContext";
 import { TCartItem } from "@src/@types/types";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
+import { useNavigate } from "react-router-dom";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
+  const [transaction, setTransaction] = useState<boolean>();
+  const naviagte = useNavigate();
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);
@@ -139,6 +142,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         totalPrice: sum,
         totalItems: totalItems,
       });
+      {
+        transaction && naviagte("/checkout/success"), setAllCartProducts([]);
+      }
       console.log(response.data);
     } catch (error: any) {
       console.log(error.message);
@@ -160,6 +166,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        transaction,
+        setTransaction,
         purchaseLoading,
         buyRequest,
         totalCartItems,

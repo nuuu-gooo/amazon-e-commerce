@@ -1,4 +1,11 @@
-import React, { useState, ChangeEvent, FocusEvent } from "react";
+import { GlobalContext } from "@src/providers/GlobalProvider";
+import React, {
+  useState,
+  ChangeEvent,
+  FocusEvent,
+  useEffect,
+  useContext,
+} from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 
@@ -12,6 +19,9 @@ interface PaymentFormState {
 }
 
 const PaymentForm: React.FC = () => {
+  const [address, setAddress] = useState<string | undefined>();
+  const [addressVal, setAddressVal] = useState<boolean | undefined>();
+  const { setTransaction, transaction } = useContext(GlobalContext);
   const [state, setState] = useState<PaymentFormState>({
     cvc: "",
     expiry: "",
@@ -80,8 +90,32 @@ const PaymentForm: React.FC = () => {
     return /^\d{3}$/.test(cvc) ? "✅" : "Invalid CVC ❌";
   };
 
+  const isNumberValid = validateCardNumber(state.number) === "✅";
+  const isExpiryValid = validateExpiryDate(state.expiry) === "✅";
+  const isNameValid = validateCardholderName(state.name) === "✅";
+  const isCvcValid = validateCVC(state.cvc) === "✅";
+
+  useEffect(() => {
+    if (address === undefined || "" || null) {
+      setAddressVal(false);
+    } else {
+      setAddressVal(true);
+    }
+  }, [address]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (
+      isNumberValid &&
+      isExpiryValid &&
+      isNameValid &&
+      isCvcValid &&
+      addressVal
+    ) {
+      setTransaction(true);
+    } else {
+      setTransaction(false);
+    }
 
     setValidationErrors({
       number: validateCardNumber(state.number),
@@ -94,6 +128,9 @@ const PaymentForm: React.FC = () => {
   return (
     <div id="PaymentForm" className="flex items-center justify-between">
       <div className="left">
+        {transaction && <p className="mb-3">Valid Info ✅</p>}
+
+        {transaction === false && <p>Failed ❌</p>}
         <Cards
           cvc={state.cvc}
           expiry={state.expiry}
@@ -165,11 +202,14 @@ const PaymentForm: React.FC = () => {
 
           <div className="input-container">
             <input
+              onChange={(e) => setAddress(e.target.value)}
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="address"
               name="Address"
               placeholder="Address"
             />
+
+            {addressVal && <p>✅</p>}
           </div>
 
           <button type="submit">Submit</button>
