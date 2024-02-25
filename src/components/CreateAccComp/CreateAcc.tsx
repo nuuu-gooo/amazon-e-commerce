@@ -108,9 +108,8 @@ export const CreateAccComp = () => {
               onChange={(e) => {
                 setNameValue(e.target.value);
               }}
-              className="w-full p-2 outline-none 
-  
-  
+              className="w-full p-2 outline-none
+
                 "
               placeholder={formatMessage({ id: "your-name" })}
               type="text"
@@ -133,9 +132,8 @@ export const CreateAccComp = () => {
               onChange={(e) => {
                 setSurnameValue(e.target.value);
               }}
-              className="w-full p-2 outline-none 
-  
-  
+              className="w-full p-2 outline-none
+
                 "
               placeholder={formatMessage({ id: "your-surname" })}
               type="text"
@@ -158,9 +156,8 @@ export const CreateAccComp = () => {
               onChange={(e) => {
                 setEmailValue(e.target.value);
               }}
-              className="w-full p-2 outline-none 
-  
-  
+              className="w-full p-2 outline-none
+
                 "
               placeholder={formatMessage({ id: "e-mail" })}
               type="email"
@@ -175,7 +172,6 @@ export const CreateAccComp = () => {
           </div>
           <div className="input-container mt-4 w-full">
             <h5 className="mb-3">
-              {" "}
               <FormattedMessage id="password" />
             </h5>
             <div className="second-input flex">

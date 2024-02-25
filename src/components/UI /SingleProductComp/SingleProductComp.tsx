@@ -9,7 +9,13 @@ import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesPro
 
 export const SingleProductComp = ({ data }: { data: TProduct }) => {
   const { authStage } = useContext(AuthContext);
-  const { AddToCart, addToCartLoading } = useContext(GlobalContext);
+  const {
+    AddToCart,
+    getCartProducts,
+    addToCartLoading,
+    deleteCartProducts,
+    allCartProducts,
+  } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   return (
     <div className="flex flex-wrap overflow-hidden">
@@ -43,7 +49,11 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button
             loading={addToCartLoading}
-            onClick={() => AddToCart(data.id)}
+            // onClick={() => AddToCart(data.id)}
+            onClick={async () => {
+              AddToCart(data.id);
+              getCartProducts();
+            }}
             className="w-[100%] mt-5 rounded-b-lg  bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
             Buy

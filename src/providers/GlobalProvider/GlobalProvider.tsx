@@ -90,9 +90,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const AddToCart = async (id: string) => {
     try {
       setAddToCartLoading(true);
+
       const resp = await privateAxios.post("/cart", { product_id: id });
       console.log(resp.data, resp.status);
-      await getCartProducts();
+      getCartProducts();
       if (resp.status === 201) {
         setAddToCartModal(true);
       }
@@ -143,7 +144,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         totalItems: totalItems,
       });
       {
-        transaction && naviagte("/checkout/success"), setAllCartProducts([]);
+        transaction && naviagte("/checkout/success");
+      }
+      {
+        location.pathname.includes("/checkout/success") &&
+          setAllCartProducts([]);
       }
       console.log(response.data);
     } catch (error: any) {
