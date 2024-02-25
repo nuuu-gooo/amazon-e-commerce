@@ -147,8 +147,12 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         transaction && naviagte("/checkout/success");
       }
       {
-        location.pathname.includes("/checkout/success") &&
+        if (location.pathname.includes("/checkout/success")) {
           setAllCartProducts([]);
+          for (let i = 0; i < allCartProducts.length; i++) {
+            deleteSingleCartProduct(allCartProducts[i].id);
+          }
+        }
       }
       console.log(response.data);
     } catch (error: any) {
