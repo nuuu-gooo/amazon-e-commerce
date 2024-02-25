@@ -31,7 +31,7 @@ export const LoginComp = () => {
         <h1>
           <FormattedMessage id="sign-in" />
         </h1>
-        <div className="input-container mt-4 w-full">
+        <div className=" mt-4 w-full">
           <h5 className="mb-3">
             <FormattedMessage id="e-mail" />
           </h5>
@@ -54,7 +54,7 @@ export const LoginComp = () => {
             ""
           )}
         </div>
-        <div className="input-container mt-4 w-full">
+        <div className=" mt-4 w-full">
           <h5 className="mb-3">
             <FormattedMessage id="password" />
           </h5>

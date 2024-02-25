@@ -98,7 +98,7 @@ export const CreateAccComp = () => {
           <h1>
             <FormattedMessage id="register" />
           </h1>
-          <div className="input-container mt-4 w-full">
+          <div className=" mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="your-name" />
             </h5>
@@ -122,7 +122,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <div className="input-container mt-4 w-full">
+          <div className=" mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="your-surname" />
             </h5>
@@ -146,7 +146,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <div className="input-container mt-4 w-full">
+          <div className=" mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="e-mail" />
             </h5>
@@ -170,7 +170,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <div className="input-container mt-4 w-full">
+          <div className=" mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="password" />
             </h5>
@@ -201,7 +201,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <div className="input-container mt-4 w-full">
+          <div className="mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="re-enter-password" />
             </h5>
@@ -231,7 +231,7 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <div className="input-container mt-4 w-full">
+          <div className=" mt-4 w-full">
             <h5 className="mb-3">
               <FormattedMessage id="enter-number" />
             </h5>

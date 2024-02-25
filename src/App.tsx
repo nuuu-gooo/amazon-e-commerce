@@ -70,6 +70,10 @@ function App() {
             path="/wishList"
             element={<PrivateRoute children={<WishListProducts />} />}
           />
+          <Route
+            path="/checkout/success"
+            element={<PrivateRoute children={<ChekoutSuccess />} />}
+          />
           <Route path="/cart" element={<Cart />} />
         </Route>
         <Route element={<AuthentficiationLayout />}>
@@ -78,10 +82,6 @@ function App() {
           <Route
             path="/loginSecurity/changeInfo"
             element={<PrivateRoute children={<ChangeInfo />} />}
-          />
-          <Route
-            path="/checkout/success"
-            element={<PrivateRoute children={<ChekoutSuccess />} />}
           />
         </Route>
       </Routes>
