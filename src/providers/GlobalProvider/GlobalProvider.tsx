@@ -17,8 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
-  const [transaction, setTransaction] = useState<boolean>();
   const naviagte = useNavigate();
+  const [transaction, setTransaction] = useState<boolean>();
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);
@@ -180,7 +180,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       getCartProducts();
       fetchWishListProducts();
     }
-  }, [authStage]);
+    setTransaction(false);
+  }, [authStage, transaction]);
 
   return (
     <GlobalContext.Provider

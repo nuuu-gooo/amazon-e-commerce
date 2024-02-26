@@ -130,7 +130,7 @@ const PaymentForm: React.FC = () => {
       <div className="left">
         {transaction && <p className="mb-3">Valid Info ✅</p>}
 
-        {transaction === false && <p>Failed ❌</p>}
+        {/* {transaction === false && <p>Failed ❌</p>} */}
         <Cards
           cvc={state.cvc}
           expiry={state.expiry}
@@ -212,7 +212,14 @@ const PaymentForm: React.FC = () => {
             {addressVal && <p>✅</p>}
           </div>
 
-          <button type="submit">Submit</button>
+          <button
+            className="ursor-pointer w-full px-2.5  p-1 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
+ to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
+ active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
+            type="submit"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

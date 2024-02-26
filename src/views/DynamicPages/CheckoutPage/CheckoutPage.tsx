@@ -11,6 +11,7 @@ export const CheckoutPage = () => {
     buyRequest,
     totalCartItems,
     purchaseLoading,
+    transaction,
   } = useContext(GlobalContext);
 
   document.title = "Amazon | Checkout";
@@ -34,6 +35,7 @@ export const CheckoutPage = () => {
           </div>
         </div>
         <Button
+          disabled={transaction === false}
           loading={purchaseLoading}
           onClick={() => buyRequest(totalCartPrice, totalCartItems)}
           className="mt-7 p-3 bg-green-400 text-black border-none  rounded-sm hover: shadow-sm shadow-green-400 flex justify-center items-center"
