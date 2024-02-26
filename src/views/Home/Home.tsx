@@ -17,7 +17,7 @@ export const Home = () => {
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
   const { bookProducts } = useGetBookProducts();
-  const slicedOutCategories = existingCategories.slice(0, 7);
+  const slicedOutCategories = existingCategories.slice(0, 6);
 
   return (
     <div>
