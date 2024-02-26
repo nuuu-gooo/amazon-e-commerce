@@ -6,6 +6,7 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { SingleCartItem } from "./SingleCartItem";
+import { FormattedMessage } from "react-intl";
 
 export const Cart = () => {
   const navigate = useNavigate();
@@ -20,12 +21,14 @@ export const Cart = () => {
           <img className="w-[20%]" src={cartEmptyImg} alt="" />
 
           <div className="right ml-[10%] flex items-start flex-col">
-            <h1>Your Amazon Cart is Empty</h1>
+            <h1>
+              <FormattedMessage id="amazon-cart-empty" />
+            </h1>
             <Link
               to={"/"}
-              className="no-underline text-[black] hover:underline"
+              className="no-underline text-[black] hover:underline mt-1"
             >
-              Go to Home Page
+              <FormattedMessage id="back-to-home" />
             </Link>
             {authStage === authStage_EUNM.UNAUTHORIZED && (
               <div className="btns flex items-center justify-center mt-3">
@@ -33,13 +36,13 @@ export const Cart = () => {
                   className="rounded    bg-[#febd69]   p-3 border-none hover:opacity-50 cursor-pointer"
                   onClick={() => navigate("/login")}
                 >
-                  Sign in to your account
+                  <FormattedMessage id="sign-in-cart" />
                 </button>
                 <button
                   className=" rounded  bg-[#febd69] ml-3  p-3 border-none hover:opacity-50 cursor-pointer "
                   onClick={() => navigate("/createaccount")}
                 >
-                  Sing Up now!
+                  <FormattedMessage id="sign-up-cart" />
                 </button>
               </div>
             )}

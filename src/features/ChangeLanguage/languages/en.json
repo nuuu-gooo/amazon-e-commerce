@@ -2,6 +2,7 @@
   "change.language": "🇩🇪",
   "profile": "Profile",
   "sign-in": "Sign in",
+  "sign-in-cart": "Sign in to your account",
   "sign-out": "Sign Out",
   "e-mail": "E-Mail",
   "password": "Password",
@@ -26,6 +27,7 @@
   "surname-error": "! Please enter your surname",
   "re-enter-error": "! Wrong Password",
   "sign-up-sidebar": "Hello, Sign Up",
+  "sign-up-cart": "Sign uo now",
   "hello-sign-in-nav-1": "Hello Sign Up ",
   "card-nav-1": "Card",
   "returns": "Returns",
@@ -46,5 +48,7 @@
   "new-customer": "New Customer?",
   "start-here": "Start here!",
   "your-basket": "Your Basket",
-  "empty-basket": "No itmes in Cart"
+  "empty-basket": "No itmes in Cart",
+  "amazon-cart-empty": "Your Amazon Cart is empty",
+  "back-to-home": "Back to Homepage"
 }

@@ -10,6 +10,7 @@
   "home": "Zuhause",
   "delete": "Löschen",
   "sign-in": "Anmelden",
+  "sign-in-cart": "Melden Sie sich, bei Ihrem Konto an",
   "sign-out": "Abmelden",
   "e-mail": "E-Mail",
   "password": "Passwort",
@@ -27,6 +28,7 @@
   "re-enter-password": "Wiederholen Sie ihr Passwort ",
   "already-have-an-account": "Schon ein Account? ",
   "sign-up-sidebar": "Hallo,  Anmelden",
+  "sign-up-cart": "Jetzt Registrieren",
   "hello-sign-in-nav-1": "Hallo Anmelden",
   "card-nav-1": "Einkaufswagen",
   "returns": "Warenrücksendungen",
@@ -46,5 +48,7 @@
   "new-customer": "Neuer Kunde?",
   "start-here": "Starte hier!",
   "your-basket": "Ihr Einkaufswagen",
-  "empty-basket": "Ihr Einkaufswagen ist leer!"
+  "empty-basket": "Ihr Einkaufswagen ist leer!",
+  "amazon-cart-empty": "Ihre Amazon Karte ist leer",
+  "back-to-home": "Zurück zur Startseite"
 }
