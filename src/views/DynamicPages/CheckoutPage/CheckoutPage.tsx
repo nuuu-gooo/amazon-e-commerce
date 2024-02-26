@@ -12,6 +12,8 @@ export const CheckoutPage = () => {
     totalCartItems,
     purchaseLoading,
   } = useContext(GlobalContext);
+
+  document.title = "Amazon | Checkout";
   return (
     <div className="flex justify-center items-center p-8">
       <div className="container flex justify-center items-center flex-col">

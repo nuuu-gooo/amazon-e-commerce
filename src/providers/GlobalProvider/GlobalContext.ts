@@ -1,4 +1,5 @@
 import { TCartItem, TLikedProduct, TProduct } from "@src/@types/types";
+import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 import { createContext } from "react";
 
 export interface TExistingCategories {
@@ -16,6 +17,7 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
   isToggled: boolean;
+  orderStatus: orderStatus_ENUM;
   transaction: boolean | undefined;
   existingCatLoading: boolean;
   setTransaction: React.Dispatch<React.SetStateAction<boolean | undefined>>;
@@ -43,6 +45,7 @@ interface TGlobalContext {
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
+  orderStatus: orderStatus_ENUM.ORDERPENDING,
   totalCartItems: 0,
   totalCartPrice: 0,
   count: 0,

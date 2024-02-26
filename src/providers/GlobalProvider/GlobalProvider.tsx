@@ -14,6 +14,7 @@ import { AuthContext } from "../Auth/AuthContext";
 import { TCartItem } from "@src/@types/types";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { useNavigate } from "react-router-dom";
+import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const [transaction, setTransaction] = useState<boolean>();
@@ -35,6 +36,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
+  const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
+    orderStatus_ENUM.ORDERPENDING
+  );
+
+  console.log(orderStatus);
   //-----------PRICE-CALCULATION-------------//
   let sum = 0;
   let totalCartItems = 0;
@@ -146,6 +152,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       {
         transaction && naviagte("/checkout/success");
       }
+
+      {
+        transaction && setOrderStatus(orderStatus_ENUM.ORDERED);
+      }
       {
         if (location.pathname.includes("/checkout/success")) {
           setAllCartProducts([]);
@@ -175,6 +185,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        orderStatus,
         transaction,
         setTransaction,
         purchaseLoading,

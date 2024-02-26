@@ -16,6 +16,7 @@ import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
 import { LoginSecurity } from "./views/PrivateViews/Profile/LoginSecurity/LoginSecurity";
 import { ChangeInfo } from "./views/PrivateViews/Profile/LoginSecurity/ChangeInfo/ChangeInfo";
 import { ChekoutSuccess } from "./views/DynamicPages/CheckoutPage/ChekoutSuccess";
+import { PrivateOrderStatus } from "./views/Private/PrivateOrderStatus/PrivateOrderStatus";
 
 const Home = lazy(() => import("@src/views/Home"));
 const Login = lazy(() => import("@src/views/Login"));
@@ -72,7 +73,7 @@ function App() {
           />
           <Route
             path="/checkout/success"
-            element={<PrivateRoute children={<ChekoutSuccess />} />}
+            element={<PrivateOrderStatus children={<ChekoutSuccess />} />}
           />
           <Route path="/cart" element={<Cart />} />
         </Route>
