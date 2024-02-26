@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { Input } from "antd";
 
 interface PaymentFormState {
   cvc: string;
@@ -143,7 +144,7 @@ const PaymentForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="right flex flex-col ml-3">
           <div className="input-container">
-            <input
+            <Input
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               maxLength={16}
               type="tel"
@@ -156,7 +157,7 @@ const PaymentForm: React.FC = () => {
           </div>
 
           <div className="input-container">
-            <input
+            <Input
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               maxLength={4}
               type="tel"
@@ -169,7 +170,7 @@ const PaymentForm: React.FC = () => {
           </div>
 
           <div className="input-container">
-            <input
+            <Input
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="text"
               name="name"
@@ -181,7 +182,7 @@ const PaymentForm: React.FC = () => {
           </div>
 
           <div className="input-container">
-            <input
+            <Input
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="tel"
               minLength={1}
@@ -201,7 +202,7 @@ const PaymentForm: React.FC = () => {
           </select>
 
           <div className="input-container">
-            <input
+            <Input
               onChange={(e) => setAddress(e.target.value)}
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="address"
@@ -213,6 +214,7 @@ const PaymentForm: React.FC = () => {
           </div>
 
           <button
+            onClick={() => setTransaction(true)}
             className="ursor-pointer w-full px-2.5  p-1 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
  to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"

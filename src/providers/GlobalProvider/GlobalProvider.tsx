@@ -161,6 +161,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
           setAllCartProducts([]);
           for (let i = 0; i < allCartProducts.length; i++) {
             deleteSingleCartProduct(allCartProducts[i].id);
+            deleteCartProducts(allCartProducts[i].id);
           }
         }
       }
