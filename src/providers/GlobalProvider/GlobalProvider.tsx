@@ -42,7 +42,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
     orderStatus_ENUM.ORDERPENDING
   );
-
   console.log(orderStatus);
   //-----------PRICE-CALCULATION-------------//
   let sum = 0;
@@ -181,6 +180,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const getBoughtProducts = async (id: string) => {
     const resp = await privateAxios.get(`/purchases/${id}`);
     setBoughtProducts(resp.data);
+    getBoughtProducts(resp.data);
     console.log(resp.data, boughtProducts);
   };
 
