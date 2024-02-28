@@ -38,11 +38,11 @@ export const CategoryProducts = () => {
   }, [productCategoryId, minPrice, maxPrice]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-gray-200">
       <div className="flex justify-between items-center p-9">
         <div className="mr-[3rem] md:left flex justify-center items-start flex-col">
-          <div className="mb-3">
-            <h3>Filters</h3>
+          <div className="mb-3 w-full">
+            <h3 className="text-center mb-2">Filters</h3>
             <hr className="border-solid border-black " />
           </div>
           <hr />

@@ -18,8 +18,8 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
   } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   return (
-    <div className="flex flex-wrap overflow-hidden">
-      <div className=" flex justify-center items-start flex-col border border-solid  max-w-[360px]  rounded-md p-9  ">
+    <div className="flex flex-wrap overflow-hidden bg-white rounded-sm mr-3">
+      <div className=" flex justify-center items-start flex-col border border-solid  max-w-[360px]   rounded-e-md p-9  ">
         <Link className="no-underline text-black " to={`/search/${data.title}`}>
           <div className="flex justify-center items-center ">
             <img
@@ -48,15 +48,13 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
 
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button
-            loading={addToCartLoading}
-            // onClick={() => AddToCart(data.id)}
             onClick={async () => {
               AddToCart(data.id);
               getCartProducts();
             }}
             className="w-[100%] mt-5 rounded-b-lg  bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
-            Buy
+            Add to cart
           </Button>
         )}
       </div>

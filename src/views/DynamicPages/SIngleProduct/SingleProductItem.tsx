@@ -124,7 +124,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
                 navigate("/login");
               }
             }}
-            className="w-[100%] mt-2 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
+            className="w-[100%] mt-2 rounded-md  min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
             {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
           </button>
