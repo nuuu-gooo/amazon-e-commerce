@@ -18,6 +18,9 @@ import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const naviagte = useNavigate();
+  const [boughtProducts, setBoughtProducts] = useState<any>(undefined);
+  const [order, setOrder] = useState<any>(undefined);
+  console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
@@ -142,12 +145,12 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
 
-  const buyRequest = async (totalItems: number, sum: number) => {
+  const buyRequest = async (sum: number, something: number) => {
     try {
       setPurchaseLoading(true);
       const response = await privateAxios.post("/purchases", {
-        totalPrice: sum,
-        totalItems: totalItems,
+        totalItems: totalCartItems,
+        totalPrice: totalCartPrice,
       });
       {
         transaction && naviagte("/checkout/success");
@@ -165,12 +168,20 @@ export function GlobalProvider({ children }: PropsWithChildren) {
           }
         }
       }
+
       console.log(response.data);
+      setOrder(response.data);
     } catch (error: any) {
       console.log(error.message);
     } finally {
       setPurchaseLoading(false);
     }
+  };
+
+  const getBoughtProducts = async (id: string) => {
+    const resp = await privateAxios.get(`/purchases/${id}`);
+    setBoughtProducts(resp.data);
+    console.log(resp.data, boughtProducts);
   };
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
@@ -182,11 +193,14 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       fetchWishListProducts();
     }
     setTransaction(false);
-  }, [authStage, transaction]);
+  }, [authStage, transaction, order, orderStatus]);
 
   return (
     <GlobalContext.Provider
       value={{
+        order,
+        boughtProducts,
+        getBoughtProducts,
         orderStatus,
         transaction,
         setTransaction,

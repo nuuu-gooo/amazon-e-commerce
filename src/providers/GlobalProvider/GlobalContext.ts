@@ -35,6 +35,7 @@ interface TGlobalContext {
   count: number;
   totalCartPrice: number;
   totalCartItems: number;
+  getBoughtProducts: (id: string) => Promise<void>;
   buyRequest: (totalItems: number, sum: number) => Promise<void>;
   deleteSingleCartProduct: (id: string) => Promise<void>;
   getCartProducts: () => Promise<void>;
@@ -42,6 +43,8 @@ interface TGlobalContext {
   deleteCartProducts: (id: string) => Promise<void>;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
+  order: any;
+  boughtProducts: any;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
@@ -61,6 +64,9 @@ export const GlobalContext = createContext<TGlobalContext>({
   isToggled: false,
   existingCatLoading: false,
   addToCartModal: false,
+  order: undefined,
+  boughtProducts: undefined,
+  getBoughtProducts: async () => {},
   AddToCart: async () => {},
   buyRequest: async () => {},
   deleteSingleCartProduct: async () => {},
