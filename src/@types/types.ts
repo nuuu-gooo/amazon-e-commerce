@@ -46,3 +46,9 @@ export interface TPagination {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   total: number;
 }
+
+export interface TBoughtProduct {
+  created_at: string;
+  updated_at: string;
+  id: string;
+}

@@ -17,6 +17,7 @@ interface TGlobalContext {
     React.SetStateAction<TExistingCategories[]>
   >;
   isToggled: boolean;
+  delRefundLoading: boolean;
   orderStatus: orderStatus_ENUM;
   transaction: boolean | undefined;
   existingCatLoading: boolean;
@@ -65,6 +66,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   isToggled: false,
   existingCatLoading: false,
   addToCartModal: false,
+  delRefundLoading: false,
   order: undefined,
   boughtProducts: undefined,
   hadnleRefund: async () => {},

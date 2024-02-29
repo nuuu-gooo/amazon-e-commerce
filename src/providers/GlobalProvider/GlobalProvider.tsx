@@ -19,6 +19,7 @@ import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 export function GlobalProvider({ children }: PropsWithChildren) {
   const naviagte = useNavigate();
   const [boughtProducts, setBoughtProducts] = useState<any>([]);
+  const [delRefundLoading, setDelRefundLoading] = useState<boolean>(false);
   const [order, setOrder] = useState<any>(undefined);
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
@@ -185,8 +186,15 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   const hadnleRefund = async (id: string) => {
-    await axiosInstance.delete(`/purchases/${id}`);
-    getBoughtProducts();
+    try {
+      setDelRefundLoading(true);
+      await axiosInstance.delete(`/purchases/${id}`);
+      getBoughtProducts();
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setDelRefundLoading(false);
+    }
   };
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
@@ -204,6 +212,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     <GlobalContext.Provider
       value={{
         order,
+        delRefundLoading,
         hadnleRefund,
         boughtProducts,
         getBoughtProducts,
