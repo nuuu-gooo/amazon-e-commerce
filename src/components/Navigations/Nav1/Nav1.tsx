@@ -14,6 +14,8 @@ import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpPr
 import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
 import PopOverCart from "@src/components/UI /PopOverCart";
+import { CiLocationOn } from "react-icons/ci";
+import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
@@ -23,6 +25,7 @@ export const Nav1 = () => {
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
   const location = useLocation();
+  const { locale } = useContext(LContext);
 
   const content = (
     <div className="flex flex-col">
@@ -77,6 +80,17 @@ export const Nav1 = () => {
           <Link to={"/"}>
             <img src={AmazonLogo} alt="" />
           </Link>
+        </div>
+        <div className="deliver-location flex items-center">
+          <div className="left text-2xl">
+            <CiLocationOn className="text-white " />
+          </div>
+          <div className="right text-white ml-1 text-xs  mr-3 flex flex-col">
+            <p className="text-xs">Deliver To</p>
+            <h3 className="">
+              {locale === Locale_ENUM.DE ? "Germany" : "England"}
+            </h3>
+          </div>
         </div>
         <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%] ">
           {loading ? <Loader /> : ""}

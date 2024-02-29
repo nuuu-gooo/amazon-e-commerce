@@ -19,7 +19,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
   const { saleProducts } = useGetSaleProducts();
   return (
     <div className="flex flex-wrap overflow-hidden bg-white rounded-sm mr-3">
-      <div className=" flex justify-center items-start flex-col border border-solid  max-w-[360px]   rounded-e-md p-9  ">
+      <div className=" flex justify-center items-start flex-col  max-w-[360px]   rounded-e-md p-9  ">
         <Link className="no-underline text-black " to={`/search/${data.title}`}>
           <div className="flex justify-center items-center ">
             <img

@@ -42,8 +42,8 @@ export const CategoryProducts = () => {
       <div className="flex justify-between items-center p-9">
         <div className="mr-[3rem] md:left flex justify-center items-start flex-col">
           <div className="mb-3 w-full">
-            <h3 className="text-center mb-2">Filters</h3>
-            <hr className="border-solid border-black " />
+            <h3 className="text-center mb-1">Filters</h3>
+            <div className="w-full p-0.5 rounded-md bg-[#febd69]"></div>
           </div>
           <hr />
           <p>Min:</p>
