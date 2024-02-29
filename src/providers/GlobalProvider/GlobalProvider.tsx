@@ -18,7 +18,7 @@ import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const naviagte = useNavigate();
-  const [boughtProducts, setBoughtProducts] = useState<any>(undefined);
+  const [boughtProducts, setBoughtProducts] = useState<any>([]);
   const [order, setOrder] = useState<any>(undefined);
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
@@ -170,6 +170,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
       console.log(response.data);
       setOrder(response.data);
+      getBoughtProducts();
     } catch (error: any) {
       console.log(error.message);
     } finally {
@@ -177,11 +178,15 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
   };
 
-  const getBoughtProducts = async (id: string) => {
-    const resp = await privateAxios.get(`/purchases/${id}`);
+  const getBoughtProducts = async () => {
+    const resp = await privateAxios.get(`/purchases`);
     setBoughtProducts(resp.data);
-    getBoughtProducts(resp.data);
     console.log(resp.data, boughtProducts);
+  };
+
+  const hadnleRefund = async (id: string) => {
+    await axiosInstance.delete(`/purchases/${id}`);
+    getBoughtProducts();
   };
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
@@ -199,6 +204,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     <GlobalContext.Provider
       value={{
         order,
+        hadnleRefund,
         boughtProducts,
         getBoughtProducts,
         orderStatus,

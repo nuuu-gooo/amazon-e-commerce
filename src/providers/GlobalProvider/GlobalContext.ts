@@ -35,6 +35,7 @@ interface TGlobalContext {
   count: number;
   totalCartPrice: number;
   totalCartItems: number;
+  hadnleRefund: (id: string) => Promise<void>;
   getBoughtProducts: (id: string) => Promise<void>;
   buyRequest: (totalItems: number, sum: number) => Promise<void>;
   deleteSingleCartProduct: (id: string) => Promise<void>;
@@ -66,6 +67,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   addToCartModal: false,
   order: undefined,
   boughtProducts: undefined,
+  hadnleRefund: async () => {},
   getBoughtProducts: async () => {},
   AddToCart: async () => {},
   buyRequest: async () => {},
