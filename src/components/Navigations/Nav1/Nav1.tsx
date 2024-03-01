@@ -27,6 +27,7 @@ export const Nav1 = () => {
   const [statusModal, setStatusModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { locale } = useContext(LContext);
 
   const content = (
     <div className="flex flex-col">
@@ -104,7 +105,7 @@ export const Nav1 = () => {
             <FaGlobe />
           </Button>
         </div>
-        <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%] ">
+        <div className=" xl:flex relative hidden md:main-search-input ml-3 flex-grow min-w-[50%] ">
           {loading ? <Loader /> : ""}
           <div className="flex flex-col absolute z-[9999]  w-[100%] left-[0] right-[30%] top-9     ">
             {popUpProducts.map((product) => {
@@ -143,7 +144,7 @@ export const Nav1 = () => {
           </select>
           <input
             onChange={(e) => setSearchInputValue(e.target.value)}
-            className="w-[100%]  border-none p-1 outline-none flex-grow overflow-hidden "
+            className="   w-[100%]  border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}

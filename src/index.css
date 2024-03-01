@@ -181,3 +181,9 @@
   padding: 0.5rem;
   outline: none;
 }
+
+@media (min-width: 1211px) {
+  .main-search-input {
+    display: none;
+  }
+}

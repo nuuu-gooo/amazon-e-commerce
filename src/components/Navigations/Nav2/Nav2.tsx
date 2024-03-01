@@ -14,7 +14,7 @@ export const Nav2 = () => {
       <div className="nav-container  sm:flex justify-start items-center">
         <div>
           <p
-            className=" ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
+            className=" shadow-sm rounded-sm  shadow-black bg-transparent p-2  ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
             onClick={toggleSidebarFunction}
           >
             All
@@ -25,7 +25,7 @@ export const Nav2 = () => {
             <Link
               to={link.link}
               key={link.id}
-              className="text-xs hidden sm:ml-3 sm:block text-white no-underline sm:text-base"
+              className="    text-xs hidden sm:ml-3 sm:block text-white no-underline sm:text-base"
             >
               {link.name[locale]}
             </Link>

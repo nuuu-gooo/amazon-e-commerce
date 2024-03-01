@@ -47,7 +47,7 @@ export const SideBar = () => {
               </Link>
             )}
 
-            <div className="search flex items-center relative w-full md:hidden">
+            <div className=" search flex items-center relative w-full ">
               <input
                 onChange={(e) => setSideBarInput(e.target.value)}
                 placeholder="Enter Keyword"
