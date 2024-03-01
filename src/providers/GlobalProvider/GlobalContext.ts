@@ -11,23 +11,23 @@ export interface TExistingCategories {
 }
 interface TGlobalContext {
   setCount: React.Dispatch<React.SetStateAction<number>>;
-  setIsToggled: React.Dispatch<React.SetStateAction<boolean>>;
   existingCategories: TExistingCategories[];
-  setExistingCategories: React.Dispatch<
-    React.SetStateAction<TExistingCategories[]>
-  >;
   isToggled: boolean;
   delRefundLoading: boolean;
   orderStatus: orderStatus_ENUM;
   transaction: boolean | undefined;
   existingCatLoading: boolean;
   setTransaction: React.Dispatch<React.SetStateAction<boolean | undefined>>;
+  setIsToggled: React.Dispatch<React.SetStateAction<boolean>>;
   purchaseLoading: boolean;
   wishListProductsLoading: boolean;
   deleteWishListProductLoading: boolean;
   addToCartModal: boolean;
   deleteCartLoading: boolean;
   addToCartLoading: boolean;
+  setExistingCategories: React.Dispatch<
+    React.SetStateAction<TExistingCategories[]>
+  >;
   wishListProducts: TLikedProduct[];
   allCartProducts: TCartItem[];
   setAddToCartModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,6 +36,8 @@ interface TGlobalContext {
   count: number;
   totalCartPrice: number;
   totalCartItems: number;
+  globalCountry: string;
+  setGlobalCountry: React.Dispatch<React.SetStateAction<string>>;
   hadnleRefund: (id: string) => Promise<void>;
   getBoughtProducts: (id: string) => Promise<void>;
   buyRequest: (totalItems: number, sum: number) => Promise<void>;
@@ -45,12 +47,15 @@ interface TGlobalContext {
   deleteCartProducts: (id: string) => Promise<void>;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
+  setSelectedNewCountry: React.Dispatch<React.SetStateAction<string>>;
   order: any;
   boughtProducts: any;
+  selectedNewCountry: string;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
   orderStatus: orderStatus_ENUM.ORDERPENDING,
+  selectedNewCountry: "",
   totalCartItems: 0,
   totalCartPrice: 0,
   count: 0,
@@ -69,6 +74,9 @@ export const GlobalContext = createContext<TGlobalContext>({
   delRefundLoading: false,
   order: undefined,
   boughtProducts: undefined,
+  globalCountry: "",
+  setSelectedNewCountry: () => {},
+  setGlobalCountry: () => {},
   hadnleRefund: async () => {},
   getBoughtProducts: async () => {},
   AddToCart: async () => {},

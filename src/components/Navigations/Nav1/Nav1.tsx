@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch, FaUserCircle } from "react-icons/fa";
+import { FaGlobe, FaSearch, FaUserCircle } from "react-icons/fa";
 
 import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
@@ -16,16 +16,17 @@ import { useLocation } from "react-router-dom";
 import PopOverCart from "@src/components/UI /PopOverCart";
 import { CiLocationOn } from "react-icons/ci";
 import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
+import { CountrySelection } from "./CountrySelection/CountrySelection";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
-  const { existingCategories } = useContext(GlobalContext);
+  const { existingCategories, selectedNewCountry } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
+  const [statusModal, setStatusModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { locale } = useContext(LContext);
 
   const content = (
     <div className="flex flex-col">
@@ -87,10 +88,21 @@ export const Nav1 = () => {
           </div>
           <div className="right text-white ml-1 text-xs  mr-3 flex flex-col">
             <p className="text-xs">Deliver To</p>
-            <h3 className="">
-              {locale === Locale_ENUM.DE ? "Germany" : "England"}
-            </h3>
+            {statusModal && (
+              <CountrySelection
+                setStatusModal={setStatusModal}
+                statusModal={statusModal}
+              />
+            )}
+            <h3>{selectedNewCountry}</h3>
           </div>
+          <Button
+            className="bg-[transparent] border-none text-white"
+            onClick={() => setStatusModal(true)}
+          >
+            {" "}
+            <FaGlobe />
+          </Button>
         </div>
         <div className="md:flex relative hidden md:middle-input-container ml-3 flex-grow min-w-[50%] ">
           {loading ? <Loader /> : ""}

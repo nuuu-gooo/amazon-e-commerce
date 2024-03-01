@@ -16,6 +16,8 @@ import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesPro
 import { useNavigate } from "react-router-dom";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 
+import { LContext, Locale_ENUM } from "../LProvider/LContext";
+
 export function GlobalProvider({ children }: PropsWithChildren) {
   const naviagte = useNavigate();
   const [boughtProducts, setBoughtProducts] = useState<any>([]);
@@ -23,6 +25,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [order, setOrder] = useState<any>(undefined);
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
+  const { locale } = useContext(LContext);
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);
@@ -40,6 +43,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
+  const [globalCountry, setGlobalCountry] = useState<string>("");
+  const [selectedNewCountry, setSelectedNewCountry] = useState<string>(
+    locale === Locale_ENUM.DE ? "Germany" : "England"
+  );
   const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
     orderStatus_ENUM.ORDERPENDING
   );
@@ -211,7 +218,11 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   return (
     <GlobalContext.Provider
       value={{
+        selectedNewCountry,
+        setSelectedNewCountry,
         order,
+        globalCountry,
+        setGlobalCountry,
         delRefundLoading,
         hadnleRefund,
         boughtProducts,
