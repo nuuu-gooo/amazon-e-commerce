@@ -1,7 +1,7 @@
 import { Modal } from "antd";
 import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-
+import { countryList } from "@src/Data/Data";
 export const CountrySelection = ({
   statusModal,
   setStatusModal,
@@ -28,16 +28,17 @@ export const CountrySelection = ({
         onCancel={() => setStatusModal(false)}
         open={statusModal}
       >
+        <h3>Change Location</h3>
         <select
           onChange={(e) => setGlobalCountry(e.target.value)}
           value={globalCountry}
-          className="p-3 w-full cursor-pointer  mt-8"
+          className="p-3 w-full cursor-pointer  mt-3"
           name="country-selection"
           id=""
         >
-          <option value="Georgia">Georgia</option>
-          <option value="England">England </option>
-          <option value="Austria">Austria</option>
+          {countryList.map((country) => {
+            return <option value={country.name}>{country.name}</option>;
+          })}
         </select>
       </Modal>
     </div>
