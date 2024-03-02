@@ -51,7 +51,8 @@ export const Home = () => {
           )}
         </div>
         <SalesProductsComp saleProducts={saleProducts} />
-        <div className="">
+
+        <div className="mt-[3%]">
           <h2 className="mb-2">Products under 30$</h2>
           <SectionSlider data={productsUnder30} />
         </div>

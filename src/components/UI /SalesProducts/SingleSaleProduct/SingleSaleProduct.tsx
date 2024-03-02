@@ -8,6 +8,7 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { CiHeart } from "react-icons/ci";
+import { Card } from "antd";
 
 interface TSingleSaleProduct {
   product: TProductSale;
@@ -42,7 +43,7 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
   return (
     <div
       key={product.id}
-      className=" rounded-md flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full mt-[50%] "
+      className=" rounded-md  flex justify-center w-full border-solid border-black p-9 flex-col items-center h-full mt-[50%] "
     >
       <Link
         className="no-underline text-[black] flex items-center flex-col"
@@ -101,6 +102,10 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
           className="mt-3 border-none bg-transparent"
         ></button>
       )}
+
+      {/* <Card title={product.title}>
+        <img className="w-[50%] aspect-square  " src={product.image} alt="" />
+      </Card> */}
     </div>
   );
 };

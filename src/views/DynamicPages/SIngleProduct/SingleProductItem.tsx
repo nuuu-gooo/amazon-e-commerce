@@ -88,7 +88,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
 
             <p className="text-3xl mb-3">
               {saleProducts.some((product) => product.id === data.id) ? (
-                <span className="">
+                <span className="text-red-700">
                   {
                     saleProducts.find((product) => product?.id === data?.id)
                       ?.salePrice
