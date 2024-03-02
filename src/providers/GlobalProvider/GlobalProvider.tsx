@@ -15,7 +15,6 @@ import { TCartItem } from "@src/@types/types";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { useNavigate } from "react-router-dom";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
-
 import { LContext, Locale_ENUM } from "../LProvider/LContext";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
@@ -44,13 +43,14 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const { saleProducts } = useGetSaleProducts();
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
   const [globalCountry, setGlobalCountry] = useState<string>("");
-  const [selectedNewCountry, setSelectedNewCountry] = useState<string>(
-    locale === Locale_ENUM.DE ? "Germany" : "England"
-  );
+  const savedCountry = localStorage.getItem("currCountry");
+  const [selectedNewCountry, setSelectedNewCountry] =
+    useState<any>(savedCountry);
   const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
     orderStatus_ENUM.ORDERPENDING
   );
   console.log(orderStatus);
+
   //-----------PRICE-CALCULATION-------------//
   let sum = 0;
   let totalCartItems = 0;
@@ -206,6 +206,10 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
 
+  const saveLocation = (location: string) => {
+    localStorage.setItem("currCountry", location);
+  };
+
   useEffect(() => {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
@@ -213,7 +217,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       fetchWishListProducts();
     }
     setTransaction(false);
-  }, [authStage, transaction, order, orderStatus]);
+    saveLocation(selectedNewCountry);
+  }, [authStage, transaction, order, orderStatus, selectedNewCountry, locale]);
 
   return (
     <GlobalContext.Provider

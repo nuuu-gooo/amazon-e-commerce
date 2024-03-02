@@ -88,7 +88,9 @@ export const Nav1 = () => {
             <CiLocationOn className="text-white " />
           </div>
           <div className="right text-white ml-1 text-xs  mr-3 flex flex-col">
-            <p className="text-xs">Deliver To</p>
+            <p className="text-xs">
+              <FormattedMessage id="deliver-to" />
+            </p>
             {statusModal && (
               <CountrySelection
                 setStatusModal={setStatusModal}

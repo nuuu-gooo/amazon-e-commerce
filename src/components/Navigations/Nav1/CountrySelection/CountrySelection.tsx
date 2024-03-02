@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { countryList } from "@src/Data/Data";
+import { LContext } from "@src/providers/LProvider/LContext";
 export const CountrySelection = ({
   statusModal,
   setStatusModal,
@@ -15,6 +16,8 @@ export const CountrySelection = ({
     selectedNewCountry,
     setSelectedNewCountry,
   } = useContext(GlobalContext);
+
+  const { locale } = useContext(LContext);
 
   return (
     <div>
@@ -37,7 +40,11 @@ export const CountrySelection = ({
           id=""
         >
           {countryList.map((country) => {
-            return <option value={country.name}>{country.name}</option>;
+            return (
+              <option value={country.name[locale]}>
+                {country.name[locale]}
+              </option>
+            );
           })}
         </select>
       </Modal>
