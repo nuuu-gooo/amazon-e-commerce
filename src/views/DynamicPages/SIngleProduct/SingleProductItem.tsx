@@ -9,6 +9,7 @@ import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesPro
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
+import { FormattedMessage } from "react-intl";
 
 interface TSingleProductItem {
   data: TProduct;
@@ -110,8 +111,8 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
           </p>
 
           {salesBadge ? (
-            <p className="bg-[red] text-[white] p-2 mt-4 rounded-sm text-center w-full">
-              For Sale
+            <p className="bg-[red] rounded-md text-[white] p-2 mt-4  text-center w-full">
+              <FormattedMessage id="for-sale" />
             </p>
           ) : (
             ""
@@ -126,7 +127,11 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             }}
             className="w-[100%] mt-2 rounded-md  min-w-9 bg-[#febd69] flex items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
-            {addToCartLoading ? "Adding to Cart..." : "Add to Cart"}
+            {addToCartLoading ? (
+              <FormattedMessage id="add-to-cart-loading" />
+            ) : (
+              <FormattedMessage id="add-to-cart" />
+            )}
           </button>
           <button
             // onClick={() => navigate("/checkout")}
@@ -138,7 +143,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
  to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
           >
-            Buy Now
+            <FormattedMessage id="buy-now" />
           </button>
           <button
             className="w-full mt-3 bg-[transparent] border-none flex justify-center items-center"

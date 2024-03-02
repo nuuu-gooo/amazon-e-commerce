@@ -51,5 +51,9 @@
   "empty-basket": "No itmes in Cart",
   "amazon-cart-empty": "Your Amazon Cart is empty",
   "back-to-home": "Back to Homepage",
-  "deliver-to": "Deliver to"
+  "deliver-to": "Deliver to",
+  "add-to-cart": "Add to cart ",
+  "add-to-cart-loading": "Adding to cart...",
+  "buy-now": "Buy now",
+  "for-sale": "For Sale"
 }

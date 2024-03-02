@@ -51,5 +51,9 @@
   "empty-basket": "Ihr Einkaufswagen ist leer!",
   "amazon-cart-empty": "Ihre Amazon Karte ist leer",
   "back-to-home": "Zurück zur Startseite",
-  "deliver-to": "Liefern nach"
+  "deliver-to": "Liefern nach",
+  "add-to-cart": "Zur Karte hinzufügen",
+  "add-to-cart-loading": "Wird hinzugefügt",
+  "buy-now": "Jetzt kaufen",
+  "for-sale": "Rabattiert"
 }
