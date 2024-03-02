@@ -50,7 +50,9 @@ export const Cart = () => {
         </div>
       ) : (
         <div>
-          <h1 className="mb-2">Your Cart </h1>
+          <h2 className="mb-2">
+            <FormattedMessage id="your-cart" />
+          </h2>
           <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5 rounded-l">
             {allCartProducts.map((product) => {
               return <SingleCartItem data={product} />;
@@ -63,7 +65,7 @@ export const Cart = () => {
             </p>
             <button
               onClick={() => navigate("/checkout")}
-              className="mt-3 cursor-pointer px-2.5 rounded-md  font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
+              className="mt-3 p-1 cursor-pointer px-2.5 rounded-md  font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
  to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
  active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
             >

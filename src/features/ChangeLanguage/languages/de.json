@@ -25,12 +25,14 @@
   "register": "Registrieren",
   "your-name": "Ihr Name",
   "your-surname": "Ihr Nachname",
+
   "re-enter-password": "Wiederholen Sie ihr Passwort ",
   "already-have-an-account": "Schon ein Account? ",
   "sign-up-sidebar": "Hallo,  Anmelden",
   "sign-up-cart": "Jetzt Registrieren",
   "hello-sign-in-nav-1": "Hallo Anmelden",
   "card-nav-1": "Einkaufswagen",
+  "your-cart": "Ihr Einkaufswagen",
   "returns": "Warenrücksendungen",
   "orders": "und Bestellungen",
   "back-to-top": "Zurück zum Anfang",
@@ -55,5 +57,9 @@
   "add-to-cart": "Zur Karte hinzufügen",
   "add-to-cart-loading": "Wird hinzugefügt",
   "buy-now": "Jetzt kaufen",
-  "for-sale": "Rabattiert"
+  "for-sale": "Rabattiert",
+  "card-number": "Karten Nummer",
+  "cardholder-name": "Innhabername",
+  "address": "Adresse",
+  "expire-date": "Ablaufsdatum"
 }

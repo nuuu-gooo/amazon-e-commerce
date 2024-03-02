@@ -9,7 +9,7 @@ import React, {
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { Input } from "antd";
-
+import { useIntl } from "react-intl";
 interface PaymentFormState {
   cvc: string;
   expiry: string;
@@ -22,7 +22,11 @@ interface PaymentFormState {
 const PaymentForm: React.FC = () => {
   const [address, setAddress] = useState<string | undefined>();
   const [addressVal, setAddressVal] = useState<boolean | undefined>();
-  const { setTransaction, transaction } = useContext(GlobalContext);
+  const { setTransaction, transaction, selectedNewCountry } =
+    useContext(GlobalContext);
+
+  const intl = useIntl();
+
   const [state, setState] = useState<PaymentFormState>({
     cvc: "",
     expiry: "",
@@ -149,7 +153,7 @@ const PaymentForm: React.FC = () => {
               maxLength={16}
               type="tel"
               name="number"
-              placeholder="Card Number"
+              placeholder={intl.formatMessage({ id: "card-number" })}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
             />
@@ -162,7 +166,7 @@ const PaymentForm: React.FC = () => {
               maxLength={4}
               type="tel"
               name="expiry"
-              placeholder="Expiration Date"
+              placeholder={intl.formatMessage({ id: "expire-date" })}
               onChange={handleValid}
               onFocus={handleInputFocus}
             />
@@ -174,7 +178,7 @@ const PaymentForm: React.FC = () => {
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="text"
               name="name"
-              placeholder="Cardholder Name"
+              placeholder={intl.formatMessage({ id: "cardholder-name" })}
               onChange={handleName}
               onFocus={handleInputFocus}
             />
@@ -201,14 +205,16 @@ const PaymentForm: React.FC = () => {
             <option value="germany">🇬🇪 Georgia</option>
           </select>
 
-          <div className="input-container">
+          <div className="input-container flex">
             <Input
               onChange={(e) => setAddress(e.target.value)}
               className="mb-3 p-2 rounded outline-none border-solid border-black"
               type="address"
               name="Address"
-              placeholder="Address"
+              placeholder={intl.formatMessage({ id: "address" })}
             />
+
+            <p>{selectedNewCountry}</p>
 
             {addressVal && <p>✅</p>}
           </div>

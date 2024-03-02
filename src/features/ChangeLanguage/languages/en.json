@@ -55,5 +55,9 @@
   "add-to-cart": "Add to cart ",
   "add-to-cart-loading": "Adding to cart...",
   "buy-now": "Buy now",
-  "for-sale": "For Sale"
+  "for-sale": "For Sale",
+  "card-number": "Card Number",
+  "cardholder-name": "Cardholer name",
+  "address": "Adress",
+  "expire-date": "Expire date"
 }

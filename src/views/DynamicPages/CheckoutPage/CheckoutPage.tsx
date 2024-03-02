@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { SingleCartItem } from "../Cart/SingleCartItem";
 import { Button } from "antd";
+import { FormattedMessage } from "react-intl";
 
 export const CheckoutPage = () => {
   const {
@@ -18,10 +19,12 @@ export const CheckoutPage = () => {
   return (
     <div className="flex justify-center items-center p-8">
       <div className="container flex justify-center items-center flex-col">
-        <h1 className=" mb-3">Checkout</h1>
+        <h2 className=" mb-3">Checkout</h2>
         <PaymentForm />
         <div>
-          <h1 className="mb-2">Your Cart </h1>
+          <h2 className="mb-2">
+            <FormattedMessage id="your-cart" />{" "}
+          </h2>
           <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5 rounded-l">
             {allCartProducts.map((product) => {
               return <SingleCartItem data={product} />;
@@ -40,7 +43,7 @@ export const CheckoutPage = () => {
           onClick={() => buyRequest(totalCartPrice, totalCartItems)}
           className="mt-7 p-3 bg-green-400 text-black border-none  rounded-sm hover: shadow-sm shadow-green-400 flex justify-center items-center"
         >
-          Purchase Now
+          <FormattedMessage id="buy-now" />
         </Button>
       </div>
     </div>

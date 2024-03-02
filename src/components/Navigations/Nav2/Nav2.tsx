@@ -14,7 +14,7 @@ export const Nav2 = () => {
       <div className="nav-container  sm:flex justify-start items-center">
         <div>
           <p
-            className=" shadow-sm rounded-sm  shadow-black bg-transparent p-2  ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base"
+            className=" text-center  all-btn shadow-sm rounded-sm  shadow-black bg-transparent p-2  ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base cursor-pointer"
             onClick={toggleSidebarFunction}
           >
             All

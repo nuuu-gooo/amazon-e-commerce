@@ -78,13 +78,13 @@ export const Nav1 = () => {
     <nav className="   wrapper w-full bg-[#131921]">
       <SideBar />
       <div className=" sm:nav-container flex justify-between items-center p-4">
-        <div className="left ">
+        <div className="left mr-3 ">
           <Link to={"/"}>
             <img src={AmazonLogo} alt="" />
           </Link>
         </div>
         <div className="deliver-location flex items-center">
-          <div className="left text-2xl">
+          <div className="left text-2xl ">
             <CiLocationOn className="text-white " />
           </div>
           <div className="right text-white ml-1 text-xs  mr-3 flex flex-col">
@@ -100,7 +100,7 @@ export const Nav1 = () => {
             <h3>{selectedNewCountry}</h3>
           </div>
           <Button
-            className="bg-[transparent] border-none text-white"
+            className="bg-[transparent] border-none text-white m"
             onClick={() => setStatusModal(true)}
           >
             {" "}
@@ -160,7 +160,7 @@ export const Nav1 = () => {
                 navigate(`search/${currentCategory}/${searchInputValue}`);
               }
             }}
-            className="w-[3%] min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
+            className="w-[3%] mr-3 min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />
           </button>
