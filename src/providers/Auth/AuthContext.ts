@@ -30,6 +30,9 @@ export type AuthContextType = {
   success: boolean;
   error: boolean;
   changeAccInfo: any;
+  setChangedAccInfo: React.Dispatch<React.SetStateAction<boolean | undefined>>;
+  changedAccInfo: boolean | undefined;
+  numberInputValidation: boolean | undefined;
 };
 
 export const AuthContext = createContext<AuthContextType>({
@@ -39,6 +42,9 @@ export const AuthContext = createContext<AuthContextType>({
   authStage: authStage_EUNM.UNAUTHORIZED,
   loading: false,
   success: false,
+  changedAccInfo: false,
+  numberInputValidation: false,
+  setChangedAccInfo: () => {},
   changeAccInfo: () => {},
   signInFetch: () => {},
   setUserData: () => {},

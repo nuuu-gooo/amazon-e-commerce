@@ -12,20 +12,33 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState(false);
+  const [numberInputValidation, setNumberInputValidation] = useState<
+    boolean | undefined
+  >(undefined);
   const [authStage, setAuthStage] = useState<authStage_EUNM>(
     authStage_EUNM.PENDING
   );
   const [changeAccLoading, setChangeAccLoading] = useState<boolean>(false);
+  const [changedAccInfo, setChangedAccInfo] = useState<boolean | undefined>(
+    undefined
+  );
   const navigate = useNavigate();
-
-  //--USER INFO CHANGE--// ⛔️ 🚨
+  console.log(changedAccInfo);
+  //--USER INFO CHANGE--// ✅
   const getChangedAccInfo = async () => {
     try {
       const resp = await privateAxios.get("/user/current-user");
       console.log(resp.data);
       setUserData(resp.data);
-      navigate("/loginSecurity");
-    } catch (error) {}
+      if (resp.status === 200) {
+        setChangedAccInfo(true);
+        navigate("/loginSecurity");
+      } else if (resp.status === 400) {
+        setChangedAccInfo(false);
+      }
+    } catch (error) {
+      setChangedAccInfo(false);
+    }
   };
 
   const changeAccInfo = async (
@@ -34,13 +47,18 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     userNumber: string
   ) => {
     try {
+      if (userNumber.length < 9 || userNumber.length > 9) {
+        setNumberInputValidation(true);
+      } else {
+        setNumberInputValidation(false);
+      }
       setChangeAccLoading(true);
       const response = await privateAxios.put("/user", {
         first_name: userName,
         last_name: userSurname,
         phone_number: userNumber,
       });
-      getChangedAccInfo();
+      await getChangedAccInfo();
       console.log(response.data);
     } catch (error: any) {
       console.log(error.message);
@@ -103,7 +121,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     localStorage.setItem("access_token", tokens.access_token);
     localStorage.setItem("refresh_token", tokens.refresh_token);
     setPrivateAccessToken(tokens.access_token);
-
     setAuthStage(authStage_EUNM.AUTHORIZED);
   };
 
@@ -145,6 +162,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     <AuthContext.Provider
       value={{
         error,
+        numberInputValidation,
+        changedAccInfo,
+        setChangedAccInfo,
         changeAccInfo,
         userData,
         setUserData,

@@ -17,6 +17,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
     allCartProducts,
   } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
+  const saleProduct = saleProducts.find((product) => product.id === data.id);
   return (
     <div className="flex flex-wrap overflow-hidden bg-white rounded-sm mr-3">
       <div className=" flex justify-center items-start flex-col  max-w-[360px]   rounded-e-md p-9  ">
@@ -32,19 +33,34 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
 
         <h2 className="mt-4 mb-1">{data.title}</h2>
 
-        <p>
+        {/* <p>
           {saleProducts.some((product) => product.id === data.id) ? (
             <span className=" text-red-700">
               {
                 saleProducts.find((product) => product?.id === data?.id)
-                  ?.salePrice
+                  ?.salePrice 
+                  
+                  
               }
+              
+              
               $
             </span>
           ) : (
             <p className=" text-red-700">{data.price}$</p>
           )}
-        </p>
+        </p> */}
+
+        <div className="  flex items-center">
+          {saleProduct ? (
+            <div className="flex mt-0.5">
+              <p className="text-red-700 mr-2">{saleProduct.salePrice}$</p>{" "}
+              <p className=" line-through  text-[gray]">{saleProduct.price}$</p>
+            </div>
+          ) : (
+            <p className="mt-1">{data.price}$</p>
+          )}
+        </div>
 
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button

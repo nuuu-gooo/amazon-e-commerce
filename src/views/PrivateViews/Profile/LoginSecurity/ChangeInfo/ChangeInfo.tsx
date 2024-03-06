@@ -1,9 +1,11 @@
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import React, { useContext, useState } from "react";
+import { Alert } from "antd";
+import React, { useContext, useEffect, useState } from "react";
 import { Form } from "react-router-dom";
 
 export const ChangeInfo = () => {
-  const { changeAccInfo } = useContext(AuthContext);
+  const { changeAccInfo, changedAccInfo, numberInputValidation } =
+    useContext(AuthContext);
   const { userData } = useContext(AuthContext);
   const [newName, setNewName] = useState(userData?.first_name);
   const [newSurname, setNewSurname] = useState(userData?.last_name);
@@ -13,6 +15,19 @@ export const ChangeInfo = () => {
     return e.preventDefault();
   };
 
+  // if (newName === "") {
+  //   setNameInputValidation(true);
+  // } else {
+  //   setNameInputValidation(false);
+  // }
+
+  useEffect(() => {
+    setNewName(userData?.first_name);
+    setNewSurname(userData?.last_name);
+    setNewNumber(userData?.phone_number);
+  }, [changedAccInfo, userData]);
+
+  console.log(changedAccInfo);
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -22,6 +37,7 @@ export const ChangeInfo = () => {
           action=""
         >
           <h3 className="  text-start">Change Account Info</h3>
+
           <div className="inputs mt-3">
             <label htmlFor="">Last Name</label>
             <input
@@ -40,6 +56,14 @@ export const ChangeInfo = () => {
               type="text"
             />
 
+            {numberInputValidation && (
+              <Alert
+                className="mb-2 mt-2"
+                showIcon={true}
+                message="Please enter 9 digits"
+                type="error"
+              />
+            )}
             <label className="" htmlFor="">
               Number
             </label>
@@ -54,7 +78,6 @@ export const ChangeInfo = () => {
           <button
             onClick={() => {
               changeAccInfo(newName, newSurname, newNumber);
-              setNewNumber(""), setNewName(""), setNewSurname("");
             }}
             className=" p-1 w-[full] cursor-pointer px-2.5 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
         to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
