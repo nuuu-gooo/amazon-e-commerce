@@ -15,6 +15,7 @@ import {
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { Button } from "antd";
 
 export const CreateAccComp = () => {
   document.title = "Amazon | Create account";
@@ -32,6 +33,7 @@ export const CreateAccComp = () => {
     }
   }, [locale]);
   console.log(enterNumVal);
+  const { createAccLoading } = useContext(AuthContext);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
@@ -74,13 +76,6 @@ export const CreateAccComp = () => {
   return (
     <div>
       <div className="flex justify-center mb-3">
-        {success && (
-          <Alert
-            showIcon
-            message={<FormattedMessage id="account-creation-success" />}
-            type="success"
-          />
-        )}
         {error && (
           <Alert
             className="inline-flex justify-center items-center"
@@ -254,9 +249,13 @@ export const CreateAccComp = () => {
               ""
             )}
           </div>
-          <button onClick={handleInput} type="button" className="continue-btn">
+          <Button
+            loading={createAccLoading}
+            onClick={handleInput}
+            className="continue-btn"
+          >
             <FormattedMessage id="continue-btn" />
-          </button>
+          </Button>
           <button
             onClick={() => navigate("/login")}
             className="create-acc-btn "

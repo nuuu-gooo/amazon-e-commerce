@@ -22,11 +22,15 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [changedAccInfo, setChangedAccInfo] = useState<boolean | undefined>(
     undefined
   );
+  const [createAccLoading, setCreateAccLoading] = useState<boolean | undefined>(
+    undefined
+  );
   const navigate = useNavigate();
   console.log(changedAccInfo);
   //--USER INFO CHANGE--// ✅
   const getChangedAccInfo = async () => {
     try {
+      setChangeAccLoading(true);
       const resp = await privateAxios.get("/user/current-user");
       console.log(resp.data);
       setUserData(resp.data);
@@ -38,6 +42,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       }
     } catch (error) {
       setChangedAccInfo(false);
+    } finally {
+      setChangeAccLoading(false);
     }
   };
 
@@ -94,6 +100,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     phone_number: string
   ) => {
     try {
+      setCreateAccLoading(true);
       const postAcc = await axiosInstance.post("/auth/register", {
         first_name,
         last_name,
@@ -111,6 +118,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     } catch (error) {
       setError(true);
     } finally {
+      setCreateAccLoading(false);
     }
   };
 
@@ -161,6 +169,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   return (
     <AuthContext.Provider
       value={{
+        createAccLoading,
         error,
         numberInputValidation,
         changedAccInfo,
@@ -179,6 +188,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         success,
         signInFetch,
         loggout,
+        changeAccLoading,
       }}
     >
       {children}

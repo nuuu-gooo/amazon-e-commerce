@@ -1,11 +1,15 @@
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { Alert } from "antd";
+import { Alert, Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { Form } from "react-router-dom";
 
 export const ChangeInfo = () => {
-  const { changeAccInfo, changedAccInfo, numberInputValidation } =
-    useContext(AuthContext);
+  const {
+    changeAccInfo,
+    changedAccInfo,
+    numberInputValidation,
+    changeAccLoading,
+  } = useContext(AuthContext);
   const { userData } = useContext(AuthContext);
   const [newName, setNewName] = useState(userData?.first_name);
   const [newSurname, setNewSurname] = useState(userData?.last_name);
@@ -75,7 +79,8 @@ export const ChangeInfo = () => {
               onChange={(e) => setNewNumber(e.target.value)}
             />
           </div>
-          <button
+          <Button
+            loading={changeAccLoading}
             onClick={() => {
               changeAccInfo(newName, newSurname, newNumber);
             }}
@@ -84,7 +89,7 @@ export const ChangeInfo = () => {
         active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
           >
             Submit Changes
-          </button>
+          </Button>
         </form>
       </div>
     </div>
