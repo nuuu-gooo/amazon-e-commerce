@@ -76,21 +76,7 @@ export const SectionSlider = ({ data }: TSectionSlider) => {
                 src={product.image}
                 alt=""
               />
-              {/* <h2 className="mt-3">{product.title}</h2>
-              <p className="text-[red] text-xl">
-                {product?.price}$ {""}
-              </p> */}
             </Link>
-            {/* {authStage === authStage_EUNM.AUTHORIZED ? (
-              <button
-                onClick={() => AddToCart(product.id)}
-                className="w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-2 cursor-pointer hover:opacity-60"
-              >
-                Add To Cart
-              </button>
-            ) : (
-              ""
-            )} */}
 
             {authStage === authStage_EUNM.AUTHORIZED && (
               <button className="mt-3 border-none bg-transparent"></button>

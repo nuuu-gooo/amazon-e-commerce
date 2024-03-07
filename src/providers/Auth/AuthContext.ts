@@ -21,15 +21,25 @@ export type AuthContextType = {
   authData: string | undefined;
   authStage: authStage_EUNM;
   setAuthStage: React.Dispatch<React.SetStateAction<authStage_EUNM>>;
-  createAccFetch: any;
-  signInFetch: any;
-  loggout: any;
+  createAccFetch: (
+    first_name: string,
+    last_name: string,
+    email: string,
+    password: string,
+    phone_number: string
+  ) => Promise<void>;
+  signInFetch: (email: string, password: string) => Promise<void>;
+  loggout: () => void;
+  changeAccInfo: (
+    userName: string,
+    userSurname: string,
+    userNumber: string
+  ) => Promise<void>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
   success: boolean;
   error: boolean;
-  changeAccInfo: any;
   setChangedAccInfo: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   changedAccInfo: boolean | undefined;
   numberInputValidation: boolean | undefined;
@@ -49,12 +59,12 @@ export const AuthContext = createContext<AuthContextType>({
   numberInputValidation: false,
   changeAccLoading: false,
   setChangedAccInfo: () => {},
-  changeAccInfo: () => {},
-  signInFetch: () => {},
+  changeAccInfo: async () => {},
+  signInFetch: async () => {},
   setUserData: () => {},
   setAuthData: () => {},
   setAuthStage: () => {},
-  createAccFetch: () => {},
+  createAccFetch: async () => {},
   setLoading: () => {},
   setSuccess: () => {},
   loggout: () => {},

@@ -26,10 +26,8 @@ export const WishListProducts = () => {
       );
       const salesPrice = salesProducts?.salePrice;
       if (salesPrice) {
-        //@ts-ignore
         total += salesPrice;
       } else {
-        //@ts-ignore
         total += wishListProducts[i].likedProduct.price;
       }
     }

@@ -30,9 +30,8 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
             />
           </div>
         </Link>
-
         <h2 className="mt-4 mb-1">{data.title}</h2>
-
+        //!
         {/* <p>
           {saleProducts.some((product) => product.id === data.id) ? (
             <span className=" text-red-700">
@@ -50,7 +49,6 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
             <p className=" text-red-700">{data.price}$</p>
           )}
         </p> */}
-
         <div className="  flex items-center">
           {saleProduct ? (
             <div className="flex mt-0.5">
@@ -61,7 +59,6 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
             <p className="mt-1">{data.price}$</p>
           )}
         </div>
-
         {authStage === authStage_EUNM.AUTHORIZED && (
           <Button
             onClick={async () => {

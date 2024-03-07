@@ -47,8 +47,16 @@ export interface TPagination {
   total: number;
 }
 
-export interface TBoughtProduct {
+export interface TBoughtProducts {
   created_at: string;
   updated_at: string;
   id: string;
+}
+
+export interface TOrder {
+  created_at: string;
+  updated_at: string;
+  id: string;
+  totalITems: number;
+  toatlPrice: number;
 }

@@ -102,10 +102,6 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
           className="mt-3 border-none bg-transparent"
         ></button>
       )}
-
-      {/* <Card title={product.title}>
-        <img className="w-[50%] aspect-square  " src={product.image} alt="" />
-      </Card> */}
     </div>
   );
 };

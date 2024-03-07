@@ -22,7 +22,6 @@ export const CountrySelection = ({
   return (
     <div>
       <Modal
-        // onOk={() => setSelectedNewCountry(globalCountry)}
         onOk={() => {
           setSelectedNewCountry(globalCountry);
           setStatusModal(false);

@@ -1,4 +1,10 @@
-import { TCartItem, TLikedProduct, TProduct } from "@src/@types/types";
+import {
+  TBoughtProducts,
+  TCartItem,
+  TLikedProduct,
+  TOrder,
+  TProduct,
+} from "@src/@types/types";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 import { createContext } from "react";
 
@@ -48,20 +54,21 @@ interface TGlobalContext {
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
   setSelectedNewCountry: React.Dispatch<React.SetStateAction<string>>;
-  order: any;
-  boughtProducts: any;
+  order: TOrder[];
+  boughtProducts: TBoughtProducts[];
   selectedNewCountry: string;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
   orderStatus: orderStatus_ENUM.ORDERPENDING,
-  selectedNewCountry: "",
   totalCartItems: 0,
   totalCartPrice: 0,
   count: 0,
   wishListProducts: [],
   allCartProducts: [],
   existingCategories: [],
+  order: [],
+  boughtProducts: [],
   transaction: false,
   deleteCartLoading: false,
   purchaseLoading: false,
@@ -72,9 +79,8 @@ export const GlobalContext = createContext<TGlobalContext>({
   existingCatLoading: false,
   addToCartModal: false,
   delRefundLoading: false,
-  order: undefined,
-  boughtProducts: undefined,
   globalCountry: "",
+  selectedNewCountry: "",
   setSelectedNewCountry: () => {},
   setGlobalCountry: () => {},
   hadnleRefund: async () => {},

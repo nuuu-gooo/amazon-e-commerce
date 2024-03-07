@@ -11,17 +11,18 @@ import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListP
 import { privateAxios } from "@src/utils/privateAxios";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "../Auth/AuthContext";
-import { TCartItem } from "@src/@types/types";
+import { TBoughtProducts, TCartItem } from "@src/@types/types";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { useNavigate } from "react-router-dom";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
-import { LContext, Locale_ENUM } from "../LProvider/LContext";
+import { LContext } from "../LProvider/LContext";
+import { TOrder } from "@src/@types/types";
 
 export function GlobalProvider({ children }: PropsWithChildren) {
   const naviagte = useNavigate();
-  const [boughtProducts, setBoughtProducts] = useState<any>([]);
+  const [boughtProducts, setBoughtProducts] = useState<TBoughtProducts[]>([]);
   const [delRefundLoading, setDelRefundLoading] = useState<boolean>(false);
-  const [order, setOrder] = useState<any>(undefined);
+  const [order, setOrder] = useState<TOrder[]>([]);
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
   const { locale } = useContext(LContext);
@@ -49,25 +50,25 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
     orderStatus_ENUM.ORDERPENDING
   );
-  console.log(orderStatus);
+  console.log(order, boughtProducts);
 
   //-----------PRICE-CALCULATION-------------//
-  let sum = 0;
+  let sum: number = 0;
   let totalCartItems = 0;
   useEffect(() => {
     for (let i = 0; i < allCartProducts.length; i++) {
-      const product = allCartProducts[i].cartProduct;
-      const isProductOnSale = saleProducts.some(
-        (saleProduct) => saleProduct.id === product.id
+      const product = allCartProducts[i]?.cartProduct;
+      const isProductOnSale: boolean = saleProducts.some(
+        (saleProduct) => saleProduct?.id === product?.id
       );
 
       if (isProductOnSale) {
-        //@ts-ignore
-        sum += //@ts-ignore
-          saleProducts.find((saleProduct) => saleProduct?.id === product?.id)
+        sum +=
+          //@ts-ignore
+          saleProducts?.find((saleProduct) => saleProduct?.id === product?.id)
             .salePrice * allCartProducts[i]?.count;
       } else {
-        sum += product.price * allCartProducts[i]?.count;
+        sum += product?.price * allCartProducts[i]?.count;
       }
     }
 
