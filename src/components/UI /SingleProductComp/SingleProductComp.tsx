@@ -31,7 +31,7 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
           </div>
         </Link>
         <h2 className="mt-4 mb-1">{data.title}</h2>
-        //!
+
         {/* <p>
           {saleProducts.some((product) => product.id === data.id) ? (
             <span className=" text-red-700">
