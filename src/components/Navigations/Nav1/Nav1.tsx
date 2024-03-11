@@ -23,11 +23,23 @@ export const Nav1 = () => {
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories, selectedNewCountry } = useContext(GlobalContext);
   const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
-  const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
+  const { popUpProducts, loading, setPopUpProducts } =
+    useGetPopUpProducts(searchInputValue);
   const [statusModal, setStatusModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { locale } = useContext(LContext);
+
+  const handleKeyPress = (e: any) => {
+    const keypress = e.key;
+
+    if (keypress === "Enter") {
+      if (searchInputValue === "") {
+        navigate(`/productCategory/${currentCategory}`);
+      } else {
+        navigate(`search/${currentCategory}/${searchInputValue}`);
+      }
+    }
+  };
 
   const content = (
     <div className="flex flex-col">
@@ -150,6 +162,7 @@ export const Nav1 = () => {
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}
+            onKeyPress={handleKeyPress}
           />
 
           <button
@@ -160,6 +173,7 @@ export const Nav1 = () => {
                 navigate(`search/${currentCategory}/${searchInputValue}`);
               }
             }}
+            // onKeyDown={handleKeyPress}
             className="w-[3%] mr-2 min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />
