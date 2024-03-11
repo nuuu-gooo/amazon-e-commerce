@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
@@ -16,11 +16,19 @@ export const SideBar = () => {
   const { authStage, userData } = useContext(AuthContext);
   const [sidebarInput, setSideBarInput] = useState<string>("");
   const { popUpProducts } = useGetPopUpProducts(sidebarInput);
+  const navigate = useNavigate();
   const { isToggled, setIsToggled, existingCategories } =
     useContext(GlobalContext);
 
   console.log(sidebarInput, popUpProducts);
 
+  const handleKeyPress = (e: any) => {
+    const keypress = e.key;
+
+    if (keypress === "Enter") {
+      navigate(`/search/${sidebarInput}`);
+    }
+  };
   return (
     <div className=" fixed z-50">
       {isToggled ? (
@@ -49,6 +57,7 @@ export const SideBar = () => {
 
             <div className=" search flex items-center relative w-full ">
               <input
+                onKeyDown={handleKeyPress}
                 onChange={(e) => setSideBarInput(e.target.value)}
                 placeholder="Enter Keyword"
                 className="w-full p-3 border-none"
@@ -65,7 +74,7 @@ export const SideBar = () => {
                   className="no-underline text-[black]"
                   to={`/search/${product.title}`}
                 >
-                  <div className="bg-[white] p-9 w-full flex items-center md:hidden">
+                  <div className="bg-[white] p-9 w-full flex items-center ">
                     <ul>
                       <li>
                         {product.title}
@@ -95,7 +104,7 @@ export const SideBar = () => {
             </Menu>
 
             <Menu>
-              <SubMenu className="block md:hidden" label="Amazon Services">
+              <SubMenu className="block " label="Amazon Services">
                 {nav2Links.map((nav2Link) => {
                   return (
                     <Link

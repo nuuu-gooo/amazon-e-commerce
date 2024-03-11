@@ -173,7 +173,6 @@ export const Nav1 = () => {
                 navigate(`search/${currentCategory}/${searchInputValue}`);
               }
             }}
-            // onKeyDown={handleKeyPress}
             className="w-[3%] mr-2 min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />

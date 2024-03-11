@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { nav2Links } from "@src/Data/Data";
-import { RxHamburgerMenu } from "react-icons/rx";
 
 export const Nav2 = () => {
   const { toggleSidebarFunction } = useContext(GlobalContext);
