@@ -1,9 +1,9 @@
-import { TBoughtProduct } from "@src/@types/types";
+import { TBoughtProducts } from "@src/@types/types";
 import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Button } from "antd";
 
-export const SingleOrder = ({ data }: { data: TBoughtProduct }) => {
+export const SingleOrder = ({ data }: { data: TBoughtProducts }) => {
   const { hadnleRefund, delRefundLoading } = useContext(GlobalContext);
   return (
     <div>

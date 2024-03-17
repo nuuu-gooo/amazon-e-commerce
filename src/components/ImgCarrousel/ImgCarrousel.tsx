@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "antd";
 import { amazonSliderImgs } from "@src/Data/Data";
 
-const ImgCarrousel: React.FC = () => (
+export const ImgCarrousel: React.FC = () => (
   <Carousel autoplay={true} className=" relative mb-[8%]">
     {amazonSliderImgs.map((sliderImg, index) => {
       return (
@@ -14,4 +14,4 @@ const ImgCarrousel: React.FC = () => (
   </Carousel>
 );
 
-export default ImgCarrousel;
+// export default ImgCarrousel;

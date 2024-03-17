@@ -12,9 +12,9 @@ import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProdu
 import WishListProducts from "@src/views/PrivateViews/WishListProducts";
 import Cart from "./views/DynamicPages/Cart";
 import CheckoutPage from "@src/views/DynamicPages/CheckoutPage";
-import { NotRegisteredPage } from "./views/NotRegisteredPage/NotRegisteredPage";
-import { LoginSecurity } from "./views/PrivateViews/Profile/LoginSecurity/LoginSecurity";
-import { ChangeInfo } from "./views/PrivateViews/Profile/LoginSecurity/ChangeInfo/ChangeInfo";
+import NotRegisteredPage from "./views/NotRegisteredPage";
+import LoginSecurity from "./views/PrivateViews/Profile/LoginSecurity";
+import ChangeInfo from "./views/PrivateViews/Profile/LoginSecurity/ChangeInfo";
 import { ChekoutSuccess } from "./views/DynamicPages/CheckoutPage/ChekoutSuccess";
 import { PrivateOrderStatus } from "./views/Private/PrivateOrderStatus/PrivateOrderStatus";
 

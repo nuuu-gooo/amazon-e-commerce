@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import ImgCarrousel from "@src/components/ImgCarrousel/ImgCarrousel";
+import ImgCarrousel from "@src/components/ImgCarrousel";
 import { Loader } from "@src/assets/Loader/Loader";
 import { Link } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
