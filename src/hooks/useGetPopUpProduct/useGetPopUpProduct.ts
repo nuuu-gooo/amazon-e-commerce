@@ -23,7 +23,11 @@ export const useGetPopUpProducts = (inputVal: string) => {
   };
 
   useEffect(() => {
-    fetchApPopUpProducts();
+    const debounce = setTimeout(() => {
+      fetchApPopUpProducts();
+    }, 1000);
+    // fetchApPopUpProducts();
+    return () => clearTimeout(debounce);
   }, [inputVal]);
 
   return { popUpProducts, loading, setPopUpProducts };
