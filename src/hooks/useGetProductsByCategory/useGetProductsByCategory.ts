@@ -1,7 +1,6 @@
+import React, { useState } from "react";
 import { TCategoryProducts } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
 
 export const useGetProductsByCategory = (category: string) => {
   const [categoryProducts, setCategoryProducts] = useState<TCategoryProducts[]>(

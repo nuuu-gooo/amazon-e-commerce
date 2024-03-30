@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "@src/providers/GlobalProvider";
+
 import { footerLinks } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { FormattedMessage } from "react-intl";
-import AmazonFooterLogo from "@src/assets/images/amazon-lg.png";
-import { FaAmazon } from "react-icons/fa";
+
 import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 import WhiteAamzonLogo from "@src/assets/images/white-amazon-logo.png";
 

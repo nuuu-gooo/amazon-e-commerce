@@ -1,7 +1,6 @@
 import { TProduct } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const useGetProductsBySeatch = (
   searchedProduct: string,

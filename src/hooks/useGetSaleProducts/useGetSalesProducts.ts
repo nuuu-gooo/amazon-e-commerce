@@ -1,4 +1,4 @@
-import { TProduct, TProductSale } from "@src/@types/types";
+import { TProductSale } from "@src/@types/types";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { useState, useEffect } from "react";
 

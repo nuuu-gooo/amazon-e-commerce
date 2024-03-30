@@ -26,7 +26,6 @@ export const useGetPopUpProducts = (inputVal: string) => {
     const debounce = setTimeout(() => {
       fetchApPopUpProducts();
     }, 1000);
-    // fetchApPopUpProducts();
     return () => clearTimeout(debounce);
   }, [inputVal]);
 

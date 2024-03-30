@@ -1,23 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { amazonServices } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
-import { FormattedMessage } from "react-intl";
-import { Locale_ENUM } from "@src/providers/LProvider/LContext";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaMailchimp,
-  FaTwitter,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { FaLocationPin } from "react-icons/fa6";
-import { FaPhoneAlt } from "react-icons/fa";
-import { CiMail } from "react-icons/ci";
 
 export const Footer2 = () => {
   const { locale } = useContext(LContext);
-  const { toggleLanguage } = useContext(LContext);
-
   return (
     <div className="bg-[#131921]  py-10 w-full h-full">
       <div className=" flex justify-center items-center flex-col sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto gap-8">

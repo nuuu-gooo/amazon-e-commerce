@@ -1,6 +1,5 @@
 import React, { SetStateAction, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { PriceFilterANTD } from "@src/components/PriceSliderANTD/PriceFilterANTD";
+import { useParams } from "react-router-dom";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/types";
 import { Loader } from "@src/assets/Loader/Loader";

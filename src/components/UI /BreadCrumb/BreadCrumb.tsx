@@ -1,6 +1,5 @@
 import React from "react";
 import { Breadcrumb } from "antd";
-import { TProduct } from "@src/@types/types";
 import { Link } from "react-router-dom";
 
 export const BreadCrumb = ({ data }: any) => {

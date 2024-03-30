@@ -1,5 +1,5 @@
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import React, { useContext } from "react";
+import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Link } from "react-router-dom";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { nav2Links } from "@src/Data/Data";

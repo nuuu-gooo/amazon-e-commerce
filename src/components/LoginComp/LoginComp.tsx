@@ -16,7 +16,7 @@ export const LoginComp = () => {
   const [emailError, setEmailError] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
-  const { signInFetch, userData, authStage, loading } = useContext(AuthContext);
+  const { signInFetch, loading } = useContext(AuthContext);
   document.title = "Amazon | Sign In";
   const handleInput = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

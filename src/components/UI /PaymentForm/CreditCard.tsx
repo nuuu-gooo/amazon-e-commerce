@@ -138,7 +138,6 @@ const PaymentForm: React.FC = () => {
       <div className="left">
         {transaction && <p className="mb-3">Valid Info ✅</p>}
 
-        {/* {transaction === false && <p>Failed ❌</p>} */}
         <Cards
           cvc={state.cvc}
           expiry={state.expiry}

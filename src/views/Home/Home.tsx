@@ -8,7 +8,6 @@ import SalesProductsComp from "@src/components/UI /SalesProducts";
 import SectionSlider from "@src/components/UI /SectionSlider";
 import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
-import { useGetBookProducts } from "@src/hooks/useGetBookProducts/useGetBookProducts";
 
 export const Home = () => {
   document.title = "Amazon | Home ";
@@ -16,7 +15,6 @@ export const Home = () => {
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
-  const { bookProducts } = useGetBookProducts();
   const slicedOutCategories = existingCategories.slice(0, 6);
 
   return (

@@ -13,5 +13,3 @@ export const ImgCarrousel: React.FC = () => (
     })}
   </Carousel>
 );
-
-// export default ImgCarrousel;

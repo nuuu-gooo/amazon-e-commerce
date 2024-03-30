@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { CiHeart } from "react-icons/ci";
@@ -15,8 +15,7 @@ interface TSingleProductItem {
   data: TProduct;
 }
 export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
-  const { AddToCart, addToCartLoading, setAddToCartModal, addToCartModal } =
-    useContext(GlobalContext);
+  const { AddToCart, addToCartLoading } = useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
   const navigate = useNavigate();
   const { saleProducts } = useGetSaleProducts();

@@ -27,8 +27,7 @@ export const Nav1 = () => {
     setCurrentCategory,
   } = useContext(GlobalContext);
 
-  const { popUpProducts, loading, setPopUpProducts } =
-    useGetPopUpProducts(searchInputValue);
+  const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const [statusModal, setStatusModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,9 +45,16 @@ export const Nav1 = () => {
       } else {
         navigate(`/search/${searchInputValue}`);
       }
-      // } else  {
-      //   navigate(`search/${currentCategory}/${searchInputValue}`);
-      // }
+    }
+  };
+
+  const handleOnClick = () => {
+    if (searchInputValue === "") {
+      navigate(`/productCategory/${currentCategory}`);
+    } else if (searchInputValue !== "" && currentCategory !== "") {
+      navigate(`search/${currentCategory}/${searchInputValue}`);
+    } else {
+      navigate(`/search/${searchInputValue}`);
     }
   };
 
@@ -178,13 +184,7 @@ export const Nav1 = () => {
           />
 
           <button
-            onClick={() => {
-              if (searchInputValue === "") {
-                navigate(`/productCategory/${currentCategory}`);
-              } else {
-                navigate(`search/${currentCategory}/${searchInputValue}`);
-              }
-            }}
+            onClick={handleOnClick}
             className="w-[3%] mr-2 min-w-9 bg-[#febd69] flex items-center justify-center rounded-r-lg border-none p-1 cursor-pointer hover:opacity-60"
           >
             <FaSearch className="text-2xl sm:text-lg " />
@@ -255,7 +255,7 @@ export const Nav1 = () => {
                       <FormattedMessage id="hello-sign-in-nav-1" />
                     </p>
                     <p className="text-white">
-                      <FormattedMessage id="accounts-and-lists" />{" "}
+                      <FormattedMessage id="accounts-and-lists" />
                     </p>
                   </Popover>
                 )}

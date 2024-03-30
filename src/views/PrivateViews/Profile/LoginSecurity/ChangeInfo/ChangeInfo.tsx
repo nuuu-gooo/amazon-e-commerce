@@ -19,12 +19,6 @@ export const ChangeInfo = () => {
     return e.preventDefault();
   };
 
-  // if (newName === "") {
-  //   setNameInputValidation(true);
-  // } else {
-  //   setNameInputValidation(false);
-  // }
-
   useEffect(() => {
     setNewName(userData?.first_name);
     setNewSurname(userData?.last_name);

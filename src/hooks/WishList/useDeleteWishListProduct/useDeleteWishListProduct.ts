@@ -1,6 +1,4 @@
 import { privateAxios } from "@src/utils/privateAxios";
-import { axiosInstance } from "@src/utils/publicAxios";
-import { useGetWishListProducts } from "../useGetWishListProducts/useGetWishListProducts";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 

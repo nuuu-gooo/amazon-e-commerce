@@ -23,7 +23,7 @@ export const CheckoutPage = () => {
         <PaymentForm />
         <div>
           <h2 className="mb-2">
-            <FormattedMessage id="your-cart" />{" "}
+            <FormattedMessage id="your-cart" />
           </h2>
           <div className="border border-solid  border-[#febd69] bg-[#febd69]  p-5 rounded-l">
             {allCartProducts.map((product) => {

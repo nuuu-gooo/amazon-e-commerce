@@ -18,8 +18,6 @@ export const SinglePopOverCartProduct = ({
     AddToCart,
     getCartProducts,
     deleteSingleCartProduct,
-    allCartProducts,
-    totalCartPrice,
     deleteCartProducts,
   } = useContext(GlobalContext);
   const handleOnClick = async (id: string) => {

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { Loader } from "@src/assets/Loader/Loader";
 import { axiosInstance } from "@src/utils/publicAxios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TProduct } from "@src/@types/types";
-// import { SingleProductItem } from "./SingleProductItem";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
 import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
 import NoProductsFoundImg from "@src/assets/images/no-items-found-img.png";

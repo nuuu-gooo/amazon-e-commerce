@@ -4,7 +4,7 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Button } from "antd";
 
 export const SingleOrder = ({ data }: { data: TBoughtProducts }) => {
-  const { hadnleRefund, delRefundLoading } = useContext(GlobalContext);
+  const { hadnleRefund } = useContext(GlobalContext);
   const [deleteRefundLoading, setDeleteRefundLoading] =
     useState<boolean>(false);
 

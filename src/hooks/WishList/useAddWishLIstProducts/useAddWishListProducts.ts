@@ -8,8 +8,6 @@ export function useAddWIshListProducts() {
   const [loading, setLoading] = useState(false);
   const { authData } = useContext(AuthContext);
 
-  // const { getCartProducts } = useGlobalProvider();
-
   async function AddToWishList(productId: string) {
     try {
       setLoading(true);
@@ -17,7 +15,6 @@ export function useAddWIshListProducts() {
         product_id: productId,
         authData,
       });
-      // getCartProducts();
     } catch (error) {
     } finally {
       setLoading(false);

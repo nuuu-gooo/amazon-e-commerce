@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { useIntl, FormattedMessage } from "react-intl";
@@ -19,7 +19,7 @@ import { Button } from "antd";
 
 export const CreateAccComp = () => {
   document.title = "Amazon | Create account";
-  const { createAccFetch, success, authStage, error } = useContext(AuthContext);
+  const { createAccFetch, authStage, error } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const { locale } = useContext(LContext);
   console.log(locale);

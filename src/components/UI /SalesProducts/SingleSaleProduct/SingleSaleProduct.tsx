@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TProductSale } from "@src/@types/types";
-import { Link, useFetcher } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { Button } from "antd";
@@ -8,7 +8,6 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { CiHeart } from "react-icons/ci";
-import { Card } from "antd";
 
 interface TSingleSaleProduct {
   product: TProductSale;

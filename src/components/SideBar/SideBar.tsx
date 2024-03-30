@@ -41,9 +41,16 @@ export const SideBar = () => {
       } else {
         navigate(`/search/${sidebarInput}`);
       }
-      // } else  {
-      //   navigate(`search/${currentCategory}/${searchInputValue}`);
-      // }
+    }
+  };
+
+  const handleOnClick = () => {
+    if (sidebarInput === "") {
+      navigate(`/productCategory/${currentCategory}`);
+    } else if (sidebarInput !== "" && currentCategory !== "") {
+      navigate(`search/${currentCategory}/${sidebarInput}`);
+    } else {
+      navigate(`/search/${sidebarInput}`);
     }
   };
 
@@ -83,10 +90,7 @@ export const SideBar = () => {
                 type="text"
               />
               <button
-                // onClick={() => navigate(`/search/${sidebarInput}`)}
-                onClick={() =>
-                  navigate(`/search/${currentCategory}/${sidebarInput}`)
-                }
+                onClick={handleOnClick}
                 className="w-[30%] p-3 border-none bg-[#febd69] cursor-pointer hover:opacity-50"
               >
                 <FaSearch />

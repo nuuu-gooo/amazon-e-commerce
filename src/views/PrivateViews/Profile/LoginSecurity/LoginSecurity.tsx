@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Avatar } from "antd";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const LoginSecurity = () => {
   const { userData } = useContext(AuthContext);

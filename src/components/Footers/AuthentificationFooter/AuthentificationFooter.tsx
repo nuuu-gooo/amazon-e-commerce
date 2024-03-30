@@ -2,7 +2,6 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { GlobalContext } from "@src/providers/GlobalProvider";
 import { LContext } from "@src/providers/LProvider/LContext";
 
 export const AuthentificationFooter = () => {

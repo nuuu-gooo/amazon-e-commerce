@@ -3,7 +3,6 @@ import {
   TCartItem,
   TLikedProduct,
   TOrder,
-  TProduct,
 } from "@src/@types/types";
 import { orderStatus_ENUM } from "@src/ENUMS/Enums";
 import { createContext } from "react";

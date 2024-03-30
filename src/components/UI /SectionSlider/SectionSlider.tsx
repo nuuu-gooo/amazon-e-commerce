@@ -11,7 +11,6 @@ interface TSectionSlider {
 }
 export const SectionSlider = ({ data }: TSectionSlider) => {
   const { authStage } = useContext(AuthContext);
-  const { AddToCart } = useContext(GlobalContext);
 
   function SampleNextArrow(props: any) {
     const { className, style, onClick } = props;
