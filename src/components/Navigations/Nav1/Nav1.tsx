@@ -191,6 +191,13 @@ export const Nav1 = () => {
           </button>
 
           <button
+            onClick={() => setCurrentCategory("")}
+            className="bg-[#febd69] p-1 border-none shadow-md  shadow-[#febd69] cursor-pointer rounded-sm"
+          >
+            Clear
+          </button>
+
+          <button
             onClick={() => navigate("/login")}
             className=" border-none bg-[transparent] cursor-pointer  text-white ml-3   text-xl   sm:hidden"
           ></button>
