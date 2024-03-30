@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTrash } from "react-icons/fa";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { nav2Links } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
@@ -14,11 +14,19 @@ import { LContext } from "@src/providers/LProvider/LContext";
 export const SideBar = () => {
   const { locale } = useContext(LContext);
   const { authStage, userData } = useContext(AuthContext);
+
   const [sidebarInput, setSideBarInput] = useState<string>("");
   const { popUpProducts } = useGetPopUpProducts(sidebarInput);
+
   const navigate = useNavigate();
-  const { isToggled, setIsToggled, existingCategories } =
-    useContext(GlobalContext);
+  console.log(sidebarInput);
+  const {
+    isToggled,
+    setIsToggled,
+    existingCategories,
+    currentCategory,
+    setCurrentCategory,
+  } = useContext(GlobalContext);
 
   console.log(sidebarInput, popUpProducts);
 
@@ -26,14 +34,15 @@ export const SideBar = () => {
     const keypress = e.key;
 
     if (keypress === "Enter") {
-      navigate(`/search/${sidebarInput}`);
+      // navigate(`/search/${sidebarInput}`);
+      navigate(`/search/${currentCategory}/${sidebarInput}`);
     }
   };
   return (
     <div className=" fixed z-50">
       {isToggled ? (
-        <div className="overlay">
-          <Sidebar className=" h-full">
+        <div className="overlay ">
+          <Sidebar className=" h-full  ">
             <button
               className="  cursor-pointer absolute left-[77%]  text-black border-none  mt-6 text-xl bg-[#febd69] flex items-center justify-center rounded-3xl w-[20%] hover:opacity-50"
               onClick={() => setIsToggled(false)}
@@ -60,11 +69,24 @@ export const SideBar = () => {
                 onKeyDown={handleKeyPress}
                 onChange={(e) => setSideBarInput(e.target.value)}
                 placeholder="Enter Keyword"
-                className="w-full p-3 border-none"
+                className="w-full p-3 border-none outline-none"
+                value={sidebarInput}
                 type="text"
               />
-              <button className="w-[30%] p-3 border-none bg-[#febd69]">
+              <button
+                // onClick={() => navigate(`/search/${sidebarInput}`)}
+                onClick={() =>
+                  navigate(`/search/${currentCategory}/${sidebarInput}`)
+                }
+                className="w-[30%] p-3 border-none bg-[#febd69] cursor-pointer hover:opacity-50"
+              >
                 <FaSearch />
+              </button>
+              <button
+                onClick={() => setSideBarInput("")}
+                className="w-[30%] p-3 flex justify-center bg-[#ef941d] text-xs text-black  border-none cursor-pointer hover:opacity-50"
+              >
+                <FaTrash />
               </button>
             </div>
 
@@ -96,7 +118,11 @@ export const SideBar = () => {
                       className="no-underline text-[black] hover:opacity-50"
                       to={`productCategory/${categorie.name}`}
                     >
-                      <MenuItem>{categorie.name}</MenuItem>
+                      <MenuItem
+                        onClick={() => setCurrentCategory(categorie.name)}
+                      >
+                        {categorie.name}
+                      </MenuItem>
                     </Link>
                   );
                 })}
@@ -118,6 +144,11 @@ export const SideBar = () => {
                 })}
               </SubMenu>
             </Menu>
+            <div className="bg-[#ef941d] p-3 flex justify-center items-center">
+              <h5 className="text-black">
+                Current Category: {currentCategory}
+              </h5>
+            </div>
           </Sidebar>
         </div>
       ) : (

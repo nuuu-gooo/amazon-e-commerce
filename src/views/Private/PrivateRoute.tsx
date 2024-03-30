@@ -17,6 +17,6 @@ export const PrivateRoute = ({ children }: PropsWithChildren) => {
   return authStage === authStage_EUNM.AUTHORIZED ? (
     children
   ) : (
-    <Navigate to={"/noRegisteredPage"} replace />
+    <Navigate to={"/noRegisteredPage"} />
   );
 };

@@ -1,4 +1,5 @@
 {
+  "price-filter": "Price Filter",
   "change.language": "🇩🇪",
   "profile": "Profile",
   "sign-in": "Sign in",
@@ -27,6 +28,7 @@
   "surname-error": "! Please enter your surname",
   "re-enter-error": "! Wrong Password",
   "sign-up-sidebar": "Hello, Sign Up",
+  "your-cart": "Your Cart",
   "sign-up-cart": "Sign uo now",
   "hello-sign-in-nav-1": "Hello Sign Up ",
   "card-nav-1": "Card",

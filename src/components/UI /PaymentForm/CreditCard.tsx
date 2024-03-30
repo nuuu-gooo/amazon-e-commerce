@@ -131,7 +131,10 @@ const PaymentForm: React.FC = () => {
   };
 
   return (
-    <div id="PaymentForm" className="flex items-center justify-between">
+    <div
+      id="PaymentForm"
+      className="flex-col flex  md:flex-row items-center justify-between"
+    >
       <div className="left">
         {transaction && <p className="mb-3">Valid Info ✅</p>}
 

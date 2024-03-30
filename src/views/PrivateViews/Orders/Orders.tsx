@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { Button } from "antd";
 import { SingleOrder } from "./SingleOrder";
 import { TBoughtProducts } from "@src/@types/types";
 
@@ -10,9 +9,13 @@ export const Orders = () => {
   document.title = "Amazon | Orders";
   return (
     <div className="flex  bg-gray-200 justify-center items-center p-4 flex-col">
-      {boughtProducts.map((bProduct: TBoughtProducts) => {
-        return <SingleOrder data={bProduct} />;
-      })}
+      {boughtProducts.length === 0 ? (
+        <h1>Currently no orders!</h1>
+      ) : (
+        boughtProducts.map((bProduct: TBoughtProducts) => {
+          return <SingleOrder data={bProduct} />;
+        })
+      )}
     </div>
   );
 };

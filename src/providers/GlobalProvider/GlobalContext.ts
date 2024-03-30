@@ -17,6 +17,8 @@ export interface TExistingCategories {
 }
 interface TGlobalContext {
   setCount: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentCategory: React.Dispatch<React.SetStateAction<string>>;
+  currentCategory: string;
   existingCategories: TExistingCategories[];
   isToggled: boolean;
   delRefundLoading: boolean;
@@ -60,6 +62,7 @@ interface TGlobalContext {
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
+  currentCategory: "Electronics",
   orderStatus: orderStatus_ENUM.ORDERPENDING,
   totalCartItems: 0,
   totalCartPrice: 0,
@@ -81,6 +84,7 @@ export const GlobalContext = createContext<TGlobalContext>({
   delRefundLoading: false,
   globalCountry: "",
   selectedNewCountry: "",
+  setCurrentCategory: () => {},
   setSelectedNewCountry: () => {},
   setGlobalCountry: () => {},
   hadnleRefund: async () => {},

@@ -16,14 +16,21 @@ interface TSingleSaleProduct {
 
 export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
   const { authStage } = useContext(AuthContext);
-  const {
-    AddToCart,
-    addToCartLoading,
-    fetchWishListProducts,
-    wishListProducts,
-  } = useContext(GlobalContext);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { AddToCart, fetchWishListProducts, wishListProducts } =
+    useContext(GlobalContext);
   const { AddToWishList } = useAddWIshListProducts();
   const [isInWishlist, setIsInWishlist] = useState<boolean>(false);
+  const handleOnClick = async (id: string) => {
+    try {
+      setLoading(true);
+      await AddToCart(id);
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const likedProduct = wishListProducts.find(
@@ -63,8 +70,8 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
       {authStage === authStage_EUNM.AUTHORIZED ? (
         <div className="">
           <Button
-            loading={addToCartLoading}
-            onClick={() => AddToCart(product.id)}
+            loading={loading}
+            onClick={() => handleOnClick(product.id)}
             className="hidden sm:flex md:w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
             Add To Cart
@@ -83,8 +90,8 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
           </button>
 
           <Button
-            loading={addToCartLoading}
-            onClick={() => AddToCart(product.id)}
+            loading={loading}
+            onClick={() => handleOnClick(product.id)}
             className=" flex sm:w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] items-center justify-center border-none p-2 sm:hidden "
           >
             <FaCartPlus />

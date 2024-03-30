@@ -14,5 +14,5 @@ export const useGetProductsViewed = () => {
     fetchProductsViewed(undefined);
   }, []);
 
-  return { productsViewed, fetchProductsViewed };
+  return { productsViewed, fetchProductsViewed, setProductsViewd };
 };

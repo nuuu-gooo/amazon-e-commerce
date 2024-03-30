@@ -21,8 +21,14 @@ import { CountrySelection } from "./CountrySelection/CountrySelection";
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
-  const { existingCategories, selectedNewCountry } = useContext(GlobalContext);
-  const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
+  const {
+    existingCategories,
+    selectedNewCountry,
+    currentCategory,
+    setCurrentCategory,
+  } = useContext(GlobalContext);
+  // const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
+
   const { popUpProducts, loading, setPopUpProducts } =
     useGetPopUpProducts(searchInputValue);
   const [statusModal, setStatusModal] = useState<boolean>(false);

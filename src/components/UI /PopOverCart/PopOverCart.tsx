@@ -1,20 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { FormattedMessage } from "react-intl";
+import { SinglePopOverCartProduct } from "./SinglePopOverCartProduct/SinglePopOverCartProduct";
 
 export const PopOverCart = () => {
-  const { allCartProducts, totalCartPrice, deleteCartProducts } =
-    useContext(GlobalContext);
+  const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
   console.log(allCartProducts);
   const { authStage } = useContext(AuthContext);
-  const { AddToCart, getCartProducts, deleteSingleCartProduct } =
-    useContext(GlobalContext);
-
+  useState<boolean>(false);
   const navigate = useNavigate();
+
   return (
     <div className="p-3 flex flex-col ">
       <h3 className="mb-3 ">
@@ -24,38 +23,7 @@ export const PopOverCart = () => {
         <FormattedMessage id="empty-basket" />
       ) : (
         allCartProducts.map((product) => {
-          return (
-            <div className="flex justify-between p-2 items-center border border-solid rounded-t-lg ">
-              <div className="left flex items-center ">
-                <h3>{product.cartProduct.title}</h3>
-                <img
-                  className="w-[4%] ml-3"
-                  src={product.cartProduct.image}
-                  alt=""
-                />
-              </div>
-              <div className="quantity flex items-center">
-                <Button
-                  onClick={() => {
-                    AddToCart(product.cartProduct.id), getCartProducts();
-                  }}
-                >
-                  +
-                </Button>
-                <p className="mr-3 ml-3">{product.count}</p>
-                <Button onClick={() => deleteSingleCartProduct(product.id)}>
-                  -
-                </Button>
-              </div>
-
-              <Button
-                onClick={() => deleteCartProducts(product.id)}
-                danger={true}
-              >
-                <FormattedMessage id="delete" />
-              </Button>
-            </div>
-          );
+          return <SinglePopOverCartProduct product={product} />;
         })
       )}
       {authStage === authStage_EUNM.AUTHORIZED ? (

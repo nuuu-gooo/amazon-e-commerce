@@ -17,7 +17,7 @@ export const CheckoutPage = () => {
 
   document.title = "Amazon | Checkout";
   return (
-    <div className="flex justify-center items-center p-8">
+    <div className=" flex justify-center items-center p-8">
       <div className="container flex justify-center items-center flex-col">
         <h2 className=" mb-3">Checkout</h2>
         <PaymentForm />
@@ -30,7 +30,7 @@ export const CheckoutPage = () => {
               return <SingleCartItem data={product} />;
             })}
           </div>
-          <div className="flex justify-center items-center flex-col mt-3">
+          <div className=" flex justify-center items-center flex-col mt-3">
             <p>
               Total:
               <span className="text-[red] text-2xl">${totalCartPrice}</span>

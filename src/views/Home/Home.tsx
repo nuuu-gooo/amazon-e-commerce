@@ -31,7 +31,7 @@ export const Home = () => {
               return (
                 <Link
                   key={category.id}
-                  className="no-underline text-[inherit] hover:opacity-70 "
+                  className="no-underline text-[inherit] hover:scale-105 transition "
                   to={`productCategory/${category.name}`}
                 >
                   <div
@@ -40,7 +40,7 @@ export const Home = () => {
                   >
                     <h3>{category.name}</h3>
                     <img
-                      className="rounded-l w-full mt-2"
+                      className="rounded-l mt-2 w-full"
                       src={category.image}
                       alt=""
                     />

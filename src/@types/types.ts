@@ -5,6 +5,7 @@ export interface TProduct {
   image: string;
   price: number;
   category_name: string;
+  salePrice: number;
 }
 
 export interface TCategoryProducts {
@@ -14,6 +15,7 @@ export interface TCategoryProducts {
   image: string;
   price: number;
   category_name: string;
+  salePrice: number;
 }
 
 export interface TCartItem {

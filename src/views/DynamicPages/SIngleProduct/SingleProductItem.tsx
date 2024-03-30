@@ -19,19 +19,11 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
     useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [salesBadge, setSalesBadge] = useState<boolean>(false);
   const { saleProducts } = useGetSaleProducts();
   const { wishListProducts, fetchWishListProducts } = useContext(GlobalContext);
   const [isInWishList, setIsInWishList] = useState<boolean>(false);
   const { AddToWishList } = useAddWIshListProducts();
-  const { searchedProductId } = useParams();
 
-  useEffect(() => {
-    if (saleProducts.find((product) => product.id === data.id)) {
-      setSalesBadge(true);
-    }
-  }, [saleProducts, data]);
-  console.log(searchedProductId);
   useEffect(() => {
     const likedProduct = wishListProducts.find(
       (wishListProduct) => wishListProduct.likedProduct.id === data.id
@@ -110,7 +102,7 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             Order within <span className="text-[green]">7 hrs 29 mins</span>
           </p>
 
-          {salesBadge ? (
+          {data.salePrice ? (
             <p className="bg-[red] rounded-md text-[white] p-2 mt-4  text-center w-full">
               <FormattedMessage id="for-sale" />
             </p>
@@ -134,7 +126,6 @@ export const SingleProductItem = ({ data }: TSingleProductItem) => {
             )}
           </button>
           <button
-            // onClick={() => navigate("/checkout")}
             onClick={() => {
               AddToCart(data.id);
               navigate("/checkout");

@@ -1,4 +1,5 @@
 {
+  "price-filter": "Preis Filter",
   "include@-error": "! Beinhalte '@'",
   "profile": "Profil",
   "min-length-error": "! Minimum Länge: 7",
@@ -25,7 +26,6 @@
   "register": "Registrieren",
   "your-name": "Ihr Name",
   "your-surname": "Ihr Nachname",
-
   "re-enter-password": "Wiederholen Sie ihr Passwort ",
   "already-have-an-account": "Schon ein Account? ",
   "sign-up-sidebar": "Hallo,  Anmelden",

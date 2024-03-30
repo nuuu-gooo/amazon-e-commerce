@@ -26,6 +26,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
   const { locale } = useContext(LContext);
+  const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);
@@ -194,15 +195,8 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   const hadnleRefund = async (id: string) => {
-    try {
-      setDelRefundLoading(true);
-      await axiosInstance.delete(`/purchases/${id}`);
-      getBoughtProducts();
-    } catch (error: any) {
-      console.log(error.message);
-    } finally {
-      setDelRefundLoading(false);
-    }
+    // setDelRefundLoading(true);
+    await axiosInstance.delete(`/purchases/${id}`).then(getBoughtProducts);
   };
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
@@ -219,11 +213,14 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     }
     setTransaction(false);
     saveLocation(selectedNewCountry);
+    getBoughtProducts();
   }, [authStage, transaction, order, orderStatus, selectedNewCountry, locale]);
 
   return (
     <GlobalContext.Provider
       value={{
+        setCurrentCategory,
+        currentCategory,
         selectedNewCountry,
         setSelectedNewCountry,
         order,
