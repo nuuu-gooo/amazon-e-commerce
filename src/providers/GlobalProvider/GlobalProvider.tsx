@@ -26,7 +26,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   console.log(order);
   const [transaction, setTransaction] = useState<boolean>();
   const { locale } = useContext(LContext);
-  const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
+  const [currentCategory, setCurrentCategory] = useState<string>("");
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);

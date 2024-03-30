@@ -15,7 +15,6 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
 import PopOverCart from "@src/components/UI /PopOverCart";
 import { CiLocationOn } from "react-icons/ci";
-import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
 import { CountrySelection } from "./CountrySelection/CountrySelection";
 
 export const Nav1 = () => {
@@ -27,7 +26,6 @@ export const Nav1 = () => {
     currentCategory,
     setCurrentCategory,
   } = useContext(GlobalContext);
-  // const [currentCategory, setCurrentCategory] = useState<string>("Electronics");
 
   const { popUpProducts, loading, setPopUpProducts } =
     useGetPopUpProducts(searchInputValue);
@@ -39,11 +37,18 @@ export const Nav1 = () => {
     const keypress = e.key;
 
     if (keypress === "Enter") {
+      navigate(`/search/${searchInputValue}`);
+
       if (searchInputValue === "") {
         navigate(`/productCategory/${currentCategory}`);
-      } else {
+      } else if (searchInputValue !== "" && currentCategory !== "") {
         navigate(`search/${currentCategory}/${searchInputValue}`);
+      } else {
+        navigate(`/search/${searchInputValue}`);
       }
+      // } else  {
+      //   navigate(`search/${currentCategory}/${searchInputValue}`);
+      // }
     }
   };
 
@@ -121,7 +126,6 @@ export const Nav1 = () => {
             className="bg-[transparent] border-none text-white m"
             onClick={() => setStatusModal(true)}
           >
-            {" "}
             <FaGlobe />
           </Button>
         </div>
@@ -148,7 +152,9 @@ export const Nav1 = () => {
           </div>
           <select
             onChange={(e) => setCurrentCategory(e.target.value)}
-            className=" bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow "
+            className={`  bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow   ${
+              currentCategory !== "" && "bg-yellow-300  text-black outline-none"
+            } `}
           >
             {existingCategories.map((category) => {
               return (

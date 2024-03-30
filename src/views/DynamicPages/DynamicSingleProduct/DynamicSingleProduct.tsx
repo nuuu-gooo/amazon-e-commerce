@@ -4,14 +4,15 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { TProduct } from "@src/@types/types";
-import { SingleProductItem } from "./SingleProductItem";
+// import { SingleProductItem } from "./SingleProductItem";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
 import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
 import NoProductsFoundImg from "@src/assets/images/no-items-found-img.png";
-export const SingleProduct = () => {
+import { DynamicSIngleProductItem } from "./DynamicSIngleProductItem";
+export const DynamicSingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { searchedProductId } = useParams();
+  const { singleItemId } = useParams();
   const { productsViewed, fetchProductsViewed, setProductsViewd } =
     useGetProductsViewed();
 
@@ -21,12 +22,12 @@ export const SingleProduct = () => {
     }
   }, [singleProduct.length]);
 
-  document.title = `Amazon | ${searchedProductId}`;
+  document.title = `Amazon | ${singleItemId}`;
   const fetchSingleProduct = async () => {
     try {
       setLoading(true);
       const fetch = await axiosInstance.get(
-        `product?productName=${searchedProductId}`
+        `product?productName=${singleItemId}`
       );
       setSingleProduct(fetch.data.products);
     } catch (error) {
@@ -36,10 +37,10 @@ export const SingleProduct = () => {
     }
   };
   useEffect(() => {
-    if (searchedProductId) {
+    if (singleItemId) {
       fetchSingleProduct();
     }
-  }, [searchedProductId]);
+  }, [singleItemId]);
 
   useEffect(() => {
     if (singleProduct.length > 0) {
@@ -59,7 +60,7 @@ export const SingleProduct = () => {
         </div>
       ) : (
         singleProduct.map((product: TProduct) => {
-          return <SingleProductItem data={product} />;
+          return <DynamicSIngleProductItem data={product} />;
         })
       )}
 

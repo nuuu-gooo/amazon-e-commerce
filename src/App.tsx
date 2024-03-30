@@ -5,7 +5,8 @@ import { AuthentficiationLayout } from "@src/layouts/AuthenLayout/Authentficiati
 import { Loader } from "@src/assets/Loader/Loader";
 import { PrivateRoute } from "@src/views/Private/PrivateRoute";
 import { PrivateOrderStatus } from "@src/views/Private/PrivateOrderStatus/PrivateOrderStatus";
-import { SingleProduct } from "@src/views/DynamicPages/SingleProduct/SingleProduct";
+import { CurrentSearchedInputProducts } from "./views/DynamicPages/CurrentSearchedInputProducts/CurrentSearchedInputProducts";
+import DynamicSingleProduct from "./views/DynamicPages/DynamicSingleProduct";
 
 const NotRegisteredPage = lazy(() => import("@src/views/NotRegisteredPage"));
 const ChekoutSuccess = lazy(
@@ -31,8 +32,8 @@ const CheckoutPage = lazy(() => import("@src/views/DynamicPages/CheckoutPage"));
 const CategoryProducts = lazy(
   () => import("@src/views/DynamicPages/CategoryProducts")
 );
-const SearchedProducts = lazy(
-  () => import("@src/views/DynamicPages/SearchedProducts")
+const SearchedProductsAndCategory = lazy(
+  () => import("@src/views/DynamicPages/SearchedProductsAndCategory")
 );
 const Orders = lazy(() => import("@src/views/PrivateViews/Orders"));
 
@@ -74,15 +75,19 @@ function App() {
           />
           <Route
             path="/search/:productCategoryId/:productId"
-            element={<SearchedProducts />}
+            element={<SearchedProductsAndCategory />}
           />
           <Route
             path="/search/:searchedProductId"
-            element={<SingleProduct />}
+            element={<CurrentSearchedInputProducts />}
           />
           <Route
             path="/wishList"
             element={<PrivateRoute children={<WishListProducts />} />}
+          />
+          <Route
+            path="/search/singleItem/:singleItemId"
+            element={<DynamicSingleProduct />}
           />
           <Route
             path="/checkout/success"

@@ -9,7 +9,7 @@ import SingleProductComp from "@src/components/UI /SingleProductComp";
 import { Slider } from "antd";
 import { FaDollarSign } from "react-icons/fa";
 
-export const SearchedProducts = () => {
+export const SearchedProductsAndCategory = () => {
   const [searchedProducts, setSearchedProducts] = useState<TProduct[]>([]);
   const { productCategoryId, productId } = useParams();
   const [loading, setLoading] = useState<boolean>(false);

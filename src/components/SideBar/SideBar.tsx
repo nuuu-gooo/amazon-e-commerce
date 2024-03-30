@@ -28,16 +28,25 @@ export const SideBar = () => {
     setCurrentCategory,
   } = useContext(GlobalContext);
 
-  console.log(sidebarInput, popUpProducts);
-
   const handleKeyPress = (e: any) => {
     const keypress = e.key;
 
     if (keypress === "Enter") {
-      // navigate(`/search/${sidebarInput}`);
-      navigate(`/search/${currentCategory}/${sidebarInput}`);
+      navigate(`/search/${sidebarInput}`);
+
+      if (sidebarInput === "") {
+        navigate(`/productCategory/${currentCategory}`);
+      } else if (sidebarInput !== "" && currentCategory !== "") {
+        navigate(`search/${currentCategory}/${sidebarInput}`);
+      } else {
+        navigate(`/search/${sidebarInput}`);
+      }
+      // } else  {
+      //   navigate(`search/${currentCategory}/${searchInputValue}`);
+      // }
     }
   };
+
   return (
     <div className=" fixed z-50">
       {isToggled ? (
@@ -148,6 +157,12 @@ export const SideBar = () => {
               <h5 className="text-black">
                 Current Category: {currentCategory}
               </h5>
+              <button
+                onClick={() => setCurrentCategory("")}
+                className="ml-2 p-1 w-[30%] bg-[#febd69] border-none"
+              >
+                Clear
+              </button>
             </div>
           </Sidebar>
         </div>

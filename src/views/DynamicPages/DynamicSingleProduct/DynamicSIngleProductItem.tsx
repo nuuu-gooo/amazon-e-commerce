@@ -14,7 +14,7 @@ import { FormattedMessage } from "react-intl";
 interface TSingleProductItem {
   data: TProduct;
 }
-export const SingleProductItem = ({ data }: TSingleProductItem) => {
+export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
   const { AddToCart, addToCartLoading, setAddToCartModal, addToCartModal } =
     useContext(GlobalContext);
   const { authStage } = useContext(AuthContext);

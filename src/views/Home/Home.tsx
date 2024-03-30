@@ -61,10 +61,6 @@ export const Home = () => {
           <h2 className="mb-2">Cooking</h2>
           <SectionSlider data={cookingProducts} />
         </div>
-        <div className="mt-[3%]">
-          <h2 className="mb-2">Books</h2>
-          <SectionSlider data={bookProducts} />
-        </div>
       </div>
     </div>
   );
