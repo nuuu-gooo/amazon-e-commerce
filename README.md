@@ -17,7 +17,7 @@ This project is an Amazon clone built using TypeScript, React, React Router DOM,
 1. Clone the repository: `git clone <repository-url>`
 2. Navigate to the project directory: `cd amazon-clone`
 3. Install dependencies: `npm install`
-4. NOTE: if the installation failed, run "npm install --force"
+4. NOTE: if the installation failed, run `npm install --force`
 5. Run the development server: `npm run dev`
 6. Open your browser and visit the URL that is given, after running "npm run dev" to view the application.
 
