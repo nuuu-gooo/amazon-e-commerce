@@ -61,5 +61,6 @@
   "card-number": "Karten Nummer",
   "cardholder-name": "Innhabername",
   "address": "Adresse",
-  "expire-date": "Ablaufsdatum"
+  "expire-date": "Ablaufsdatum",
+  "currently-no-products-in-wishlist": "Keine Produkte in der Wunschliste"
 }

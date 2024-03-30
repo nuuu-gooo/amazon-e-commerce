@@ -61,5 +61,6 @@
   "card-number": "Card Number",
   "cardholder-name": "Cardholer name",
   "address": "Adress",
-  "expire-date": "Expire date"
+  "expire-date": "Expire date",
+  "currently-no-products-in-wishlist": "Currenty no products in Wishlist"
 }
