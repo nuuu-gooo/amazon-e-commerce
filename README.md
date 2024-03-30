@@ -19,7 +19,7 @@ This project is an Amazon clone built using TypeScript, React, React Router DOM,
 3. Install dependencies: `npm install`
 4. NOTE: if the installation failed, run `npm install --force`
 5. Run the development server: `npm run dev`
-6. Open your browser and visit the URL that is given, after running "npm run dev" to view the application.
+6. Open your browser and visit the URL that is given, after running `npm run dev` in your terminal to view the application.
 
 ## Features
 
