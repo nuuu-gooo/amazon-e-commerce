@@ -66,7 +66,7 @@ export const CategoryProducts = () => {
           </div>
           <Slider
             step={10}
-            className="min-w-[80px] max-w-[100px]"
+            className="min-w-[80px] max-w-[100px]   md:min-w-[100px] md:max-w-[500px]"
             min={20}
             max={3000}
             onChange={handleFilterPrice}
