@@ -62,5 +62,8 @@
   "cardholder-name": "Innhabername",
   "address": "Adresse",
   "expire-date": "Ablaufsdatum",
-  "currently-no-products-in-wishlist": "Keine Produkte in der Wunschliste"
+  "currently-no-products-in-wishlist": "Keine Produkte in der Wunschliste",
+  "products-under-30": "Produkte unter 30$",
+  "cooking": "Kochen",
+  "books": "Bücher"
 }

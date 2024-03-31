@@ -8,6 +8,8 @@ import SalesProductsComp from "@src/components/UI /SalesProducts";
 import SectionSlider from "@src/components/UI /SectionSlider";
 import { useGetProductsUnder30 } from "@src/hooks/useGetProductsUnder30/useGetProductsUnder30";
 import { useGetCookingProducts } from "@src/hooks/useGetCookingProducts/useGetCookingProducts";
+import { FormattedMessage } from "react-intl";
+import { useGetBookProducts } from "@src/hooks/useGetBookProducts/useGetBookProducts";
 
 export const Home = () => {
   document.title = "Amazon | Home ";
@@ -15,6 +17,7 @@ export const Home = () => {
   const { saleProducts } = useGetSaleProducts();
   const { productsUnder30 } = useGetProductsUnder30();
   const { cookingProducts } = useGetCookingProducts();
+  const { bookProducts } = useGetBookProducts();
   const slicedOutCategories = existingCategories.slice(0, 6);
 
   return (
@@ -51,13 +54,24 @@ export const Home = () => {
         <SalesProductsComp saleProducts={saleProducts} />
 
         <div className="mt-[3%]">
-          <h2 className="mb-2">Products under 30$</h2>
+          <h2 className="mb-2">
+            <FormattedMessage id="products-under-30" />
+          </h2>
           <SectionSlider data={productsUnder30} />
         </div>
 
         <div className="mt-[3%]">
-          <h2 className="mb-2">Cooking</h2>
+          <h2 className="mb-2">
+            <FormattedMessage id="cooking" />
+          </h2>
           <SectionSlider data={cookingProducts} />
+        </div>
+
+        <div className="mt-[3%]">
+          <h2 className="mb-2">
+            <FormattedMessage id="books" />
+          </h2>
+          <SectionSlider data={bookProducts} />
         </div>
       </div>
     </div>

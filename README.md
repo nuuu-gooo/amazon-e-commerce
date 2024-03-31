@@ -12,7 +12,7 @@ This project is an Amazon clone built using TypeScript, React, React Router DOM,
 - **Tailwind CSS**: Tailwind CSS is a utility-first CSS framework for quickly building custom designs without having to leave your HTML.
 - **Ant Design (Antd)**: Ant Design is a UI library with a set of high-quality React components.
 
-## Setup Instructions
+## Setup / Installation Instructions
 
 1. Clone the repository: `git clone <repository-url>`
 2. Navigate to the project directory: `cd amazon-clone`

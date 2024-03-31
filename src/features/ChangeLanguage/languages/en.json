@@ -62,5 +62,8 @@
   "cardholder-name": "Cardholer name",
   "address": "Adress",
   "expire-date": "Expire date",
-  "currently-no-products-in-wishlist": "Currenty no products in Wishlist"
+  "currently-no-products-in-wishlist": "Currenty no products in Wishlist",
+  "products-under-30": "Products under 30$",
+  "cooking": "Cooking",
+  "books": "Books"
 }
