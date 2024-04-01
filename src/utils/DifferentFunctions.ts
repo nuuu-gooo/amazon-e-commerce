@@ -47,7 +47,7 @@ export const numberValidation = (
   numberValue: string,
   setEnterNumError: (error: boolean) => void
 ): void => {
-  if (numberValue.length > 9 || numberValue === "") {
+  if (numberValue.length < 9 || numberValue === "" || numberValue.length > 9) {
     setEnterNumError(true);
   } else {
     setEnterNumError(false);

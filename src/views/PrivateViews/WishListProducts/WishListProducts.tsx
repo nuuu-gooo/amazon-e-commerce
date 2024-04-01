@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
 import { TLikedProduct } from "@src/@types/types";
-import { Button } from "antd";
 
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage } from "react-intl";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
+import { WishLIstProductsItem } from "./WishLIstProductsItem/WishLIstProductsItem";
 
 export const WishListProducts = () => {
-  const { wishListProducts, wishListProductsLoading } =
-    useContext(GlobalContext);
-  const { deleteWishListProduct } = useDeleteWishListProduct();
+  const { wishListProducts } = useContext(GlobalContext);
   const { saleProducts } = useGetSaleProducts();
   let [totalWishListPrice, setTotalWishListPrice] = useState<number>(0);
 
@@ -44,49 +41,7 @@ export const WishListProducts = () => {
             </h3>
           ) : (
             wishListProducts.map((product: TLikedProduct) => {
-              return (
-                <div className="w-full border-solid border-black  flex bg-[white] justify-between items-center  p-4">
-                  <div className="left flex items-center ">
-                    <h3>{product.likedProduct.title}</h3>
-                    <p className="ml-3 text-red-700">
-                      <p>
-                        {saleProducts.some(
-                          (sProduct) => sProduct.id === product.likedProduct.id
-                        ) ? (
-                          <span className=" text-red-700">
-                            {
-                              saleProducts.find(
-                                (sProduct) =>
-                                  sProduct?.id === product.likedProduct.id
-                              )?.salePrice
-                            }
-                            $
-                          </span>
-                        ) : (
-                          <p className=" text-red-700">
-                            {product.likedProduct.price}$
-                          </p>
-                        )}
-                      </p>
-                    </p>
-                    <img
-                      className="w-[10%] ml-5"
-                      src={product.likedProduct.image}
-                      alt=""
-                    />
-                  </div>
-
-                  <Button
-                    loading={wishListProductsLoading}
-                    onClick={() => {
-                      deleteWishListProduct(product.id);
-                    }}
-                    danger={true}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              );
+              return <WishLIstProductsItem data={product} />;
             })
           )}
         </div>
