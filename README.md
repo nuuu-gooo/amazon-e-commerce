@@ -27,4 +27,5 @@ This project is an Amazon clone built using TypeScript, React, React Router DOM,
 - Product Listing: Display a list of products with details such as name, price, and image.
 - Product Details: Users can view detailed information about a product.
 - Add to Cart: Users can add products to their shopping cart.
+- Wishlist: Users can add some of their favorite Products, to their wishlist for future purchases.
 - Checkout: Users can proceed to checkout and complete their purchases.
