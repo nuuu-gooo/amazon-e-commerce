@@ -8,6 +8,7 @@ import { FaCartPlus, FaHeart } from "react-icons/fa";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { useAddWIshListProducts } from "@src/hooks/WishList/useAddWishLIstProducts/useAddWishListProducts";
 import { CiHeart } from "react-icons/ci";
+import { FormattedMessage } from "react-intl";
 
 interface TSingleSaleProduct {
   product: TProductSale;
@@ -73,7 +74,9 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
             onClick={() => handleOnClick(product.id)}
             className="hidden sm:flex md:w-[100%] mt-5 rounded-b-lg min-w-9 bg-[#febd69] items-center justify-center border-none p-2 cursor-pointer hover:opacity-60"
           >
-            Add To Cart
+            <p>
+              <FormattedMessage id="add-to-cart" />
+            </p>
           </Button>
 
           <button

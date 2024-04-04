@@ -94,11 +94,8 @@ export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
             No Import Fees Deposit & <br /> $16.78 Shipping to Greece
           </p>
           <p className="mt-3">
-            Delivery{" "}
-            <span className="font-medium">
-              Wednesday, February 28. <br />
-            </span>{" "}
-            Order within <span className="text-[green]">7 hrs 29 mins</span>
+            <FormattedMessage id="buy-text-2" />
+            <span className="text-[green]">7 hrs 29 mins</span>
           </p>
 
           {data.salePrice ? (

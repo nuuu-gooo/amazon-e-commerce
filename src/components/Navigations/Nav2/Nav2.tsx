@@ -3,6 +3,7 @@ import { GlobalContext } from "@src/providers/GlobalProvider";
 import { Link } from "react-router-dom";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { nav2Links } from "@src/Data/Data";
+import { FormattedMessage } from "react-intl";
 
 export const Nav2 = () => {
   const { toggleSidebarFunction } = useContext(GlobalContext);
@@ -16,7 +17,7 @@ export const Nav2 = () => {
             className=" text-center  all-btn shadow-sm rounded-sm  shadow-black bg-transparent p-2  ml-3  text-xl sm:ml-3 text-white no-underline sm:text-base cursor-pointer"
             onClick={toggleSidebarFunction}
           >
-            All
+            <FormattedMessage id="all" />
           </p>
         </div>
         {nav2Links.map((link: any) => {

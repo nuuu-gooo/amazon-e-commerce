@@ -53,7 +53,7 @@ export const SalesProductsComp = ({ saleProducts }: any) => {
   return (
     <Slider {...settings}>
       {saleProducts.map((product: TProductSale) => {
-        return <SingleSaleProduct product={product} />;
+        return <SingleSaleProduct key={product.id} product={product} />;
       })}
     </Slider>
   );

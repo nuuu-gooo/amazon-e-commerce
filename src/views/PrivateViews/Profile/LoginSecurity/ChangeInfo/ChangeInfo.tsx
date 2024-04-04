@@ -1,7 +1,8 @@
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Alert, Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
-import { Form } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+// import { Form } from "react-router-dsaom";
 
 export const ChangeInfo = () => {
   const {
@@ -34,10 +35,14 @@ export const ChangeInfo = () => {
           className="border border-solid w-[50%] p-5 rounded-sm"
           action=""
         >
-          <h3 className="  text-start">Change Account Info</h3>
+          <h3 className="  text-start">
+            <FormattedMessage id="change-acc-info" />
+          </h3>
 
           <div className="inputs mt-3">
-            <label htmlFor="">Last Name</label>
+            <label htmlFor="">
+              <FormattedMessage id="name" />
+            </label>
             <input
               placeholder="Enter new Name"
               className="w-full mb-2 mt-2  p-2 outline-none"
@@ -45,7 +50,9 @@ export const ChangeInfo = () => {
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
             />
-            <label htmlFor="">First Name</label>
+            <label htmlFor="">
+              <FormattedMessage id="last-name" />
+            </label>
             <input
               placeholder="Enter new Surname"
               className="w-full mb-2 mt-2  p-2 outline-none"
@@ -63,7 +70,7 @@ export const ChangeInfo = () => {
               />
             )}
             <label className="" htmlFor="">
-              Number
+              <FormattedMessage id="number" />
             </label>
             <input
               placeholder="Enter new Number"
@@ -82,7 +89,7 @@ export const ChangeInfo = () => {
         to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
         active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
           >
-            Submit Changes
+            <FormattedMessage id="submit-changes" />
           </Button>
         </form>
       </div>

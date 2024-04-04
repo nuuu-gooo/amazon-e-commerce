@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Avatar } from "antd";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 export const LoginSecurity = () => {
   const { userData } = useContext(AuthContext);
@@ -15,8 +16,12 @@ export const LoginSecurity = () => {
         <p>{userData?.last_name[0].toUpperCase()}</p>
       </Avatar>
       <div className="pers-info flex justify-center flex-col mt-3 border-solid border-black p-3  rounded-lg ">
-        <p>First Name / {userData?.first_name}</p>
-        <p className="mt-3">Last Name / {userData?.last_name}</p>
+        <p>
+          <FormattedMessage id="name" /> / {userData?.first_name}
+        </p>
+        <p className="mt-3">
+          <FormattedMessage id="last-name" /> / {userData?.last_name}
+        </p>
         <p className="mt-3">E-Mail / {userData?.email}</p>
         <button
           onClick={() => naviagte("/loginSecurity/changeInfo")}
@@ -24,7 +29,7 @@ export const LoginSecurity = () => {
         to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
         active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"
         >
-          Change Information
+          <FormattedMessage id="change-info" />
         </button>
       </div>
     </div>

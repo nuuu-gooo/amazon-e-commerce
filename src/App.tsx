@@ -3,12 +3,16 @@ import { Routes, Route } from "react-router-dom";
 import { PublicLayout } from "@src/layouts/PublicLayout";
 import { AuthentficiationLayout } from "@src/layouts/AuthenLayout/AuthentficiationLayout";
 import { Loader } from "@src/assets/Loader/Loader";
-import { PrivateRoute } from "@src/views/Private/PrivateRoute";
-import { PrivateOrderStatus } from "@src/views/Private/PrivateOrderStatus/PrivateOrderStatus";
 import { CurrentSearchedInputProducts } from "./views/DynamicPages/CurrentSearchedInputProducts/CurrentSearchedInputProducts";
-import DynamicSingleProduct from "./views/DynamicPages/DynamicSingleProduct";
 
+import DynamicSingleProduct from "./views/DynamicPages/DynamicSingleProduct";
 const NotRegisteredPage = lazy(() => import("@src/views/NotRegisteredPage"));
+const PrivateOrderStatus = lazy(
+  () => import("@src/views/Private/PrivateOrderStatus")
+);
+const PrivateRouteAuth = lazy(
+  () => import("@src/views/Private/PrivateRouteAuth")
+);
 const ChekoutSuccess = lazy(
   () => import("@src/views/DynamicPages/CheckoutPage/ChekoutSuccess")
 );
@@ -53,21 +57,21 @@ function App() {
           <Route path="/noRegisteredPage" element={<NotRegisteredPage />} />
           <Route
             path="/profile"
-            element={<PrivateRoute children={<Profile />} />}
+            element={<PrivateRouteAuth children={<Profile />} />}
           />
           <Route
             path="/orders"
-            element={<PrivateRoute children={<Orders />} />}
+            element={<PrivateRouteAuth children={<Orders />} />}
           />
 
           <Route
             path="/loginSecurity"
-            element={<PrivateRoute children={<LoginSecurity />} />}
+            element={<PrivateRouteAuth children={<LoginSecurity />} />}
           />
 
           <Route
             path="/checkout"
-            element={<PrivateRoute children={<CheckoutPage />} />}
+            element={<PrivateRouteAuth children={<CheckoutPage />} />}
           />
           <Route
             path="/productCategory/:productCategoryId"
@@ -83,7 +87,7 @@ function App() {
           />
           <Route
             path="/wishList"
-            element={<PrivateRoute children={<WishListProducts />} />}
+            element={<PrivateRouteAuth children={<WishListProducts />} />}
           />
           <Route
             path="/search/singleItem/:singleItemId"
@@ -100,7 +104,7 @@ function App() {
           <Route path="/createaccount" element={<CreateAcc />} />
           <Route
             path="/loginSecurity/changeInfo"
-            element={<PrivateRoute children={<ChangeInfo />} />}
+            element={<PrivateRouteAuth children={<ChangeInfo />} />}
           />
         </Route>
       </Routes>
