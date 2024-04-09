@@ -10,9 +10,10 @@ import { FaSearch, FaTrash } from "react-icons/fa";
 import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpProduct";
 import { nav2Links } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const SideBar = () => {
-  const { locale } = useContext(LContext);
+  const { locale, toggleLanguage } = useContext(LContext);
   const { authStage, userData } = useContext(AuthContext);
 
   const [sidebarInput, setSideBarInput] = useState<string>("");
@@ -177,6 +178,36 @@ export const SideBar = () => {
               >
                 Clear
               </button>
+            </div>
+            <div className="flex justify-center items-center bg-[#ef941d] p-3">
+              {locale === Locale_ENUM.EN ? (
+                <div>
+                  <button
+                    onClick={() => toggleLanguage()}
+                    className="flex items-center text-white bg-transparent border-none text-l  cursor-pointer"
+                  >
+                    <img
+                      src="https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"
+                      alt=""
+                    />
+                    <p className="ml-2">GER</p>
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    onClick={() => toggleLanguage()}
+                    className="flex items-center text-white bg-transparent border-none text-l  cursor-pointer"
+                  >
+                    <img
+                      className=""
+                      src="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
+                      alt=""
+                    />
+                    <p className="ml-2">EN</p>
+                  </button>
+                </div>
+              )}
             </div>
           </Sidebar>
         </div>
