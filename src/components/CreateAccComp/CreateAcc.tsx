@@ -29,7 +29,7 @@ export const CreateAccComp = () => {
     if (locale === "de") {
       setEnterNumVal("49");
     } else if (locale === "en") {
-      setEnterNumVal("995");
+      setEnterNumVal("44");
     }
   }, [locale]);
   console.log(enterNumVal);

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaGlobe, FaSearch, FaUserCircle } from "react-icons/fa";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
 
 import { FormattedMessage } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
@@ -15,20 +15,16 @@ import { Loader } from "@src/assets/Loader/Loader";
 import { useLocation } from "react-router-dom";
 import PopOverCart from "@src/components/UI /PopOverCart";
 import { CiLocationOn } from "react-icons/ci";
-import { CountrySelection } from "./CountrySelection/CountrySelection";
+import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const Nav1 = () => {
   const [searchInputValue, setSearchInputValue] = useState<string>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
-  const {
-    existingCategories,
-    selectedNewCountry,
-    currentCategory,
-    setCurrentCategory,
-  } = useContext(GlobalContext);
+  const { existingCategories, currentCategory, setCurrentCategory } =
+    useContext(GlobalContext);
+  const { locale } = useContext(LContext);
 
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
-  const [statusModal, setStatusModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -120,20 +116,8 @@ export const Nav1 = () => {
             <p className="text-xs">
               <FormattedMessage id="deliver-to" />
             </p>
-            {statusModal && (
-              <CountrySelection
-                setStatusModal={setStatusModal}
-                statusModal={statusModal}
-              />
-            )}
-            <h3>{selectedNewCountry}</h3>
+            {locale === Locale_ENUM.DE ? <h4>Germany</h4> : <h4>England</h4>}
           </div>
-          <Button
-            className="bg-[transparent] border-none text-white m"
-            onClick={() => setStatusModal(true)}
-          >
-            <FaGlobe />
-          </Button>
         </div>
         <div className=" xl:flex relative hidden md:main-search-input ml-3 flex-grow min-w-[50%] ">
           {loading ? <Loader /> : ""}
