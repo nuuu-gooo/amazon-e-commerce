@@ -1,10 +1,13 @@
 import { profile_elements } from "@src/Data/Data";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
 export const Profile = () => {
   document.title = "Amazon | Profile";
   return (
     <div className="flex  flex-col justify-center items-center p-3">
-      <h3>Your Profile</h3>
+      <h3>
+        <FormattedMessage id="your-profile" />
+      </h3>
       <div className=" inline-grid grid-cols-2 mt-2 gap-3 ">
         {profile_elements.map((element) => {
           return (

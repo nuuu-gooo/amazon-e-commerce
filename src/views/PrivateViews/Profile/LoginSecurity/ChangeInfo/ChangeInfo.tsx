@@ -2,7 +2,6 @@ import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Alert, Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-// import { Form } from "react-router-dsaom";
 
 export const ChangeInfo = () => {
   const {
@@ -30,7 +29,7 @@ export const ChangeInfo = () => {
     if (newName !== "" && newSurname !== "" && newNumber !== "") {
       changeAccInfo(newName, newSurname, newNumber);
     } else {
-      alert("Please fill out every input");
+      alert(<FormattedMessage id="please-fill-every-input" />);
     }
   };
 
@@ -79,7 +78,11 @@ export const ChangeInfo = () => {
               <Alert
                 className="mb-2 mt-2"
                 showIcon={true}
-                message="Please enter 9 digits"
+                message={
+                  <p>
+                    <FormattedMessage id="number-error" />
+                  </p>
+                }
                 type="error"
               />
             )}

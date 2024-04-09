@@ -40,13 +40,6 @@
   "enter-number": "Ihre Telefonnummer",
   "account-creation-success": "Konto erfolgreich erstellt!, bitte melden Sie sich an.",
   "account-creation-fail:": "Konto erstellung fehlgeschlagen!",
-  "category-container-smartphones": "Telefone",
-  "category-container-laptops": "Laptops",
-  "category-container-audio": "Audio",
-  "category-container-photo-video": "Photo | Video",
-  "category-container-gaming": "Videospiele",
-  "category-container-tv-monitors": "TV | Monitore",
-  "category-container-tabs": "Tabs",
   "new-customer": "Neuer Kunde?",
   "start-here": "Starte hier!",
   "your-basket": "Ihr Einkaufswagen",
@@ -74,5 +67,8 @@
   "change-info": "Information verändern",
   "number": "Nummer",
   "submit-changes": "Veränderungen vornehmen",
-  "change-acc-info": "Account Informationen Verändern"
+  "change-acc-info": "Account Informationen Verändern",
+  "your-profile": "Ihr Profil",
+  "your-orders": "Ihre Bestellungn",
+  "login-security": "Anmeldung & Sicherheit"
 }
