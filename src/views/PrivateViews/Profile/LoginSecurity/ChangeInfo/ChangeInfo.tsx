@@ -12,12 +12,26 @@ export const ChangeInfo = () => {
     changeAccLoading,
   } = useContext(AuthContext);
   const { userData } = useContext(AuthContext);
-  const [newName, setNewName] = useState(userData?.first_name);
-  const [newSurname, setNewSurname] = useState(userData?.last_name);
-  const [newNumber, setNewNumber] = useState(userData?.phone_number);
+  const [newName, setNewName] = useState<string | undefined>(
+    userData?.first_name
+  );
+  const [newSurname, setNewSurname] = useState<string | undefined>(
+    userData?.last_name
+  );
+  const [newNumber, setNewNumber] = useState<string | undefined>(
+    userData?.phone_number
+  );
 
   const handleForm = (e: React.MouseEvent<HTMLFormElement>) => {
     return e.preventDefault();
+  };
+
+  const handleOnClick = async () => {
+    if (newName !== "" && newSurname !== "" && newNumber !== "") {
+      changeAccInfo(newName, newSurname, newNumber);
+    } else {
+      alert("Please fill out every input");
+    }
   };
 
   useEffect(() => {
@@ -82,9 +96,7 @@ export const ChangeInfo = () => {
           </div>
           <Button
             loading={changeAccLoading}
-            onClick={() => {
-              changeAccInfo(newName, newSurname, newNumber);
-            }}
+            onClick={handleOnClick}
             className=" p-1 w-[full] cursor-pointer px-2.5 rounded-md mt-3 font-titleFont font-sm text-base bg-gradient-to-tr from-yellow-400
         to-yellow-200 border border-yellow-500 hover:border-yellow-700 hover:from-yellow-300 to hover:to-yellow-400 
         active:bg-gradient-to-bl active:from-yellow-400 active:to-yellow-500 duration-200"

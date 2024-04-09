@@ -48,11 +48,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   const changeAccInfo = async (
-    userName: string,
-    userSurname: string,
-    userNumber: string
+    userName: string | undefined,
+    userSurname: string | undefined,
+    userNumber: string | undefined
   ) => {
     try {
+      //@ts-ignore
       if (userNumber.length < 9 || userNumber.length > 9) {
         setNumberInputValidation(true);
       } else {

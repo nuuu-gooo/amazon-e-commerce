@@ -31,9 +31,9 @@ export type AuthContextType = {
   signInFetch: (email: string, password: string) => Promise<void>;
   loggout: () => void;
   changeAccInfo: (
-    userName: string,
-    userSurname: string,
-    userNumber: string
+    userName: string | undefined,
+    userSurname: string | undefined,
+    userNumber: string | undefined
   ) => Promise<void>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
