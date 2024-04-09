@@ -5,7 +5,10 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { emailValidation } from "@src/utils/DifferentFunctions";
+import {
+  emailValidation,
+  passwordValidation,
+} from "@src/utils/DifferentFunctions";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { Button } from "antd";
@@ -14,6 +17,7 @@ export const LoginComp = () => {
   const { formatMessage } = useIntl();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const { signInFetch, loading } = useContext(AuthContext);
@@ -21,7 +25,13 @@ export const LoginComp = () => {
   const handleInput = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     emailValidation(emailValue, setEmailError);
-    await signInFetch(emailValue, passwordValue);
+    passwordValidation(passwordValue, setPasswordError);
+    if (passwordValue !== "" && emailValue !== "") {
+      await signInFetch(emailValue, passwordValue);
+    } else {
+      alert("Please fill out every input!");
+    }
+    // await signInFetch(emailValue, passwordValue);
   };
 
   const navigate = useNavigate();
@@ -68,6 +78,7 @@ export const LoginComp = () => {
               type={isPasswordVisible ? "text" : "password"}
               placeholder={formatMessage({ id: "password" })}
             />
+
             <button
               type="button"
               className="p-2 "
@@ -76,6 +87,13 @@ export const LoginComp = () => {
               {isPasswordVisible ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
+          {passwordError ? (
+            <p className="mt-3 text-xs text-[red]">
+              <FormattedMessage id="wrong-password" />
+            </p>
+          ) : (
+            ""
+          )}
         </div>
 
         <Button

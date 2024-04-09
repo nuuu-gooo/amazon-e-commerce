@@ -77,5 +77,6 @@
   "welcome": "Welcome",
   "current-category": "Current Category",
   "categories": "Categories",
-  "search": "Search Amazon"
+  "search": "Search Amazon",
+  "wrong-password": "! Wrong Password"
 }
