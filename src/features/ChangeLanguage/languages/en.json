@@ -73,5 +73,9 @@
   "your-orders": "Your orders",
   "login-security": "login & Security",
   "germany": "Germany",
-  "england": "England"
+  "england": "England",
+  "welcome": "Welcome",
+  "current-category": "Current Category",
+  "categories": "Categories",
+  "search": "Search Amazon"
 }

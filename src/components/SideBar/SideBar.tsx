@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { GlobalContext } from "@src/providers/GlobalProvider";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Link, useNavigate } from "react-router-dom";
 import { PiUserCircleFill } from "react-icons/pi";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
@@ -17,6 +17,7 @@ export const SideBar = () => {
 
   const [sidebarInput, setSideBarInput] = useState<string>("");
   const { popUpProducts } = useGetPopUpProducts(sidebarInput);
+  const intl = useIntl();
 
   const navigate = useNavigate();
   console.log(sidebarInput);
@@ -67,7 +68,10 @@ export const SideBar = () => {
             </button>
             {authStage === authStage_EUNM.AUTHORIZED ? (
               <div className=" w-full p-5 bg-[#131921] text-[white] flex items-center">
-                <p>Welcome {userData?.first_name.toUpperCase()}</p>
+                <p>
+                  <FormattedMessage id="welcome" />{" "}
+                  {userData?.first_name.toUpperCase()}
+                </p>
               </div>
             ) : (
               <Link className="no-underline" to={"/login"}>
@@ -84,7 +88,7 @@ export const SideBar = () => {
               <input
                 onKeyDown={handleKeyPress}
                 onChange={(e) => setSideBarInput(e.target.value)}
-                placeholder="Enter Keyword"
+                placeholder={intl.formatMessage({ id: "search" })}
                 className="w-full p-3 border-none outline-none"
                 value={sidebarInput}
                 type="text"
@@ -123,7 +127,13 @@ export const SideBar = () => {
             })}
 
             <Menu>
-              <SubMenu label="Categories">
+              <SubMenu
+                label={
+                  <p>
+                    <FormattedMessage id="categories" />
+                  </p>
+                }
+              >
                 {existingCategories.map((categorie) => {
                   return (
                     <Link
@@ -159,7 +169,7 @@ export const SideBar = () => {
             </Menu>
             <div className="bg-[#ef941d] p-3 flex justify-center items-center">
               <h5 className="text-black">
-                Current Category: {currentCategory}
+                <FormattedMessage id="current-category" />: {currentCategory}
               </h5>
               <button
                 onClick={() => setCurrentCategory("")}

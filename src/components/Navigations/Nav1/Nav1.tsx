@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
 
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
 import SideBar from "@src/components/SideBar";
@@ -27,6 +27,7 @@ export const Nav1 = () => {
   const { popUpProducts, loading } = useGetPopUpProducts(searchInputValue);
   const navigate = useNavigate();
   const location = useLocation();
+  const intl = useIntl();
 
   const handleKeyPress = (e: any) => {
     const keypress = e.key;
@@ -172,6 +173,7 @@ export const Nav1 = () => {
             autoFocus={true}
             type="text"
             defaultValue={searchInputValue}
+            placeholder={intl.formatMessage({ id: "search" })}
             onKeyPress={handleKeyPress}
           />
 
