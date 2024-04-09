@@ -116,7 +116,15 @@ export const Nav1 = () => {
             <p className="text-xs">
               <FormattedMessage id="deliver-to" />
             </p>
-            {locale === Locale_ENUM.DE ? <h4>Germany</h4> : <h4>England</h4>}
+            {locale === Locale_ENUM.DE ? (
+              <h4>
+                <FormattedMessage id="germany" />
+              </h4>
+            ) : (
+              <h4>
+                <FormattedMessage id="england" />
+              </h4>
+            )}
           </div>
         </div>
         <div className=" xl:flex relative hidden md:main-search-input ml-3 flex-grow min-w-[50%] ">
