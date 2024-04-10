@@ -8,7 +8,7 @@
   "e-mail": "E-Mail",
   "password": "Password",
   "new-to-amazon": "New to Amazon ",
-  "home": "Zuhause",
+  "home": "Home",
   "delete": "Delete",
   "create-your-amazon-account": "Create your account",
   "amazon-affiliates": "© 1996-2023, Amazon.com, Inc. or its affiliates",
@@ -81,5 +81,7 @@
   "wrong-password": "! Wrong Password",
   "recommended-products": "Recommended Products",
   "no-recommended-products": "No recommended Products!",
-  "about-this-item": "About this item:"
+  "about-this-item": "About this item:",
+  "transaction-successfull": "Transaction Successfull",
+  "15-min-email": "It takes up to 15 minutes for your confirmation e-mail"
 }

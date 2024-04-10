@@ -81,5 +81,7 @@
   "recommended-products": "Empfohlene Produkte",
   "no-recommended-products": "Keine Empfohlenen Produkte!",
   "no-import-fees": "Keine Einfuhrabgaben Kaution & $16.78 Versand nach Griechenland",
-  "about-this-item": "Über dieses Produkt:"
+  "about-this-item": "Über dieses Produkt:",
+  "transaction-successfull": "Transaktion Erfolgreich",
+  "15-min-email": "Es dauert bis zu 15 Minuten, bis Sie eine Bestätigungs-E-Mail erhalten."
 }
