@@ -5,7 +5,7 @@ import { axiosInstance } from "@src/utils/publicAxios";
 import { Link, useParams } from "react-router-dom";
 import { TProduct } from "@src/@types/types";
 import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProductsViewed";
-import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
+import BreadCrumb from "@src/components/UI /BreadCrumb";
 import NoProductsFoundImg from "@src/assets/images/no-items-found-img.png";
 import { DynamicSIngleProductItem } from "./DynamicSIngleProductItem";
 import { FormattedMessage } from "react-intl";
