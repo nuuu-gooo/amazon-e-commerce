@@ -77,5 +77,9 @@
   "current-category": "Aktuelle Kategorie",
   "categories": "Kategorien",
   "search": "Suche Amazon",
-  "wrong-password": "! Falsches Passwort"
+  "wrong-password": "! Falsches Passwort",
+  "recommended-products": "Empfohlene Produkte",
+  "no-recommended-products": "Keine Empfohlenen Produkte!",
+  "no-import-fees": "Keine Einfuhrabgaben Kaution & $16.78 Versand nach Griechenland",
+  "about-this-item": "Über dieses Produkt:"
 }

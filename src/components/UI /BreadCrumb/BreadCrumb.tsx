@@ -1,6 +1,7 @@
 import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 export const BreadCrumb = ({ data }: any) => {
   return (
@@ -9,7 +10,13 @@ export const BreadCrumb = ({ data }: any) => {
         className=" justify-center"
         items={[
           {
-            title: <Link to="/">Home</Link>,
+            title: (
+              <Link to="/">
+                <p>
+                  <FormattedMessage id="home" />
+                </p>
+              </Link>
+            ),
           },
           {
             title: (

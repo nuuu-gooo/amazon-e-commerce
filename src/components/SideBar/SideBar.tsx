@@ -179,12 +179,12 @@ export const SideBar = () => {
                 Clear
               </button>
             </div>
-            <div className="flex justify-center items-center bg-[#ef941d] p-3">
+            <div className="flex justify-center items-center  p-3">
               {locale === Locale_ENUM.EN ? (
                 <div>
                   <button
                     onClick={() => toggleLanguage()}
-                    className="flex items-center text-white bg-transparent border-none text-l  cursor-pointer"
+                    className="flex items-center text-[black] bg-transparent border-none text-l  cursor-pointer"
                   >
                     <img
                       src="https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg"
@@ -197,7 +197,7 @@ export const SideBar = () => {
                 <div>
                   <button
                     onClick={() => toggleLanguage()}
-                    className="flex items-center text-white bg-transparent border-none text-l  cursor-pointer"
+                    className="flex items-center text-[black] bg-transparent border-none text-l  cursor-pointer"
                   >
                     <img
                       className=""

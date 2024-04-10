@@ -8,6 +8,7 @@ import { useGetProductsViewed } from "@src/hooks/useGetProductsViewed/useGetProd
 import { BreadCrumb } from "@src/components/UI /BreadCrumb/BreadCrumb";
 import NoProductsFoundImg from "@src/assets/images/no-items-found-img.png";
 import { DynamicSIngleProductItem } from "./DynamicSIngleProductItem";
+import { FormattedMessage } from "react-intl";
 export const DynamicSingleProduct = () => {
   const [singleProduct, setSingleProduct] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -63,10 +64,14 @@ export const DynamicSingleProduct = () => {
       )}
 
       <div className="flex items-start justify-start flex-wrap    p-6  flex-col  ">
-        <h2>Recommended Products</h2>
+        <h2>
+          <FormattedMessage id="recommended-products" />
+        </h2>
         <div className="flex gap-3 flex-wrap mt-2 ">
           {productsViewed.length === 0 ? (
-            <h3 className="text-[red]">No Recommended Products</h3>
+            <h3 className="text-[red]">
+              <FormattedMessage id="no-recommended-products" />
+            </h3>
           ) : (
             productsViewed.map((product: TProduct) => {
               return (

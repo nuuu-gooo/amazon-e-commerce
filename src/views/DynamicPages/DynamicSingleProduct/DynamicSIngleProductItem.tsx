@@ -68,7 +68,9 @@ export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
             </p>{" "}
           </div>
           <div className="data-description flex flex-col items-start mt-3">
-            <h4 className="mb-2">About this Item:</h4>
+            <h4 className="mb-2">
+              <FormattedMessage id="about-this-item" />
+            </h4>
             <p style={{ whiteSpace: "pre-line" }}>{data.description}</p>
           </div>
         </div>
@@ -89,9 +91,6 @@ export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
               )}
             </p>
           </div>
-          <p className=" text-[#565959] ">
-            No Import Fees Deposit & <br /> $16.78 Shipping to Greece
-          </p>
           <p className="mt-3">
             <FormattedMessage id="buy-text-2" />
             <span className="text-[green]">7 hrs 29 mins</span>

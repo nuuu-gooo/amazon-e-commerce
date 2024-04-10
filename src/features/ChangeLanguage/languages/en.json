@@ -78,5 +78,8 @@
   "current-category": "Current Category",
   "categories": "Categories",
   "search": "Search Amazon",
-  "wrong-password": "! Wrong Password"
+  "wrong-password": "! Wrong Password",
+  "recommended-products": "Recommended Products",
+  "no-recommended-products": "No recommended Products!",
+  "about-this-item": "About this item:"
 }
