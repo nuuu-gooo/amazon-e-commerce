@@ -32,7 +32,6 @@ export const DynamicSIngleProductItem = ({ data }: TSingleProductItem) => {
     } else {
       setIsInWishList(false);
     }
-    console.log(wishListProducts);
   }, [wishListProducts.length]);
 
   const handleAddToWishList = async (id: string) => {

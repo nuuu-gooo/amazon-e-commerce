@@ -18,7 +18,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { LContext, Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const Nav1 = () => {
-  const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const [searchInputValue, setSearchInputValue] = useState<string | null>("");
   const { authStage, loggout, userData } = useContext(AuthContext);
   const { existingCategories, currentCategory, setCurrentCategory } =
     useContext(GlobalContext);
@@ -36,6 +36,7 @@ export const Nav1 = () => {
       navigate(`/search/${searchInputValue}`);
 
       if (searchInputValue === "") {
+        setSearchInputValue(null);
         navigate(`/productCategory/${currentCategory}`);
       } else if (searchInputValue !== "" && currentCategory !== "") {
         navigate(`search/${currentCategory}/${searchInputValue}`);
@@ -96,7 +97,7 @@ export const Nav1 = () => {
 
   useEffect(() => {
     if (location.pathname.includes("search")) {
-      setSearchInputValue("");
+      setSearchInputValue(null);
     }
   }, [location.pathname]);
 
@@ -172,7 +173,6 @@ export const Nav1 = () => {
             className="   w-[100%]  border-none p-1 outline-none flex-grow overflow-hidden "
             autoFocus={true}
             type="text"
-            defaultValue={searchInputValue}
             placeholder={intl.formatMessage({ id: "search" })}
             onKeyPress={handleKeyPress}
           />

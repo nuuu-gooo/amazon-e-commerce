@@ -14,7 +14,6 @@ export const WishLIstProductsItem = ({ data }: { data: TLikedProduct }) => {
     try {
       await deleteWishListProduct(id);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setWishListProductsLoading(false);
     }

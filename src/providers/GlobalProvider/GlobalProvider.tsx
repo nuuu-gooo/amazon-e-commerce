@@ -23,7 +23,7 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [boughtProducts, setBoughtProducts] = useState<TBoughtProducts[]>([]);
   const [delRefundLoading, setDelRefundLoading] = useState<boolean>(false);
   const [order, setOrder] = useState<TOrder[]>([]);
-  console.log(order);
+
   const [transaction, setTransaction] = useState<boolean>();
   const { locale } = useContext(LContext);
   const [currentCategory, setCurrentCategory] = useState<string>("");
@@ -51,7 +51,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
     orderStatus_ENUM.ORDERPENDING
   );
-  console.log(order, boughtProducts);
 
   //-----------PRICE-CALCULATION-------------//
   let sum: number = 0;
@@ -78,8 +77,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
     for (let i = 0; i < allCartProducts.length; i++) {
       totalCartItems += allCartProducts[i].count;
     }
-
-    console.log(totalCartItems);
   }, [
     allCartProducts.length,
     saleProducts,
@@ -110,13 +107,12 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       setAddToCartLoading(true);
 
       const resp = await privateAxios.post("/cart", { product_id: id });
-      console.log(resp.data, resp.status);
+
       getCartProducts();
       if (resp.status === 201) {
         setAddToCartModal(true);
       }
     } catch (error) {
-      console.log(error);
     } finally {
       setAddToCartLoading(false);
     }
@@ -125,7 +121,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const getCartProducts = async () => {
     const resp = await privateAxios.get("/cart");
     setAllCartProducts(resp.data);
-    console.log(resp.data);
   };
 
   const deleteCartProducts = async (id: string) => {
@@ -134,7 +129,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       await privateAxios.delete(`/cart/${id}?removeAll=true`);
       getCartProducts();
     } catch (error: any) {
-      console.log(error);
     } finally {
       setDeleteCartLoading(false);
     }
@@ -145,7 +139,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       await privateAxios.delete(`/cart/${id}`);
       getCartProducts();
     } catch (error: any) {
-      console.log(error);
     } finally {
     }
   };
@@ -178,11 +171,9 @@ export function GlobalProvider({ children }: PropsWithChildren) {
         }
       }
 
-      console.log(response.data);
       setOrder(response.data);
       getBoughtProducts();
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setPurchaseLoading(false);
     }
@@ -191,7 +182,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const getBoughtProducts = async () => {
     const resp = await privateAxios.get(`/purchases`);
     setBoughtProducts(resp.data);
-    console.log(resp.data, boughtProducts);
   };
 
   const hadnleRefund = async (id: string) => {

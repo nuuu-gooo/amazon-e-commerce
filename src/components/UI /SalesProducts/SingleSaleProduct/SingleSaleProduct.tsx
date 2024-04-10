@@ -26,7 +26,6 @@ export const SingleSaleProduct = ({ product }: TSingleSaleProduct) => {
       setLoading(true);
       await AddToCart(id);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setLoading(false);
     }

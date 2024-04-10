@@ -13,7 +13,6 @@ export const SingleOrder = ({ data }: { data: TBoughtProducts }) => {
       setDeleteRefundLoading(true);
       await hadnleRefund(id);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setDeleteRefundLoading(false);
     }

@@ -26,13 +26,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     undefined
   );
   const navigate = useNavigate();
-  console.log(changedAccInfo);
   //--USER INFO CHANGE--// ✅
   const getChangedAccInfo = async () => {
     try {
       setChangeAccLoading(true);
       const resp = await privateAxios.get("/user/current-user");
-      console.log(resp.data);
+
       setUserData(resp.data);
       if (resp.status === 200) {
         setChangedAccInfo(true);
@@ -66,9 +65,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         phone_number: userNumber,
       });
       await getChangedAccInfo();
-      console.log(response.data);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setChangeAccLoading(false);
     }

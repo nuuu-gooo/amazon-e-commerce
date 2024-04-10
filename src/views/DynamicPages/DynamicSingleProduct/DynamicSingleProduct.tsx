@@ -30,7 +30,6 @@ export const DynamicSingleProduct = () => {
       );
       setSingleProduct(fetch.data.products);
     } catch (error) {
-      console.log(error);
     } finally {
       setLoading(false);
     }

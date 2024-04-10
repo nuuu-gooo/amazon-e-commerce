@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { axiosInstance } from "@src/utils/publicAxios";
 import { TProduct } from "@src/@types/types";
 
-export const useGetPopUpProducts = (inputVal: string) => {
+export const useGetPopUpProducts = (inputVal: string | null) => {
   const [popUpProducts, setPopUpProducts] = useState<TProduct[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const fetchApPopUpProducts = async () => {

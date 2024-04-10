@@ -45,7 +45,6 @@ export const CategoryProducts = () => {
     setFilterPrice(value);
   };
 
-  console.log(products);
   return (
     <div className="flex flex-col bg-gray-200 w-full">
       <div className="flex justify-between items-center p-9 ">

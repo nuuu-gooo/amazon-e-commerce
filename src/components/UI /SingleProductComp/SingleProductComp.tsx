@@ -19,7 +19,6 @@ export const SingleProductComp = ({ data }: { data: TProduct }) => {
       await AddToCart(id);
       await getCartProducts();
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setLoading(false);
     }

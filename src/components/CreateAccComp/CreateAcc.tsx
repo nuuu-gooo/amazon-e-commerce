@@ -22,7 +22,7 @@ export const CreateAccComp = () => {
   const { createAccFetch, authStage, error } = useContext(AuthContext);
   const { formatMessage } = useIntl();
   const { locale } = useContext(LContext);
-  console.log(locale);
+
   const [enterNumVal, setEnterNumVal] = useState<string>("");
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const CreateAccComp = () => {
       setEnterNumVal("44");
     }
   }, [locale]);
-  console.log(enterNumVal);
+
   const { createAccLoading } = useContext(AuthContext);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [emailValue, setEmailValue] = useState<string>("");

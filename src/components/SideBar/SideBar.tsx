@@ -21,7 +21,7 @@ export const SideBar = () => {
   const intl = useIntl();
 
   const navigate = useNavigate();
-  console.log(sidebarInput);
+
   const {
     isToggled,
     setIsToggled,
@@ -117,7 +117,7 @@ export const SideBar = () => {
                   <div className="bg-[white] p-9 w-full flex items-center ">
                     <ul>
                       <li>
-                        {product.title}
+                        {product?.title}
                         <img className="w-[10%]" src={product.image} alt="" />
                       </li>
                     </ul>

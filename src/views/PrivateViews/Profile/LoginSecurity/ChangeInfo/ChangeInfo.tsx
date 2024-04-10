@@ -39,7 +39,6 @@ export const ChangeInfo = () => {
     setNewNumber(userData?.phone_number);
   }, [changedAccInfo, userData]);
 
-  console.log(changedAccInfo);
   return (
     <div>
       <div className="flex justify-center items-center">

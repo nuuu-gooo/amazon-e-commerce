@@ -8,7 +8,7 @@ import { SinglePopOverCartProduct } from "./SinglePopOverCartProduct/SinglePopOv
 
 export const PopOverCart = () => {
   const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
-  console.log(allCartProducts);
+
   const { authStage } = useContext(AuthContext);
   useState<boolean>(false);
   const navigate = useNavigate();

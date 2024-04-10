@@ -13,7 +13,6 @@ export const SinglePopOverCartProduct = ({
   const [deleteCartProductloading, setDeleteCartProductLoading] =
     useState<boolean>(false);
 
-  console.log(product);
   const {
     AddToCart,
     getCartProducts,
@@ -25,7 +24,6 @@ export const SinglePopOverCartProduct = ({
       setDeleteCartProductLoading(true);
       await deleteCartProducts(id);
     } catch (error: any) {
-      console.log(error.message);
     } finally {
       setDeleteCartProductLoading(false);
     }

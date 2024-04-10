@@ -35,7 +35,6 @@ export const CurrentSearchedInputProductsItem = ({
     } else {
       setIsInWishList(false);
     }
-    console.log(wishListProducts);
   }, [wishListProducts.length]);
 
   const handleAddToWishList = async (id: string) => {

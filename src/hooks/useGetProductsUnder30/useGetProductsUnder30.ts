@@ -7,7 +7,6 @@ export const useGetProductsUnder30 = () => {
   const fetchProductsUnder30 = async () => {
     const response = await axiosInstance.get("/product?categoryName=under-30");
     setProductsUnder30(response.data.products);
-    console.log(response);
   };
 
   useEffect(() => {
