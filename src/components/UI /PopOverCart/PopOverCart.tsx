@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "@src/providers/Auth/AuthContext";
 import { authStage_EUNM } from "@src/ENUMS/Enums";
 import { FormattedMessage } from "react-intl";
-import { SinglePopOverCartProduct } from "./SinglePopOverCartProduct/SinglePopOverCartProduct";
-
+import SinglePopOverCartProduct from "./SinglePopOverCartProduct";
 export const PopOverCart = () => {
   const { allCartProducts, totalCartPrice } = useContext(GlobalContext);
 
