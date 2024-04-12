@@ -22,8 +22,7 @@ interface PaymentFormState {
 const PaymentForm: React.FC = () => {
   const [address, setAddress] = useState<string | undefined>();
   const [addressVal, setAddressVal] = useState<boolean | undefined>();
-  const { setTransaction, transaction, selectedNewCountry } =
-    useContext(GlobalContext);
+  const { setTransaction, transaction } = useContext(GlobalContext);
 
   const intl = useIntl();
 
@@ -110,13 +109,7 @@ const PaymentForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (
-      isNumberValid &&
-      isExpiryValid &&
-      isNameValid &&
-      isCvcValid &&
-      addressVal
-    ) {
+    if (isNumberValid && isExpiryValid && isNameValid && isCvcValid) {
       setTransaction(true);
     } else {
       setTransaction(false);
@@ -200,12 +193,6 @@ const PaymentForm: React.FC = () => {
             />
             <p className="mb-2 mt-2">{validationErrors.cvc}</p>
           </div>
-
-          <select className="p-2 mb-3" name="" id="">
-            <option value="germany">🇩🇪 Germany</option>
-            <option value="germany"> 🇺🇸 America</option>
-            <option value="germany">🇬🇪 Georgia</option>
-          </select>
 
           <div className="input-container flex">
             <Input
