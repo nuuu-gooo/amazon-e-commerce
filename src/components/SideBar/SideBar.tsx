@@ -167,6 +167,25 @@ export const SideBar = () => {
                   );
                 })}
               </SubMenu>
+              <SubMenu
+                className="block "
+                label={
+                  <p>
+                    <FormattedMessage id="help-and-settings" />
+                  </p>
+                }
+              >
+                <MenuItem onClick={() => navigate("/profile")}>
+                  <FormattedMessage id="your-account" />
+                </MenuItem>
+                {authStage === authStage_EUNM.AUTHORIZED ? (
+                  ""
+                ) : (
+                  <MenuItem onClick={() => navigate("/login")}>
+                    <FormattedMessage id="sign-in" />
+                  </MenuItem>
+                )}
+              </SubMenu>
             </Menu>
             <div className="bg-[#ef941d] p-3 flex justify-center items-center">
               <h5 className="text-black">
