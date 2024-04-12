@@ -151,6 +151,7 @@ export const Nav1 = () => {
             })}
           </div>
           <select
+            value={currentCategory}
             onChange={(e) => setCurrentCategory(e.target.value)}
             className={`  bg-gray-300  p-2 border-none sm:p-2.5 rounded-sm flex-grow   ${
               currentCategory !== "" && "bg-yellow-300  text-black outline-none"
@@ -188,7 +189,7 @@ export const Nav1 = () => {
             onClick={() => setCurrentCategory("")}
             className="bg-[#febd69] p-1 border-none shadow-md  shadow-[#febd69] cursor-pointer rounded-sm"
           >
-            Clear
+            <FormattedMessage id="reset" />
           </button>
 
           <button
@@ -212,9 +213,11 @@ export const Nav1 = () => {
                 </Popover>
               </div>
             ) : (
-              <Link to={"/login"}>
-                <FaUserCircle className="text-2xl text-[white] md:hidden" />
-              </Link>
+              <Popover content={authContent}>
+                <Link to={"/login"}>
+                  <FaUserCircle className="text-2xl text-[white] md:hidden" />
+                </Link>
+              </Popover>
             )}
 
             <Popover content={<PopOverCart />}>

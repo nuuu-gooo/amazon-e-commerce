@@ -85,5 +85,6 @@
   "transaction-successfull": "Transaktion Erfolgreich",
   "15-min-email": "Es dauert bis zu 15 Minuten, bis Sie eine Bestätigungs-E-Mail erhalten.",
   "help-and-settings": "Hilfe & Einstellungen",
-  "your-account": "Ihr Konto"
+  "your-account": "Ihr Konto",
+  "reset": "Zurücksetzen"
 }
