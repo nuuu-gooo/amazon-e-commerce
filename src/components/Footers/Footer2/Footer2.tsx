@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { amazonServices } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
+import { FormattedMessage } from "react-intl";
 
 export const Footer2 = () => {
   const { locale } = useContext(LContext);
@@ -23,9 +24,8 @@ export const Footer2 = () => {
       </div>
       <div className="mt-8 flex justify-center flex-col">
         <p className="rights text-xs  text-white  text-center leading-6 items-center">
-          Our Terms and Conditions Privacy Policy Your Privacy Choices <br />{" "}
-          for Ads © 1996-2023, Amazon.com, Inc. or its affiliates"
-        </p>{" "}
+          <FormattedMessage id="terms-conditions" />
+        </p>
       </div>
     </div>
   );
