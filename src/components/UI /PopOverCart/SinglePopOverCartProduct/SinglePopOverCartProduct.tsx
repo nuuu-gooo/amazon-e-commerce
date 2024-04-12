@@ -1,9 +1,8 @@
+import React, { useContext, useState } from "react";
 import { Button } from "antd";
-
-import { useContext, useState } from "react";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage } from "react-intl";
-import { TCartItem, TCategoryProducts, TProduct } from "@src/@types/types";
+import { TCartItem } from "@src/@types/types";
 
 export const SinglePopOverCartProduct = ({
   product,
@@ -13,19 +12,45 @@ export const SinglePopOverCartProduct = ({
   const [deleteCartProductloading, setDeleteCartProductLoading] =
     useState<boolean>(false);
 
+  const [increaseProductLoadinng, setIncreaseProductLoading] =
+    useState<boolean>(false);
+  const [decreaseProductLoading, setDecreaseProductLoading] =
+    useState<boolean>(false);
   const {
     AddToCart,
     getCartProducts,
     deleteSingleCartProduct,
     deleteCartProducts,
   } = useContext(GlobalContext);
-  const handleOnClick = async (id: string) => {
+  const handleOnClickDelete = async (id: string) => {
     try {
       setDeleteCartProductLoading(true);
       await deleteCartProducts(id);
     } catch (error: any) {
-    } finally {
       setDeleteCartProductLoading(false);
+    } finally {
+    }
+  };
+
+  const handleOnCLickIncrese = async (id: string) => {
+    try {
+      setIncreaseProductLoading(true);
+      await AddToCart(id);
+      await getCartProducts();
+    } catch (error) {
+    } finally {
+      setIncreaseProductLoading(false);
+    }
+  };
+
+  const handleOnCLickDecrease = async (id: string) => {
+    try {
+      setDecreaseProductLoading(true);
+      await deleteSingleCartProduct(id);
+      await getCartProducts();
+    } catch (error) {
+    } finally {
+      setDecreaseProductLoading(false);
     }
   };
 
@@ -37,19 +62,24 @@ export const SinglePopOverCartProduct = ({
       </div>
       <div className="quantity flex items-center">
         <Button
-          onClick={() => {
-            AddToCart(product.cartProduct.id), getCartProducts();
-          }}
+          loading={increaseProductLoadinng}
+          onClick={() => handleOnCLickIncrese(product.cartProduct.id)}
         >
           +
         </Button>
         <p className="mr-3 ml-3">{product.count}</p>
-        <Button onClick={() => deleteSingleCartProduct(product.id)}>-</Button>
+
+        <Button
+          loading={decreaseProductLoading}
+          onClick={() => handleOnCLickDecrease(product.id)}
+        >
+          -
+        </Button>
       </div>
 
       <Button
         loading={deleteCartProductloading}
-        onClick={() => handleOnClick(product.id)}
+        onClick={() => handleOnClickDelete(product.id)}
         danger={true}
       >
         <FormattedMessage id="delete" />
