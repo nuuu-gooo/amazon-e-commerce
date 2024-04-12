@@ -54,10 +54,10 @@ interface TGlobalContext {
   deleteCartProducts: (id: string) => Promise<void>;
   toggleSidebarFunction: () => void;
   fetchWishListProducts: () => Promise<void>;
-  setSelectedNewCountry: React.Dispatch<React.SetStateAction<string>>;
+  // setSelectedNewCountry: React.Dispatch<React.SetStateAction<string>>;
   order: TOrder[];
   boughtProducts: TBoughtProducts[];
-  selectedNewCountry: string;
+  // selectedNewCountry: string;
 }
 
 export const GlobalContext = createContext<TGlobalContext>({
@@ -82,9 +82,9 @@ export const GlobalContext = createContext<TGlobalContext>({
   addToCartModal: false,
   delRefundLoading: false,
   globalCountry: "",
-  selectedNewCountry: "",
+  // selectedNewCountry: "",
   setCurrentCategory: () => {},
-  setSelectedNewCountry: () => {},
+  // setSelectedNewCountry: () => {},
   setGlobalCountry: () => {},
   hadnleRefund: async () => {},
   getBoughtProducts: async () => {},

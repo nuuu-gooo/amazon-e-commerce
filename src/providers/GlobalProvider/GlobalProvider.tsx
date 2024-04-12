@@ -30,27 +30,24 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   const [existingCategories, setExistingCategories] = useState<
     TExistingCategories[]
   >([]);
+  const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
+    orderStatus_ENUM.ORDERPENDING
+  );
   const [count, setCount] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [existingCatLoading, setExistingCatLoading] = useState<boolean>(false);
   const [allCartProducts, setAllCartProducts] = useState<TCartItem[]>([]);
-  const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
-  const { deleteWishListProductLoading } = useDeleteWishListProduct();
-  const { wishListProductsLoading } = useGetWishListProducts();
-  const { authStage } = useContext(AuthContext);
   const [addToCartLoading, setAddToCartLoading] = useState<boolean>(false);
   const [addToCartModal, setAddToCartModal] = useState<boolean>(false);
   const [totalCartPrice, setTotalCartPrice] = useState<number>(0);
   const [deleteCartLoading, setDeleteCartLoading] = useState<boolean>(false);
-  const { saleProducts } = useGetSaleProducts();
   const [purchaseLoading, setPurchaseLoading] = useState<boolean>(false);
   const [globalCountry, setGlobalCountry] = useState<string>("");
-  const savedCountry = localStorage.getItem("currCountry");
-  const [selectedNewCountry, setSelectedNewCountry] =
-    useState<any>(savedCountry);
-  const [orderStatus, setOrderStatus] = useState<orderStatus_ENUM>(
-    orderStatus_ENUM.ORDERPENDING
-  );
+  const { saleProducts } = useGetSaleProducts();
+  const { authStage } = useContext(AuthContext);
+  const { wishListProducts, fetchWishListProducts } = useGetWishListProducts();
+  const { deleteWishListProductLoading } = useDeleteWishListProduct();
+  const { wishListProductsLoading } = useGetWishListProducts();
 
   //-----------PRICE-CALCULATION-------------//
   let sum: number = 0;
@@ -185,7 +182,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
   };
 
   const hadnleRefund = async (id: string) => {
-    // setDelRefundLoading(true);
     await axiosInstance.delete(`/purchases/${id}`).then(getBoughtProducts);
   };
 
@@ -202,17 +198,14 @@ export function GlobalProvider({ children }: PropsWithChildren) {
       fetchWishListProducts();
     }
     setTransaction(false);
-    saveLocation(selectedNewCountry);
     getBoughtProducts();
-  }, [authStage, transaction, order, orderStatus, selectedNewCountry, locale]);
+  }, [authStage, transaction, order, orderStatus, , locale]);
 
   return (
     <GlobalContext.Provider
       value={{
         setCurrentCategory,
         currentCategory,
-        selectedNewCountry,
-        setSelectedNewCountry,
         order,
         globalCountry,
         setGlobalCountry,

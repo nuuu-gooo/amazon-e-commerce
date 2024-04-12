@@ -3,6 +3,7 @@ import { TLikedProduct } from "@src/@types/types";
 import { useGetSaleProducts } from "@src/hooks/useGetSaleProducts/useGetSalesProducts";
 import { Button } from "antd";
 import { useDeleteWishListProduct } from "@src/hooks/WishList/useDeleteWishListProduct/useDeleteWishListProduct";
+import { FormattedMessage } from "react-intl";
 
 export const WishLIstProductsItem = ({ data }: { data: TLikedProduct }) => {
   const { saleProducts } = useGetSaleProducts();
@@ -50,7 +51,7 @@ export const WishLIstProductsItem = ({ data }: { data: TLikedProduct }) => {
           onClick={() => handleOnClick(data.id)}
           danger={true}
         >
-          Delete
+          <FormattedMessage id="delete" />
         </Button>
       </div>
     </div>

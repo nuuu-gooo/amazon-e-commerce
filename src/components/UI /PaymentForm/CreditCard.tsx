@@ -216,8 +216,6 @@ const PaymentForm: React.FC = () => {
               placeholder={intl.formatMessage({ id: "address" })}
             />
 
-            <p>{selectedNewCountry}</p>
-
             {addressVal && <p>✅</p>}
           </div>
 

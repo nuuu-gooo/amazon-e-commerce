@@ -31,7 +31,6 @@ const WishListProducts = lazy(
 const ChangeInfo = lazy(
   () => import("@src/views/PrivateViews/Profile/LoginSecurity/ChangeInfo")
 );
-
 const CheckoutPage = lazy(() => import("@src/views/DynamicPages/CheckoutPage"));
 const CategoryProducts = lazy(
   () => import("@src/views/DynamicPages/CategoryProducts")
