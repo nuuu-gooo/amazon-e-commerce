@@ -134,6 +134,7 @@ const PaymentForm: React.FC = () => {
         <Cards
           cvc={state.cvc}
           expiry={state.expiry}
+          //@ts-ignore
           focused={state.focus}
           name={state.name}
           number={state.number}
