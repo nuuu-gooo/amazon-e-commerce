@@ -29,7 +29,7 @@ export const ChangeInfo = () => {
     if (newName !== "" && newSurname !== "" && newNumber !== "") {
       changeAccInfo(newName, newSurname, newNumber);
     } else {
-      alert(<FormattedMessage id="please-fill-every-input" />);
+      alert("Please fill out every Input!");
     }
   };
 
