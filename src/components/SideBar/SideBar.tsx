@@ -188,10 +188,16 @@ export const SideBar = () => {
               </SubMenu>
             </Menu>
             <div className="bg-[#ef941d] p-3 flex justify-center items-center">
-              <h5 className="text-black">
-                <FormattedMessage id="current-category" />:{" "}
-                <span className="text-xs underline">{currentCategory} </span>
-              </h5>
+              {currentCategory ? (
+                <h5 className="text-black">
+                  <FormattedMessage id="current-category" />:{" "}
+                  <span className="text-xs underline">{currentCategory} </span>
+                </h5>
+              ) : (
+                <h5>
+                  <FormattedMessage id="no-category" />
+                </h5>
+              )}
               <button
                 onClick={() => setCurrentCategory("")}
                 className="ml-2 p-1  bg-[#febd69] border-none hover:cursor-pointer w-full"

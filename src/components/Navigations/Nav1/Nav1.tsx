@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
-
 import { FormattedMessage, useIntl } from "react-intl";
 import AmazonLogo from "@src/assets/images/amazon-lg.png";
 import CardImg from "@src/assets/images/cart.png";
