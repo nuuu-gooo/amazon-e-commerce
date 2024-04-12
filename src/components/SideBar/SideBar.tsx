@@ -14,7 +14,7 @@ import { Locale_ENUM } from "@src/providers/LProvider/LContext";
 
 export const SideBar = () => {
   const { locale, toggleLanguage } = useContext(LContext);
-  const { authStage, userData } = useContext(AuthContext);
+  const { authStage, userData, loggout } = useContext(AuthContext);
 
   const [sidebarInput, setSideBarInput] = useState<string>("");
   const { popUpProducts } = useGetPopUpProducts(sidebarInput);
@@ -175,11 +175,15 @@ export const SideBar = () => {
                   </p>
                 }
               >
-                <MenuItem onClick={() => navigate("/profile")}>
-                  <FormattedMessage id="your-account" />
-                </MenuItem>
+                {authStage === authStage_EUNM.AUTHORIZED && (
+                  <MenuItem onClick={() => navigate("/profile")}>
+                    <FormattedMessage id="your-account" />
+                  </MenuItem>
+                )}
                 {authStage === authStage_EUNM.AUTHORIZED ? (
-                  ""
+                  <MenuItem onClick={loggout}>
+                    <FormattedMessage id="sign-out" />
+                  </MenuItem>
                 ) : (
                   <MenuItem onClick={() => navigate("/login")}>
                     <FormattedMessage id="sign-in" />
