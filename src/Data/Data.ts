@@ -207,7 +207,7 @@ export const nav2Links = [
       [Locale_ENUM.EN]: "Todays Deals",
     },
     id: 2,
-    link: "",
+    link: "https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb",
   },
   {
     name: {
@@ -215,12 +215,12 @@ export const nav2Links = [
       [Locale_ENUM.EN]: "Customer Service",
     },
     id: 3,
-    link: "",
+    link: "https://www.amazon.com/gp/help/customer/display.html?nodeId=508510&ref_=nav_cs_customerservice",
   },
   {
     name: { [Locale_ENUM.DE]: "Registrierung", [Locale_ENUM.EN]: "Registry" },
     id: 4,
-    link: "",
+    link: "https://www.amazon.com/registries?ref_=nav_cs_registry&ref_=nav_cs_registry",
   },
   {
     name: {
@@ -228,12 +228,12 @@ export const nav2Links = [
       [Locale_ENUM.EN]: "Gift Cards",
     },
     id: 5,
-    link: "",
+    link: "https://www.amazon.com/gift-cards/b/?ie=UTF8&node=2238192011&ref_=nav_cs_gc",
   },
   {
     name: { [Locale_ENUM.DE]: "Verkaufen", [Locale_ENUM.EN]: "Sell" },
     id: 6,
-    link: "",
+    link: "https://www.amazon.com/b/?_encoding=UTF8&ld=AZUSSOA-sell&node=12766669011&ref_=nav_cs_sell",
   },
 ];
 

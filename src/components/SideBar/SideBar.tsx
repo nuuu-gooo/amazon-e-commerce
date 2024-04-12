@@ -159,8 +159,8 @@ export const SideBar = () => {
                   return (
                     <Link
                       key={nav2Link.id}
+                      to={nav2Link.link}
                       className="no-underline text-[black] hover:opacity-50"
-                      to={``}
                     >
                       <MenuItem>{nav2Link.name[locale]}</MenuItem>
                     </Link>
