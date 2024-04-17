@@ -73,6 +73,33 @@ export const CreateAccComp = () => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      emailValidation(emailValue, setEmailError);
+      numberValidation(enterNumVal, setEnterNumError);
+      passwordValidation(passwordValue, setPasswordError);
+      nameValidation(nameValue, setNameError);
+      surnameValidation(surnameValue, setSurnameError);
+      createAccFetch(
+        nameValue,
+        surnameValue,
+        emailValue,
+        passwordValue,
+        enterNumVal
+      );
+      passwordReEnterValidation(
+        passwordReEnterValue,
+        passwordValue,
+        setPasswordReEnterError
+      );
+
+      if (authStage === authStage_EUNM.AUTHORIZED) {
+        navigate("/login");
+      }
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-center mb-3">
@@ -87,6 +114,7 @@ export const CreateAccComp = () => {
       </div>
       <div className="wrapper flex justify-center items-center m-auto h-[full] p-9   ">
         <form
+          onKeyDown={handleKeyPress}
           action=""
           className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]"
         >

@@ -31,13 +31,28 @@ export const LoginComp = () => {
     } else {
       alert("Please fill out every input!");
     }
-    // await signInFetch(emailValue, passwordValue);
+  };
+
+  const handleKeyPress = async (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      emailValidation(emailValue, setEmailError);
+      passwordValidation(passwordValue, setPasswordError);
+      if (passwordValue !== "" && emailValue !== "") {
+        await signInFetch(emailValue, passwordValue);
+      } else {
+        alert("Please fill out every input!");
+      }
+    }
   };
 
   const navigate = useNavigate();
   return (
     <div className="wrapper flex justify-center items-center flex-col p-9  ">
-      <form className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]">
+      <form
+        onKeyDown={handleKeyPress}
+        className="border border-zinc-300 border-solid h-[full]     p-9  min-w-[40%] flex justify-center items-start flex-col rounded mb-[1%]"
+      >
         <h1>
           <FormattedMessage id="sign-in" />
         </h1>

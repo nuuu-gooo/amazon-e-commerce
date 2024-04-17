@@ -28,7 +28,7 @@ export const Nav1 = () => {
   const location = useLocation();
   const intl = useIntl();
 
-  const handleKeyPress = (e: any) => {
+  const handleKeyPress = (e: React.KeyboardEvent) => {
     const keypress = e.key;
 
     if (keypress === "Enter") {
@@ -174,7 +174,7 @@ export const Nav1 = () => {
             autoFocus={true}
             type="text"
             placeholder={intl.formatMessage({ id: "search" })}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
 
           <button
