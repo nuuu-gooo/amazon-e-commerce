@@ -33,6 +33,16 @@ export const ChangeInfo = () => {
     }
   };
 
+  const handleKeyPress = async (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      if (newName !== "" && newSurname !== "" && newNumber !== "") {
+        changeAccInfo(newName, newSurname, newNumber);
+      } else {
+        alert("Please fill out every Input!");
+      }
+    }
+  };
+
   useEffect(() => {
     setNewName(userData?.first_name);
     setNewSurname(userData?.last_name);
@@ -43,6 +53,7 @@ export const ChangeInfo = () => {
     <div>
       <div className="flex justify-center items-center">
         <form
+          onKeyDown={handleKeyPress}
           onSubmit={handleForm}
           className="border border-solid w-[50%] p-5 rounded-sm"
           action=""
