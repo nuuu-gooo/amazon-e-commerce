@@ -187,10 +187,6 @@ export function GlobalProvider({ children }: PropsWithChildren) {
 
   //------------------------------PURCHASE REQUESTS------------------------------------------//
 
-  const saveLocation = (location: string) => {
-    localStorage.setItem("currCountry", location);
-  };
-
   useEffect(() => {
     fetchExistingCategories();
     if (authStage === authStage_EUNM.AUTHORIZED) {
