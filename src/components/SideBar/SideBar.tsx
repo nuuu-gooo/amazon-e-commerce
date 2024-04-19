@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { GlobalContext } from "@src/providers/GlobalProvider";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -11,13 +11,14 @@ import { useGetPopUpProducts } from "@src/hooks/useGetPopUpProduct/useGetPopUpPr
 import { nav2Links } from "@src/Data/Data";
 import { LContext } from "@src/providers/LProvider/LContext";
 import { Locale_ENUM } from "@src/providers/LProvider/LContext";
+import { Loader } from "@src/assets/Loader/Loader";
 
 export const SideBar = () => {
   const { locale, toggleLanguage } = useContext(LContext);
   const { authStage, userData, loggout } = useContext(AuthContext);
 
   const [sidebarInput, setSideBarInput] = useState<string>("");
-  const { popUpProducts } = useGetPopUpProducts(sidebarInput);
+  const { popUpProducts, loading } = useGetPopUpProducts(sidebarInput);
   const intl = useIntl();
 
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export const SideBar = () => {
 
   const handleOnClick = () => {
     if (sidebarInput === "") {
+      setSideBarInput("");
       navigate(`/productCategory/${currentCategory}`);
     } else if (sidebarInput !== "" && currentCategory !== "") {
       navigate(`search/${currentCategory}/${sidebarInput}`);
@@ -55,6 +57,13 @@ export const SideBar = () => {
       navigate(`/search/${sidebarInput}`);
     }
   };
+
+  useEffect(() => {
+    if (location.pathname.includes("search")) {
+      setSideBarInput("");
+      setIsToggled(false);
+    }
+  }, [location.pathname]);
 
   return (
     <div className=" fixed z-50">
@@ -108,6 +117,7 @@ export const SideBar = () => {
               </button>
             </div>
 
+            {loading && <Loader />}
             {popUpProducts.map((product) => {
               return (
                 <Link
