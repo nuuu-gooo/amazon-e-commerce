@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 export const useGetProductsUnder30 = () => {
   const [productsUnder30, setProductsUnder30] = useState<TProduct[]>([]);
   const fetchProductsUnder30 = async () => {
-    const response = await axiosInstance.get("/product?categoryName=under-30");
+    const response = await axiosInstance.get(
+      "/product?categoryName=products-under-30$"
+    );
     setProductsUnder30(response.data.products);
   };
 
